@@ -1,0 +1,42 @@
+{%- comment -%}
+Description:
+Snippet for add padding into section element
+
+Variables:
+- el_id: String. element id
+- section: Section object. Pass section object if want to use data from section setting
+- no_section: Boolean. If padding is not from section settings
+- top_padding_m : Numeric. If section is blank. Top padding mobile
+- bottom_padding_m : Numeric. If section is blank. Bottom padding mobile
+- top_padding_t : Numeric. If section is blank. Top padding tablet
+- bottom_padding_t : Numeric. If section is blank. Bottom padding tablet
+- top_padding : Numeric. If section is blank. Top padding desktop
+- bottom_padding : Numeric. If section is blank. Bottom padding desktop
+{%- endcomment -%}
+{%- if no_section == blank -%}
+    {%- assign top_padding_m = section.settings.top_padding_m -%}
+    {%- assign bottom_padding_m = section.settings.bottom_padding_m -%}
+    {%- assign top_padding_t = section.settings.top_padding_t -%}
+    {%- assign bottom_padding_t = section.settings.bottom_padding_t -%}
+    {%- assign top_padding = section.settings.top_padding -%}
+    {%- assign bottom_padding = section.settings.bottom_padding -%}
+{%- endif -%}
+
+<style>
+    #{{ el_id }} {
+        {% if top_padding_m != blank %}padding-top: {{ top_padding_m }}px;{% endif %}
+        {% if bottom_padding_m != blank %}padding-bottom: {{ bottom_padding_m }}px;{% endif %}
+    }
+    @media only screen and (min-width: 768px) {
+        #{{ el_id }} {
+            {% if top_padding_t != blank %}padding-top: {{ top_padding_t }}px;{% endif %}
+            {% if bottom_padding_t != blank %}padding-bottom: {{ bottom_padding_t }}px;{% endif %}
+        }
+    }
+    @media only screen and (min-width: 1024px) {
+        #{{ el_id }} {
+            {% if top_padding != blank %}padding-top: {{ top_padding }}px;{% endif %}
+            {% if bottom_padding != blank %}padding-bottom: {{ bottom_padding }}px;{% endif %}
+        }
+    }
+</style>

@@ -1,0 +1,163 @@
+{%- assign el_id = 'collection-' | append: section.id -%}
+<style>
+#{{ el_id }} .c-white {
+	color: var(--grey);
+}
+@media screen and (min-width:768px){
+	#{{ el_id }} .c-white {
+		color: var(--white);
+	}
+	#shopify-section-{{ section.id }} .inner{
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		z-index:10;
+	}
+
+	#shopify-section-{{ section.id }} h1{
+		color: var(--white);
+	}
+
+	#shopify-section-{{ section.id }} .bc-item, #shopify-section-{{ section.id }} .c-comfort-orange{
+		color: var(--white);
+	}
+
+	#shopify-section-{{ section.id }} .breadcrumb path{
+		fill: var(--white);
+	}
+}
+@media screen and (min-width: 1024px) {
+	#{{ el_id }} .c-white {
+		color: var(--white);
+	}
+}
+</style>
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<div id="{{ el_id }}" class="collection-box" {% if section.settings.bg_color != blank %}style="background-color: {{ section.settings.bg_color }}"{% endif %}>
+    <div class="relative">
+		<div class="overlay hide-m show-t"></div>
+		<div class="inner">
+			{%- render 'breadcrumbs',
+				first_text: section.settings.first_text,
+				first_url: section.settings.first_url,
+				blocks: section.blocks,
+				class_color: 'c-white'
+			-%}
+			<div class="container">
+				<h1 class="h1 c-greenb2 mb-30 mt-15 t-mt-40 d-mt-70 t-tc t-max-700 t-mx-auto">{{ section.settings.title }}</h1>
+			</div>
+		</div>
+		{%- assign image_id = "image-" | append: section.id -%}
+		{%- render 'global-image-wrapper-responsive',
+			image_id: image_id,
+			desktop_image: section.settings.image,
+			mobile_image: section.settings.image_mobile
+		%}
+	</div>
+</div>
+{% schema %}
+{
+	"name": "Banner with breadcrumbs",
+	"settings": [
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)",
+            "default": 0
+		},
+        {
+			"type": "header",
+			"content": "Section Content"
+		},
+		{
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		},
+        {
+			"type": "image_picker",
+			"id": "image_mobile",
+			"label": "Mobile image"
+		},
+        {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Desktop image"
+        },
+        {
+            "type" : "text",
+            "id" : "title",
+            "label" : "Title"
+        },
+		{
+			"type": "text",
+			"id": "first_text",
+			"label": "First Text for breadcrumb"
+		},
+        {
+			"type": "url",
+			"id": "first_url",
+			"label": "First URL for breadcrumb"
+		}
+	],
+	"blocks" : [
+		{
+			"type": "text",
+			"name": "Breadcrumb",
+			"settings": [
+				{
+					"type": "text",
+					"id": "text",
+					"label": "Text"
+				},
+				{
+					"type": "url",
+					"id": "url",
+					"label": "URL"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Banner with breadcrumbs",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

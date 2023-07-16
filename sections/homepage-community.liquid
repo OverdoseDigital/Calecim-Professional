@@ -1,0 +1,199 @@
+{% comment %} Calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+
+<style>
+  #shopify-section-{{ section.id }} .swiper-custom-arrow {
+    position: relative;
+    left: unset;
+    right: unset;
+    top: unset;
+    transform: unset;
+  }
+  #shopify-section-{{ section.id }} .social-media-icons .global-social {
+    justify-content: center;
+  }
+  #shopify-section-{{ section.id }} .hc-right .swiper-slide {
+    flex: 0 0 75%;
+  }
+
+  @media screen and (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .social-media-icons .global-social {
+      justify-content: flex-start;
+    }
+    #shopify-section-{{ section.id }} .hc-left {
+      width: 30%;
+    }
+    #shopify-section-{{ section.id }} .hc-left .container {
+      display: flex;
+      flex-direction: column;
+    }
+    #shopify-section-{{ section.id }} .hc-left .container .swiper-arrow {
+      margin-top: auto;
+    }
+    #shopify-section-{{ section.id }} .hc-right {
+      width: 70%;
+    } 
+    #shopify-section-{{ section.id }} .hc-right .swiper-slide {
+      flex: 0 0 85%;
+    }
+  }
+</style>
+
+<div class="homepage-community">
+  <div class="global-flex flex-wrap">
+      <div class="hc-left col-12 pl-0 pr-0 col-d-4 d-pl-0 d-pr-80 d-pt-40 d-pb-40">
+        <div class="container d-pr-0 width-100 height-100 tc d-tl">
+          <div>
+            <h3 class="h3 c-black d-max-300">{{ section.settings.title | newline_to_br }}</h3>
+
+            <div class="social-media-icons width-100 mt-15 d-mt-20">
+              {%- render 'social-links', additional_class: 'jc-left', icons_class: 'ml-15 mr-15 d-ml-0 d-mr-30' -%}
+            </div>
+          </div>
+
+          <div class="swiper-arrow hide-m show-d">
+            <div class="swiper-custom-arrow previous mr-10">
+              {{ settings.icon_btn_left }}
+            </div>
+            
+            <div class="swiper-custom-arrow next">
+              {{ settings.icon_btn_right }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hc-right col-12 pl-0 pr-0 col-d-8 d-pl-0 d-pr-0 mt-40 d-mt-0">
+        <div class="carousel-container">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {%- for block in section.blocks -%}
+                <div class="swiper-slide">
+                  {%- if block.settings.url != blank -%}
+                    <a href="{{ block.settings.url }}" class="show-m">
+                  {%- endif -%}
+
+                  <div class="testimonial-each global-flex ai-center">
+                    <div class="col-12 pl-0 pr-0 col-d-6 d-pr-0 d-pl-0">
+                      {%- render 'global-image-wrapper',
+                        image: block.settings.image
+                      -%}
+                    </div>
+                    <div class="col-6 d-pl-65 d-pr-65 hide-m show-d">
+                      <div class="text-wrapper tc">
+                        <h6 class="h8">{{ block.settings.title }}</h6>
+
+                        {%- if block.settings.author != blank -%}
+                          <p class="p4 mt-20">{{ block.settings.author }}</p>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </div>
+
+                  {%- if block.settings.url != blank -%}
+                    </a>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let communitySwiper = new Swiper('#shopify-section-{{ section.id }} .swiper', {
+      navigation: {
+          nextEl: '#shopify-section-{{ section.id }} .swiper-custom-arrow.next',
+          prevEl: '#shopify-section-{{ section.id }} .swiper-custom-arrow.previous'
+      },
+      direction: 'horizontal',
+      spaceBetween: 0,
+      slidesPerView: 'auto',
+      loop: false
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Homepage - Community",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      }, 
+      {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      }, 
+      {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      }, 
+      {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      }, 
+      {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      }, 
+      {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      }, 
+      {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Entry",
+        "type": "entry",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Testimonial"
+          }, 
+          {
+            "type": "text",
+            "id": "author",
+            "label": "Author"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          }, 
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage - Community"
+      }
+    ]
+  }
+{% endschema %}

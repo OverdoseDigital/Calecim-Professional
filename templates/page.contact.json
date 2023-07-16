@@ -1,0 +1,109 @@
+{
+  "wrapper": ".global-content-top-margin",
+  "sections": {
+    "e008b215-d996-4889-bafc-095b9f1c6820": {
+      "type": "page-title",
+      "settings": {
+        "background_color": "#f5f5f5",
+        "title": "CONTACT",
+        "title_size": "h2",
+        "title_dom_type": "h1",
+        "title_color": "",
+        "text": "",
+        "small_text": "",
+        "body_copy_color": "",
+        "max_width": 650,
+        "top_padding_m": "90",
+        "bottom_padding_m": "40",
+        "top_padding_t": "90",
+        "bottom_padding_t": "70",
+        "top_padding": "150",
+        "bottom_padding": "70"
+      }
+    },
+    "4a4a5c38-9ef3-45cf-a471-507762957e59": {
+      "type": "homepage-icons",
+      "blocks": {
+        "9faffb0a-e8bd-4fea-abad-1f606e856f5d": {
+          "type": "entry",
+          "settings": {
+            "icon_svg": "",
+            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons01-desktop-240x240.png",
+            "title": "Live chat",
+            "text": "Speak with one of our experts directly here",
+            "link_label_1": "",
+            "link_url_1": "",
+            "link_label_2": "",
+            "link_url_2": ""
+          }
+        },
+        "f68da142-bb12-4ede-9829-5cc1dad143b3": {
+          "type": "entry",
+          "settings": {
+            "icon_svg": "",
+            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons02-desktop-240x240.png",
+            "title": "Call us",
+            "text": "Chat with us at 6444 9968 with your questions",
+            "link_label_1": "",
+            "link_url_1": "",
+            "link_label_2": "",
+            "link_url_2": ""
+          }
+        },
+        "15e7f077-cdcc-4d11-8f2e-08d87252c7f9": {
+          "type": "entry",
+          "settings": {
+            "icon_svg": "",
+            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons03-desktop-240x240.png",
+            "title": "Drop us an Email",
+            "text": "Email us at customerservice@calecim.com",
+            "link_label_1": "",
+            "link_url_1": "",
+            "link_label_2": "",
+            "link_url_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "9faffb0a-e8bd-4fea-abad-1f606e856f5d",
+        "f68da142-bb12-4ede-9829-5cc1dad143b3",
+        "15e7f077-cdcc-4d11-8f2e-08d87252c7f9"
+      ],
+      "settings": {
+        "bg_color": "",
+        "title_text_color": "",
+        "body_text_color": "",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "3364f750-2b51-4ceb-90c3-138f0824f350": {
+      "type": "contact-form",
+      "settings": {
+        "title": "GOT A QUESTION?",
+        "title_size": "h3",
+        "title_dom_type": "h3",
+        "text": "Drop us a message and we’ll get back to you in 1-2 business days!",
+        "button_label": "SEND MESSAGE",
+        "desktop_image": "shopify:\/\/shop_images\/01Contact-featured_image-desktop-1370x1540.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/01Contact-featured_image-mobile-750x500.jpg",
+        "image_position": "left",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    }
+  },
+  "order": [
+    "e008b215-d996-4889-bafc-095b9f1c6820",
+    "4a4a5c38-9ef3-45cf-a471-507762957e59",
+    "3364f750-2b51-4ceb-90c3-138f0824f350"
+  ]
+}

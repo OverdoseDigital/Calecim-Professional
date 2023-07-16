@@ -1,0 +1,215 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+<style>
+#shopify-section-{{ section.id }} {
+  background-color: {{ section.settings.bg_color }}
+}
+#shopify-section-{{ section.id }} .blog-featured-articles .bfa-con {
+  display: flex;
+  flex-direction: column;
+}
+#shopify-section-{{ section.id }} .bfa-left {
+  width: 100%;
+  {% comment %} display: flex;
+  flex-direction: column; {% endcomment %}
+}
+#shopify-section-{{ section.id }} .bfa-left .global-flex {
+  {% comment %} flex-direction: column; {% endcomment %}
+}
+#shopify-section-{{ section.id }} .bfa-right {
+  width: 100%;
+  {% comment %} display: flex;
+  align-items: flex-end;
+  flex-direction: column; {% endcomment %}
+}
+#shopify-section-{{ section.id }} .bfa-right .h4 {
+  font-size: 18px;
+  text-transform: unset;
+}
+#shopify-section-{{ section.id }} .bfa-right .p3 {
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+  color: #5EB98D;
+}
+#shopify-section-{{ section.id }} .article-each {
+  width: 100%;
+  {% comment %} margin-bottom: 20px; {% endcomment %}
+}
+#shopify-section-{{ section.id }} .article-each-date {
+  display: none;
+}
+#shopify-section-{{ section.id }} .aef-caption,
+  #shopify-section-{{ section.id }} .ae-caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+#shopify-section-{{ section.id }} .aef-tags span {
+    padding: 5px 10px;
+    border-radius: 25px;
+    white-space: nowrap;
+    display: inline-block;
+}
+#shopify-section-{{ section.id }} .article-each-landscape:last-child {
+  margin-bottom: 0;
+}
+#shopify-section-{{ section.id }} .aef-btn {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+#shopify-section-{{ section.id }} .aef-btn .btn3 {
+  display: inline-flex;
+  align-items: center;
+}
+#shopify-section-{{ section.id }} .aef-btn .btn3 .icon {
+  margin-left: 30px;
+}
+
+@media screen and (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .portrait {
+        margin-bottom:0;
+        height:100%;
+    }
+    #shopify-section-{{ section.id }} .portrait .article-each-featured {
+      height:100%;
+  }
+    #shopify-section-{{ section.id }} .portrait .global-image-wrapper{
+        height:100%;
+    }
+    #shopify-section-{{ section.id }} .portrait .global-image-wrapper .image{
+        height:100%;
+        object-fit:cover;
+    }
+    #shopify-section-{{ section.id }} .blog-featured-articles .bfa-con {
+        flex-direction: row;
+    }
+    #shopify-section-{{ section.id }} .container .global-flex {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #shopify-section-{{ section.id }} .article-each {
+        width: 100%;
+        {% comment %} margin-bottom: 20px; {% endcomment %}
+    }
+    #shopify-section-{{ section.id }} .bfa-left {
+        width: 55%;
+        justify-content: space-between;
+        padding-right: 0;
+        margin-right: 10px;
+    }
+    #shopify-section-{{ section.id }} .bfa-left .global-flex {
+        flex-direction: row;
+    }
+    #shopify-section-{{ section.id }} .bfa-left .container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
+    }
+    #shopify-section-{{ section.id }} .asc-small-image {
+        width: 50%;
+    }
+    #shopify-section-{{ section.id }} .bfa-right {
+        width: 45%;
+        justify-content: space-between;
+        padding-left: 0;
+        margin-left: 10px;
+    }
+    #shopify-section-{{ section.id }} .bfa-right .h4 {
+        font-size: 20px;
+    }
+}
+</style>
+<div class="blog-featured-articles">
+    <div class="container relative">
+        <div class="bfa-con">
+            <div class="bfa-left">
+                {% comment %} <div class="width-100"> {% endcomment %}
+                {% assign hide_all_article_button = section.settings.hide_all_article_button %}
+                {% for block in section.blocks %}
+                  {% if forloop.first == true %}
+                    <div class="relative portrait mb-20 d-mb-0">
+                      {% render 'article-each-featured', 
+                        article: block.settings.article, 
+                        hide_all_article_button: true,
+                        mobile_image_mode: 'landscape'
+                      %} 
+                    </div>
+                  {% endif %}
+                {% endfor %}
+                {% comment %} </div>  {% endcomment %}
+            </div>
+            <div class="bfa-right">
+              {% for block in section.blocks %}
+                {% unless forloop.first == true %}
+                {% render 'article-each-landscape', article: block.settings.article , additional_class:"mb-20"%}
+              {% endunless %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Blog - Featured Articles",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      }, {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+          "type": "entry",
+          "name": "Entry",
+          "settings": [
+            {
+                "type": "article",
+                "id": "article",
+                "label": "Article"
+            }
+          ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog - Featured Articles"
+      }
+    ]
+  }
+{% endschema %}

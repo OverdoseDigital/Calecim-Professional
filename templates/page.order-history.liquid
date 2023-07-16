@@ -1,0 +1,113 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{%- if customer -%}
+<style>
+    #my-history-page .each-cell{
+        width:25%;
+        padding:15px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        #my-history-page .each-cell{
+            padding:20px 30px;
+        }
+        #my-history-page .text-container{
+            width:25%;
+            padding-right:40px;
+        }
+        #my-history-page .box-container{
+            width:75%;
+        }
+    }
+</style>
+
+{{ 'jquery-ajax-module.js' | asset_url | script_tag }}
+
+<div id="my-history-page" class="global-content-top-margin">
+    {%- render 'account-page-title' -%}
+    {%- render 'account-navigation', filter_active:"order" -%}
+    <div class="container pt-40 pb-40 d-pt-80 d-pb-80">
+        {% assign s = customer.orders | size %}
+        <div class="flex flex-wrap">
+            <div class="text-container">
+                <div class="h5 pb-5">Order History</div>
+                {% if s > 0 %}
+                <div class="p2 pb-20 c-grey">Click on each order to view the details.</div>
+                {% else %}
+                <div class="p2 pb-20 c-grey">There is no order yet.</div>
+                {% endif %}
+            </div>
+            {% if s > 0 %}
+            <div class="box-container b-1 b-silver">
+                <div class="flex flex-wrap">
+                    <div class="each-cell bb-1 b-silver">
+                        <div class="h11">ORDER</div>
+                    </div>
+                    <div class="each-cell bb-1 b-silver">
+                        <div class="h11">DATE</div>
+                    </div>
+                    <div class="each-cell bb-1 b-silver">
+                        <div class="h11">AMOUNT</div>
+                    </div>
+                    <div class="each-cell bb-1 b-silver">
+                        <div class="h11">STATUS</div>
+                    </div>
+                    {% for order in customer.orders limit:account-orders %}
+                    <div class="each-cell {%unless forloop.last%}bb-1 b-silver{%endunless%}">
+                        <a href="{{ order.customer_url }}">
+                            <div class="p2">{{ order.name }}</div>
+                        </a>
+                    </div>
+                    <div class="each-cell {%unless forloop.last%}bb-1 b-silver{%endunless%}">
+                        <a href="{{ order.customer_url }}">
+                            <div class="p2">{{ order.created_at | date: "%d %b %Y" }}</div>
+                        </a>
+                    </div>
+                    <div class="each-cell {%unless forloop.last%}bb-1 b-silver{%endunless%}">
+                        <a href="{{ order.customer_url }}">
+                            <div class="p2">{{ order.total_price | money }}</div>
+                        </a>
+                    </div>
+                    <div class="each-cell {%unless forloop.last%}bb-1 b-silver{%endunless%}">
+                        <a href="{{ order.customer_url }}">
+                            <div class="p2">{{ order.financial_status | camelcase }}</div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        {% comment %} {% assign s = customer.orders | size %}
+        {% if s > 0 %}
+        <div class="rte mb-30 tc">
+        <p>Click on each order to view the details</p>
+        </div>
+        <div class="max-800">
+        <ul class="account-orders">
+            {% for order in customer.orders limit:account-orders %}
+            <li>
+            <a href="{{ order.customer_url }}">
+                <div class="tab number">{{ order.name }}</div>
+                <div class="tab">{{ order.created_at | date: "%d %b %Y" }}</div>
+                <div class="tab">{{ order.total_price | money }}</div>
+                <div class="tab status">{{ order.financial_status | camelcase }}</div>
+            </a>
+            </li>
+            {% endfor %}
+        </ul>
+        </div>
+        {% else %}
+        <div class="rte">
+        <p>
+            No orders yet.
+        </p>
+        </div>
+        {% endif %} {% endcomment %}
+    </div>
+</div>
+
+
+{%- else -%}
+  <script>location.href = "/account";</script>
+{%- endif -%}

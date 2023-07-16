@@ -1,0 +1,229 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+
+<style>
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        display:flex;
+        flex-wrap:wrap;
+        margin: 0 -7.5px;
+    }
+    #shopify-section-{{ section.id }} .article-each-wrapper {
+        width: calc(100% / 2);
+        padding-left: 7.5px;
+        padding-right: 7.5px;
+    }
+    #shopify-section-{{ section.id }} .tag-container-desktop{
+        flex-direction: row;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: auto;
+    }
+    #shopify-section-{{ section.id }} .tag-container-desktop::-webkit-scrollbar {
+        display: none;
+    }
+    #shopify-section-{{ section.id }} .tag-container-desktop a{
+        margin:0 5px 10px 5px;
+        white-space: nowrap;
+        padding: 10px 20px;
+    }
+    #shopify-section-{{ section.id }} .tag-container-desktop a:first-child{
+        margin-left:0;
+    }
+    #shopify-section-{{ section.id }} .tag-container-desktop a:last-child{
+        margin-right:0;
+    }
+    #shopify-section-{{ section.id }} .visuallyhidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        white-space: nowrap;
+    }
+    #shopify-section-{{ section.id }} .pagination .disabled {
+        visibility: hidden;
+    }
+    #shopify-section-{{ section.id }} .pagination {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #shopify-section-{{ section.id }} .pagination .pagination-number {
+        gap:30px;
+        align-items: center;
+    }
+    #shopify-section-{{ section.id }} .pagination .pagination-number li.active {
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    #shopify-section-{{ section.id }} .pagination .nav-btn {
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+    }
+    #shopify-section-{{ section.id }} .pagination .nav-btn .icon,
+    #shopify-section-{{ section.id }} .pagination .nav-btn .icon svg {
+        width: 10px;
+        height: 10px;
+    }
+    
+    @media screen and (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            margin:0 -10px;
+        }
+        #shopify-section-{{ section.id }} .article-each-wrapper {
+            width:calc(100% / 4);
+            padding-left:10px;
+            padding-right:10px;
+        }
+        #shopify-section-{{ section.id }} .tag-container-desktop{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+        #shopify-section-{{ section.id }} .tag-container-desktop a{
+            margin:0 7.5px 15px 7.5px;
+        }
+        #shopify-section-{{ section.id }} .tag-container-desktop a.active{
+        }
+        #shopify-section-{{ section.id }} .tag-container-desktop a:not(.active){
+        }
+        #shopify-section-{{ section.id }} .tag-container-desktop a:not(.active):hover{
+        }
+        #shopify-section-{{ section.id }} .pagination .pagination-number {
+            gap: 35px;
+        }
+    }
+</style>
+
+<section id="{{ section.id }}" class="blog-all-articles overflow">
+    <div class="container tag-container-desktop pb-20 d-pb-40">
+        <a href="{{ blog.url }}" class="p3 {% if current_tags == blank %}active btn2 {% else %} btn1{% endif %}">{{ 'blogs.article.all_articles' | t }}</a>
+        {% for tag in blog.all_tags %}
+            <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="p3 {% if current_tags contains tag %}active btn2 {% else %} btn1{% endif %}" style="white-space: nowrap;">{{ tag }}</a>
+        {% endfor %}
+    </div>
+
+    <div class="container">
+        {%- paginate blog.articles by section.settings.article_per_page, window_size: 3 -%}
+            <div class="flex-wrapper">    
+                {%- for article in blog.articles -%}
+                    <div class="article-each-wrapper mb-20 d-mb-40 relative">
+                        {%- render 'article-each', article: article -%}
+                    </div>
+                {%- endfor -%}
+            </div>
+
+            {%- if paginate.pages > 1 -%}
+                <nav role="navigation" class="mt-20 d-mt-45">
+                <ol class="pagination">
+                    {%- if paginate.previous-%}
+                    <li>
+                        <a class="nav-btn ai-center" href="{{ paginate.previous.url }}">
+                        <span aria-hidden="true" class="icon mr-10 font-0">{{ settings.icon_btn_left }}</span>
+                        Previous <span class="visuallyhidden">page</span>
+                        </a>
+                    </li>
+                    {%- else -%}
+                    <li class="disabled ai-center">
+                        <span aria-hidden="true" class="icon mr-10 font-0">{{ settings.icon_btn_left }}</span>
+                        Previous <span class="visuallyhidden">page</span>
+                    </li>
+                    {%- endif -%}
+                    <div class="pagination-number global-flex">
+                    {%- for part in paginate.parts -%}
+                    {%- if part.is_link -%}
+                        <li class="p2">
+                        <a href="{{ part.url }}">
+                            <span class="visuallyhidden">page</span> {{ part.title }}
+                        </a>
+                        </li>
+                    {%- else -%}
+                        {%- if part.title == paginate.current_page -%}
+                        <li class="active p2 c-white bg-black" aria-current="page">
+                            <span class="visuallyhidden">page</span> {{ part.title }}
+                        </li>
+                        {%- else -%}
+                        <li>
+                            <span class="visuallyhidden">page</span> {{ part.title }}
+                        </li>
+                        {%- endif -%}
+                    {%- endif -%}
+                    {%- endfor -%}
+                    </div>
+
+                    {%- if paginate.next -%}
+                    <li>
+                        <a class="nav-btn ai-center" href="{{ paginate.next.url }}">
+                        Next <span class="visuallyhidden">page</span>
+                        <span aria-hidden="true" class="icon ml-10 font-0">{{ settings.icon_btn_right }}</span>
+                        </a>
+                    </li>
+                    {%- else -%}
+                    <li class="disabled ai-center">
+                        Next <span class="visuallyhidden">page</span>
+                        <span aria-hidden="true" class="icon ml-10 font-0">{{ settings.icon_btn_right }}</span>
+                    </li>
+                    {%- endif -%}
+                </ol>
+                </nav>
+            {%- endif -%}
+        {%- endpaginate -%}
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Blog - All Articles",
+        "settings": [
+        {
+            "type": "number",
+            "id": "article_per_page",
+            "label": "Article Per Page"
+        },
+        {
+            "type": "header",
+            "content": "Padding Settings"
+        }, {
+            "type": "number",
+            "id": "top_padding_m",
+            "label": "Top Padding (Mobile)"
+        }, {
+            "type": "number",
+            "id": "bottom_padding_m",
+            "label": "Bottom Padding (Mobile)"
+        }, {
+            "type": "number",
+            "id": "top_padding_t",
+            "label": "Top Padding (Tablet)"
+        }, {
+            "type": "number",
+            "id": "bottom_padding_t",
+            "label": "Bottom Padding (Tablet)"
+        }, {
+            "type": "number",
+            "id": "top_padding",
+            "label": "Top Padding (Desktop)"
+        }, {
+            "type": "number",
+            "id": "bottom_padding",
+            "label": "Bottom Padding (Desktop)"
+        }
+        ],
+        "presets": [
+        {
+            "name": "Blog - All Articles"
+        }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,52 @@
+{% comment %} Calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} .whitespace {
+        height: {{ section.settings.height_m }}px;
+    }
+    
+    @media screen and (min-width: 768px) {
+        #shopify-section-{{ section.id }} .whitespace {
+            height: {{ section.settings.height_t }}px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .whitespace {
+            height: {{ section.settings.height_d }}px;
+        }
+    }
+</style>
+
+<section class="whitespace relative width-100"></section>
+
+{% schema %}
+    {
+        "name": "Whitespace",
+        "settings": [
+            {
+                "type": "number",
+                "id": "height_m",
+                "label": "Height (Mobile)"
+            },
+            {
+                "type": "number",
+                "id": "height_t",
+                "label": "Height (Tablet)"
+            },
+            {
+                "type": "number",
+                "id": "height_d",
+                "label": "Height (Desktop)"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Whitespace",
+                "blocks": []
+            }
+        ]
+    }
+    {% endschema %}

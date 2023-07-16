@@ -1,0 +1,208 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+    }
+
+    #shopify-section-{{ section.id }} .education-landing-header {
+        background-color:{{section.settings.background_color}};
+        background-color:{{section.settings.advanced_background_color}};
+        width:100%;
+    }
+    #shopify-section-{{ section.id }} .education-landing-body {
+        width:100%;
+    }
+    #shopify-section-{{ section.id }} .dropdown{
+        display:inline-flex;
+        flex-direction: column;
+        max-width:300px;
+    }
+    #shopify-section-{{ section.id }} .dropdown.active .dropdown-list{
+        display:block;
+        
+    }
+    #shopify-section-{{ section.id }} .dropdown-item:hover{
+        background:#C8E7D9;
+    }
+    #shopify-section-{{ section.id }} .dropdown-list{
+        position:absolute;
+        width: 100%;
+        top: 100%;
+        left: 0;
+        display:none;
+        z-index:1;
+        max-height:115px;
+        overflow:auto;
+    }
+    #shopify-section-{{ section.id }} .icon svg{
+        width:10px;
+        height:10px;
+    }
+    #shopify-section-{{ section.id }} .blog-each{
+        width:100%;
+    }
+    #shopify-section-{{ section.id }} .article-title:hover{
+        display:inline-block;
+        position:relative;
+    }
+    #shopify-section-{{ section.id }} .article-title:hover::before{
+        content:"";
+        position:absolute;
+        width:100%;
+        bottom:-2px;
+        border-bottom:1px solid #5EB98D;
+    }
+    #shopify-section-{{ section.id }} .padding-dropdown{
+        padding:18px 20px;
+    }
+    
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .sticky-container{
+            position:sticky;
+            top:50%;
+            transform:translate(0,-50%);
+        }
+        #shopify-section-{{ section.id }} .blog-each{
+            width:50%;
+        }
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            margin:0 -10px;
+        }
+
+        #shopify-section-{{ section.id }} .education-landing-header {
+            width:450px;
+            min-height:100vh;
+            {% comment %} display:flex;
+            align-items:center; {% endcomment %}
+        }
+        #shopify-section-{{ section.id }} .desktop-sticky {
+            position:sticky;
+            top:150px;
+        }
+        #shopify-section-{{ section.id }} .education-landing-body {
+            width:calc(100% - 450px);
+        }
+    }
+    @media(min-width: 1400px) {
+        #shopify-section-{{ section.id }} .education-landing-header {
+            width:530px;
+        }
+        #shopify-section-{{ section.id }} .education-landing-body {
+            width:calc(100% - 530px);
+        }
+    }
+
+</style>
+
+<section id="{{ section.id }}" class="education-landing">
+    <div class="flex flex-wrap">
+        <div class="education-landing-header pt-40 pb-40 d-pt-0 d-pb-0 relative">
+            <div class="container sticky-container">
+                {% comment %} <div class="p3 c-darkgreen bold-600 tc spacing-2">{{section.settings.small_title}}</div> {% endcomment %}
+                <div class="">
+                    <div class="pb-10 d-pb-0">
+                        {%if section.settings.title != blank%}
+                            <div class="h2 tc">{{section.settings.title}}</div>
+                        {%endif%}
+                        {%if section.settings.text != blank%}
+                            <div class="p2 tc c-grey">{{section.settings.text}}</div>
+                        {%endif%}
+                    </div>
+                    <div class="pt-20 d-pt-40 flex jc-center">
+                        <div class="dropdown cursor relative width-100">
+                            <div onclick="openDropdown()" class="h11 padding-dropdown c-grey bg-white flex jc-between"><span class="choosen-text uppercase">SELECT A TOPIC</span><span class="icon ml-15">{{ settings.icon_select }}</span></div>
+                            <div class="dropdown-list">
+                                {%for block in section.blocks%}
+                                    <a href="#{{block.settings.blog.title | downcase | replace: ' ', '-'}}" onclick="document.getElementById('#{{block.settings.blog.title | downcase | replace: ' ', '-'}}').scrollIntoView({ behavior: 'smooth', block: 'center' });">
+                                        <div class="h11 padding-dropdown uppercase bg-white dropdown-item">{{block.settings.blog.title}}</div>
+                                    </a>
+                                {%endfor%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="education-landing-body">
+            <div class="container">
+                <div class="flex flex-wrap flex-wrapper">
+                    {%for block in section.blocks%}
+                        <div class="blog-each pt-40 d-pl-10 d-pr-10 {%if forloop.last%}pb-40{%endif%}" id="#{{block.settings.blog.title | downcase | replace: ' ', '-'}}">
+                            {%- render 'global-image-wrapper',
+                                image: block.settings.image,
+                                additional_class:""
+                            %}
+                            <div class="p3 c-darkgreen bold-600 uppercase tc d-tl spacing-2 pt-25">{{block.settings.blog.title}}</div>
+                            <!--{{block.settings.blog.articles_count}}-->
+                            {%for article in block.settings.blog.articles%}
+                                <a href="{{article.url}}">
+                                    <div class="p1 bold-500 tc d-tl pt-20 article-title">{{article.title}}</div>
+                                </a>
+                            {%endfor%}
+                        </div>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function openDropdown(){
+        document.querySelector("#shopify-section-{{ section.id }} .dropdown").classList.toggle("active");
+    }
+</script>
+
+{% schema %}
+    {
+        "name": "Education Landing",
+        "settings": [
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "text",
+            "id": "advanced_background_color",
+            "label": "Advanced Background Color"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+        }
+        ],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "settings": [
+                    {
+                        "type": "blog",
+                        "id": "blog",
+                        "label": "Blog"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+        {
+            "name": "Education Landing",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,269 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+<style>
+  #shopify-section-{{ section.id }} #collection-diamond-type .swiper-custom-arrow {
+  box-shadow: 0 1px 7px 0px rgba(0,0,0,.26);
+  -webkit-box-shadow: 0 1px 7px 0px rgba(0,0,0,.26);
+  -moz-box-shadow: 0 1px 7px 0px rgba(0,0,0,.26);
+}
+#shopify-section-{{ section.id }} #collection-diamond-type .swiper-custom-arrow.left {
+    left:-10px;
+}
+#shopify-section-{{ section.id }} #collection-diamond-type .swiper-custom-arrow.right {
+    right:-10px;
+}
+#shopify-section-{{ section.id }} #collection-diamond-type .swiper-slide {
+  width: 75%;
+  flex: 0 0 75%;
+  padding: 0 7.5px;
+}
+#shopify-section-{{ section.id }} #collection-diamond-type .carousel-wrapper {
+  margin: 0 -7.5px;
+}
+#shopify-section-{{ section.id }} #collection-diamond-type .swiper-button {
+  display:none;
+}
+#shopify-section-{{ section.id }} #collection-diamond-type .swiper-container {
+  overflow: visible;
+  clip-path: inset(-100vw -100vw -100vw -100vw);
+}
+
+#shopify-section-{{ section.id }} .global-video-wrapper video{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+}
+
+@media(min-width: 768px) {
+  #shopify-section-{{ section.id }} #collection-diamond-type .swiper-slide {
+      width: 33.3333%;
+      flex: 0 0 33.3333%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #shopify-section-{{ section.id }} .collection-diamond-type .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  #shopify-section-{{ section.id }} #collection-diamond-type .container {
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .cdt-right {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    justify-content: center;
+  }
+  #shopify-section-{{ section.id }} .cdt-left {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: center;
+  }
+  #shopify-section-{{ section.id }} #collection-diamond-type .swiper-custom-arrow {
+    display:none;
+  }
+  #shopify-section-{{ section.id }} #collection-diamond-type .swiper-container {
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} #collection-diamond-type .swiper-slide {
+    width: 25%;
+    flex: 0 0 25%;
+    padding: 0 10px;
+  }
+  #shopify-section-{{ section.id }} #collection-diamond-type .carousel-wrapper {
+      margin: 0 -10px;
+  }
+}
+</style>
+<div class="collection-diamond-type">
+  <div class="container">
+    <div class="cdt-left">
+      <div class="image-wrapper width-100 relative">
+        {%- assign image_id = "collection-diamond-type-" | append: section.id -%}
+
+        {%- if section.settings.video == blank -%}
+          {%- render 'global-image-wrapper',
+            image_id: image_id,
+            image: section.settings.image,
+          %}
+        {%- else -%}
+          {%- assign video_type = '' -%}
+          {%- assign video_url = '' -%}
+          {%- for vid_source in section.settings.video.sources -%}
+              {%- if vid_source.mime_type == 'video/mp4' -%}
+                  {%- assign video_type = vid_source.mime_type -%}
+                  {%- assign video_url = vid_source.url -%}
+              {%- endif -%}
+          {%- endfor -%}
+
+          {%- assign image_id = "collection-diamond-type-" | append: section.id -%}
+          {%- render
+            'global-video-wrapper-responsive',
+              desktop_image: section.settings.image,
+              mobile_image: section.settings.image,
+              desktop_video_url: video_url,
+              mobile_video_url: video_url,
+              video_id: image_id,
+              load_inside_vue: false
+          -%}	
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="cdt-right d-pt-0 pt-25">
+      <h4 class="h7 max-800 d-pl-60">{{ section.settings.title }}</h4>
+      <p class="p2 pt-15 d-pt-25 d-pl-60 c-grey">{{ section.settings.text }}</p>
+      {% if section.settings.link_label != blank %}
+      <div class="pt-20 t-pt-25 d-pl-60">
+        {%- render 'link-icon',
+          id: 'collection-diamond-type-url',
+          label: section.settings.link_label,
+          url: section.settings.link_url,
+          text_class: 'p3 bold-600 spacing-1 pr-5',
+          icon_color: '#2c2c2c',
+          icon_svg: settings.icon_btn_right
+        -%}
+      </div>
+      {% endif %}
+    </div>
+    
+  </div>
+  <div id="collection-diamond-type" class="relative width-100 pt-25 d-pt-50 overflow">
+  <div class="container">
+    <div class="outer-wrapper">
+      <div class="carousel-wrapper">
+          <div id="slider-cp-crossell" class="swiper swiper-container">
+              <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                {%- assign product = block.settings.product -%}
+                  <div class="swiper-slide">
+                      <div class="product-each-wrapper">
+                          {%- render 'product-each', product: product -%}
+                      </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+              <div class="swiper-custom-arrow left">{{ settings.icon_slide_left }}</div>
+              <div class="swiper-custom-arrow right">{{ settings.icon_slide_right }}</div>
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<script>
+  if (screen.width < 1024) {
+  document.addEventListener('DOMContentLoaded', function(){
+      let product_rec_carousel = new Swiper("#collection-diamond-type .swiper", {
+          direction: 'horizontal',
+          slidesPerView: 'auto',
+          watchSlidesProgress: true,
+          loop: false,
+          navigation: {
+              nextEl: '#collection-diamond-type .swiper-custom-arrow.right',
+              prevEl: '#collection-diamond-type .swiper-custom-arrow.left'
+          }
+      });
+
+      //-- set arrow position
+      const image_height = document.querySelector('#collection-diamond-type .swiper .global-image-wrapper').clientHeight;
+      const arrow_height = document.querySelector('#collection-diamond-type .swiper .swiper-custom-arrow').clientHeight;
+      const arrows = document.querySelectorAll('#collection-diamond-type .swiper .swiper-custom-arrow');
+      const top = (image_height-arrow_height)/2;
+      arrows.forEach(elem => {
+          elem.style.transform = 'unset';
+          elem.style.top = top + 'px';
+      });
+  });
+}
+</script>
+{% schema %}
+  {
+    "name": "Collection Diamond Type",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "link_label",
+        "label": "Link label"
+      },
+      {
+        "type": "url",
+        "id": "link_url",
+        "label": "Link URL"
+      }, 
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Will be used as video poster too"
+      },
+      {
+        "type": "video",
+        "id": "video",
+        "label": "Video",
+        "info": "Can be left blank"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      }, {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Product",
+        "type": "product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Diamond Type"
+      }
+    ]
+  }
+{% endschema %}

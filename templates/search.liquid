@@ -1,0 +1,29 @@
+<section class="collection-con global-content-top-margin search-results-con">
+	{% comment %} <div class="container pt-20">
+		<div class="breadcrumbs-wrapper">
+			{%- render 'breadcrumbs' -%}
+		</div>
+	</div> {% endcomment %}
+	<div class="content-con" style="display:flex;flex-direction:column;justify-content:center;">
+	{%- section 'search-main-banner' -%}
+	{%- section 'search-template-boost-pfs-filter' -%}
+	</div>
+</section>
+<script>
+
+	function calcHeight() {
+		let headerHeight = document.querySelector("header").outerHeight;
+		let footerHeight = document.querySelector("footer").outerHeight == null || undefined ? 0 : document.querySelector("header").outerHeight;
+		let totalHeight = headerHeight + footerHeight;
+		document.querySelector(".collection-con .content-con").style.minHeight = "calc(100vh - " + totalHeight + "px)";
+		
+		//$(".collection-con .content-con").css("min-height", "calc(100vh - " + totalHeight + "px)")
+		//$(".collection-con .content-con").css("height", "calc(100vh - " + totalHeight + "px)")
+
+	}
+
+	{% if search.results == blank %}
+		calcHeight()
+	{% endif %}
+
+</script>

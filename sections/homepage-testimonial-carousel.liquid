@@ -1,0 +1,371 @@
+{% comment %} calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    {% if section.settings.bg_color != blank %}
+    background-color: {{ section.settings.bg_color }};
+    {% endif %}
+  }
+  
+  #shopify-section-{{ section.id }} .htcs-container {
+    display: flex;
+    flex-direction: column;
+  }
+  #shopify-section-{{ section.id }} .htcs-container .htcs-left {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .htcs-container .htcs-right {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin: 0 auto;
+  }
+  #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top > .htcsr-title,
+  #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top > .htcsr-text {
+    text-align: center;
+    {% if section.settings.text_align != blank %}
+    text-align: {{ section.settings.text_align }};
+    {% endif %}
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top .p4 {
+    opacity: 0.5;
+  }
+  #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top .htcsr-counter {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcs-testimonial-con {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  #shopify-section-{{ section.id }} .htcs-container .htcs-right .swiper {
+    position: unset;
+  }
+  #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-bot {
+    border-top: 1px solid rgba(35, 29, 29,.1);
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-bot > div {
+    width: 100%;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcs-small-title {
+    max-width: 400px;
+    {% if section.settings.c_max_width != blank %}
+    max-width: {{ section.settings.c_max_width }}px;
+    {% endif %}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  {%- if section.settings.desktop_image == blank -%}
+    #shopify-section-{{ section.id }} .swiper-pagination {
+      position: relative;
+      margin-top: 30px;
+      bottom: unset;
+    }
+  {%- else -%}
+    #shopify-section-{{ section.id }} .swiper-pagination {
+      position: relative;
+    }
+  {%- endif -%}
+
+  @media(min-width: 768px) {
+
+  }
+
+  @media(min-width: 1024px) {
+    {%- if section.settings.desktop_image == blank -%}
+      #shopify-section-{{ section.id }} .swiper-pagination {
+        margin-top: 70px;
+      }
+    {%- else -%}
+      #shopify-section-{{ section.id }} .swiper-pagination {
+        position: absolute;
+      }
+    {%- endif -%}
+
+    #shopify-section-{{ section.id }} .htcs-container {
+      width: 100%;
+      {% if section.settings.section_width == 'container' %}
+      margin: 0 auto;
+      {% endif %}
+      display: flex;
+      flex-direction: row;
+      {% if section.settings.image_position == 'right' %}
+      flex-direction: row-reverse;
+      {% endif %}
+      justify-content: space-between;
+    }
+    #shopify-section-{{ section.id }} .htcs-container .htcs-left {
+      width: 50%;
+    }
+    #shopify-section-{{ section.id }} .htcs-container .htcs-right {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      {%- if section.settings.desktop_image == blank -%}
+        width: 100%;
+      {%- endif -%}
+    }
+    #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top {
+      max-width: 400px;
+      {% if section.settings.c_max_width != blank %}
+      max-width: {{ section.settings.c_max_width }}px;
+      {% endif %}
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      margin: 0 auto;
+    }
+    #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top .htcsr-counter {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+    #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top .htcsr-counter .htcsrc-item {
+      width: 50%;
+      padding: 10px;
+    }
+    #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top .htcsr-counter .htcsrc-item .htcsrci-box {
+      background-color: #fff;
+      height: 135px;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top .htcsr-counter .htcsrc-item .htcsrci-box > div {
+      max-width: 130px;
+    }
+    #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top .htcsr-counter .htcsrc-item .htcsrci-box > div,
+    #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-top .htcsr-counter .htcsrc-item .htcsrci-box > div * {
+      opacity: .5;
+    }
+    #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-bot {
+      border-top: 1px solid rgba(35, 29, 29,.1);
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .htcs-container .htcs-right .htcsr-bot > div {
+      width: 100%;
+      display: block;
+    }
+  }
+</style>
+
+<section id="{{ section.id }}" class="homepage-testimonial-carousel">
+  <div class="htcs-container {{ section.settings.section_width }}">
+    {%- if section.settings.desktop_image != blank -%}
+      <div class="htcs-left">
+        {%- assign image_id = "htcsl-image-" | append: section.id -%}
+        {%- render 'global-image-wrapper-responsive',
+            image_id: image_id,
+            desktop_image: section.settings.desktop_image,
+            mobile_image: section.settings.mobile_image
+        %}
+      </div>
+    {%- endif -%}
+
+    <div class="htcs-right">
+      <p class="p5 c-black htcs-small-title mt-30 t-mt-50 bold-500 {% if section.settings.desktop_image == blank %} mb-40 d-mb-90 {% endif %}">{{ section.settings.small_title }}</p>
+      <div class="relative htcs-testimonial-con pl-20 pr-20 t-pl-30 t-pr-30 {% if section.settings.desktop_image != blank %} d-mb-0 {% endif %}">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide ">
+              <div>
+                <div class="htcsr-top d-pt-0 d-pb-0 d-pl-0 d-pr-0 {% if section.settings.desktop_image != blank %} pt-40 pb-40 {% endif %} {% unless section.settings.section_width == 'container' %} pl-20 pr-20 t-pl-30 t-pr-30 {% endunless %}">
+                  <h2 class="{{ section.settings.title_size }} c-black htcsr-title">{{ block.settings.title }}</h2>
+                  <p class="mt-30 mb-5 p3 c-black htcsr-text bold-500">{{ block.settings.author }}</p>
+                  <p class="p4 c-black">{{ block.settings.occupation | newline_to_br }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination {% if section.settings.desktop_image == blank %} mb-30 t-mb-50 {% endif %} mb-40 d-mb-50"></div>
+      </div>
+      </div>
+
+      {%- if section.settings.link_label != blank -%}
+        <div class="htcsr-bot">
+          <div class="link3">
+            {%- assign link_id = "htcsrb-link-" | append: section.id -%}
+            {%- render 'link-icon',
+                id: link_id,
+                label: section.settings.link_label,
+                url: section.settings.link_url,
+                text_class: 'p3 mr-10 pt-20 pb-20',
+                icon_color: '#231D1D',
+                icon_svg: settings.icon_arrow_diagonal_up,
+                load_inside_vue: false
+            -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      let cta_carousel = new Swiper("#shopify-section-{{ section.id }} .swiper", {
+          direction: 'horizontal',
+          slidesPerView: 1,
+          watchSlidesProgress: true,
+          loop: false,
+          pagination: {
+              el: "#shopify-section-{{ section.id }} .swiper .swiper-pagination",
+              clickable: true
+          }
+      });
+  });
+</script>
+{% schema %}
+  {
+    "name": "Homepage Testimonial Car ",
+    "settings": [
+      {
+        "type": "select",
+        "id": "section_width",
+        "label": "Section Width",
+        "options": [
+            {"value":"","label":"Full Width"},
+            {"value":"container","label":"Contained"}
+        ]
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "number",
+        "id": "c_max_width",
+        "label": "Content Max Width"
+      },
+      {
+        "type": "select",
+        "id": "title_size",
+        "label": "Title Size",
+        "options": [
+          {
+            "value": "h7",
+            "label": "H7"
+          },
+          {
+            "value": "h8",
+            "label": "H8"
+          },
+          {
+            "value": "h9",
+            "label": "H9"
+          }
+        ],
+        "default": "h8"
+      },
+      {
+        "type": "text",
+        "id": "small_title",
+        "label": "Small Title"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text Align",
+        "options": [
+            {"value":"left","label":"Left"},
+            {"value":"center","label":"Center"},
+            {"value":"right","label":"Right"}
+        ]
+      },
+      {
+        "type": "text",
+        "id": "link_label",
+        "label": "Link Label"
+      },
+      {
+        "type": "url",
+        "id": "link_url",
+        "label": "Link URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "desktop_image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "label": "Image Position",
+        "options": [
+            {"value":"left","label":"Left"},
+            {"value":"right","label":"Right"}
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "entry",
+        "name": "Entry",
+        "settings": [
+          {
+              "type": "textarea",
+              "id": "title",
+              "label": "Testimonial"
+          },
+          {
+              "type": "text",
+              "id": "author",
+              "label": "Author"
+          },
+          {
+            "type": "textarea",
+            "id": "occupation",
+            "label": "Occupation"
+        }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage Testimonial Carousel",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

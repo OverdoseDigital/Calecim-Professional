@@ -1,0 +1,590 @@
+{% comment %} calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color:{{section.settings.background_color}};
+        background-color:{{section.settings.advanced_background_color}};
+    }
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        {% comment %} background-color:{{section.settings.background_color}}; {% endcomment %}
+        {%if section.settings.image_position == "row-reverse"%}
+            flex-direction:column-reverse;
+        {%endif%}
+    }
+    #shopify-section-{{ section.id }} .image-container{
+        width:100%;
+    }
+    #shopify-section-{{ section.id }} .text-container{
+        width:100%;
+        padding-left:20px;
+        padding-right:20px;
+        max-width:{{section.settings.content_max_width}}px;
+        margin:0 auto;
+
+        {%- if section.settings.section_width == 'container' -%}
+            padding-left: 0;
+            padding-right: 0;
+        {%- endif -%}
+
+        {%- if section.settings.image_position_mobile == 'image-first' -%}
+            padding-top: 30px;
+        {%- else -%}
+            {%- if section.settings.image_position == "row-reverse" -%}
+                padding-bottom: 30px;
+            {%- else -%}
+                padding-top: 30px;
+            {%- endif -%}
+        {%- endif -%}
+    }
+    #shopify-section-{{ section.id }} .content-button{
+        {%if section.settings.button_color != blank%}
+        color:{{section.settings.button_color}};
+        {%endif%}
+        {%if section.settings.button_background != blank%}
+        background-color:{{section.settings.button_background}};
+        {%endif%}
+    }
+    #shopify-section-{{ section.id }} .content-button .icon svg * {
+        {%if section.settings.button_color != blank%}
+            stroke:{{section.settings.button_color}};
+        {%endif%}
+    }
+    #shopify-section-{{ section.id }} .content-button:hover{
+        {%if section.settings.button_color_hover != blank%}
+        color:{{section.settings.button_color_hover}};
+        {%endif%}
+        {%if section.settings.button_background_hover != blank%}
+        background-color:{{section.settings.button_background_hover}};
+        {%endif%}
+    }
+    #shopify-section-{{ section.id }} .content-button:hover .icon svg * {
+        {%if section.settings.button_color != blank%}
+            stroke:{{section.settings.button_color_hover}};
+        {%endif%}
+    }
+    {%- if section.settings.image_position_mobile == 'image-first' -%}
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            flex-direction: row;
+        }
+    {%- endif -%}
+
+    #shopify-section-{{ section.id }} .swiper-arrow {
+        font-size: 0;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        z-index: 2;
+    }
+    #shopify-section-{{ section.id }} .swiper-custom-arrow {
+        position: relative;
+        left: unset;
+        right: unset;
+        top: unset;
+        transform: unset;
+        width: 32px;
+        height: 32px;
+    }
+    #shopify-section-{{ section.id }} .cta-wrapper .image-wrapper {
+        flex: 0 0 108px;
+    }
+    #shopify-section-{{ section.id }} .cta-wrapper .text-wrapper {
+        flex: 0 0 calc(100% - 108px);
+    }
+
+    @media(min-width: 768px) {
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left:30px;
+            padding-right:30px;
+
+            {%- if section.settings.section_width == 'container' -%}
+                padding-left: 0;
+                padding-right: 0;
+            {%- endif -%}
+
+            {%- if section.settings.image_position_mobile == 'image-first' -%}
+                padding-top: 40px;
+            {%- else -%}
+                {%- if section.settings.image_position == "row-reverse" -%}
+                    padding-bottom: 40px;
+                {%- else -%}
+                    padding-top: 40px;
+                {%- endif -%}
+            {%- endif -%}
+        }
+
+        {%- if section.settings.section_width == 'container' -%}
+            #shopify-section-{{ section.id }} .content-button {
+                width: auto;
+                margin-left: unset;
+            }
+        {%- endif -%}
+
+        {%- if section.settings.text_align == 'tc' -%}
+            #shopify-section-{{ section.id }} .text-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        {%- endif -%}
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .cta-wrapper .image-wrapper {
+            flex: 0 0 127px;
+        }
+        #shopify-section-{{ section.id }} .cta-wrapper .text-wrapper {
+            flex: 0 0 calc(100% - 127px);
+        }
+        
+        #shopify-section-{{ section.id }} .image-container{
+            width: 55%;
+        }
+        #shopify-section-{{ section.id }} .text-container{
+            width: 45%;
+            padding-left:40px;
+            padding-right:40px;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-top: 60px;
+            padding-bottom: 60px;
+
+            {%- if section.settings.text_align != 'tc' -%}
+                transform: unset;
+                {%- if section.settings.image_position == "row-reverse" -%}
+                    margin-left: 0;
+                    padding-left: 0;
+                {%- else -%}
+                    margin-right: 0;
+                    padding-right: 0;
+                {%- endif -%}
+            {%- endif -%}
+        }
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            flex-direction:{{section.settings.image_position}};
+        }
+    }
+    @media(min-width: 1200px) {
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left: 60px;
+            padding-right: 60px;
+
+            {%- if section.settings.text_align != 'tc' -%}
+                transform: unset;
+                {%- if section.settings.image_position == "row-reverse" -%}
+                    margin-left: 0;
+                    padding-left: 0;
+                {%- else -%}
+                    margin-right: 0;
+                    padding-right: 0;
+                {%- endif -%}
+            {%- endif -%}
+        }
+    }
+</style>
+
+<section id="{{ section.id }}" class="cta-image-text before-after">
+    <div class="{{section.settings.section_width}}">
+        <div class="flex flex-wrap align-flex flex-wrapper">
+            <div class="image-container">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        {%- for block in section.blocks -%}
+                            {%- if block.type == 'before_after' -%}
+                                <div class="swiper-slide">
+                                    <div class="row">
+                                        <div class="global-flex flex-wrap">
+                                            <div class="col-6">
+                                                {%- render 'global-image-wrapper',
+                                                    image: block.settings.image_before
+                                                -%}
+                                                <p class="c-white uppercase p5 p-15 d-p-20 ab-bottom width-100 tc">{{ 'general.before_after.before' | t }}</p>
+                                            </div>
+                                            <div class="col-6">
+                                                {%- render 'global-image-wrapper',
+                                                    image: block.settings.image_after
+                                                -%}
+                                                <p class="c-white uppercase p5 p-15 d-p-20 ab-bottom width-100 tc">{{ 'general.before_after.after' | t }}</p>
+                                            </div>
+                                            
+                                            {%- if block.settings.title != blank -%}
+                                                <div class="col-12 mt-15 d-mt-20">
+                                                    <div class="d-max-320 max-max-520">
+                                                        <p class="p3">{{ block.settings.title }}</p>
+                                                    </div>
+                                                </div>
+                                            {%- endif -%}
+                                        </div>
+                                    </div>
+                                </div>
+                            {%- endif -%}
+                        {%- endfor -%}
+                    </div>
+
+                    <div class="swiper-arrow bg-white hide-m show-d">
+                        <div class="swiper-custom-arrow previous mr-10">
+                            {{ settings.icon_btn_left }}
+                        </div>
+                        <div class="swiper-custom-arrow next">
+                            {{ settings.icon_btn_right }}
+                        </div>
+                    </div>
+                    <div class="swiper-pagination mt-25 show-m hide-d"></div>
+                </div>
+            </div>
+            <div class="text-container {{section.settings.text_align}}">
+                {%- if section.settings.number != blank -%}
+                    <div class="h8 c-black mb-10 d-mb-15">{{section.settings.number}}</div>
+                {%- endif -%}
+                
+                <div class="h3 c-black">{{ section.settings.title }}</div>
+
+                <div class="p2 c-black text-desc d-max-350 hd-max-450">{{ section.settings.text | newline_to_br }}</div>
+
+                {%if section.settings.link_label != blank%}
+                    <div class="link-wrapper relative mt-20 d-mt-25 link2">
+                        {%- assign link_id = "link-cta" | append: section.id  -%}                                    
+                        {% render 'link-icon',
+                            id: link_id,
+                            label: section.settings.link_label,
+                            url: section.settings.link_url,
+                            text_class: 'p2 mr-10',
+                            icon_color: '#231D1D',
+                            icon_svg: settings.icon_arrow_diagonal_up,
+                            load_inside_vue: false
+                        %}
+                    </div>
+                {%endif%}
+                
+                {%if section.settings.button_label != blank%}
+                    <div class="link-wrapper relative width-100 mt-20 d-mt-25">
+                        <a href="{{section.settings.button_url}}" class="btn1 with-icon content-button">
+                            {{section.settings.button_label}}
+                            <span class="icon">{{ settings.icon_btn_right }}</span>
+                        </a>
+                    </div>
+                {%endif%}
+
+                {%- assign cta_count = 0 -%}
+                {%- assign first_pro = "" -%}
+                {%- for block in section.blocks -%}
+                    {%- if block.type == 'cta' -%}
+                        {%- if first_pro == blank -%}
+                            {%- assign first_pro = block.settings.cta_product.title -%}
+                        {%- endif -%}
+
+                        {%- assign cta_count = cta_count | plus: 1 -%}
+                    {%- endif -%}
+                {%- endfor -%}
+
+                {%- if cta_count > 1 -%}
+                    <div class="cta-dropdown-wrapper mt-20">
+                        <div class="global-select-div pt-20 pb-20 pl-20 pr-20 b-1 b-border">
+                            <div class="inner relative">
+                                <div class="text p3 selected-div-text tl">{{ first_pro }}</div>
+                                <div class="icons">
+                                    <div class="icon icon-caret">{{ settings.icon_select }}</div>
+                                </div>
+                            </div>
+                            <ul class="options b-1 b-border bg-white tl">
+                                {%- for block in section.blocks -%}
+                                    {%- if block.type == 'cta' -%}
+                                        <li>
+                                            <a href="javascript:void()" data-title="{{ block.settings.cta_product.title }}" data-handle="{{ block.settings.cta_product.handle }}" onclick="changeProduct{{ section.id | replace: '-', '' }}(event)" class="change-cta-link show-m p3">{{ block.settings.cta_product.title }}</a>
+                                        </li>
+                                    {%- endif -%}
+                                {%- endfor -%}
+                            </ul>
+                        </div>
+                    </div>
+                {%- endif -%}
+
+                {%- if cta_count > 0 -%}
+                    <div class="cta-outer-wrapper {% if cta_count > 1 %} mt-20 {% else %} mt-30 {% endif %} width-100">
+                        {%- assign main_index = 0 -%}
+                        {%- for block in section.blocks -%}
+                            {%- if block.type == 'cta' -%}
+                                {%- assign main_index = main_index | plus: 1 -%}
+
+                                <div data-handle="{{ block.settings.cta_product.handle }}" class="cta-wrapper global-flex ai-center width-100 bg-lightgrey pl-15 pr-15 pt-30 pb-30 d-pr-30 {% if main_index > 1 %} hide-m {% else %} active {% endif %}">
+                                    <div class="image-wrapper">
+                                        {%- render 'global-image-wrapper',
+                                            image: block.settings.cta_product.featured_image,
+                                            additional_class: 'no-bg'
+                                        -%}
+                                    </div>
+                                    <div class="text-wrapper pl-10 d-pl-20">
+                                        <p class="p2 bold-500">{{ block.settings.cta_title }}</p>
+                                        <div class="link-wrapper relative mt-5 d-mt-10 link2">
+                                            {%- assign link_id = "link-cta-2-" | append: block.id  -%}                                    
+                                            {% render 'link-icon',
+                                                id: link_id,
+                                                label: block.settings.cta_link_label,
+                                                text_class: 'p3 mr-10',
+                                                icon_color: '#231D1D',
+                                                icon_svg: settings.icon_arrow_diagonal_up,
+                                                load_inside_vue: false
+                                            %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {%- endif -%}
+                        {%- endfor -%}
+                    </div>
+                {%- endif -%}
+            </div>
+        </div>
+    <div>
+</section>
+
+<script>
+    let before_after_swiper = new Swiper('#shopify-section-{{ section.id }} .swiper', {
+        direction: 'horizontal',
+        slidesPerView: 1,
+        watchSlidesProgress: true,
+        loop: false,
+        navigation: {
+            nextEl: '#shopify-section-{{ section.id }} .swiper-custom-arrow.next',
+            prevEl: '#shopify-section-{{ section.id }} .swiper-custom-arrow.previous'
+        },
+        pagination: {
+            el: "#shopify-section-{{ section.id }} .swiper-pagination",
+            clickable: true,
+            type: "progressbar"
+        }
+    });
+
+    function setArrowPos{{ section.id | replace: '-', '' }}() {
+        const arrow_nav = document.querySelector('#shopify-section-{{ section.id }} .swiper-arrow');
+        const image = document.querySelector('#shopify-section-{{ section.id }} .global-image-wrapper');
+        const image_height = image.clientHeight + 20;
+
+        arrow_nav.style.top = image_height + 'px';
+    }
+
+    function changeProduct{{ section.id | replace: '-', '' }}(e) {
+        const this_button = e.target.closest('.change-cta-link');
+        const cta_wrapper = document.querySelector(`#shopify-section-{{ section.id }} .cta-outer-wrapper`);
+        const dropdown_label = document.querySelector(`#shopify-section-{{ section.id }} .selected-div-text`);
+        const pro_title = this_button.getAttribute('data-title');
+        const pro_handle = this_button.getAttribute('data-handle');
+
+        dropdown_label.innerHTML = pro_title;
+        cta_wrapper.querySelector('.cta-wrapper.active').classList.add('hide-m');
+        cta_wrapper.querySelector('.cta-wrapper.active').classList.remove('active');
+        cta_wrapper.querySelector(`.cta-wrapper[data-handle="${pro_handle}"]`).classList.remove('hide-m');
+        cta_wrapper.querySelector(`.cta-wrapper[data-handle="${pro_handle}"]`).classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        setArrowPos{{ section.id | replace: '-', '' }}();
+    });
+    window.addEventListener('resize', function(){
+        const delay = setTimeout(function(){
+            setArrowPos{{ section.id | replace: '-', '' }}();
+
+            clearTimeout(delay);
+        }, 50);
+    });
+</script>
+
+{% schema %}
+    {
+        "name": "Image Text Before After",
+        "settings": [
+        {
+            "type": "radio",
+            "id": "section_width",
+            "label": "Section Width",
+            "options": [
+                {"value":"","label":"Full Width"},
+                {"value":"container","label":"Contained"}
+            ]
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "text",
+            "id": "advanced_background_color",
+            "label": "Advanced Background Color"
+        },
+        {
+            "type": "number",
+            "id": "content_max_width",
+            "label": "Content Max Width",
+            "default": 500,
+            "info": "on px"
+        },
+        {
+            "type": "text",
+            "id": "number",
+            "label": "Number text"
+        },
+        {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+        },
+        {
+            "type": "radio",
+            "id": "text_align",
+            "label": "Text Align",
+            "options": [
+                {"value":"tc","label":"Center"},
+                {"value":"tl","label":"Left"},
+                {"value":"tr","label":"Right"}
+            ]
+        },
+        {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label"
+        },
+        {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL"
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+        },
+        {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button Text Color"
+        },
+        {
+            "type": "color",
+            "id": "button_background",
+            "label": "Button Background Color"
+        },
+        {
+            "type": "color",
+            "id": "button_color_hover",
+            "label": "Button Text Color Hover"
+        },
+        {
+            "type": "color",
+            "id": "button_background_hover",
+            "label": "Button Background Color Hover"
+        },
+        {
+            "type": "radio",
+            "id": "image_position",
+            "label": "Image Position (Desktop)",
+            "options": [
+                {"value":"row","label":"Left"},
+                {"value":"row-reverse","label":"Right"}
+            ]
+        },
+        {
+            "type": "radio",
+            "id": "image_position_mobile",
+            "label": "Image Position (Mobile)",
+            "options": [
+                {"value":"image-first","label":"Image First"},
+                {"value":"follow-desktop","label":"Follow Desktop Alignment"}
+            ],
+            "default": "follow-desktop"
+        },
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "blocks": [
+            {
+                "type": "before_after",
+                "name": "Before After Entry",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image_before",
+                        "label": "Before Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image_after",
+                        "label": "After Image"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "title",
+                        "label": "Title"
+                    }
+                ]
+            },
+            {
+                "type": "cta",
+                "name": "CTA",
+                "settings": [
+                    {
+                        "type": "product",
+                        "id": "cta_product",
+                        "label": "Product"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "cta_title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "cta_link_label",
+                        "label": "Link Label"
+                    }
+                ]   
+            }
+        ],
+        "presets": [
+        {
+            "name": "Image Text Before After",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

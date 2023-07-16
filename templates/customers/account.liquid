@@ -1,0 +1,109 @@
+{% comment %} Love&Co Theme {% endcomment %}
+<style>
+    #my-account-page .account-content{
+        width:100%;
+    }
+    #my-account-page .account-orders{
+        padding-left:20px;
+        padding-right:20px;
+        display:flex;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+    #my-account-page .tab{
+        padding:20px;
+    }
+    #my-account-page .tab a{
+        padding:20px;
+    }
+    @media screen and (min-width: 768px) {
+        #my-account-page .tab{
+            min-width:120px;
+        }
+        #my-account-page .account-content{
+            width:75%;
+        }
+        #my-account-page .account-sidebar-desktop{
+            width:25%;
+        }
+        #my-account-page .account-orders{
+            padding-left:30px;
+            padding-right:30px;
+        }
+    }
+    @media screen and (min-width: 1024px) {
+        #my-account-page .account-orders{
+            padding-left:40px;
+            padding-right:40px;
+        }
+        #my-account-page .tab{
+            min-width:175px;
+        }
+    }
+
+    {% comment %} @media screen and (min-width: 1400px) {
+        #my-account-page .account-orders{
+            padding-left:60px;
+            padding-right:60px;
+        }
+    } {% endcomment %}
+    
+    
+</style>
+
+{{ 'jquery-ajax-module.js' | asset_url | script_tag }}
+
+<div id="my-account-page" class="global-content-top-margin overflow">
+    <div class="">
+        <div class="flex flex-wrap">
+            <div class="hide-m show-t pl-40 hd-pl-60 t-pt-80 d-pt-80 t-pr-40 d-pr-100 br-1 b-border account-sidebar-desktop">
+                {%- render 'account-sidebar-desktop' -%}
+            </div>
+            <div class="account-content">
+                {%- render 'account-page-title' -%}
+                {% comment %} {%- render 'account-navigation', filter_active:"profile" -%} {% endcomment %}
+                {%- render 'account-sidebar-mobile' -%}
+                <div class="container pt-40 d-pt-50">
+                    <div class="h4 pb-5 d-pb-10 uppercase">{{ 'customer.orders.title' | t }}</div>
+                    <div class="p2 pb-20 d-pb-30">Click to view details of your order.</div>
+                </div>
+                <div class="account-orders pb-40 d-pb-50">
+                    <div class="b-1 b-border">
+                        <table>
+                            <thead>
+                                <tr class="bb-1 b-border">
+                                    <td class="tab p3 bold-500">Order</td>
+                                    <td class="tab p3 bold-500">Date</td>
+                                    <td class="tab p3 bold-500">Amount</td>
+                                    <td class="tab p3 bold-500">Status</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in customer.orders limit:account-orders %}
+                                    <tr class="bb-1 b-border">
+                                        
+                                        <td class="tab p3"><a href="{{ order.customer_url }}">{{ order.name }}</a></td>
+                                        <td class="tab p3"><a href="{{ order.customer_url }}">{{ order.created_at | date: "%d %b %Y" }}</a></td>
+                                        <td class="tab p3"><a href="{{ order.customer_url }}">{{ order.total_price | money }}</a></td>
+                                        <td class="tab p3"><a href="{{ order.customer_url }}">{{ order.financial_status | camelcase }}</a></td>
+                                        
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function changeProfileSection(){
+        document.querySelector("#my-account-page .show-info").classList.toggle("active");
+        document.querySelector("#my-account-page .edit-info").classList.toggle("active");
+    }
+</script>

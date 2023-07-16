@@ -1,0 +1,225 @@
+{% comment %} calecim {% endcomment %}
+<style>
+  #product-testimonials .htcs-container {
+    display: flex;
+    flex-direction: column;
+  }
+  #product-testimonials .htcs-container .htcs-left {
+    width: 100%;
+  }
+  #product-testimonials .htcs-container .htcs-right {
+    width: 100%;
+  }
+  #product-testimonials .htcs-container .htcs-right .htcsr-top {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin: 0 auto;
+  }
+  #product-testimonials .htcs-container .htcs-right .htcsr-top > .htcsr-title,
+  #product-testimonials .htcs-container .htcs-right .htcsr-top > .htcsr-text {
+    text-align: center;
+    width: 100%;
+  }
+  #product-testimonials .htcs-container .htcs-right .htcsr-top .p4 {
+    opacity: 0.5;
+  }
+  #product-testimonials .htcs-container .htcs-right .htcsr-top .htcsr-counter {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+    width: 100%;
+  }
+  #product-testimonials .htcs-container .htcs-right .htcs-testimonial-con {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  #product-testimonials .htcs-container .htcs-right .swiper {
+    position: unset;
+  }
+  #product-testimonials .htcs-container .htcs-right .htcsr-bot {
+    border-top: 1px solid rgba(35, 29, 29,.1);
+    text-align: center;
+  }
+  #product-testimonials .htcs-container .htcs-right .htcsr-bot > div {
+    width: 100%;
+    display: block;
+  }
+  #product-testimonials .htcs-container .htcs-right .htcs-small-title {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #product-testimonials .swiper-pagination {
+    position: relative;
+  }
+
+  @media(min-width: 1024px) {
+    #product-testimonials .htcs-container {
+      width: 100%;
+      display: flex;
+      {%- if product.metafields.testimonials.image_pos == 'Right' -%}
+        flex-direction: row-reverse;
+      {%- else -%}
+        flex-direction: row;
+      {%- endif -%}
+      justify-content: space-between;
+    }
+    #product-testimonials .htcs-container .htcs-left {
+      width: 50%;
+    }
+    #product-testimonials .htcs-container .htcs-right {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    #product-testimonials .htcs-container .htcs-right .htcsr-top {
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      margin: 0 auto;
+    }
+    #product-testimonials .htcs-container .htcs-right .htcsr-top .htcsr-counter {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+    #product-testimonials .htcs-container .htcs-right .htcsr-top .htcsr-counter .htcsrc-item {
+      width: 50%;
+      padding: 10px;
+    }
+    #product-testimonials .htcs-container .htcs-right .htcsr-top .htcsr-counter .htcsrc-item .htcsrci-box {
+      background-color: #fff;
+      height: 135px;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    #product-testimonials .htcs-container .htcs-right .htcsr-top .htcsr-counter .htcsrc-item .htcsrci-box > div {
+      max-width: 130px;
+    }
+    #product-testimonials .htcs-container .htcs-right .htcsr-top .htcsr-counter .htcsrc-item .htcsrci-box > div,
+    #product-testimonials .htcs-container .htcs-right .htcsr-top .htcsr-counter .htcsrc-item .htcsrci-box > div * {
+      opacity: .5;
+    }
+    #product-testimonials .htcs-container .htcs-right .htcsr-bot {
+      border-top: 1px solid rgba(35, 29, 29,.1);
+      text-align: center;
+    }
+    #product-testimonials .htcs-container .htcs-right .htcsr-bot > div {
+      width: 100%;
+      display: block;
+    }
+    #product-testimonials .swiper-pagination {
+      position: absolute;
+    }
+  }
+</style>
+
+<section id="product-testimonials" class="d-mt-90 t-mt-60 mt-40 d-bt-1 b-border">
+    <div class="htcs-container">
+        <div class="htcs-left">
+            {%- assign image_id = "htcsl-image-pdp" -%}
+            {%- render 'global-image-wrapper-responsive',
+                image_id: image_id,
+                desktop_image: product.metafields.testimonials.image_desktop[0],
+                desktop_acc: true,
+                mobile_image: product.metafields.testimonials.image_mobile[0],
+                mobile_acc: true
+            %}
+        </div>
+    
+        <div class="htcs-right">
+          <p class="p5 c-black htcs-small-title mt-30 t-mt-50 bold-500">{{ product.metafields.testimonials.section_title }}</p>
+          <div class="relative htcs-testimonial-con pl-20 pr-20 t-pl-30 t-pr-30">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {%- for i in (1..5) -%}
+                        {%- assign testimonial = 'testimonial_' | append: i -%}
+                        {%- assign testimonial_acc = product.metafields.testimonials[testimonial] -%}
+                        {%- assign author = 'author_' | append: i -%}
+                        {%- assign author_acc = product.metafields.testimonials[author] -%}
+                        {%- assign occupation = 'occupation_' | append: i -%}
+                        {%- assign occupation_acc = product.metafields.testimonials[occupation] -%}
+
+                        {%- if testimonial_acc != blank -%}
+                            <div class="swiper-slide ">
+                                <div>
+                                    <div class="htcsr-top pt-40 pb-40 d-pt-0 d-pb-0 d-pl-0 d-pr-0 pl-20 pr-20 t-pl-30 t-pr-30">
+                                        <h2 class="h8 c-black htcsr-title">{{ testimonial_acc }}</h2>
+
+                                        {%- if author_acc != blank -%}
+                                            <p class="mt-30 mb-5 p3 c-black htcsr-text bold-500">{{ author_acc }}</p>
+                                        {%- endif -%}
+
+                                        {%- if occupation_acc != blank -%}
+                                            <p class="p4 c-black">{{ occupation_acc | newline_to_br }}</p>
+                                        {%- endif -%}
+                                    </div>
+                                </div>
+                            </div>
+                        {%- endif -%}
+                    {%- endfor -%}
+                </div>
+                <div class="swiper-pagination mb-40 d-mb-50"></div>
+            </div>
+          </div>
+    
+          {%- if product.metafields.testimonials.link_label != blank -%}
+            <div class="htcsr-bot bb-1 b-border">
+              <div class="link3">
+                {%- assign link_id = "htcsrb-link-pdp" -%}
+                {%- render 'link-icon',
+                    id: link_id,
+                    label: product.metafields.testimonials.link_label,
+                    url: product.metafields.testimonials.link_url,
+                    text_class: 'p3 mr-10 pt-20 pb-20',
+                    icon_color: '#231D1D',
+                    icon_svg: settings.icon_arrow_diagonal_up,
+                    load_inside_vue: false
+                -%}
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+    </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      let cta_carousel = new Swiper("#product-testimonials .swiper", {
+          direction: 'horizontal',
+          slidesPerView: 1,
+          watchSlidesProgress: true,
+          loop: false,
+          pagination: {
+              el: "#product-testimonials .swiper .swiper-pagination",
+              clickable: true
+          }
+      });
+  });
+</script>

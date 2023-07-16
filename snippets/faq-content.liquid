@@ -1,0 +1,45 @@
+{% if section.settings.enable_faq == true %}
+<style>
+  #shopify-section-{{ section.id }} {
+    margin: 0;
+  }
+</style>
+<section class="d-pt-50 pt-40" id="{{ section.settings.id_faq }}">
+  <h6 class="h8 d-pb-20 pb-15">{{ section.settings.title }}</h6>
+  <div class="faq-wrapper bb-1 b-silver">
+    {% for block in section.blocks %}
+      {%- render 'accordion',
+        wrapper_class: 'bt-1 b-silver mb-20',
+        title: block.settings.title,
+        description: block.settings.text,
+        title_class: "p2 relative bold-500",
+        title_no_pb: true,
+        icon_rotate: true,
+        desc_class: "p2 c-grey pt-10",
+        default_active: false,
+        desc_no_pt: true, 
+        desc_no_pb: true
+      -%} 
+    {% endfor %}
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "FAQPage",
+  "@id": "{{ store.url }}",
+  "mainEntity": [
+  {% for block in section.blocks %}
+      {
+      "@type": "Question",
+      "name": "{{ block.settings.title | escape }}",
+      "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "{{ block.settings.text | escape }}"
+      }
+      }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+  ]
+}
+</script>
+{% endif %}

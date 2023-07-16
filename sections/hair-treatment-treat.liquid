@@ -1,0 +1,499 @@
+{% comment %} calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color:{{section.settings.background_color}};
+    }
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        {% comment %} background-color:{{section.settings.background_color}}; {% endcomment %}
+        {%if section.settings.image_position == "row-reverse"%}
+        flex-direction:column-reverse;
+        {%endif%}
+    }
+    #shopify-section-{{ section.id }} .htt-left-container{
+        width:100%;
+    }
+    #shopify-section-{{ section.id }} .htt-left-container .text-tag {
+        background-color: #fff;
+        border-radius: 13px;
+        display: inline-block;
+        position: absolute;
+        top:0;
+        right: 0;
+    }
+    #shopify-section-{{ section.id }} .htt-right-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    #shopify-section-{{ section.id }} .text-container{
+        width:100%;
+        max-width:{{section.settings.content_max_width}}px;
+        margin:0 auto;
+    }
+    {%- if section.settings.image_position_mobile == 'image-first' -%}
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            flex-direction: row;
+        }
+    {%- endif -%}
+    #shopify-section-{{ section.id }} .citi-it-con {
+        column-gap: 6px;
+        row-gap: 15px;
+    }
+    #shopify-section-{{ section.id }} .citi-it-item {
+        width: 100%;
+        align-items: center;
+    }
+    #shopify-section-{{ section.id }} .citi-icon{
+        min-width: 35px;
+        width: 35px;
+        height: 35px;
+        padding: 7px;
+        border-radius: 35px;
+        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #shopify-section-{{ section.id }} .list-bullet{
+        min-width: 12px;
+        width: 12px;
+        height: 12px;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .image-wrapper {
+        flex: 0 0 60px;
+    }
+    #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .text-wrapper {
+        flex: 0 0 calc(100% - 60px);
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination {
+        position: relative;
+        width: auto;
+        text-align: right;
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination .swiper-pagination-bullet {
+        opacity: 0.5;
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        opacity: 1;
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination .swiper-pagination-bullet:last-child {
+        margin-right: 0 !important;
+    }
+    {%- if section.settings.section_width == blank -%}
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    {%- endif -%}
+    #shopify-section-{{ section.id }} .shwr-bot {
+        border-top: 1px solid rgba(35, 29, 29,.1);
+        text-align: center;
+    }
+    #shopify-section-{{ section.id }} .shwr-bot > div {
+        width: 100%;
+        display: block;
+    }
+
+    @media(min-width: 768px) {
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left:30px;
+            padding-right:30px;
+        }
+        {%- if section.settings.text_align == 'tc' -%}
+            #shopify-section-{{ section.id }} .text-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        {%- endif -%}
+
+        {%- if section.settings.section_width == blank -%}
+            #shopify-section-{{ section.id }} .text-container{
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        {%- endif -%}
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .htt-left-container{
+            width:50%;
+        }
+        #shopify-section-{{ section.id }} .htt-left-container .global-image-wrapper {
+            height: 100%;
+        }
+        #shopify-section-{{ section.id }} .htt-left-container .global-image-wrapper .image {
+            object-fit: cover;
+            height: 100%;
+        }
+        #shopify-section-{{ section.id }} .htt-right-container {
+            width: 50%;
+        }
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left:40px;
+            padding-right:40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            flex-direction:{{section.settings.image_position}};
+        }
+        #shopify-section-{{ section.id }} .citi-icon{
+            min-width: 40px;
+            width: 40px;
+            height: 40px;
+            padding: 9px;
+            border-radius: 40px;
+        }
+        #shopify-section-{{ section.id }} .citi-it-item {
+            width: 100%;
+        }
+        #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .image-wrapper {
+            flex: 0 0 80px;
+        }
+        #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .text-wrapper {
+            flex: 0 0 calc(100% - 80px);
+        }
+
+        {%- if section.settings.background_color == blank -%}
+            #shopify-section-{{ section.id }} .text-container{
+                padding-bottom: 60px;
+            }
+        {%- endif -%}
+
+        {%- if section.settings.section_width == blank -%}
+            #shopify-section-{{ section.id }} .text-container{
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+        {%- endif -%}
+        #shopify-section-{{ section.id }} .shwr-bot {
+            border-top: 1px solid rgba(35, 29, 29,.1);
+            text-align: center;
+          }
+          #shopify-section-{{ section.id }} .shwr-bot > div {
+            width: 100%;
+            display: block;
+          }
+    }
+    
+    @media(min-width: 1024px) and (max-width:1200px) {
+        #shopify-section-{{ section.id }} .htt-left-container .global-image-wrapper {
+            padding-bottom: 0;
+        }
+    }
+    @media(min-width: 1200px) {
+        #shopify-section-{{ section.id }} .htt-left-container .global-image-wrapper .image {
+            object-fit: unset;
+            height: auto;
+        }
+    }
+</style>
+
+<section id="{{ section.id }}" class="cta-image-text">
+    <div class="{{section.settings.section_width}}">
+        <div class="flex flex-wrap flex-wrapper">
+            <div class="htt-left-container relative">
+                {%assign image_id = "cta-image-text_" | append: section.id%}
+                {%- render 'global-image-wrapper-responsive',
+                    image_id: image_id,
+                    desktop_image: section.settings.desktop_image,
+                    mobile_image: section.settings.mobile_image
+                %} 
+                {%- if section.settings.tag != blank -%}
+                    <p class="uppercase p5 mb-15 d-mb-10 text-tag pt-5 pb-5 pr-10 pl-10 mt-20 mr-20 d-mt-30 d-mr-25 bold-500">{{ section.settings.tag }}</p>
+                {%- endif -%}   
+            </div>
+            <div class="htt-right-container">
+                <div class="text-container pt-40 {% if section.settings.bottom_padding_m == blank %}pb-40{% endif %} {% if section.settings.bottom_padding_t == blank %}t-pt-40{% endif %} t-pb-60 d-pt-85 d-pb-85 {{section.settings.text_align}}">
+                    {%- if section.settings.number != blank -%}
+                    <div class="h8 c-black">{{section.settings.number}}</div>
+                    {%- endif -%}
+                    {%- if section.settings.title != blank -%}
+                    <div class="{{section.settings.header_class}} c-black mb-10 d-mb-15">{{section.settings.title}}</div>
+                    {%- endif -%}
+                    {%- if section.settings.text != blank -%}
+                    <div class="p2 {% if section.settings.text_below_icon != blank %}pb-20 d-pb-25{% endif %} c-grey text-desc">{{section.settings.text | newline_to_br}}</div>
+                    {%- endif -%}
+                    {% assign has_icon = false %}
+                    {% assign has_list = false %}
+                    {% for block in section.blocks %}
+                        {%- if block.type == 'icon' -%}
+                        {% assign has_icon = true %}
+                        {%- elsif block.type == 'list' -%}
+                        {% assign has_list = true %}
+                        {%- endif-%}
+                    {% endfor %}
+                    {%- if has_icon == true-%}
+                    <div class="global-flex flex-wrap citi-it-con pb-25 d-pb-30">
+                        {% for block in section.blocks %}
+                            {%- if block.type == 'icon' -%}
+                                {%- if block.settings.text != blank -%}
+                                <div class="global-flex citi-it-item tl {% unless section.settings.text_below_icon != blank %}pt-20 d-pt-25{% endunless %}">
+                                    {% if block.settings.icon != blank %}
+                                    <span class="citi-icon" style="background-color: {{ block.settings.bg_color }};">{{ block.settings.icon }}</span>
+                                    {% endif %}
+                                    <span class="p2 pl-10">{{ block.settings.text }}</span>
+                                </div>
+                                {%- endif -%}
+                            {%- endif -%}
+                        {% endfor %}
+                    </div>
+                    {%- endif -%}
+                    {%- if has_list == true-%}
+                    <ul class="citi-it-con pb-5">
+                        {% for block in section.blocks %}
+                            {%- if block.type == 'list' -%}
+                                {%- if block.settings.text != blank -%}
+                                <li class="global-flex tl d-mb-20 mb-15">
+                                    <span class="list-bullet b-1 b-black mt-5"></span>
+                                    <span class="p2 pl-15 bold-500">{{ block.settings.text }}</span>
+                                </li>
+                                {%- endif -%}
+                            {%- endif -%}
+                        {% endfor %}
+                    </ul>
+                    {%- endif -%}
+                    {%- if section.settings.text_below_icon != blank -%}
+                    <div class="p2 c-grey text-desc">{{section.settings.text_below_icon | newline_to_br}}</div>
+                    {%- endif -%}
+                </div>
+                {%- if section.settings.link_url != blank -%}
+                <div class="shwr-bot">
+                    <div class="link3">
+                      {%- assign link_id = "shwrb-link-" | append: section.id -%}
+                      {%- render 'link-icon',
+                          id: link_id,
+                          label: section.settings.link_label,
+                          url: section.settings.link_url,
+                          text_class: 'p3 mr-10 pt-20 pb-20',
+                          icon_color: '#231D1D',
+                          icon_svg: settings.icon_arrow_diagonal_up,
+                          load_inside_vue: false
+                      -%}
+                  </div>
+                </div>
+                {%- endif -%}
+            </div>
+        </div>
+    <div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let hair_treatment_carousel = new Swiper("#shopify-section-{{ section.id }} .swiper", {
+            direction: 'horizontal',
+            slidesPerView: 1,
+            watchSlidesProgress: true,
+            spaceBetween: 15,
+            loop: false,
+            pagination: {
+                el: "#shopify-section-{{ section.id }} .swiper-pagination",
+                clickable: true
+            }
+        });
+    });
+</script>
+
+{% schema %}
+    {
+        "name": "Hair Treatment - Treat",
+        "settings": [
+        {
+            "type": "radio",
+            "id": "section_width",
+            "label": "Section Width",
+            "options": [
+                {"value":"","label":"Full Width"},
+                {"value":"container","label":"Contained"}
+            ]
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "number",
+            "id": "content_max_width",
+            "label": "Content Max Width",
+            "default": 500
+        },
+        {
+            "type": "text",
+            "id": "number",
+            "label": "Number text"
+        },
+        {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+        },
+        {
+            "type": "textarea",
+            "id": "text_below_icon",
+            "label": "Text Below Icons/List"
+        },
+        {
+            "type":"radio",
+            "id":"header_class",
+            "label":"Title Class",
+            "options":[
+                {"value":"h1","label":"H1"},
+                {"value":"h2","label":"H2"},
+                {"value":"h3","label":"H3"},
+				{"value":"h4","label":"H4"},
+                {"value":"h5","label":"H5"},
+				{"value":"h6","label":"H6"},
+                {"value":"h7","label":"H7"},
+                {"value":"h8","label":"H8"},
+                {"value":"h9","label":"H9"}
+            ]
+        },
+        {
+            "type": "radio",
+            "id": "text_align",
+            "label": "Text Align",
+            "options": [
+                {"value":"tc","label":"Center"},
+                {"value":"tl","label":"Left"},
+                {"value":"tr","label":"Right"}
+            ]
+        },
+        {
+        "type": "text",
+        "id": "link_label",
+        "label": "Link Label"
+        },
+        {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL"
+        },
+        {
+            "type": "image_picker",
+            "id": "desktop_image",
+            "label": "Desktop Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+        },
+        {
+            "type": "radio",
+            "id": "image_position",
+            "label": "Image Position (Desktop)",
+            "options": [
+                {"value":"row","label":"Left"},
+                {"value":"row-reverse","label":"Right"}
+            ]
+        },
+        {
+            "type": "radio",
+            "id": "image_position_mobile",
+            "label": "Image Position (Mobile)",
+            "options": [
+                {"value":"image-first","label":"Image First"},
+                {"value":"follow-desktop","label":"Follow Desktop Alignment"}
+            ],
+            "default": "follow-desktop"
+        },
+        {
+            "type": "text",
+            "id": "tag",
+            "label": "Image Caption"
+        },
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "blocks": [
+                {
+                    "type": "icon",
+                    "name": "Icon",
+                    "settings": [
+                        {
+                            "type": "color",
+                            "id": "bg_color",
+                            "label": "Icon Background Color",
+                            "default": "#F5F5F5"
+                        },
+                        {
+                            "type": "textarea",
+                            "id": "icon",
+                            "label": "Icon"
+                        },
+                        {
+                            "type": "textarea",
+                            "id": "text",
+                            "label": "Text"
+                        }
+                    ]
+                },
+                {
+                    "type": "list",
+                    "name": "List Item",
+                    "settings": [
+                        {
+                            "type": "textarea",
+                            "id": "text",
+                            "label": "Text"
+                        }
+                    ]
+                }
+            ],
+        "presets": [
+        {
+            "name": "Hair Treatment - Treat",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

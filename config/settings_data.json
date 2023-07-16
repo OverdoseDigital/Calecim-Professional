@@ -1,0 +1,3063 @@
+{
+  "current": {
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "mobile_placeholder": "shopify:\/\/shop_images\/800x600_998586a9-a74e-484d-8dfd-1c211d2fa45a.png",
+    "desktop_placeholder": "shopify:\/\/shop_images\/800x600_998586a9-a74e-484d-8dfd-1c211d2fa45a.png",
+    "favicon": "",
+    "typography": "",
+    "icon_facebook_circled": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"40\" height=\"40\" viewbox=\"0 0 40 40\"><g fill=\"#fff\" stroke=\"#e7e7e7\" stroke-width=\"1\"><circle cx=\"20\" cy=\"20\" r=\"20\" stroke=\"none\"><\/circle><circle cx=\"20\" cy=\"20\" r=\"19.5\" fill=\"none\"><\/circle><\/g><path d=\"M2.027,5.407H0v2.7H2.027v8.11H5.407V8.11H7.839l.27-2.7h-2.7V4.258c0-.608.135-.879.743-.879H8.11V0H5.542C3.109,0,2.027,1.081,2.027,3.109Z\" transform=\"translate(15.674 11.319)\" fill=\"#231d1d\"><\/path><\/svg>",
+    "icon_twitter_circled": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"40\" height=\"40\" viewbox=\"0 0 40 40\"><g fill=\"#fff\" stroke=\"#e7e7e7\" stroke-width=\"1\"><circle cx=\"20\" cy=\"20\" r=\"20\" stroke=\"none\"><\/circle><circle cx=\"20\" cy=\"20\" r=\"19.5\" fill=\"none\"><\/circle><\/g><path d=\"M15,1.437a5.629,5.629,0,0,1-1.75.5A3.327,3.327,0,0,0,14.625.25,5.674,5.674,0,0,1,12.687,1a3.271,3.271,0,0,0-2.312-1,3.077,3.077,0,0,0-3,3.75A8.548,8.548,0,0,1,1.062.562,3.093,3.093,0,0,0,2,4.687,4.431,4.431,0,0,1,.625,4.312,3.076,3.076,0,0,0,3.063,7.375a3.407,3.407,0,0,1-1.375.063A2.963,2.963,0,0,0,4.562,9.562,6.305,6.305,0,0,1,0,10.812a8.749,8.749,0,0,0,4.687,1.375,8.712,8.712,0,0,0,8.75-9.125A6.439,6.439,0,0,0,15,1.437Z\" transform=\"translate(13.095 14.016)\" fill=\"#231d1d\"><\/path><\/svg>",
+    "icon_pinterest_circled": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"36\" height=\"36\" viewbox=\"0 0 36 36\"><g transform=\"translate(-514 -817)\"><g transform=\"translate(514 817)\" fill=\"#fff\" stroke=\"#dbdbdb\" stroke-width=\"1\"><circle cx=\"18\" cy=\"18\" r=\"18\" stroke=\"none\"><\/circle><circle cx=\"18\" cy=\"18\" r=\"17.5\" fill=\"none\"><\/circle><\/g><path d=\"M6.666.457C3.313.457,0,2.692,0,6.309c0,2.3,1.294,3.607,2.078,3.607.323,0,.51-.9.51-1.157,0-.3-.774-.951-.774-2.215A4.416,4.416,0,0,1,6.4,2.055c2.225,0,3.872,1.265,3.872,3.588,0,1.735-.7,4.99-2.951,4.99A1.451,1.451,0,0,1,5.813,9.2c0-1.235.863-2.431.863-3.706,0-2.163-3.068-1.771-3.068.843A3.839,3.839,0,0,0,3.921,8c-.451,1.941-1.372,4.833-1.372,6.833,0,.618.088,1.225.147,1.843.111.124.056.111.225.049,1.647-2.255,1.588-2.7,2.333-5.646A2.65,2.65,0,0,0,7.519,12.25c3.47,0,5.029-3.382,5.029-6.431C12.548,2.574,9.744.457,6.666.457Z\" transform=\"translate(525.729 826.189)\" fill=\"#6c6c6c\"><\/path><\/g><\/svg>",
+    "icon_share_circled": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"40\" height=\"40\" viewbox=\"0 0 40 40\"><g fill=\"#fff\" stroke=\"#e7e7e7\" stroke-width=\"1\"><circle cx=\"20\" cy=\"20\" r=\"20\" stroke=\"none\"><\/circle><circle cx=\"20\" cy=\"20\" r=\"19.5\" fill=\"none\"><\/circle><\/g><path d=\"M3.61,5.087a3.744,3.744,0,0,1,5.769.573l-1.31,1.31A1.974,1.974,0,0,0,5.832,5.832a1.943,1.943,0,0,0-.953.524L2.369,8.868a1.955,1.955,0,0,0,2.765,2.765l.774-.774a4.978,4.978,0,0,0,2.2.335L6.4,12.9A3.751,3.751,0,0,1,1.1,7.6L3.61,5.087ZM7.6,1.1,5.889,2.807a4.979,4.979,0,0,1,2.2.335l.774-.774a1.955,1.955,0,1,1,2.765,2.765L9.121,7.645a1.959,1.959,0,0,1-2.765,0,2.081,2.081,0,0,1-.424-.613l-1.31,1.31a3.523,3.523,0,0,0,.464.573,3.747,3.747,0,0,0,5.3,0L12.9,6.4A3.751,3.751,0,1,0,7.6,1.1Z\" transform=\"translate(12.999 13)\" fill=\"#231d1d\"><\/path><\/svg>",
+    "icon_menu": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"18.643\" height=\"15.5\" viewbox=\"0 0 18.643 15.5\"><g transform=\"translate(0.75 0.75)\"><line x1=\"17.143\" fill=\"none\" stroke=\"#000\" stroke-linecap=\"square\" stroke-width=\"1.5\"><\/line><line x1=\"17.143\" transform=\"translate(0 7)\" fill=\"none\" stroke=\"#000\" stroke-linecap=\"square\" stroke-width=\"1.5\"><\/line><line x1=\"17.143\" transform=\"translate(0 14)\" fill=\"none\" stroke=\"#000\" stroke-linecap=\"square\" stroke-width=\"1.5\"><\/line><\/g><\/svg>",
+    "icon_search": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"19.068\" height=\"19.066\" viewbox=\"0 0 19.068 19.066\"><g transform=\"translate(0.75 0.75)\"><circle cx=\"7.225\" cy=\"7.225\" r=\"7.225\" fill=\"none\" stroke=\"#231d1d\" stroke-linejoin=\"round\" stroke-width=\"1.5\"><\/circle><line x2=\"5.451\" y2=\"5.451\" transform=\"translate(12.335 12.334)\" fill=\"none\" stroke=\"#231d1d\" stroke-linejoin=\"round\" stroke-width=\"1.5\"><\/line><\/g><\/svg>",
+    "icon_account": "",
+    "icon_cart": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"11.361\" height=\"25.393\" viewbox=\"0 0 11.361 25.393\"><g transform=\"translate(14444.1 6653.158)\"><path d=\"M8.548,11.31c.912,0,.757-1.037.757-1.037V6.943c0-1.146-7.654-1.146-7.654,0v3.33s-.156,1.037.757,1.037Z\" transform=\"translate(-14443.896 -6652.493)\" fill=\"none\" stroke=\"#231d1d\" stroke-linejoin=\"round\" stroke-width=\"1.2\"><\/path><path d=\"M8.37,10.875a2.5,2.5,0,0,1,2.292,2.746v8.008A1.744,1.744,0,0,1,9.279,23.38a38.425,38.425,0,0,1-7.4,0A1.744,1.744,0,0,1,.5,21.628V13.621a2.5,2.5,0,0,1,2.292-2.746\" transform=\"translate(-14444 -6652.058)\" fill=\"none\" stroke=\"#231d1d\" stroke-linejoin=\"round\" stroke-width=\"1.2\"><\/path><path d=\"M7.236,6.509V2.43A1.825,1.825,0,0,0,6.457.858a1.991,1.991,0,0,0-2.277,0A1.823,1.823,0,0,0,3.4,2.43v4.08\" transform=\"translate(-14443.736 -6653)\" fill=\"none\" stroke=\"#231d1d\" stroke-linejoin=\"round\" stroke-width=\"1.2\"><\/path><line x2=\"10.162\" transform=\"translate(-14443.5 -6637.864)\" fill=\"none\" stroke=\"#231d1d\" stroke-linejoin=\"round\" stroke-width=\"1.2\"><\/line><\/g><\/svg>",
+    "icon_close": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"16.121\" height=\"16.121\" viewbox=\"0 0 16.121 16.121\"><g transform=\"translate(-0.939 1.061)\"><g transform=\"translate(2)\"><line x1=\"14\" y2=\"14\" fill=\"none\" stroke=\"#000\" stroke-linecap=\"square\" stroke-width=\"1.5\"><\/line><line x2=\"14\" y2=\"14\" fill=\"none\" stroke=\"#000\" stroke-linecap=\"square\" stroke-width=\"1.5\"><\/line><\/g><\/g><\/svg>",
+    "icon_accordion": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"9.061\" height=\"5.591\" viewbox=\"0 0 9.061 5.591\"><path d=\"M-11745.433-5815.2l4,4,4-4\" transform=\"translate(11745.963 5815.731)\" fill=\"none\" stroke=\"#231d1d\" stroke-width=\"1.5\"><\/path><\/svg>",
+    "icon_slide_right": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"11.207\" height=\"11.414\" viewbox=\"0 0 11.207 11.414\"><g transform=\"translate(-1154.863 -1211.799)\"><path d=\"M8.179.707l5,5-5,5\" transform=\"translate(1152.183 1211.799)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/path><line x1=\"9.715\" transform=\"translate(1155.362 1217.506)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/line><\/g><\/svg>",
+    "icon_slide_left": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"11.207\" height=\"11.414\" viewbox=\"0 0 11.207 11.414\"><g transform=\"translate(0.707 0.707)\"><path d=\"M13.18.707l-5,5,5,5\" transform=\"translate(-8.18 -0.707)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/path><line x2=\"9.715\" transform=\"translate(0.285 5)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/line><\/g><\/svg>",
+    "icon_select": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"9.061\" height=\"5.591\" viewbox=\"0 0 9.061 5.591\"><path d=\"M-11745.433-5815.2l4,4,4-4\" transform=\"translate(11745.963 5815.731)\" fill=\"none\" stroke=\"#231d1d\" stroke-width=\"1.5\"><\/path><\/svg>",
+    "icon_arrow_diagonal_up": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"7.207\" height=\"7.207\" viewbox=\"0 0 7.207 7.207\"><g transform=\"translate(-1324 -950)\"><path d=\"M.707.5h6v6\" transform=\"translate(1324 950)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/path><line x1=\"5.69\" y2=\"5.69\" transform=\"translate(1324.707 950.811)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/line><\/g><\/svg>",
+    "icon_plus": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"10\" height=\"10\" viewbox=\"0 0 10 10\"><g transform=\"translate(138.313 6993.313)\"><line y2=\"10\" transform=\"translate(-128.313 -6988.313) rotate(90)\" fill=\"none\" stroke=\"#231d1d\" stroke-width=\"1\"><\/line><line y2=\"10\" transform=\"translate(-133.313 -6983.313) rotate(180)\" fill=\"none\" stroke=\"#231d1d\" stroke-width=\"1\"><\/line><\/g><\/svg>",
+    "icon_minus": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"10\" height=\"1\" viewbox=\"0 0 10 1\"><line y2=\"10\" transform=\"translate(10 0.5) rotate(90)\" fill=\"none\" stroke=\"#231d1d\" stroke-width=\"1\"><\/line><\/svg>",
+    "icon_btn_right": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"11.207\" height=\"11.414\" viewbox=\"0 0 11.207 11.414\"><g transform=\"translate(-1154.863 -1211.799)\"><path d=\"M8.179.707l5,5-5,5\" transform=\"translate(1152.183 1211.799)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/path><line x1=\"9.715\" transform=\"translate(1155.362 1217.506)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/line><\/g><\/svg>",
+    "icon_btn_left": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"11.207\" height=\"11.414\" viewbox=\"0 0 11.207 11.414\"><g transform=\"translate(0.707 0.707)\"><path d=\"M13.18.707l-5,5,5,5\" transform=\"translate(-8.18 -0.707)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/path><line x2=\"9.715\" transform=\"translate(0.285 5)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/line><\/g><\/svg>",
+    "icon_circle_right_arrow": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"36\" height=\"36\" viewbox=\"0 0 36 36\"><g transform=\"translate(14459 5513)\"><g transform=\"translate(-14459 -5513)\" fill=\"none\" stroke=\"#231d1d\" stroke-width=\"1\"><circle cx=\"18\" cy=\"18\" r=\"18\" stroke=\"none\"><\/circle><circle cx=\"18\" cy=\"18\" r=\"17.5\" fill=\"none\"><\/circle><\/g><g transform=\"translate(-15601.362 -6712.506)\"><path d=\"M8.179.707l5,5-5,5\" transform=\"translate(1152.183 1211.799)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/path><line x1=\"9.715\" transform=\"translate(1155.362 1217.506)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/line><\/g><\/g><\/svg>",
+    "icon_circle_left_arrow": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"36\" height=\"36\" viewbox=\"0 0 36 36\"><g fill=\"none\" stroke=\"#231d1d\" stroke-width=\"1\"><circle cx=\"18\" cy=\"18\" r=\"18\" stroke=\"none\"><\/circle><circle cx=\"18\" cy=\"18\" r=\"17.5\" fill=\"none\"><\/circle><\/g><g transform=\"translate(13 13)\"><path d=\"M13.18.707l-5,5,5,5\" transform=\"translate(-8.18 -0.707)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/path><line x2=\"9.715\" transform=\"translate(0.285 5)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"square\" stroke-miterlimit=\"10\" stroke-width=\"1\"><\/line><\/g><\/svg>",
+    "icon_3cols": "<svg id=\"desktop_multi_active\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">\n  <rect id=\"Rectangle_32\" data-name=\"Rectangle 32\" width=\"6.667\" height=\"11\" rx=\"2\" fill=\"#adadad\"><\/rect>\n  <rect id=\"Rectangle_33\" data-name=\"Rectangle 33\" width=\"6.667\" height=\"11\" rx=\"2\" transform=\"translate(0 13)\" fill=\"#adadad\"><\/rect>\n  <rect id=\"Rectangle_34\" data-name=\"Rectangle 34\" width=\"6.667\" height=\"11\" rx=\"2\" transform=\"translate(8.667)\" fill=\"#adadad\"><\/rect>\n  <rect id=\"Rectangle_35\" data-name=\"Rectangle 35\" width=\"6.667\" height=\"11\" rx=\"2\" transform=\"translate(8.667 13)\" fill=\"#adadad\"><\/rect>\n  <rect id=\"Rectangle_36\" data-name=\"Rectangle 36\" width=\"6.667\" height=\"11\" rx=\"2\" transform=\"translate(17.333)\" fill=\"#adadad\"><\/rect>\n  <rect id=\"Rectangle_37\" data-name=\"Rectangle 37\" width=\"6.667\" height=\"11\" rx=\"2\" transform=\"translate(17.333 13)\" fill=\"#adadad\"><\/rect>\n<\/svg>",
+    "icon_2cols": "<svg id=\"desktop_single_grey\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\">\n  <rect id=\"Rectangle_30\" data-name=\"Rectangle 30\" width=\"11\" height=\"24\" rx=\"2\" transform=\"translate(13)\" fill=\"#adadad\"><\/rect>\n  <rect id=\"Rectangle_31\" data-name=\"Rectangle 31\" width=\"11\" height=\"24\" rx=\"2\" fill=\"#adadad\"><\/rect>\n<\/svg>",
+    "icon_play": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 17 20\"><path d=\"M9,7.269V26.231a.518.518,0,0,0,.777.45L25.746,17.2a.52.52,0,0,0,0-.894L9.777,6.825A.513.513,0,0,0,9,7.269Z\" transform=\"translate(-9 -6.751)\" fill=\"#0c183c\"><\/path><\/svg>",
+    "icon_pause": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"800px\" height=\"800px\" viewbox=\"0 0 24 24\" fill=\"none\"><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M5.163 3.819C5 4.139 5 4.559 5 5.4v13.2c0 .84 0 1.26.163 1.581a1.5 1.5 0 0 0 .656.655c.32.164.74.164 1.581.164h.2c.84 0 1.26 0 1.581-.163a1.5 1.5 0 0 0 .656-.656c.163-.32.163-.74.163-1.581V5.4c0-.84 0-1.26-.163-1.581a1.5 1.5 0 0 0-.656-.656C8.861 3 8.441 3 7.6 3h-.2c-.84 0-1.26 0-1.581.163a1.5 1.5 0 0 0-.656.656zm9 0C14 4.139 14 4.559 14 5.4v13.2c0 .84 0 1.26.164 1.581a1.5 1.5 0 0 0 .655.655c.32.164.74.164 1.581.164h.2c.84 0 1.26 0 1.581-.163a1.5 1.5 0 0 0 .655-.656c.164-.32.164-.74.164-1.581V5.4c0-.84 0-1.26-.163-1.581a1.5 1.5 0 0 0-.656-.656C17.861 3 17.441 3 16.6 3h-.2c-.84 0-1.26 0-1.581.163a1.5 1.5 0 0 0-.655.656z\" fill=\"#000000\"><\/path><\/svg>",
+    "icon_breadcrumb": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 5.455 10\">\n  <g id=\"Group_17\" data-name=\"Group 17\" transform=\"translate(-274 -511)\">\n    <g id=\"btn-primary-arrow\" transform=\"translate(274 511)\">\n      <path id=\"btn-primary-arrow-2\" data-name=\"btn-primary-arrow\" d=\"M.218.231a.714.714,0,0,1,1.052,0L5.237,4.442a.824.824,0,0,1,0,1.116L1.27,9.769a.714.714,0,0,1-1.052,0,.824.824,0,0,1,0-1.116L3.659,5,.218,1.348A.824.824,0,0,1,.218.231Z\" fill=\"#FC773C\" fill-rule=\"evenodd\"><\/path>\n    <\/g>\n  <\/g>\n<\/svg>",
+    "icon_link_icon": "<svg width=\"6\" height=\"10\" viewbox=\"0 0 6 10\" fill=\"none\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\">\n<path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M0.217854 0.231232C0.508327 -0.0770772 0.979276 -0.0770772 1.26975 0.231232L5.23669 4.44176C5.52716 4.75007 5.52716 5.24993 5.23669 5.55824L1.26975 9.76877C0.979276 10.0771 0.508327 10.0771 0.217854 9.76877C-0.0726182 9.46046 -0.0726182 8.96059 0.217854 8.65228L3.65885 5L0.217854 1.34772C-0.0726182 1.03941 -0.0726182 0.53954 0.217854 0.231232Z\" fill=\"#FFFAF0\"><\/path>\n<\/svg>",
+    "icon_chat": "<svg id=\"chat\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"20\" height=\"18\" viewbox=\"0 0 20 18\">\n  <path id=\"Path_589\" data-name=\"Path 589\" d=\"M0,2.5a2,2,0,0,1,2-2H18a2,2,0,0,1,2,2v11a2,2,0,0,1-2,2H13.414l-2.707,2.707a1,1,0,0,1-1.414,0L6.586,15.5H2a2,2,0,0,1-2-2Zm18,0H2v11H7a1,1,0,0,1,.707.293L10,16.086l2.293-2.293A1,1,0,0,1,13,13.5h5Z\" transform=\"translate(0 -0.5)\" fill=\"#181818\"><\/path>\n  <path id=\"Path_590\" data-name=\"Path 590\" d=\"M11.5,8A1.5,1.5,0,1,1,10,6.5,1.5,1.5,0,0,1,11.5,8Z\" transform=\"translate(0 -0.5)\" fill=\"#181818\"><\/path>\n  <path id=\"Path_591\" data-name=\"Path 591\" d=\"M15.5,8A1.5,1.5,0,1,1,14,6.5,1.5,1.5,0,0,1,15.5,8Z\" transform=\"translate(0 -0.5)\" fill=\"#181818\"><\/path>\n  <path id=\"Path_592\" data-name=\"Path 592\" d=\"M7.5,8A1.5,1.5,0,1,1,6,6.5,1.5,1.5,0,0,1,7.5,8Z\" transform=\"translate(0 -0.5)\" fill=\"#181818\"><\/path>\n<\/svg>",
+    "icon_question": "",
+    "icon_tooltip": "",
+    "icon_trash": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"15\" height=\"16.556\" viewbox=\"0 0 15 16.556\"><g transform=\"translate(-4 -2.5)\"><path d=\"M4.5,9h14\" transform=\"translate(0 -2.889)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"><\/path><path d=\"M18.389,6.111V17a1.556,1.556,0,0,1-1.556,1.556H9.056A1.556,1.556,0,0,1,7.5,17V6.111m2.333,0V4.556A1.556,1.556,0,0,1,11.389,3H14.5a1.556,1.556,0,0,1,1.556,1.556V6.111\" transform=\"translate(-1.444)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"><\/path><path d=\"M15,16.5v4.667\" transform=\"translate(-5.056 -6.5)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"><\/path><path d=\"M21,16.5v4.667\" transform=\"translate(-7.944 -6.5)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"><\/path><\/g><\/svg>",
+    "icon_gift": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"14\" height=\"14\" viewbox=\"0 0 14 14\"><g transform=\"translate(-2.5 -2.5)\"><path d=\"M16.4,18v6.5H6V18\" transform=\"translate(-1.7 -8.5)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"><\/path><path d=\"M3,10.5H16v3.25H3Z\" transform=\"translate(0 -4.25)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"><\/path><path d=\"M18,20.25V10.5\" transform=\"translate(-8.5 -4.25)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"><\/path><path d=\"M12.05,6.25H9.125a1.625,1.625,0,1,1,0-3.25C11.4,3,12.05,6.25,12.05,6.25Z\" transform=\"translate(-2.55)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"><\/path><path d=\"M18,6.25h2.925a1.625,1.625,0,1,0,0-3.25C18.65,3,18,6.25,18,6.25Z\" transform=\"translate(-8.5)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\"><\/path><\/g><\/svg>",
+    "icon_heart": "",
+    "icon_diamond": "",
+    "icon_pin": "",
+    "icon_envelope": "",
+    "icon_preview": "",
+    "icon_book_appointment": "",
+    "icon_lock": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"13.5\" height=\"15.945\" viewbox=\"0 0 13.5 15.945\"><g transform=\"translate(0.75 0.75)\"><rect width=\"12\" height=\"8.444\" rx=\"1\" transform=\"translate(0 6)\" fill=\"none\" stroke=\"#231d1d\" stroke-width=\"1.5\"><\/rect><path d=\"M10.5,9V6.333a3.333,3.333,0,1,1,6.667,0V9\" transform=\"translate(-7.833 -3)\" fill=\"none\" stroke=\"#231d1d\" stroke-linejoin=\"round\" stroke-width=\"1.5\"><\/path><\/g><\/svg>",
+    "facebook-icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"9.881\" height=\"19.763\" viewbox=\"0 0 9.881 19.763\"><path d=\"M2.47,6.587H0V9.881H2.47v9.881H6.587V9.881H9.552l.329-3.294H6.587v-1.4c0-.741.165-1.07.906-1.07H9.881V0H6.752C3.788,0,2.47,1.317,2.47,3.788Z\" fill=\"#231d1d\"><\/path><\/svg>",
+    "facebook-url": "https:\/\/www.facebook.com\/calecimprofessional\/",
+    "instagram-icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"19.762\" height=\"19.763\" viewbox=\"0 0 19.762 19.763\"><path d=\"M9.881,1.812c2.635,0,2.964,0,3.952.082,2.717.082,3.952,1.4,4.035,4.035.082,1.07.082,1.318.082,3.952s0,2.964-.082,3.952c-.082,2.635-1.4,3.952-4.035,4.035-1.07.082-1.317.082-3.952.082s-2.964,0-3.952-.082c-2.717-.082-3.952-1.4-4.035-4.035-.082-1.07-.082-1.317-.082-3.952s0-2.964.082-3.952c.082-2.635,1.4-3.952,4.035-4.035C6.917,1.812,7.246,1.812,9.881,1.812ZM9.881,0C7.164,0,6.835,0,5.846.082,2.223.247.247,2.223.082,5.846,0,6.835,0,7.164,0,9.881s0,3.047.082,4.035c.165,3.623,2.141,5.6,5.764,5.764.988.082,1.317.082,4.035.082s3.047,0,4.035-.082c3.623-.165,5.6-2.141,5.764-5.764.082-.988.082-1.317.082-4.035s0-3.047-.082-4.035c-.165-3.623-2.141-5.6-5.764-5.764C12.928,0,12.6,0,9.881,0Zm0,4.776a5.105,5.105,0,1,0,5.105,5.105A5.131,5.131,0,0,0,9.881,4.776Zm0,8.4a3.294,3.294,0,1,1,3.294-3.294A3.3,3.3,0,0,1,9.881,13.175Zm5.27-9.717A1.126,1.126,0,0,0,14,4.611a1.153,1.153,0,1,0,2.306,0A1.126,1.126,0,0,0,15.151,3.458Z\" fill=\"#231d1d\"><\/path><\/svg>",
+    "instagram-url": "https:\/\/www.instagram.com\/calecimprofessional\/",
+    "pinterest-icon": "",
+    "pinterest-url": "",
+    "youtube-icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"25.176\" height=\"17.702\" viewbox=\"0 0 25.176 17.702\"><path d=\"M25.7,7.27a3.163,3.163,0,0,0-2.226-2.24c-1.963-.53-9.836-.53-9.836-.53s-7.873,0-9.836.53A3.164,3.164,0,0,0,1.576,7.27a33.186,33.186,0,0,0-.526,6.1,33.186,33.186,0,0,0,.526,6.1,3.116,3.116,0,0,0,2.226,2.2c1.963.53,9.836.53,9.836.53s7.873,0,9.836-.53a3.116,3.116,0,0,0,2.226-2.2,33.186,33.186,0,0,0,.526-6.1,33.186,33.186,0,0,0-.526-6.1ZM11.063,17.113V9.626l6.58,3.744-6.58,3.743Z\" transform=\"translate(-1.051 -4.5)\" fill=\"#231d1d\"><\/path><\/svg>",
+    "youtube-url": "https:\/\/www.youtube.com\/channel\/UCY7tcZR1yh1P1eqQTZgdZGw",
+    "twitter-icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"21.084\" height=\"17.122\" viewbox=\"0 0 21.084 17.122\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"><defs><clippath id=\"a\"><rect width=\"21.084\" height=\"17.122\" transform=\"translate(0 0)\" fill=\"#231d1d\"><\/rect><\/clippath><\/defs><g transform=\"translate(0 0)\" clip-path=\"url(#a)\"><path d=\"M21.084,2.031a8.776,8.776,0,0,1-2.483.682A4.32,4.32,0,0,0,20.5.318a8.613,8.613,0,0,1-2.745,1.049,4.325,4.325,0,0,0-7.477,2.957,4.526,4.526,0,0,0,.111.987A12.3,12.3,0,0,1,1.474.818,4.325,4.325,0,0,0,2.8,6.573a4.329,4.329,0,0,1-1.961-.54v.058a4.325,4.325,0,0,0,3.47,4.236,4.4,4.4,0,0,1-1.952.075,4.32,4.32,0,0,0,4.037,3,8.676,8.676,0,0,1-5.365,1.841A8.788,8.788,0,0,1,0,15.183a12.2,12.2,0,0,0,6.64,1.943,12.206,12.206,0,0,0,12.3-12.3V4.267a8.774,8.774,0,0,0,2.142-2.235\" transform=\"translate(0 -0.004)\" fill=\"#231d1d\"><\/path><\/g><\/svg>",
+    "twitter-url": "https:\/\/twitter.com\/calecimpro?lang=en",
+    "whatsapp-icon": "",
+    "email-icon": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\"><path d=\"M12 12.713l-11.985-9.713h23.971l-11.986 9.713zm-5.425-1.822l-6.575-5.329v12.501l6.575-7.172zm10.85 0l6.575 7.172v-12.501l-6.575 5.329zm-1.557 1.261l-3.868 3.135-3.868-3.135-8.11 8.848h23.956l-8.11-8.848z\"><\/path><\/svg>",
+    "popup": true,
+    "popup_id": "mailing-popup",
+    "popup_title": "ENJOY 10% DISCOUNT ON OUR SKIN AND HAIR CARE PRODUCTS",
+    "popup_text": "Stay ahead of the curve with the latest developments in stem cell skin and hair care. Great discounts and sampling programs to be enjoyed too.",
+    "popup_button_label": "SUBMIT",
+    "popup_skip_text": "No thanks, I’ll skip",
+    "popup_image_desktop": "shopify:\/\/shop_images\/02Collection-subscription-desktop-1370x1370-portrait.jpg",
+    "popup_image_mobile": "shopify:\/\/shop_images\/02Collection-subscription-desktop-1370x1370.jpg",
+    "search_lc_title": "BESTSELLERS",
+    "search_lc_product_list": [
+      "advanced-hair-system-sg",
+      "advanced-hair-system-6-x-5ml-sg",
+      "advanced-hair-system-reward"
+    ],
+    "search_rc_title": "POPULAR READS",
+    "search_blog": "blog",
+    "gwp_enable": true,
+    "gwp_value_1": 100,
+    "gwp_disc_message_1": "GWP Discount 100%",
+    "gwp_cart_amount_1": 1730,
+    "gwp_product_1": "lvc-box-silver-chain",
+    "gwp_product_qty_1": 1,
+    "gwp_value_2": 23,
+    "gwp_value_type_2": "d",
+    "gwp_disc_message_2": "GWP Tier 2",
+    "gwp_cart_amount_2": 3000,
+    "gwp_product_2": "lvc-cable-silver-chain",
+    "gwp_product_qty_2": 2,
+    "pg_enable_labels": true,
+    "pg_tag_1": "reward",
+    "pg_tag_bg_1": "#ffffff",
+    "pg_tag_color_1": "#231d1d",
+    "pg_tag_2": "subscribe",
+    "pg_tag_bg_2": "#ffffff",
+    "pg_tag_color_2": "#231d1d",
+    "cart_c_shopping_label": "Continue Shopping",
+    "cart_c_shopping_url": "\/collections\/all",
+    "cart_empty_message": "Your cart is empty.<br>Check out some of our bestsellers now!",
+    "cart_empty_button_label": "",
+    "cart_empty_button_url": "\/collections",
+    "cart_enable_fs_info": false,
+    "cart_fs_free": "4000",
+    "cart_fs_before": "You’re [amount] away from a Complimentary Gift Card!",
+    "cart_fs_after": "You have unlocked a Complimentary Gift Card!",
+    "cart_msg": "Complimentary exchange within 30 days<span class=\"hide-m show-t-inline-block\"> |  <\/span><span class=\"show-m hide-t\"><\/span>In-store collection available",
+    "cart_cross_sell_section_title": "You May Also Like",
+    "cart_cross_sell_link_label": "",
+    "cart_cross_sell_link_url": "",
+    "cart_cross_sell_1": "lvc-charmes-x-diamond-hoop-earrings-1",
+    "cart_cross_sell_2": "lvc-10k-box-chain",
+    "cart_cross_sell_3": "love-co-teddy-bear-fluttering-key-diamond-pendant",
+    "cart_cross_sell_4": "angelina-june",
+    "cart_cross_sell_5": "",
+    "cart_cross_sell_6": "angelina-september",
+    "product_trustpilot_logo": "shopify:\/\/shop_images\/Trustpilot_e214c2aa-c71f-45f4-bf0f-95cfd1bd14bb.png",
+    "product_card_image_hover": false,
+    "ia_message_ring": "Please note that the above indicates the ring design availability and it may change depending on real-time store situation.",
+    "ia_message_general": "Please note that availability may change depending on real-time store situation.",
+    "collection_limit": 12,
+    "blog-tags": true,
+    "blog-date": true,
+    "search_rc_article_1": "blog\/how-wound-healing-technology-can-fight-skin-aging-too-10-off",
+    "search_rc_article_2": "blog\/an-evening-with-calecim-dermoi-at-brown-s-hotel-in-london",
+    "icon_ec_menu": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"22.774\" height=\"22.774\" viewbox=\"0 0 22.774 22.774\"><rect width=\"9.635\" height=\"9.635\" fill=\"#93d0b3\"><\/rect><path d=\"M0,0H9.635V9.635H0Z\" transform=\"translate(13.139)\" fill=\"#93d0b3\"><\/path><g transform=\"translate(0 13.139)\"><rect width=\"9.635\" height=\"9.635\" transform=\"translate(0 0)\" fill=\"#93d0b3\"><\/rect><rect width=\"9.635\" height=\"9.635\" transform=\"translate(13.139 0)\" fill=\"#93d0b3\"><\/rect><\/g><\/svg>",
+    "icon_ec_facebook": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"30\" height=\"30\" viewbox=\"0 0 30 30\"><g transform=\"translate(0.336 0.188)\"><circle cx=\"15\" cy=\"15\" r=\"15\" transform=\"translate(-0.336 -0.188)\" fill=\"#fff\"><\/circle><path d=\"M1.548,4.128H0V6.192H1.548v6.192h2.58V6.192H5.986l.206-2.064H4.128V3.251c0-.464.1-.671.568-.671h1.5V0H4.231C2.374,0,1.548.826,1.548,2.374Z\" transform=\"translate(11.52 8.229)\" fill=\"#6c6c6c\"><\/path><\/g><\/svg>",
+    "icon_ec_twitter": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"30\" height=\"30\" viewbox=\"0 0 30 30\"><g transform=\"translate(0.188 0.188)\"><circle cx=\"15\" cy=\"15\" r=\"15\" transform=\"translate(-0.188 -0.188)\" fill=\"#fff\"><\/circle><path d=\"M12.343,1.183a4.632,4.632,0,0,1-1.44.411A2.738,2.738,0,0,0,12.035.206,4.669,4.669,0,0,1,10.44.823,2.691,2.691,0,0,0,8.537,0,2.532,2.532,0,0,0,6.069,3.086,7.034,7.034,0,0,1,.874.463a2.545,2.545,0,0,0,.771,3.394A3.646,3.646,0,0,1,.514,3.549,2.531,2.531,0,0,0,2.52,6.069a2.8,2.8,0,0,1-1.131.051A2.438,2.438,0,0,0,3.754,7.869,5.189,5.189,0,0,1,0,8.9a7.2,7.2,0,0,0,3.857,1.131,7.169,7.169,0,0,0,7.2-7.509A5.3,5.3,0,0,0,12.343,1.183Z\" transform=\"translate(9.052 9.875)\" fill=\"#6c6c6c\"><\/path><\/g><\/svg>",
+    "icon_ec_share": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"30\" height=\"30\" viewbox=\"0 0 30 30\"><g transform=\"translate(0.04 0.188)\"><circle cx=\"15\" cy=\"15\" r=\"15\" transform=\"translate(-0.04 -0.188)\" fill=\"#fff\"><\/circle><path d=\"M2.971,4.186a3.081,3.081,0,0,1,4.747.471L6.64,5.735A1.625,1.625,0,0,0,4.8,4.8a1.6,1.6,0,0,0-.784.431L1.949,7.3A1.609,1.609,0,0,0,4.225,9.573l.637-.637a4.1,4.1,0,0,0,1.814.276L5.27,10.618A3.087,3.087,0,0,1,.9,6.253L2.971,4.186ZM6.252.9,4.846,2.31a4.1,4.1,0,0,1,1.814.276L7.3,1.949A1.609,1.609,0,0,1,9.572,4.225L7.506,6.291a1.612,1.612,0,0,1-2.275,0,1.712,1.712,0,0,1-.349-.5L3.8,6.864a2.9,2.9,0,0,0,.382.471,3.083,3.083,0,0,0,4.365,0l2.066-2.067A3.086,3.086,0,1,0,6.252.9Z\" transform=\"translate(9.051 9.051)\" fill=\"#6c6c6c\"><\/path><\/g><\/svg>",
+    "popup-test": false,
+    "popup-duration": 10,
+    "popup-days": "",
+    "popup-title": "",
+    "popup-text": "",
+    "popup-url": "",
+    "popup-label": "",
+    "popup-small-text": "",
+    "popup-desktop": "",
+    "popup-mobile": "",
+    "collection_number": "22",
+    "product_vendor": true,
+    "collection_image_hover": true,
+    "icon_slick_right": "<svg width=\"30\" height=\"30\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:svg=\"http:\/\/www.w3.org\/2000\/svg\"><g><path class=\"fs-arrow\" stroke=\"#222\" id=\"fs-left-path\" d=\"m7.5,0l15,15l-15,15\" fill=\"none\"><\/path><\/g><\/svg>",
+    "icon_slick_left": "<svg width=\"30\" height=\"30\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:svg=\"http:\/\/www.w3.org\/2000\/svg\"><g><path class=\"fs-arrow\" fill=\"none\" stroke-width=\"1px\" d=\"m22.5,0l-15,15l15,15\" id=\"fs-left-path\" stroke=\"#222\"><\/path><\/g><\/svg>",
+    "enable_sticky_add_to_cart": true,
+    "product_images": "side",
+    "product_images_no": "3",
+    "product_gallery": true,
+    "product_zoom": true,
+    "icon_star": "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 14.5 14.5\"><title>star<\/title>\n<polygon points=\"14.5 5.57 8.96 5.57 7.25 0 5.53 5.57 0 5.57 4.46 8.97 2.75 14.5 7.25 11.07 11.74 14.5 10.04 8.97 14.5 5.57\"><\/polygon><\/svg>",
+    "icon_estimated": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 56.72 56.71\"><path d=\"M47.42,40.56H53.6a1.11,1.11,0,0,0,1.11-1.11V26.15a1.06,1.06,0,0,0-.16-.58L46,11.64a1.1,1.1,0,0,0-.94-.53H11.12A1.11,1.11,0,0,0,10,12.22V39.45a1.11,1.11,0,0,0,1.11,1.11h6.19\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/path><polyline points=\"27.39 40.56 34.81 40.56 37.34 40.56\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/polyline><circle cx=\"42.38\" cy=\"40.56\" r=\"5.04\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"22.35\" cy=\"40.56\" r=\"5.04\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><polygon points=\"54.71 25.84 36.84 25.84 36.84 16.73 48.99 16.73 54.71 25.84\" fill=\"none\" stroke=\"\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/polygon><line x1=\"2\" y1=\"20.32\" x2=\"15.1\" y2=\"20.32\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"4.7\" y1=\"25.84\" x2=\"17.8\" y2=\"25.84\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"2\" y1=\"31.35\" x2=\"15.1\" y2=\"31.35\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><\/svg>",
+    "icon_free_delivery": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 56.72 56.71\"><path d=\"M47.42,40.56H53.6a1.11,1.11,0,0,0,1.11-1.11V26.15a1.06,1.06,0,0,0-.16-.58L46,11.64a1.1,1.1,0,0,0-.94-.53H11.12A1.11,1.11,0,0,0,10,12.22V39.45a1.11,1.11,0,0,0,1.11,1.11h6.19\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/path><polyline points=\"27.39 40.56 34.81 40.56 37.34 40.56\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/polyline><circle cx=\"42.38\" cy=\"40.56\" r=\"5.04\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"22.35\" cy=\"40.56\" r=\"5.04\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><polygon points=\"54.71 25.84 36.84 25.84 36.84 16.73 48.99 16.73 54.71 25.84\" fill=\"none\" stroke=\"\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/polygon><line x1=\"2\" y1=\"20.32\" x2=\"15.1\" y2=\"20.32\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"4.7\" y1=\"25.84\" x2=\"17.8\" y2=\"25.84\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"2\" y1=\"31.35\" x2=\"15.1\" y2=\"31.35\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><\/svg>",
+    "icon_warranty": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 56.72 56.71\"><path d=\"M47.42,40.56H53.6a1.11,1.11,0,0,0,1.11-1.11V26.15a1.06,1.06,0,0,0-.16-.58L46,11.64a1.1,1.1,0,0,0-.94-.53H11.12A1.11,1.11,0,0,0,10,12.22V39.45a1.11,1.11,0,0,0,1.11,1.11h6.19\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/path><polyline points=\"27.39 40.56 34.81 40.56 37.34 40.56\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/polyline><circle cx=\"42.38\" cy=\"40.56\" r=\"5.04\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"22.35\" cy=\"40.56\" r=\"5.04\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><polygon points=\"54.71 25.84 36.84 25.84 36.84 16.73 48.99 16.73 54.71 25.84\" fill=\"none\" stroke=\"\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/polygon><line x1=\"2\" y1=\"20.32\" x2=\"15.1\" y2=\"20.32\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"4.7\" y1=\"25.84\" x2=\"17.8\" y2=\"25.84\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"2\" y1=\"31.35\" x2=\"15.1\" y2=\"31.35\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><\/svg>",
+    "icon_fbook_demo": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 56.72 56.71\"><path d=\"M47.42,40.56H53.6a1.11,1.11,0,0,0,1.11-1.11V26.15a1.06,1.06,0,0,0-.16-.58L46,11.64a1.1,1.1,0,0,0-.94-.53H11.12A1.11,1.11,0,0,0,10,12.22V39.45a1.11,1.11,0,0,0,1.11,1.11h6.19\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/path><polyline points=\"27.39 40.56 34.81 40.56 37.34 40.56\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/polyline><circle cx=\"42.38\" cy=\"40.56\" r=\"5.04\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"22.35\" cy=\"40.56\" r=\"5.04\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><polygon points=\"54.71 25.84 36.84 25.84 36.84 16.73 48.99 16.73 54.71 25.84\" fill=\"none\" stroke=\"\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/polygon><line x1=\"2\" y1=\"20.32\" x2=\"15.1\" y2=\"20.32\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"4.7\" y1=\"25.84\" x2=\"17.8\" y2=\"25.84\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"2\" y1=\"31.35\" x2=\"15.1\" y2=\"31.35\" fill=\"none\" stroke=\"\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><\/svg>",
+    "collection_qty": true,
+    "collection_stickers": true,
+    "blog-desktop": "shopify:\/\/shop_images\/fashion-toronto-watch.jpg",
+    "blog-mobile": "shopify:\/\/shop_images\/long-blonde-hair-at-carnival.jpg",
+    "product_reviews": false,
+    "product-set-title": "You may like this",
+    "product-set-text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis nobis vero deserunt sapiente ea illum quos, accusantium aperiam impedit voluptatibus.",
+    "duration": "10",
+    "popup-small-title": "",
+    "popup-success-title": "",
+    "popup-success-text": "",
+    "popup-success-code": "",
+    "collection_filters": "filters",
+    "collection_filters_brands": true,
+    "product-available-title": "",
+    "product-details-title": "",
+    "product-collection-title": "",
+    "product-care-title": "",
+    "product-gang-title": "",
+    "product-gang-text": "",
+    "product-related-title": "",
+    "product-related-text": "",
+    "search_preview_title": "",
+    "search_preview_1": "",
+    "search_preview_url_1": "",
+    "search_preview_2": "",
+    "search_preview_url_2": "",
+    "search_preview_3": "",
+    "search_preview_url_3": "",
+    "search_preview_4": "",
+    "search_preview_url_4": "",
+    "search_no_title": "",
+    "search_no_text": "",
+    "search_no_collection": "",
+    "script": "none",
+    "cart-gift-enabled": false,
+    "cart-gift-amount": "",
+    "cart-gift-product": "",
+    "cart-charms-pouch": false,
+    "cart-charms-collection": "",
+    "cart-charms-no": "",
+    "cart-charms-pouch-product": "",
+    "cart-charms-free": false,
+    "cart-charms-free-amount": "",
+    "cart-charms-free-collection": "",
+    "cart-charms-free-no": "",
+    "cart-charms-free-product": "",
+    "cart-message": false,
+    "cart-message-text": "",
+    "cart-preorder-text": "If you have PRE-ORDER item\/s within your cart, your order will be placed on hold and shipped altogether when the item\/s are back in stock.",
+    "cart-freeshipping-text": "You enjoy free shipping!",
+    "cart-free-shipping": "50",
+    "cart-freeshipping-ship": "",
+    "cart-paid-ship": "",
+    "tag1-enabled": false,
+    "tag1-mode": "exclude",
+    "tag1-text": "",
+    "tag1-desc": "",
+    "tag1-change": false,
+    "tag1-percentage": "",
+    "tag2-enabled": false,
+    "tag2-mode": "exclude",
+    "tag2-text": "",
+    "tag2-desc": "",
+    "tag2-change": false,
+    "tag2-percentage": "",
+    "tag3-enabled": false,
+    "tag3-mode": "exclude",
+    "tag3-text": "",
+    "tag3-desc": "",
+    "tag3-change": false,
+    "tag3-percentage": "",
+    "tag4-enabled": false,
+    "tag4-mode": "exclude",
+    "tag4-text": "",
+    "tag4-desc": "",
+    "tag4-change": false,
+    "tag4-percentage": "",
+    "tag5-enabled": false,
+    "tag5-mode": "exclude",
+    "tag5-text": "",
+    "tag5-desc": "",
+    "tag5-change": false,
+    "tag5-percentage": "",
+    "privacy_text": "",
+    "collection_color_filters": "",
+    "collection_price_filters": "",
+    "color_text": "#3d4246",
+    "color_body_text": "#788188",
+    "color_sale_text": "#7796A8",
+    "color_borders": "#e8e9eb",
+    "color_button": "#7796A8",
+    "color_button_text": "#fff",
+    "color_small_button": "#fff",
+    "color_small_button_text": "#3d4246",
+    "color_text_field": "#fff",
+    "color_text_field_text": "#000",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": 25,
+    "color_body_bg": "#fff",
+    "type_header_family": "Google_Work+Sans_600_sans",
+    "type_header_base_size": "26px",
+    "type_base_family": "Google_Work+Sans_400_sans",
+    "type_base_size": "16px",
+    "type_bold_product_titles": false,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "44e79f10-cda8-4716-9c49-844738486dbb": {
+            "type": "dropdown_1",
+            "settings": {
+              "enable": true,
+              "col_1_title": "Products",
+              "col_1_link_label": "All Products",
+              "col_1_link_url": "#all",
+              "col_1_products": [
+                "professional-serum-sg",
+                "multi-action-cream",
+                "restorative-hydration-cream",
+                "professional-serum-6-x-5ml",
+                "professional-serum-2-x-5ml"
+              ],
+              "col_2_title": "Exclusive kits",
+              "col_2_link_label": "All Kits",
+              "col_2_link_url": "#kits",
+              "col_2_products": [
+                "prime-power-kit",
+                "total-repair-kit"
+              ]
+            }
+          },
+          "f09af52a-6b5c-409f-83f4-e6480b1dbdcd": {
+            "type": "dropdown_2",
+            "settings": {
+              "enable": true,
+              "col_1_title": "Product",
+              "col_1_product": "advanced-hair-system",
+              "col_2_title": "Real-life results",
+              "col_2_link_label": "View all",
+              "col_2_link_url": "#alll",
+              "col_2_image_1_before": "shopify:\/\/shop_images\/01Navigation-Before-desktop-410x500.jpg",
+              "col_2_image_1_after": "shopify:\/\/shop_images\/01Navigation-after-desktop-410x500.jpg",
+              "col_2_image_1_caption": "Clinical observation by scalp technician and aesthetic practitioner Kelly Morrell, 6 weeks usage #1",
+              "col_2_image_2_before": "shopify:\/\/shop_images\/01Navigation-Before-desktop-410x500.jpg",
+              "col_2_image_2_after": "shopify:\/\/shop_images\/01Navigation-after-desktop-410x500.jpg",
+              "col_2_image_2_caption": "Clinical observation by scalp technician and aesthetic practitioner Kelly Morrell, 6 weeks usage #2",
+              "col_2_image_3_caption": "",
+              "col_2_image_4_caption": "",
+              "col_2_image_5_caption": "",
+              "col_3_small_title": "TRUSTED BY SPECIALIST",
+              "col_3_testimonial": "“With the right candidates, I’ve found CALECIM® Advanced Hair System delivers excellent results even in patients who were unresponsive to Minoxidil.”",
+              "col_3_author": "Kelly Morrell",
+              "col_3_occupation": "Scalp Technician"
+            }
+          },
+          "38d8bcb5-6a24-4cda-8fde-074ba397eb3e": {
+            "type": "dropdown_4",
+            "settings": {
+              "enable": false,
+              "col_1_title": "Science",
+              "col_1_menu": "360-5-test-menu-left",
+              "col_2_title": "Research",
+              "col_2_menu": "360-5-test-menu-left",
+              "col_3_title": "Blog",
+              "col_3_menu": "footer-customer-service",
+              "col_4_link_label": "Read all",
+              "col_4_link_url": "#read",
+              "col_4_blog": ""
+            }
+          },
+          "e8ecc75f-f2e2-4876-8415-d91dd902111a": {
+            "type": "dropdown_3",
+            "settings": {
+              "enable": true,
+              "col_1_title": "Calecim",
+              "col_1_menu": "360-5-test-menu-left",
+              "col_2_title": "Love from others",
+              "col_2_menu": "footer-my-account",
+              "col_3_title": "Professional",
+              "col_3_menu": "360-5-test-menu-left",
+              "col_4_image_desktop": "shopify:\/\/shop_images\/03Navigation-Rewards_club-desktop-1080x540.jpg",
+              "col_4_image_mobile": "shopify:\/\/shop_images\/03Navigation-Rewards_club-mobile-670x360.jpg",
+              "col_4_title": "MYCALECIM® REWARDS CLUB",
+              "col_4_text": "Sign in to see how close you are to redeeming your free full sized products. Or register now to start.",
+              "col_4_link_label": "Join now",
+              "col_4_link_url": "#join"
+            }
+          },
+          "88c47984-a9f4-4db2-8735-bda8bc4a0756": {
+            "type": "dropdown_4",
+            "settings": {
+              "enable": true,
+              "col_1_title": "Science",
+              "col_1_menu": "360-5-test-menu-left",
+              "col_2_title": "Research",
+              "col_2_menu": "360-5-test-menu-left",
+              "col_3_title": "Blog",
+              "col_3_menu": "360-5-test-menu-left",
+              "col_4_link_label": "Read All",
+              "col_4_link_url": "#all",
+              "col_4_blog": "blog"
+            }
+          }
+        },
+        "block_order": [
+          "44e79f10-cda8-4716-9c49-844738486dbb",
+          "f09af52a-6b5c-409f-83f4-e6480b1dbdcd",
+          "38d8bcb5-6a24-4cda-8fde-074ba397eb3e",
+          "e8ecc75f-f2e2-4876-8415-d91dd902111a",
+          "88c47984-a9f4-4db2-8735-bda8bc4a0756"
+        ],
+        "settings": {
+          "logo_type": "image",
+          "logo_image": "shopify:\/\/shop_images\/new-logo-black.png",
+          "logo_svg": "",
+          "logo_image_mobile": "shopify:\/\/shop_images\/new-logo-black.png",
+          "logo_svg_mobile": "",
+          "main_linklist": "360-5-test-menu-left",
+          "bottom_menu": "360-5-test-mobile-bottom-menu",
+          "mob_cta_image": "shopify:\/\/shop_images\/02Navigation-Clinical_treatment-mobile-670x300.jpg",
+          "mob_cta_title": "READY TO EXPERIENCE CLINICAL TREATMENT?",
+          "mob_cta_link_label": "Find a clinic",
+          "mob_cta_link_url": "#find",
+          "message": true,
+          "color_bg": "#231d1d",
+          "color_text": "#ffffff",
+          "message_text_1": "Enjoy 5% off min spend $100 your first purchase when you subscribe to our newsletter.",
+          "message_link_1": "#a",
+          "message_text_2": "Enjoy 5% off min spend $100 your first purchase when you subscribe to our newsletter. #2",
+          "message_link_2": "#b",
+          "message_text_3": "Enjoy 5% off min spend $100 your first purchase when you subscribe to our newsletter. #3",
+          "message_link_3": "#c",
+          "message_button_label": "Find a clinic",
+          "message_button_url": "#clinic",
+          "message_button_bg": "#efeae7"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "3f7f0d7d-6151-4528-9904-b42253a21c85": {
+            "type": "footer_menu",
+            "settings": {
+              "title": "Shop",
+              "icon": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><svg id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"60\" height=\"60\" viewbox=\"0 0 60 60\"><polyline points=\"37 27.5 37 7.5 55 7.5 55 52.5 42.5 52.5\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/polyline><line x1=\"37\" y1=\"16.5\" x2=\"55\" y2=\"16.5\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/line><polyline points=\"23.75 27.5 25 12.5 5 12.5 8.33 52.5 17.5 52.5\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/polyline><line x1=\"8.25\" y1=\"43.45\" x2=\"17.5\" y2=\"43.45\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/line><rect x=\"17.5\" y=\"27.5\" width=\"25\" height=\"25\" rx=\"1.03\" ry=\"1.03\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/rect><path d=\"m17.5,34.5h25-25Z\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/path><\/svg>",
+              "menu": "footer-customer-service"
+            }
+          },
+          "b9cc265a-d0c5-4bd2-9ede-8c518f8f52e2": {
+            "type": "footer_menu",
+            "settings": {
+              "title": "Support",
+              "icon": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><svg id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"60\" height=\"60\" viewbox=\"0 0 60 60\"><path d=\"m53.04,24.38c-.67-12.22-10.7-21.75-22.97-21.75S7.79,12.14,7.09,24.34c-1.95.57-3.38,2.37-3.38,4.51v7.32c0,2.6,2.11,4.71,4.71,4.71s4.71-2.11,4.71-4.71v-7.32c0-2.33-1.71-4.26-3.93-4.64.75-10.98,9.8-19.49,20.87-19.49s20.12,8.51,20.87,19.47c-2.29.31-4.06,2.28-4.06,4.66v7.32c0,2.2,1.5,4.03,3.54,4.56-1.11,8.34-6.11,12.18-15.24,11.71-.33-2.03-2.08-3.58-4.19-3.58-2.34,0-4.25,1.91-4.25,4.25s1.91,4.25,4.25,4.25c1.84,0,3.41-1.18,4-2.83.57.03,1.13.05,1.67.05,9.4,0,14.71-4.64,15.86-13.79,2.15-.44,3.77-2.34,3.77-4.62v-7.32c0-2.09-1.37-3.86-3.25-4.47Zm-42,4.47v7.32c0,1.45-1.17,2.62-2.62,2.62s-2.62-1.17-2.62-2.62v-7.32c0-1.45,1.17-2.62,2.62-2.62s2.62,1.17,2.62,2.62Zm19.95,26.42c-1.19,0-2.16-.97-2.16-2.16s.97-2.16,2.16-2.16,2.16.97,2.16,2.16-.97,2.16-2.16,2.16Zm23.21-19.09c0,1.45-1.17,2.62-2.62,2.62s-2.62-1.17-2.62-2.62v-7.32c0-1.45,1.17-2.62,2.62-2.62s2.62,1.17,2.62,2.62v7.32Z\" fill=\"#231d1d\" stroke=\"#231d1d\" stroke-miterlimit=\"10\"><\/path><path d=\"m40.33,24.92c-.52,0-.94-.42-.94-.94,0-4.38-3.72-6.96-5.6-7.99-.15.37-.36.72-.65,1.03-1.72,1.87-5.72,2.27-8.77,2.27-3.71,0-3.76,4.5-3.76,4.69,0,.52-.42.94-.94.94s-.94-.42-.94-.94c0-2.27,1.18-6.57,5.63-6.57,3.73,0,6.42-.6,7.38-1.66.29-.31.41-.66.37-1.08-.03-.32.11-.64.37-.83.26-.19.6-.24.9-.12.32.12,7.87,3.13,7.87,10.26,0,.52-.42.94-.94.94h0Z\" fill=\"#231d1d\" stroke=\"#231d1d\" stroke-miterlimit=\"10\"><\/path><rect x=\"16.86\" y=\"30.57\" width=\"26.29\" height=\"13.67\" rx=\"1.37\" ry=\"1.37\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.5\"><\/rect><path d=\"m40,30.31h-19.79c-.63,0-1.15-.26-1.15-.58v-4.63c0-.32.51-.58,1.15-.58h19.79c.63,0,1.15.26,1.15.58v4.63c0,.32-.51.58-1.15.58Z\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.5\"><\/path><\/svg>",
+              "menu": "footer-customer-service"
+            }
+          },
+          "a6525dd3-402d-4b95-b38d-11fbbc8ad5a6": {
+            "type": "footer_menu",
+            "settings": {
+              "title": "About",
+              "icon": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><svg id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"60\" height=\"60\" viewbox=\"0 0 60 60\"><circle cx=\"30\" cy=\"30\" r=\"24\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"30\" cy=\"17.5\" r=\"2.5\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"2.5\"><\/circle><rect x=\"27.5\" y=\"25\" width=\"5\" height=\"20\" rx=\".88\" ry=\".88\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.5\"><\/rect><\/svg>",
+              "menu": "footer"
+            }
+          },
+          "718b84d0-236f-4b37-afa2-d6711207078b": {
+            "type": "footer_menu",
+            "settings": {
+              "title": "Learn",
+              "icon": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><svg id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"60\" height=\"60\" viewbox=\"0 0 60 60\"><circle cx=\"29.07\" cy=\"29.01\" r=\"8.9\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"48.32\" cy=\"48.45\" r=\"6.43\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"49.34\" cy=\"10.44\" r=\"5.44\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"9.67\" cy=\"42.07\" r=\"4.45\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"17.74\" cy=\"11.79\" r=\"3.12\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"25.69\" cy=\"51.54\" r=\"3.46\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><line x1=\"21.82\" y1=\"33.89\" x2=\"13.08\" y2=\"39.77\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"19.12\" y1=\"13.96\" x2=\"24.17\" y2=\"21.9\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"27.76\" y1=\"37.76\" x2=\"26.15\" y2=\"48.49\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"43.97\" y1=\"44.07\" x2=\"35.22\" y2=\"35.23\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"35.52\" y1=\"23.11\" x2=\"45.55\" y2=\"13.91\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><\/svg>",
+              "menu": "footer"
+            }
+          },
+          "5353e685-970f-4571-8518-8525f11b0b9c": {
+            "type": "content_block",
+            "settings": {
+              "title": "MyCALECIM® Rewards Club",
+              "desc": "Enjoy generous discount vouchers",
+              "url": "#one",
+              "image_desktop": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg"
+            }
+          },
+          "c1f4141c-4bac-4877-8960-1ae9aef73864": {
+            "type": "content_block",
+            "settings": {
+              "title": "MyCALECIM® Rewards Club",
+              "desc": "Enjoy generous discount vouchers",
+              "url": "#two",
+              "image_desktop": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg"
+            }
+          },
+          "20c80c13-57bb-45b2-9fc8-9ac085a4f146": {
+            "type": "content_block",
+            "settings": {
+              "title": "MyCALECIM® Rewards Club",
+              "desc": "Enjoy generous discount vouchers",
+              "url": "#three",
+              "image_desktop": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "3f7f0d7d-6151-4528-9904-b42253a21c85",
+          "b9cc265a-d0c5-4bd2-9ede-8c518f8f52e2",
+          "a6525dd3-402d-4b95-b38d-11fbbc8ad5a6",
+          "718b84d0-236f-4b37-afa2-d6711207078b",
+          "5353e685-970f-4571-8518-8525f11b0b9c",
+          "c1f4141c-4bac-4877-8960-1ae9aef73864",
+          "20c80c13-57bb-45b2-9fc8-9ac085a4f146"
+        ],
+        "settings": {
+          "footer_bg": "#f5f5f5",
+          "git_title": "Get in touch",
+          "git_desc": "Drop us an email at info@calecim.com, alternatively, here are some useful links:",
+          "git_link_label_1": "FREQUENT QUESTIONS",
+          "git_link_url_1": "#one",
+          "git_link_icon_1": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"13.301\" height=\"13.3\" viewbox=\"0 0 13.301 13.3\"><path d=\"M13.8,3H4.2A1.2,1.2,0,0,0,3,4.2V15l2.4-2.4h8.4A1.2,1.2,0,0,0,15,11.4V4.2A1.2,1.2,0,0,0,13.8,3Z\" transform=\"translate(-2.35 -2.35)\" fill=\"none\" stroke=\"#000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.3\"><\/path><\/svg>",
+          "git_link_label_2": "CONTACT US",
+          "git_link_url_2": "#two",
+          "git_link_icon_2": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"14.297\" height=\"14.297\" viewbox=\"0 0 14.297 14.297\"><g transform=\"translate(0.65 0.65)\"><path d=\"M4.5,15.331V11a6.5,6.5,0,1,1,13,0v4.332\" transform=\"translate(-4.5 -4.5)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.3\"><\/path><path d=\"M17.5,24.61a1.444,1.444,0,0,1-1.444,1.444h-.722a1.444,1.444,0,0,1-1.444-1.444V22.444A1.444,1.444,0,0,1,15.331,21H17.5Zm-13,0a1.444,1.444,0,0,0,1.444,1.444h.722A1.444,1.444,0,0,0,8.11,24.61V22.444A1.444,1.444,0,0,0,6.666,21H4.5Z\" transform=\"translate(-4.5 -13.057)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.3\"><\/path><\/g><\/svg>",
+          "git_link_label_3": "NEWSLETTER SIGN UP",
+          "git_link_url_3": "#mailing-popup",
+          "git_link_icon_3": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"17.809\" height=\"14.1\" viewbox=\"0 0 17.809 14.1\"><g transform=\"translate(-2.096 -5.35)\"><path d=\"M4.6,6H17.4A1.6,1.6,0,0,1,19,7.6v9.6a1.6,1.6,0,0,1-1.6,1.6H4.6A1.6,1.6,0,0,1,3,17.2V7.6A1.6,1.6,0,0,1,4.6,6Z\" fill=\"none\" stroke=\"#000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.3\"><\/path><path d=\"M19,9l-8,5.6L3,9\" transform=\"translate(0 -1.4)\" fill=\"none\" stroke=\"#000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.3\"><\/path><\/g><\/svg>",
+          "git_link_label_4": "",
+          "git_link_url_4": "",
+          "git_link_icon_4": "",
+          "git_link_label_5": "",
+          "git_link_url_5": "",
+          "git_link_icon_5": "",
+          "footer_linklist_title1": "About",
+          "footer_linklist1": "footer",
+          "footer_linklist_title2": "Learn",
+          "footer_linklist2": "",
+          "footer_linklist_title3": "Support",
+          "footer_linklist3": "",
+          "footer_terms_menu": "mobile"
+        }
+      },
+      "typography-header": {
+        "type": "typography-header",
+        "blocks": {
+          "1578884049209": {
+            "type": "style",
+            "settings": {
+              "h1_rte": true,
+              "h2_rte": false,
+              "h3_rte": false,
+              "h4_rte": false,
+              "h5_rte": false,
+              "h6_rte": false,
+              "title": 1,
+              "family": "1",
+              "uppercase": true,
+              "capitalize": false,
+              "font-weight": "600",
+              "mobile-size": "50",
+              "mobile-height": "0.9",
+              "mobile-spacing": "0",
+              "tablet-size": "60",
+              "tablet-height": "0.9",
+              "tablet-spacing": "0",
+              "desktop-size": "72",
+              "desktop-height": "0.9",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "90",
+              "point1-height": "0.9",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "100",
+              "point2-height": "0.9",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "1578884121323": {
+            "type": "style",
+            "settings": {
+              "h1_rte": false,
+              "h2_rte": true,
+              "h3_rte": false,
+              "h4_rte": false,
+              "h5_rte": false,
+              "h6_rte": false,
+              "title": 2,
+              "family": "1",
+              "uppercase": true,
+              "capitalize": false,
+              "font-weight": "600",
+              "mobile-size": "42",
+              "mobile-height": "0.9",
+              "mobile-spacing": "0",
+              "tablet-size": "50",
+              "tablet-height": "0.9",
+              "tablet-spacing": "0",
+              "desktop-size": "60",
+              "desktop-height": "0.9",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "70",
+              "point1-height": "0.9",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "80",
+              "point2-height": "0.9",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "1578884222160": {
+            "type": "style",
+            "settings": {
+              "h1_rte": false,
+              "h2_rte": false,
+              "h3_rte": true,
+              "h4_rte": false,
+              "h5_rte": false,
+              "h6_rte": false,
+              "title": 3,
+              "family": "1",
+              "uppercase": true,
+              "capitalize": false,
+              "font-weight": "600",
+              "mobile-size": "30",
+              "mobile-height": "1",
+              "mobile-spacing": "0",
+              "tablet-size": "36",
+              "tablet-height": "1",
+              "tablet-spacing": "0",
+              "desktop-size": "42",
+              "desktop-height": "1",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "50",
+              "point1-height": "1",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "60",
+              "point2-height": "1",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "1578884292735": {
+            "type": "style",
+            "settings": {
+              "h1_rte": false,
+              "h2_rte": false,
+              "h3_rte": false,
+              "h4_rte": true,
+              "h5_rte": false,
+              "h6_rte": false,
+              "title": 4,
+              "family": "1",
+              "uppercase": false,
+              "capitalize": false,
+              "font-weight": "600",
+              "mobile-size": "24",
+              "mobile-height": "1",
+              "mobile-spacing": "0",
+              "tablet-size": "26",
+              "tablet-height": "1",
+              "tablet-spacing": "0",
+              "desktop-size": "28",
+              "desktop-height": "1",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "30",
+              "point1-height": "1",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "32",
+              "point2-height": "1",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "1578884347251": {
+            "type": "style",
+            "settings": {
+              "h1_rte": false,
+              "h2_rte": false,
+              "h3_rte": false,
+              "h4_rte": false,
+              "h5_rte": true,
+              "h6_rte": false,
+              "title": 5,
+              "family": "1",
+              "uppercase": false,
+              "capitalize": false,
+              "font-weight": "600",
+              "mobile-size": "20",
+              "mobile-height": "1",
+              "mobile-spacing": "0",
+              "tablet-size": "20",
+              "tablet-height": "1",
+              "tablet-spacing": "0",
+              "desktop-size": "22",
+              "desktop-height": "1",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "24",
+              "point1-height": "1",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "28",
+              "point2-height": "1",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "1578884374263": {
+            "type": "style",
+            "settings": {
+              "h1_rte": false,
+              "h2_rte": false,
+              "h3_rte": false,
+              "h4_rte": false,
+              "h5_rte": false,
+              "h6_rte": true,
+              "title": 6,
+              "family": "1",
+              "uppercase": false,
+              "capitalize": false,
+              "font-weight": "600",
+              "mobile-size": "12",
+              "mobile-height": "1.3",
+              "mobile-spacing": "0",
+              "tablet-size": "12",
+              "tablet-height": "1.3",
+              "tablet-spacing": "0",
+              "desktop-size": "13",
+              "desktop-height": "1.3",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "14",
+              "point1-height": "1.3",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "16",
+              "point2-height": "1.3",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "06a983c1-0da7-43e3-bb61-958ffb65292b": {
+            "type": "style",
+            "settings": {
+              "h1_rte": false,
+              "h2_rte": false,
+              "h3_rte": false,
+              "h4_rte": false,
+              "h5_rte": false,
+              "h6_rte": false,
+              "title": 7,
+              "family": "3",
+              "uppercase": false,
+              "capitalize": false,
+              "font-weight": "",
+              "mobile-size": "28",
+              "mobile-height": "1.2",
+              "mobile-spacing": "0",
+              "tablet-size": "34",
+              "tablet-height": "1.2",
+              "tablet-spacing": "0",
+              "desktop-size": "42",
+              "desktop-height": "1.2",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "50",
+              "point1-height": "1.2",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "54",
+              "point2-height": "1.2",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "9a471767-58b8-4ee4-ae44-c259d9842776": {
+            "type": "style",
+            "settings": {
+              "h1_rte": false,
+              "h2_rte": false,
+              "h3_rte": false,
+              "h4_rte": false,
+              "h5_rte": false,
+              "h6_rte": false,
+              "title": 8,
+              "family": "3",
+              "uppercase": false,
+              "capitalize": false,
+              "font-weight": "400",
+              "mobile-size": "24",
+              "mobile-height": "1.2",
+              "mobile-spacing": "0",
+              "tablet-size": "26",
+              "tablet-height": "1.2",
+              "tablet-spacing": "0",
+              "desktop-size": "28",
+              "desktop-height": "1.2",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "30",
+              "point1-height": "1.2",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "34",
+              "point2-height": "1.2",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "b142e3b2-2b0f-45ce-870e-8eec5addc865": {
+            "type": "style",
+            "settings": {
+              "h1_rte": false,
+              "h2_rte": false,
+              "h3_rte": false,
+              "h4_rte": false,
+              "h5_rte": false,
+              "h6_rte": false,
+              "title": 9,
+              "family": "1",
+              "uppercase": false,
+              "capitalize": false,
+              "font-weight": "400",
+              "mobile-size": "22",
+              "mobile-height": "1.1",
+              "mobile-spacing": "-0.3",
+              "tablet-size": "22",
+              "tablet-height": "1.1",
+              "tablet-spacing": "-0.3",
+              "desktop-size": "25",
+              "desktop-height": "1.1",
+              "desktop-spacing": "-1",
+              "point1-width": "1400",
+              "point1-size": "33",
+              "point1-height": "1.1",
+              "point1-spacing": "-1",
+              "point2-width": "",
+              "point2-size": "",
+              "point2-height": "",
+              "point2-spacing": "",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "24ff6d12-7d6c-40b0-b1da-a91d8077a5fc": {
+            "type": "style",
+            "settings": {
+              "h1_rte": false,
+              "h2_rte": false,
+              "h3_rte": false,
+              "h4_rte": false,
+              "h5_rte": false,
+              "h6_rte": false,
+              "title": 10,
+              "family": "2",
+              "uppercase": true,
+              "capitalize": false,
+              "font-weight": "600",
+              "mobile-size": "15",
+              "mobile-height": "1.2",
+              "mobile-spacing": "-1",
+              "tablet-size": "16",
+              "tablet-height": "",
+              "tablet-spacing": "",
+              "desktop-size": "18",
+              "desktop-height": "",
+              "desktop-spacing": "",
+              "point1-width": "1400",
+              "point1-size": "28",
+              "point1-height": "",
+              "point1-spacing": "",
+              "point2-width": "",
+              "point2-size": "",
+              "point2-height": "",
+              "point2-spacing": "",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "b01a608f-dd83-4b67-b1bd-f0e67b8709b4": {
+            "type": "style",
+            "settings": {
+              "h1_rte": false,
+              "h2_rte": false,
+              "h3_rte": false,
+              "h4_rte": false,
+              "h5_rte": false,
+              "h6_rte": false,
+              "title": 11,
+              "family": "2",
+              "uppercase": false,
+              "capitalize": false,
+              "font-weight": "600",
+              "mobile-size": "13",
+              "mobile-height": "1.4",
+              "mobile-spacing": "0.75",
+              "tablet-size": "13",
+              "tablet-height": "1.4",
+              "tablet-spacing": "",
+              "desktop-size": "13",
+              "desktop-height": "1.4",
+              "desktop-spacing": "",
+              "point1-width": "1400",
+              "point1-size": "15",
+              "point1-height": "1.4",
+              "point1-spacing": "",
+              "point2-width": "",
+              "point2-size": "",
+              "point2-height": "",
+              "point2-spacing": "",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          }
+        },
+        "block_order": [
+          "1578884049209",
+          "1578884121323",
+          "1578884222160",
+          "1578884292735",
+          "1578884347251",
+          "1578884374263",
+          "06a983c1-0da7-43e3-bb61-958ffb65292b",
+          "9a471767-58b8-4ee4-ae44-c259d9842776",
+          "b142e3b2-2b0f-45ce-870e-8eec5addc865",
+          "24ff6d12-7d6c-40b0-b1da-a91d8077a5fc",
+          "b01a608f-dd83-4b67-b1bd-f0e67b8709b4"
+        ],
+        "settings": {
+          "font1": "'GT America Condensed'",
+          "font2": "'GT America'",
+          "font3": "'Tiempos Fine'",
+          "custom": ""
+        }
+      },
+      "typography-body": {
+        "type": "typography-body",
+        "blocks": {
+          "1578884459572": {
+            "type": "style",
+            "settings": {
+              "default": true,
+              "title": 1,
+              "family": "2",
+              "uppercase": false,
+              "capitalize": false,
+              "font-weight": "300",
+              "mobile-size": "16",
+              "mobile-height": "1.3",
+              "mobile-spacing": "0",
+              "tablet-size": "18",
+              "tablet-height": "",
+              "tablet-spacing": "",
+              "desktop-size": "17",
+              "desktop-height": "1.3",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "20",
+              "point1-height": "1.3",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "22",
+              "point2-height": "1.3",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "1578884476482": {
+            "type": "style",
+            "settings": {
+              "default": true,
+              "title": 2,
+              "family": "1",
+              "uppercase": false,
+              "capitalize": false,
+              "font-weight": "300",
+              "mobile-size": "15.5",
+              "mobile-height": "1.5",
+              "mobile-spacing": "0",
+              "tablet-size": "16",
+              "tablet-height": "1.5",
+              "tablet-spacing": "0",
+              "desktop-size": "16",
+              "desktop-height": "1.5",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "16",
+              "point1-height": "1.5",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "18",
+              "point2-height": "1.5",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "1578884495044": {
+            "type": "style",
+            "settings": {
+              "default": false,
+              "title": 3,
+              "family": "1",
+              "uppercase": false,
+              "capitalize": false,
+              "font-weight": "300",
+              "mobile-size": "14",
+              "mobile-height": "1.3",
+              "mobile-spacing": "0",
+              "tablet-size": "14",
+              "tablet-height": "1.3",
+              "tablet-spacing": "0",
+              "desktop-size": "14",
+              "desktop-height": "1.3",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "14",
+              "point1-height": "1.3",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "16",
+              "point2-height": "1.3",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "6624dd54-e8b7-44a4-acde-2587e4776503": {
+            "type": "style",
+            "settings": {
+              "default": false,
+              "title": 4,
+              "family": "1",
+              "uppercase": false,
+              "capitalize": false,
+              "font-weight": "300",
+              "mobile-size": "12",
+              "mobile-height": "1.2",
+              "mobile-spacing": "0",
+              "tablet-size": "12",
+              "tablet-height": "1.2",
+              "tablet-spacing": "0",
+              "desktop-size": "12",
+              "desktop-height": "1.2",
+              "desktop-spacing": "0",
+              "point1-width": "1400",
+              "point1-size": "12",
+              "point1-height": "1.2",
+              "point1-spacing": "0",
+              "point2-width": "1800",
+              "point2-size": "13",
+              "point2-height": "1.2",
+              "point2-spacing": "0",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          },
+          "5e32fcd0-fdde-425c-9c7d-4baf85b827b7": {
+            "type": "style",
+            "settings": {
+              "default": false,
+              "title": 5,
+              "family": "1",
+              "uppercase": true,
+              "capitalize": false,
+              "font-weight": "500",
+              "mobile-size": "10",
+              "mobile-height": "1.1",
+              "mobile-spacing": "0.5",
+              "tablet-size": "10",
+              "tablet-height": "1.1",
+              "tablet-spacing": "0.5",
+              "desktop-size": "10",
+              "desktop-height": "1.1",
+              "desktop-spacing": "0.5",
+              "point1-width": "1400",
+              "point1-size": "10",
+              "point1-height": "1.1",
+              "point1-spacing": "0.5",
+              "point2-width": "1800",
+              "point2-size": "11",
+              "point2-height": "1.1",
+              "point2-spacing": "0.5",
+              "point3-width": "",
+              "point3-size": "",
+              "point3-height": "",
+              "point3-spacing": ""
+            }
+          }
+        },
+        "block_order": [
+          "1578884459572",
+          "1578884476482",
+          "1578884495044",
+          "6624dd54-e8b7-44a4-acde-2587e4776503",
+          "5e32fcd0-fdde-425c-9c7d-4baf85b827b7"
+        ],
+        "settings": {
+          "font1": "'GT America'",
+          "font2": "'Tiempos Fine'",
+          "font3": "",
+          "custom": ""
+        }
+      },
+      "colors": {
+        "type": "colors",
+        "blocks": {
+          "1572059294444": {
+            "type": "colour",
+            "settings": {
+              "default": true,
+              "title": "black",
+              "color": "#231d1d"
+            }
+          },
+          "1572059826607": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "darkgrey",
+              "color": "#9c9699"
+            }
+          },
+          "3f3efbab-6ed0-400b-85b1-ebcf77e813ee": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "border",
+              "color": "#e7e7e7"
+            }
+          },
+          "1576741439369": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "lightgrey",
+              "color": "#f5f5f5"
+            }
+          },
+          "1572059452563": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "white",
+              "color": "#ffffff"
+            }
+          },
+          "1576741314904": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "darkgreen",
+              "color": "#5eb98d"
+            }
+          },
+          "1580369986349": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "midgreen",
+              "color": "#81c8a6"
+            }
+          },
+          "fb61e750-d65e-408d-9552-a0d4164df380": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "green",
+              "color": "#93d0b3"
+            }
+          },
+          "acf10c01-850b-4c51-9b3e-21d33d2bef04": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "lightgreen",
+              "color": "#c8e7d9"
+            }
+          },
+          "02d20b8c-c028-43fa-adaa-de604ea67270": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "pale50",
+              "color": "#e4f3ec"
+            }
+          },
+          "3a91ba85-9463-42d7-be3a-01a5ad88cbee": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "pale30",
+              "color": "#eef8f4"
+            }
+          },
+          "7c19ccf2-dd85-4e92-abbf-31bbfe913d6b": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "pale20",
+              "color": "#f4faf8"
+            }
+          },
+          "d239dba2-6510-4e1d-8d20-e72e0e529c2b": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "silver",
+              "color": "#dbdbdb"
+            }
+          },
+          "fd36ca63-3cd4-42bc-9e10-68a7e56ef5c1": {
+            "type": "colour",
+            "settings": {
+              "default": false,
+              "title": "darkborder",
+              "color": "#231d1d"
+            }
+          }
+        },
+        "block_order": [
+          "1572059294444",
+          "1572059826607",
+          "3f3efbab-6ed0-400b-85b1-ebcf77e813ee",
+          "1576741439369",
+          "1572059452563",
+          "1576741314904",
+          "1580369986349",
+          "fb61e750-d65e-408d-9552-a0d4164df380",
+          "acf10c01-850b-4c51-9b3e-21d33d2bef04",
+          "02d20b8c-c028-43fa-adaa-de604ea67270",
+          "3a91ba85-9463-42d7-be3a-01a5ad88cbee",
+          "7c19ccf2-dd85-4e92-abbf-31bbfe913d6b",
+          "d239dba2-6510-4e1d-8d20-e72e0e529c2b",
+          "fd36ca63-3cd4-42bc-9e10-68a7e56ef5c1"
+        ],
+        "settings": {}
+      },
+      "buttons": {
+        "type": "buttons",
+        "blocks": {
+          "1572062051230": {
+            "type": "style",
+            "settings": {
+              "title": 1,
+              "family": "1",
+              "uppercase": false,
+              "letter-spacing": "0",
+              "font-weight": "",
+              "padding-top": 15,
+              "padding-bottom": 15,
+              "padding-left": 20,
+              "padding-right": 20,
+              "border-top": 1,
+              "border-bottom": 1,
+              "border-left": 1,
+              "border-right": 1,
+              "border-radius": 25,
+              "color": "#231d1d",
+              "background-color": "rgba(0,0,0,0)",
+              "border-color": "#231d1d",
+              "hover-color": "#231d1d",
+              "hover-background-color": "rgba(0,0,0,0)",
+              "hover-border-color": "#231d1d",
+              "mobile-size": "13",
+              "mobile-height": "1.2",
+              "tablet-size": "13",
+              "tablet-height": "1.2",
+              "desktop-size": "14",
+              "desktop-height": "1.2"
+            }
+          },
+          "1576744544318": {
+            "type": "style",
+            "settings": {
+              "title": 2,
+              "family": "1",
+              "uppercase": false,
+              "letter-spacing": "0",
+              "font-weight": "",
+              "padding-top": 15,
+              "padding-bottom": 15,
+              "padding-left": 20,
+              "padding-right": 20,
+              "border-top": 1,
+              "border-bottom": 1,
+              "border-left": 1,
+              "border-right": 1,
+              "border-radius": 25,
+              "color": "#ffffff",
+              "background-color": "#231d1d",
+              "border-color": "#231d1d",
+              "hover-color": "#ffffff",
+              "hover-background-color": "#231d1d",
+              "hover-border-color": "#231d1d",
+              "mobile-size": "13",
+              "mobile-height": "1.2",
+              "tablet-size": "13",
+              "tablet-height": "1.2",
+              "desktop-size": "14",
+              "desktop-height": "1.2"
+            }
+          },
+          "1576745099237": {
+            "type": "style",
+            "settings": {
+              "title": 3,
+              "family": "1",
+              "uppercase": false,
+              "letter-spacing": "0",
+              "font-weight": "",
+              "padding-top": 15,
+              "padding-bottom": 15,
+              "padding-left": 20,
+              "padding-right": 20,
+              "border-top": 0,
+              "border-bottom": 0,
+              "border-left": 0,
+              "border-right": 0,
+              "border-radius": 25,
+              "color": "#231d1d",
+              "background-color": "#ffffff",
+              "border-color": "#ffffff",
+              "hover-color": "#231d1d",
+              "hover-background-color": "#ffffff",
+              "hover-border-color": "#ffffff",
+              "mobile-size": "13",
+              "mobile-height": "1.2",
+              "tablet-size": "13",
+              "tablet-height": "1.2",
+              "desktop-size": "14",
+              "desktop-height": "1.2"
+            }
+          },
+          "c91d811d-e58c-47ef-9fb2-365961f2203f": {
+            "type": "style",
+            "settings": {
+              "title": 4,
+              "family": "1",
+              "uppercase": true,
+              "letter-spacing": "",
+              "font-weight": "500",
+              "padding-top": 16,
+              "padding-bottom": 16,
+              "padding-left": 50,
+              "padding-right": 50,
+              "border-top": 0,
+              "border-bottom": 0,
+              "border-left": 0,
+              "border-right": 0,
+              "border-radius": 26,
+              "color": "#ffffff",
+              "background-color": "#231d1d",
+              "border-color": "#231d1d",
+              "hover-color": "#ffffff",
+              "hover-background-color": "#231d1d",
+              "hover-border-color": "#231d1d",
+              "mobile-size": "15",
+              "mobile-height": "1.4",
+              "tablet-size": "15",
+              "tablet-height": "1.4",
+              "desktop-size": "16",
+              "desktop-height": "1.4"
+            }
+          },
+          "031853ad-ec27-4a47-bdcb-c3ac8d5571c6": {
+            "type": "style",
+            "settings": {
+              "title": 5,
+              "family": "1",
+              "uppercase": true,
+              "letter-spacing": "0",
+              "font-weight": "500",
+              "padding-top": 14,
+              "padding-bottom": 14,
+              "padding-left": 50,
+              "padding-right": 50,
+              "border-top": 0,
+              "border-bottom": 0,
+              "border-left": 0,
+              "border-right": 0,
+              "border-radius": 26,
+              "color": "#ffffff",
+              "background-color": "#231d1d",
+              "border-color": "#231d1d",
+              "hover-color": "#ffffff",
+              "hover-background-color": "#231d1d",
+              "hover-border-color": "#231d1d",
+              "mobile-size": "13",
+              "mobile-height": "1.2",
+              "tablet-size": "13",
+              "tablet-height": "1.2",
+              "desktop-size": "14",
+              "desktop-height": "1.2"
+            }
+          },
+          "2cfe782e-9ae8-4a55-9616-08a4fc3e8f0e": {
+            "type": "style",
+            "settings": {
+              "title": 6,
+              "family": "1",
+              "uppercase": true,
+              "letter-spacing": "0",
+              "font-weight": "500",
+              "padding-top": 8,
+              "padding-bottom": 8,
+              "padding-left": 20,
+              "padding-right": 20,
+              "border-top": 0,
+              "border-bottom": 0,
+              "border-left": 0,
+              "border-right": 0,
+              "border-radius": 25,
+              "color": "#ffffff",
+              "background-color": "#231d1d",
+              "border-color": "#231d1d",
+              "hover-color": "#ffffff",
+              "hover-background-color": "#231d1d",
+              "hover-border-color": "#231d1d",
+              "mobile-size": "12",
+              "mobile-height": "1.2",
+              "tablet-size": "12",
+              "tablet-height": "1.2",
+              "desktop-size": "12",
+              "desktop-height": "1.2"
+            }
+          },
+          "92731957-1433-4bb6-ab34-0ae8df4e6282": {
+            "type": "style",
+            "settings": {
+              "title": 7,
+              "family": "1",
+              "uppercase": true,
+              "letter-spacing": "0",
+              "font-weight": "500",
+              "padding-top": 8,
+              "padding-bottom": 8,
+              "padding-left": 20,
+              "padding-right": 20,
+              "border-top": 1,
+              "border-bottom": 1,
+              "border-left": 1,
+              "border-right": 1,
+              "border-radius": 25,
+              "color": "#231d1d",
+              "background-color": "",
+              "border-color": "#231d1d",
+              "hover-color": "#231d1d",
+              "hover-background-color": "",
+              "hover-border-color": "#231d1d",
+              "mobile-size": "12",
+              "mobile-height": "1.2",
+              "tablet-size": "12",
+              "tablet-height": "1.2",
+              "desktop-size": "12",
+              "desktop-height": "1.2"
+            }
+          }
+        },
+        "block_order": [
+          "1572062051230",
+          "1576744544318",
+          "1576745099237",
+          "c91d811d-e58c-47ef-9fb2-365961f2203f",
+          "031853ad-ec27-4a47-bdcb-c3ac8d5571c6",
+          "2cfe782e-9ae8-4a55-9616-08a4fc3e8f0e",
+          "92731957-1433-4bb6-ab34-0ae8df4e6282"
+        ],
+        "settings": {
+          "font1": "'GT America'",
+          "font2": "",
+          "font3": "",
+          "animation": "all 0.3s linear"
+        }
+      },
+      "links": {
+        "type": "links",
+        "blocks": {
+          "1572091054136": {
+            "type": "style",
+            "settings": {
+              "title": 1,
+              "family": "1",
+              "uppercase": false,
+              "letter-spacing": "0",
+              "font-weight": "",
+              "padding-top": 0,
+              "padding-bottom": 2,
+              "padding-left": 0,
+              "padding-right": 0,
+              "border-top": 0,
+              "border-bottom": 1,
+              "border-left": 0,
+              "border-right": 0,
+              "color": "#231d1d",
+              "background-color": "rgba(0,0,0,0)",
+              "border-color": "#231d1d",
+              "hover-color": "#231d1d",
+              "hover-background-color": "",
+              "hover-border-color": "#231d1d",
+              "mobile-size": "15",
+              "mobile-height": "1.4",
+              "tablet-size": "15",
+              "tablet-height": "1.4",
+              "desktop-size": "16",
+              "desktop-height": "1.4"
+            }
+          },
+          "1576744835517": {
+            "type": "style",
+            "settings": {
+              "title": 2,
+              "family": "1",
+              "uppercase": false,
+              "letter-spacing": "0",
+              "font-weight": "",
+              "padding-top": 0,
+              "padding-bottom": 2,
+              "padding-left": 0,
+              "padding-right": 0,
+              "border-top": 0,
+              "border-bottom": 1,
+              "border-left": 0,
+              "border-right": 0,
+              "color": "#231d1d",
+              "background-color": "",
+              "border-color": "#231d1d",
+              "hover-color": "#231d1d",
+              "hover-background-color": "",
+              "hover-border-color": "#231d1d",
+              "mobile-size": "13",
+              "mobile-height": "1.3",
+              "tablet-size": "13",
+              "tablet-height": "1.3",
+              "desktop-size": "14",
+              "desktop-height": "1.3"
+            }
+          },
+          "6ab6f8e4-2c59-44ef-80e6-68838a2448e9": {
+            "type": "style",
+            "settings": {
+              "title": 3,
+              "family": "1",
+              "uppercase": false,
+              "letter-spacing": "0",
+              "font-weight": "",
+              "padding-top": 0,
+              "padding-bottom": 0,
+              "padding-left": 0,
+              "padding-right": 0,
+              "border-top": 0,
+              "border-bottom": 0,
+              "border-left": 0,
+              "border-right": 0,
+              "color": "#231d1d",
+              "background-color": "",
+              "border-color": "",
+              "hover-color": "#231d1d",
+              "hover-background-color": "",
+              "hover-border-color": "",
+              "mobile-size": "13",
+              "mobile-height": "1.2",
+              "tablet-size": "13",
+              "tablet-height": "1.2",
+              "desktop-size": "14",
+              "desktop-height": "1.2"
+            }
+          }
+        },
+        "block_order": [
+          "1572091054136",
+          "1576744835517",
+          "6ab6f8e4-2c59-44ef-80e6-68838a2448e9"
+        ],
+        "settings": {
+          "font1": "'GT America'",
+          "font2": "",
+          "font3": "",
+          "animation": "all 1s linear"
+        }
+      },
+      "footer-privacy": {
+        "type": "footer-privacy",
+        "settings": {
+          "enabled": false,
+          "text": "I understand the terms and conditions",
+          "understand": "I agree",
+          "more": "Read More",
+          "more_url": "shopify:\/\/pages\/faq"
+        }
+      },
+      "redirect": {
+        "type": "redirect",
+        "settings": {
+          "enable": false,
+          "api": ""
+        }
+      },
+      "password-content": {
+        "type": "password-content",
+        "settings": {
+          "title": "",
+          "text": "",
+          "password": true
+        }
+      },
+      "breadcrumbs": {
+        "type": "breadcrumbs",
+        "blocks": {
+          "2c3851bf-ebb3-4693-b1ab-bc9239a06d81": {
+            "type": "text",
+            "settings": {
+              "text": "Home",
+              "url": "\/"
+            }
+          },
+          "93977b9f-24ac-48ca-a213-a68e96d9e622": {
+            "type": "text",
+            "settings": {
+              "text": "Collections",
+              "url": "shopify:\/\/collections"
+            }
+          }
+        },
+        "block_order": [
+          "2c3851bf-ebb3-4693-b1ab-bc9239a06d81",
+          "93977b9f-24ac-48ca-a213-a68e96d9e622"
+        ],
+        "settings": {
+          "bg_color": "#ffffff",
+          "first_text": "",
+          "first_url": ""
+        }
+      },
+      "752a217b-4b01-40bf-8f51-7b543171adf6": {
+        "type": "homepage-banner",
+        "blocks": {
+          "d36d0420-cab1-43cd-aee2-9c0049d03255": {
+            "type": "entry",
+            "settings": {
+              "text_color": "#231d1d",
+              "text_position": "center_left",
+              "text_position_mobile": "bottom_left",
+              "tag": "",
+              "title": "The Future of Beauty",
+              "title_size": "h1",
+              "title_dom_type": "h1",
+              "max_width": 500,
+              "text": "Activate cellular regeneration with our science-backed innovations.",
+              "button_label": "Discover CALECIM®️ Skincare and Hair Range",
+              "button_url": "",
+              "button_type": "btn2",
+              "desktop_image": "shopify:\/\/shop_images\/01Homepage-Main_Banner-desktop-2740x1540_8ba5d8bd-0fc8-4f27-a57f-50909fa235bc.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/01Homepage-Banner-mobile-750x1340_121aabe0-cee3-466a-b6ba-128332c49b10.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "d36d0420-cab1-43cd-aee2-9c0049d03255"
+        ],
+        "settings": {
+          "enable_autoslide": false,
+          "enable_arrows": true,
+          "arrow_position": "left",
+          "enable_dots": false,
+          "delay_autoslide": 30000,
+          "mobile_overlay": false
+        }
+      },
+      "color-swatch": {
+        "type": "color-swatch",
+        "blocks": {
+          "e5dde8c7-d0ee-4a86-aa1d-29b36b5d82d1": {
+            "type": "text",
+            "settings": {
+              "title": "10k white gold",
+              "background_color": "#eaebec"
+            }
+          },
+          "031c09f7-d6b2-4774-ad04-147432c2d5dc": {
+            "type": "text",
+            "settings": {
+              "title": "18K White & Rose Gold",
+              "background_color": "#eebaa4"
+            }
+          },
+          "3aeda238-9a49-4a2a-936c-70f96f8dd830": {
+            "type": "text",
+            "settings": {
+              "title": "Rose Gold",
+              "background_color": "#eebaa4"
+            }
+          },
+          "9d2de9b9-6bad-46a9-8289-185442ec55c1": {
+            "type": "text",
+            "settings": {
+              "title": "White Gold",
+              "background_color": "#eaebec"
+            }
+          }
+        },
+        "block_order": [
+          "e5dde8c7-d0ee-4a86-aa1d-29b36b5d82d1",
+          "031c09f7-d6b2-4774-ad04-147432c2d5dc",
+          "3aeda238-9a49-4a2a-936c-70f96f8dd830",
+          "9d2de9b9-6bad-46a9-8289-185442ec55c1"
+        ],
+        "settings": {
+          "custom_css": ""
+        }
+      },
+      "size-guide": {
+        "type": "size-guide",
+        "blocks": {
+          "9c9f2418-380f-484a-ae48-93643bf9a7f4": {
+            "type": "bottom_entry",
+            "settings": {
+              "title": "MEASURE YOUR RING SIZE WITH A PIECE OF PAPER",
+              "content": "Find a strip of paper that is at least 10cm long.\nWrap it around your finger.\nUse a pen or maker to mark the point where the end meet.\nLay the paper on the ruler and annotate the measurement in millimetre (mm).\nUse the table below to discover your ring size."
+            }
+          },
+          "037c7dd1-d7f1-439c-94b5-fd17ab720e41": {
+            "type": "bottom_entry",
+            "settings": {
+              "title": "MEASURE YOUR CURRENT RING",
+              "content": "Select a ring that properly fits the intended finger.\nPlace the ring over the circles below, matching the inside edge of the ring to the circle nearest in size. This measurement refers to the inside diameter of the ring.\nIf the ring falls between two sizes, order the larger size."
+            }
+          }
+        },
+        "block_order": [
+          "9c9f2418-380f-484a-ae48-93643bf9a7f4",
+          "037c7dd1-d7f1-439c-94b5-fd17ab720e41"
+        ],
+        "settings": {
+          "bottom_bg_color": "#f4faf8",
+          "bottom_title": "Determine Your Ring Size",
+          "bottom_link_label": "DOWNLOAD SIZING TOOL",
+          "bottom_link_url": "#sizing"
+        }
+      },
+      "search-main-banner": {
+        "type": "search-main-banner",
+        "settings": {
+          "section_bg": "",
+          "section_title": "",
+          "top_padding_m": "",
+          "bottom_padding_m": "",
+          "top_padding_t": "",
+          "bottom_padding_t": "",
+          "top_padding": "",
+          "bottom_padding": ""
+        }
+      },
+      "search-template-boost-pfs-filter": {
+        "type": "search-template-boost-pfs-filter",
+        "settings": {
+          "cta_1_enable": false,
+          "cta_1_small_title": "",
+          "cta_1_title": "",
+          "cta_1_button_label": "",
+          "cta_1_button_url": "",
+          "cta_2_enable": false,
+          "cta_2_bg_color": "",
+          "cta_2_text_color": "",
+          "cta_2_title": "",
+          "cta_2_link_url": "",
+          "top_padding_m": "40",
+          "bottom_padding_m": "40",
+          "top_padding_t": "60",
+          "bottom_padding_t": "60",
+          "top_padding": "80",
+          "bottom_padding": "80"
+        }
+      },
+      "wishlist-heading": {
+        "type": "wishlist-heading",
+        "settings": {
+          "background": "",
+          "top_padding_m": "40",
+          "bottom_padding_m": "40",
+          "top_padding_t": "60",
+          "bottom_padding_t": "30",
+          "top_padding": "80",
+          "bottom_padding": "30",
+          "title": "WISHLIST",
+          "text": "Share your wishlist or drop a hint to someone",
+          "text_no_login": "<p><a href=\"\/account\/\" title=\"\/account\/\">Create an account<\/a> or <a href=\"\/account\/\" title=\"\/account\/\">sign in<\/a> to save your wishlist.<\/p>",
+          "empty_title": "Your wishlist is <i>empty<\/i>",
+          "empty_button_label": "BACK",
+          "empty_button_url": "shopify:\/\/collections\/frontpage"
+        }
+      },
+      "wishlist-products": {
+        "type": "wishlist-products",
+        "settings": {}
+      },
+      "15c68135-fd34-49e0-b094-f9689fe63322": {
+        "type": "homepage-logos",
+        "blocks": {
+          "2e820e50-1748-4294-b59c-e7c0c8181ff7": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_The_Straits_Times_-desktop-360x140.png"
+            }
+          },
+          "85b66ffe-161b-41ce-9640-c2f594d0ecdd": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Vogue_-desktop-360x140.png"
+            }
+          },
+          "7ca98454-14e1-403a-8ec6-12cd85eaba8f": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Tatler_-desktop-360x140.png"
+            }
+          },
+          "2a4ff6c4-ecad-4cd7-aa7f-370df4ed0a25": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Bazaar_-desktop-360x140.png"
+            }
+          },
+          "26b8493a-180c-4779-8f2d-ffa5760254fb": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_The_Telegraph_-desktop-360x140.png"
+            }
+          },
+          "8a270714-d94e-4a7d-a89f-0a88df2b537c": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_DAILYMAIL_-desktop-360x140.png"
+            }
+          },
+          "b4e326c9-1928-47d2-b233-259809d0eb7b": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Financial_Times_-desktop-360x140.png"
+            }
+          },
+          "e8e30a2e-2482-4c2d-803d-c53f3a1aa9f4": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_The_Straits_Times_-desktop-360x140.png"
+            }
+          },
+          "545dab15-d750-4163-aa63-432d97226b49": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Vogue_-desktop-360x140.png"
+            }
+          },
+          "2c1758ea-c6c9-44aa-b233-12cd12c57963": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Tatler_-desktop-360x140.png"
+            }
+          },
+          "99c00f62-23ac-4009-8718-271a759934f8": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Bazaar_-desktop-360x140.png"
+            }
+          },
+          "2c057bc5-dbea-457e-b680-07730b753447": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_The_Telegraph_-desktop-360x140.png"
+            }
+          },
+          "e561dd60-9c31-443a-a22f-225d581e492b": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_DAILYMAIL_-desktop-360x140.png"
+            }
+          },
+          "7ed802d4-81df-47f5-a1f1-0e55530011d4": {
+            "type": "entry",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Financial_Times_-desktop-360x140.png"
+            }
+          }
+        },
+        "block_order": [
+          "2e820e50-1748-4294-b59c-e7c0c8181ff7",
+          "85b66ffe-161b-41ce-9640-c2f594d0ecdd",
+          "7ca98454-14e1-403a-8ec6-12cd85eaba8f",
+          "2a4ff6c4-ecad-4cd7-aa7f-370df4ed0a25",
+          "26b8493a-180c-4779-8f2d-ffa5760254fb",
+          "8a270714-d94e-4a7d-a89f-0a88df2b537c",
+          "b4e326c9-1928-47d2-b233-259809d0eb7b",
+          "e8e30a2e-2482-4c2d-803d-c53f3a1aa9f4",
+          "545dab15-d750-4163-aa63-432d97226b49",
+          "2c1758ea-c6c9-44aa-b233-12cd12c57963",
+          "99c00f62-23ac-4009-8718-271a759934f8",
+          "2c057bc5-dbea-457e-b680-07730b753447",
+          "e561dd60-9c31-443a-a22f-225d581e492b",
+          "7ed802d4-81df-47f5-a1f1-0e55530011d4"
+        ],
+        "settings": {}
+      },
+      "dd9e77a4-ba9a-4503-92ae-d59d29c8b280": {
+        "type": "homepage-banner",
+        "blocks": {
+          "911fbf9e-a5c2-4643-b5eb-ec1031f3c842": {
+            "type": "entry",
+            "settings": {
+              "text_color": "#231d1d",
+              "text_position": "top_left",
+              "text_position_mobile": "bottom_left",
+              "tag": "Save 30%",
+              "title": "Create your own Power Bundle",
+              "title_size": "h2",
+              "title_dom_type": "h2",
+              "max_width": 570,
+              "text": "Design your everyday skincare routine with our online exclusive",
+              "button_label": "Shop now",
+              "button_url": "",
+              "button_type": "btn2",
+              "desktop_image": "shopify:\/\/shop_images\/05Homepage-Featured_Banner-desktop-2740x1200.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/05Homepage-Featured_Banner-mobile-750x850.jpg"
+            }
+          },
+          "c330e128-83ac-4acd-bc51-9d2e8a9d28e1": {
+            "type": "entry",
+            "disabled": true,
+            "settings": {
+              "text_color": "#231d1d",
+              "text_position": "top_left",
+              "text_position_mobile": "bottom_left",
+              "tag": "",
+              "title": "SEASON BUNDLES WITH ALL OUR BESTSELLER",
+              "title_size": "h2",
+              "title_dom_type": "h2",
+              "max_width": 570,
+              "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.",
+              "button_label": "Shop Now",
+              "button_url": "",
+              "button_type": "btn2",
+              "desktop_image": "shopify:\/\/shop_images\/05Homepage-Featured_Banner-desktop-2740x1200.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/05Homepage-Featured_Banner-mobile-750x850.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "911fbf9e-a5c2-4643-b5eb-ec1031f3c842",
+          "c330e128-83ac-4acd-bc51-9d2e8a9d28e1"
+        ],
+        "settings": {
+          "enable_autoslide": false,
+          "enable_arrows": true,
+          "arrow_position": "right",
+          "enable_dots": false,
+          "delay_autoslide": 5000,
+          "mobile_overlay": false
+        }
+      },
+      "b1ee52f8-7c2a-4d10-901b-15450c039147": {
+        "type": "homepage-most-wanted",
+        "settings": {
+          "title": "BESTSELLERS",
+          "title_class": "h3",
+          "action_label": "Shop all",
+          "action_url": "",
+          "action_class": "btn1",
+          "number_of_product": 20,
+          "product_list": [
+            "professional-serum-sg",
+            "advanced-hair-system",
+            "multi-action-cream",
+            "restorative-hydration-cream",
+            "professional-pigment-solution-pre-order-kit",
+            "recovery-night-complex"
+          ],
+          "top_padding_m": "40",
+          "bottom_padding_m": "40",
+          "top_padding_t": "50",
+          "bottom_padding_t": "50",
+          "top_padding": "70",
+          "bottom_padding": "70"
+        }
+      },
+      "ae98ef5b-7809-4ccb-8025-660dbb7b3ffb": {
+        "type": "homepage-icons",
+        "blocks": {
+          "4297da05-3b3c-4e59-a00b-d5d865b4fcf5": {
+            "type": "entry",
+            "settings": {
+              "icon_svg": "",
+              "icon_image": "shopify:\/\/shop_images\/07Homepage-USPIcons01-desktop-300x300.png",
+              "title": "Created by Scientists",
+              "text": "Formulated in our laboratories and driven by 20 years of stem cell research, now available for at-home treatments",
+              "link_label_1": "Our Science",
+              "link_url_1": "",
+              "link_label_2": "",
+              "link_url_2": ""
+            }
+          },
+          "a34dbb80-887a-4e39-a075-34843cc08ce3": {
+            "type": "entry",
+            "settings": {
+              "icon_svg": "",
+              "icon_image": "shopify:\/\/shop_images\/07Homepage-USPIcons02-desktop-300x300.png",
+              "title": "Trusted by Doctors",
+              "text": "Used in hundreds of clinics around the world to support patient results and recovery",
+              "link_label_1": "Hear from doctors",
+              "link_url_1": "",
+              "link_label_2": "",
+              "link_url_2": ""
+            }
+          },
+          "8a2e942a-4451-4ae6-9204-1820af03dd5c": {
+            "type": "entry",
+            "settings": {
+              "icon_svg": "",
+              "icon_image": "shopify:\/\/shop_images\/07Homepage-USPIcons03-desktop-300x300.png",
+              "title": "Validated by Results",
+              "text": "Robust clinical data by medical professionals make up the core of our brand. This is why we know CALECIM® works",
+              "link_label_1": "Hair results",
+              "link_url_1": "",
+              "link_label_2": "Skin results",
+              "link_url_2": ""
+            }
+          }
+        },
+        "block_order": [
+          "4297da05-3b3c-4e59-a00b-d5d865b4fcf5",
+          "a34dbb80-887a-4e39-a075-34843cc08ce3",
+          "8a2e942a-4451-4ae6-9204-1820af03dd5c"
+        ],
+        "settings": {
+          "bg_color": "#f5f5f5",
+          "title_text_color": "#231d1d",
+          "body_text_color": "#9c9699",
+          "top_padding_m": "40",
+          "bottom_padding_m": "40",
+          "top_padding_t": "60",
+          "bottom_padding_t": "60",
+          "top_padding": "80",
+          "bottom_padding": "80"
+        }
+      },
+      "e2548d6d-e8ba-47bf-8efd-026f24b2cf67": {
+        "type": "cta-image-text-icons",
+        "blocks": {
+          "b2fd4965-986a-4bec-8ee1-a600c15c052a": {
+            "type": "entry",
+            "settings": {
+              "bg_color": "#f5f5f5",
+              "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+              "title": "Free worldwide delivery"
+            }
+          },
+          "c9418250-cccb-4d37-b727-3219123dfa85": {
+            "type": "entry",
+            "settings": {
+              "bg_color": "#f5f5f5",
+              "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+              "title": "20% off our products"
+            }
+          },
+          "2619e01f-ef11-4f9e-ac81-5b49ce022d2d": {
+            "type": "entry",
+            "settings": {
+              "bg_color": "#f5f5f5",
+              "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+              "title": "Cancel or adjust your plan anytime"
+            }
+          },
+          "b6edc841-2c6a-4af2-a1c8-9347b3c7d8e2": {
+            "type": "entry",
+            "settings": {
+              "bg_color": "#f5f5f5",
+              "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+              "title": "Earn CALECIM® Coins on orders"
+            }
+          }
+        },
+        "block_order": [
+          "b2fd4965-986a-4bec-8ee1-a600c15c052a",
+          "c9418250-cccb-4d37-b727-3219123dfa85",
+          "2619e01f-ef11-4f9e-ac81-5b49ce022d2d",
+          "b6edc841-2c6a-4af2-a1c8-9347b3c7d8e2"
+        ],
+        "settings": {
+          "section_width": "container",
+          "background_color": "",
+          "content_max_width": 500,
+          "small_title": "",
+          "title": "NEVER RUN OUT",
+          "text": "With MyCALECIM® Auto-Replenish, watch your favorite products show up at your door automatically and save up to 20%. Customize your experience - receive what you need, when you need it, no more or no less.",
+          "text_align": "tl",
+          "link_label": "",
+          "link_url": "",
+          "button_label": "Subscribe now",
+          "button_url": "",
+          "button_color": "",
+          "button_background": "",
+          "button_border": "",
+          "button_color_hover": "",
+          "button_background_hover": "",
+          "button_border_hover": "",
+          "desktop_image": "shopify:\/\/shop_images\/08Homepage-Subscription01-desktop-1200x1200.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/08Homepage-Subscription01-desktop-1200x1200.jpg",
+          "image_position": "row-reverse",
+          "image_position_mobile": "image-first",
+          "tag": "SUBSCRIBE & SAVE UP TO 20%!",
+          "top_padding_m": "40",
+          "bottom_padding_m": "40",
+          "top_padding_t": "60",
+          "bottom_padding_t": "60",
+          "top_padding": "80",
+          "bottom_padding": "80"
+        }
+      },
+      "4c4e8cc6-4bd6-4621-8ee8-86db91a96f63": {
+        "type": "homepage-image-text-counter",
+        "blocks": {
+          "29b9832a-1a13-44e0-9e12-3eb22b4359f6": {
+            "type": "entry",
+            "settings": {
+              "counter": "56%",
+              "title": "increase in elastin production",
+              "url": ""
+            }
+          },
+          "ab3ec5f8-2e3d-4a8f-b6e9-5b1982df0fbe": {
+            "type": "entry",
+            "settings": {
+              "counter": "83%",
+              "title": "increase in hyaluronic acid production",
+              "url": ""
+            }
+          },
+          "73da42fc-11d4-4cc1-a91e-a87271eda58e": {
+            "type": "entry",
+            "settings": {
+              "counter": "24%",
+              "title": "increase in hair follicle cell production",
+              "url": ""
+            }
+          },
+          "819d6e74-89d3-4a47-9da4-698eb9461e7e": {
+            "type": "entry",
+            "settings": {
+              "counter": "30x",
+              "title": "decrease in scalp inflammation",
+              "url": ""
+            }
+          }
+        },
+        "block_order": [
+          "29b9832a-1a13-44e0-9e12-3eb22b4359f6",
+          "ab3ec5f8-2e3d-4a8f-b6e9-5b1982df0fbe",
+          "73da42fc-11d4-4cc1-a91e-a87271eda58e",
+          "819d6e74-89d3-4a47-9da4-698eb9461e7e"
+        ],
+        "settings": {
+          "section_width": "",
+          "bg_color": "#f5f5f5",
+          "c_max_width": 400,
+          "title": "What is PTT-6<sup>®<\/sup>",
+          "text": "PTT-6<sup>®<\/sup> harnesses the body’s natural mechanisms of regeneration. It contains over 3,000 proteins, including growth factors, cytokines, and exosomes that signal cells to regenerate.",
+          "text_align": "center",
+          "link_label": "Learn more",
+          "link_url": "#",
+          "desktop_image": "shopify:\/\/shop_images\/03Homepage-_What_Ptt-6_is_01-desktop-1370x1540.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/03Homepage-_What_Ptt-6_is_01-mobile-750x500.jpg",
+          "image_position": "left"
+        }
+      },
+      "c98b0845-daac-4325-8add-b639a7afab36": {
+        "type": "homepage-testimonial-carousel",
+        "blocks": {
+          "6c312a1e-8c5f-4481-8eb5-8bce827517b6": {
+            "type": "entry",
+            "settings": {
+              "title": "“CALECIM® delivers a revolutionary new approach, integrating the healing and regenerative\nbenefits of the most powerful exosomes and growth factors into a cosmeceutical line.”",
+              "author": "Dr. Mitchel Goldman",
+              "occupation": "Double board-certified Dermatologist and pioneer in growth factor skincare"
+            }
+          }
+        },
+        "block_order": [
+          "6c312a1e-8c5f-4481-8eb5-8bce827517b6"
+        ],
+        "settings": {
+          "section_width": "",
+          "bg_color": "",
+          "c_max_width": 500,
+          "title_size": "h8",
+          "small_title": "TRUSTED BY DOCTORS",
+          "text_align": "center",
+          "link_label": "Research paper",
+          "link_url": "#",
+          "desktop_image": "shopify:\/\/shop_images\/04Homepage-_Doctors_Quote-desktop-1370x1540.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/04Homepage-_Doctors_Quote-mobile-750x500.jpg",
+          "image_position": "right"
+        }
+      },
+      "c88d6782-d939-42c2-a96e-4db0794a3bd2": {
+        "type": "homepage-featured-articles",
+        "blocks": {
+          "80169aaa-9d03-4195-8304-9605332ec87d": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/an-evening-with-calecim-dermoi-at-brown-s-hotel-in-london"
+            }
+          },
+          "2ba9bdde-c469-4984-b945-93b3759b15a9": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/reduce-inflammation-for-gorgeous-hair"
+            }
+          },
+          "415aad1f-debf-4385-af07-8144974f9074": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/what-we-mean-by-clean-beauty"
+            }
+          },
+          "758e11a8-0550-4050-98d1-aa595ccfffcf": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/putting-the-snap-back-in-your-skin"
+            }
+          },
+          "2029be98-6ddd-4554-8a18-5ac2e82f0f8e": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/how-seasonal-changes-affect-skin"
+            }
+          },
+          "84c67d01-647f-4837-8e17-a4f253946b34": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/i-tried-the-new-wonder-serum-for-thinning-hair"
+            }
+          },
+          "bc579009-04f5-49f9-b7b8-1a073d90459d": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/how-wound-healing-technology-can-fight-skin-aging-too-get-more-stories"
+            }
+          },
+          "1b7f5a9a-479a-4db4-9d16-08c860be91de": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/5-essential-building-blocks-to-healthy-skin"
+            }
+          },
+          "9867e5dd-97ad-4cbd-97c3-9fd45e08b08a": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/2023-forecast-stem-cell-growth-factors"
+            }
+          },
+          "8ed8e094-0a9d-4091-a0ad-d455e9967326": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/covid-19-induced-scalp-alopecia"
+            }
+          },
+          "58db7c66-944a-4b33-8adf-c1f5f8a0bc7d": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/2023-forecast-stem-cell-growth-factors"
+            }
+          }
+        },
+        "block_order": [
+          "80169aaa-9d03-4195-8304-9605332ec87d",
+          "2ba9bdde-c469-4984-b945-93b3759b15a9",
+          "415aad1f-debf-4385-af07-8144974f9074",
+          "758e11a8-0550-4050-98d1-aa595ccfffcf",
+          "2029be98-6ddd-4554-8a18-5ac2e82f0f8e",
+          "84c67d01-647f-4837-8e17-a4f253946b34",
+          "bc579009-04f5-49f9-b7b8-1a073d90459d",
+          "1b7f5a9a-479a-4db4-9d16-08c860be91de",
+          "9867e5dd-97ad-4cbd-97c3-9fd45e08b08a",
+          "8ed8e094-0a9d-4091-a0ad-d455e9967326",
+          "58db7c66-944a-4b33-8adf-c1f5f8a0bc7d"
+        ],
+        "settings": {
+          "bg_color": "#f5f5f5",
+          "top_padding_m": "",
+          "bottom_padding_m": "",
+          "top_padding_t": "",
+          "bottom_padding_t": "",
+          "top_padding": "90",
+          "bottom_padding": "90"
+        }
+      },
+      "4629242c-0d8a-4a79-ac15-893b197e7322": {
+        "type": "homepage-community",
+        "blocks": {
+          "339590a5-88f2-45c5-9be0-db94001dbc83": {
+            "type": "entry",
+            "settings": {
+              "title": "“Immediately after a few days of using my skin seemed much firmer and clearer.”",
+              "author": "@tales.ofskincare",
+              "url": "#a",
+              "image": "shopify:\/\/shop_images\/11Homepage-Social_Media_Posts01-desktop-800x800.jpg"
+            }
+          },
+          "df5be96e-fcf9-4355-8434-d5f24cc286bb": {
+            "type": "entry",
+            "settings": {
+              "title": "“Immediately after a few days of using my skin seemed much firmer and clearer. #2”",
+              "author": "@tales.ofskincare#2",
+              "url": "#b",
+              "image": "shopify:\/\/shop_images\/11Homepage-Social_Media_Posts02-desktop-800x800.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "339590a5-88f2-45c5-9be0-db94001dbc83",
+          "df5be96e-fcf9-4355-8434-d5f24cc286bb"
+        ],
+        "settings": {
+          "title": "CALECIM \nCOMMUNITY",
+          "top_padding_m": 40,
+          "top_padding_t": 60,
+          "top_padding": 0
+        }
+      },
+      "b813ffc6-b3ed-4127-8af2-ffc17ecf3d02": {
+        "type": "cta-image-text",
+        "settings": {
+          "section_width": "container",
+          "background_color": "",
+          "advanced_background_color": "",
+          "content_max_width": 530,
+          "title": "We do what other brands can't",
+          "small_text": "",
+          "title_size": "h3",
+          "title_dom_type": "h2",
+          "text": "Rejuvenate from within: PTT-6® activates cellular regeneration by signaling cells to increase turnover and stimulate the natural production of collagen, elastin and hyaluronic acid.\n\nScientific research has shown that PTT-6® penetrates to the deepest layers of the skin to help reduce fine lines and wrinkles and improves skin elasticity and healing. It also helps re-invigorate hair follicles, encouraging healthy regrowth.\n\nYour body knows how to be youthful. CALECIM® gives it the nudge it needs. Skip the miracles. Embrace the future of beauty.",
+          "enable_read_more": false,
+          "text_align": "tl",
+          "link_label": "Learn More",
+          "link_url": "#learn",
+          "link_label_2": "",
+          "link_url_2": "",
+          "button_label": "",
+          "button_url": "#",
+          "button_color": "#fafafa",
+          "button_background": "#231d1d",
+          "button_color_hover": "#231d1d",
+          "button_background_hover": "#ffffff",
+          "desktop_image": "shopify:\/\/shop_images\/06Homepage-What_makes_us_different-desktop-1200x1200.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/06Homepage-What_makes_us_different-desktop-1200x1200.jpg",
+          "image_position": "row",
+          "image_position_mobile": "follow-desktop",
+          "top_padding_m": "40",
+          "bottom_padding_m": "40",
+          "top_padding_t": "60",
+          "bottom_padding_t": "60",
+          "top_padding": "80",
+          "bottom_padding": "80"
+        }
+      },
+      "f474dc74-997b-4786-b954-ac4bce4bd851": {
+        "type": "cta-image-text-icons",
+        "blocks": {
+          "fca59802-cfaa-46cc-b158-f113425e763d": {
+            "type": "entry",
+            "settings": {
+              "bg_color": "#f5f5f5",
+              "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+              "title": "Full-size products available for free"
+            }
+          },
+          "de928b4e-9e4e-47e7-9b93-33045d8bca99": {
+            "type": "entry",
+            "settings": {
+              "bg_color": "#f5f5f5",
+              "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+              "title": "Enjoy generous discount vouchers"
+            }
+          },
+          "f46b1fa7-035f-443a-be38-8c8ea2ac079b": {
+            "type": "entry",
+            "settings": {
+              "bg_color": "#f5f5f5",
+              "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+              "title": "Try the full range of products on us"
+            }
+          },
+          "85ba0d64-94b1-44c6-8236-e9de023b2c13": {
+            "type": "entry",
+            "settings": {
+              "bg_color": "#f5f5f5",
+              "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+              "title": "Product sampling programmes"
+            }
+          },
+          "791b53b1-b0bb-4f7f-aecf-812ea24e8811": {
+            "type": "entry",
+            "settings": {
+              "bg_color": "#f5f5f5",
+              "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+              "title": "Join exclusive online events"
+            }
+          },
+          "c1caf570-5acc-40f2-b6d2-0143a91aa49f": {
+            "type": "entry",
+            "settings": {
+              "bg_color": "#f5f5f5",
+              "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+              "title": "Be rewarded for referring a friend"
+            }
+          }
+        },
+        "block_order": [
+          "fca59802-cfaa-46cc-b158-f113425e763d",
+          "de928b4e-9e4e-47e7-9b93-33045d8bca99",
+          "f46b1fa7-035f-443a-be38-8c8ea2ac079b",
+          "85ba0d64-94b1-44c6-8236-e9de023b2c13",
+          "791b53b1-b0bb-4f7f-aecf-812ea24e8811",
+          "c1caf570-5acc-40f2-b6d2-0143a91aa49f"
+        ],
+        "settings": {
+          "section_width": "container",
+          "background_color": "",
+          "content_max_width": 500,
+          "small_title": "",
+          "title": "MEMBER BENEFITS",
+          "text": "Join MyCALECIM® Rewards Club now and treat yourself to full-size products, generous discounts, exclusive launch promos and more",
+          "text_align": "tl",
+          "link_label": "",
+          "link_url": "",
+          "button_label": "Join now",
+          "button_url": "",
+          "button_color": "",
+          "button_background": "",
+          "button_border": "",
+          "button_color_hover": "",
+          "button_background_hover": "",
+          "button_border_hover": "",
+          "desktop_image": "shopify:\/\/shop_images\/06Homepage-What_makes_us_different-desktop-1200x1200_4d8c25b1-1c5b-4744-8999-7393c78b20c2.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/06Homepage-What_makes_us_different-desktop-1200x1200_4d8c25b1-1c5b-4744-8999-7393c78b20c2.jpg",
+          "image_position": "row",
+          "image_position_mobile": "image-first",
+          "tag": "",
+          "top_padding_m": "",
+          "bottom_padding_m": "40",
+          "top_padding_t": "",
+          "bottom_padding_t": "60",
+          "top_padding": "",
+          "bottom_padding": "80"
+        }
+      },
+      "collection-magazine": {
+        "type": "collection-magazine",
+        "blocks": {
+          "5c9a595b-ffbe-412c-97b9-72856c7beb85": {
+            "type": "entry",
+            "settings": {
+              "article": "blog\/what-we-mean-by-clean-beauty"
+            }
+          },
+          "59edf3a8-e4d0-4589-ab43-91ae3ca78876": {
+            "type": "entry",
+            "settings": {
+              "article": ""
+            }
+          },
+          "422f1f1a-d9e9-4453-8aab-1f8300c766bf": {
+            "type": "entry",
+            "settings": {
+              "article": ""
+            }
+          },
+          "01a105bf-4737-4bf4-bd65-b10714251c00": {
+            "type": "entry",
+            "settings": {
+              "article": ""
+            }
+          },
+          "5228e85a-9009-4c30-831e-af71f5fb6674": {
+            "type": "entry",
+            "settings": {
+              "article": ""
+            }
+          }
+        },
+        "block_order": [
+          "5c9a595b-ffbe-412c-97b9-72856c7beb85",
+          "59edf3a8-e4d0-4589-ab43-91ae3ca78876",
+          "422f1f1a-d9e9-4453-8aab-1f8300c766bf",
+          "01a105bf-4737-4bf4-bd65-b10714251c00",
+          "5228e85a-9009-4c30-831e-af71f5fb6674"
+        ],
+        "settings": {
+          "title": "",
+          "title_class": "h3",
+          "button_label": "",
+          "button_url": "",
+          "button_class": "btn1",
+          "top_padding_m": "",
+          "bottom_padding_m": "",
+          "top_padding_t": "",
+          "bottom_padding_t": "",
+          "top_padding": "",
+          "bottom_padding": ""
+        }
+      },
+      "faq-page-title": {
+        "type": "faq-page-title",
+        "settings": {
+          "background_color": "#f5f5f5",
+          "title": "FREQUENTLY ASKED QUESTIONS",
+          "title_size": "h2",
+          "title_dom_type": "h2",
+          "title_color": "",
+          "text": "",
+          "small_text": "",
+          "body_copy_color": "",
+          "top_padding_m": "90",
+          "bottom_padding_m": "40",
+          "top_padding_t": "110",
+          "bottom_padding_t": "60",
+          "top_padding": "130",
+          "bottom_padding": "80"
+        }
+      },
+      "faq-navigation": {
+        "type": "faq-navigation",
+        "blocks": {
+          "7102e9e5-e1be-4e78-987a-d29a4439e434": {
+            "type": "entry",
+            "settings": {
+              "title": "Our Products",
+              "section_id": "faq-1"
+            }
+          },
+          "d9098e6e-adf3-409f-870e-a543a23623ab": {
+            "type": "entry",
+            "settings": {
+              "title": "CALECIM® Rewards",
+              "section_id": "faq-2"
+            }
+          },
+          "4865b363-92e2-4265-a014-8c6a23e16582": {
+            "type": "entry",
+            "settings": {
+              "title": "Subscribe and Save",
+              "section_id": "faq-3"
+            }
+          },
+          "edc30e3a-ebb9-4626-8b76-51750178a23c": {
+            "type": "entry",
+            "settings": {
+              "title": "Orders and Shipping",
+              "section_id": "faq-4"
+            }
+          },
+          "c5b1f1f9-7cbd-45b9-b6cc-ec8e733f749b": {
+            "type": "entry",
+            "settings": {
+              "title": "Returns and Exchange",
+              "section_id": "faq-5"
+            }
+          }
+        },
+        "block_order": [
+          "7102e9e5-e1be-4e78-987a-d29a4439e434",
+          "d9098e6e-adf3-409f-870e-a543a23623ab",
+          "4865b363-92e2-4265-a014-8c6a23e16582",
+          "edc30e3a-ebb9-4626-8b76-51750178a23c",
+          "c5b1f1f9-7cbd-45b9-b6cc-ec8e733f749b"
+        ],
+        "settings": {}
+      },
+      "faq-content": {
+        "type": "faq-content",
+        "blocks": {
+          "4561c7c1-36bd-4469-9240-f2075d37ff97": {
+            "type": "qna",
+            "settings": {
+              "title": "Why is the Professional Serum pink?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "4142f717-7b61-4ae2-b314-659642bdc2c9": {
+            "type": "qna",
+            "settings": {
+              "title": "Why is there a smell to the Multi-Action Cream or Professional Serum?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "bba2ed3e-58ec-460f-af8d-bac5acd21944": {
+            "type": "qna",
+            "settings": {
+              "title": "Can I use CALECIM® Professional products if I have acne?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "7aed6711-3eb7-44a2-9bc1-e149df4d88e2": {
+            "type": "qna",
+            "settings": {
+              "title": "When can I start seeing results?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "824b85c9-360a-44be-ad2a-95d46cd59270": {
+            "type": "qna",
+            "settings": {
+              "title": "Why does my Multi-Action Cream or Professional Serum look and smell different from the last one?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "fd99488b-0207-4e3c-897d-da33204e337c": {
+            "type": "qna",
+            "settings": {
+              "title": "Can I use CALECIM® Professional products if I am breast-feeding or pregnant?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          }
+        },
+        "block_order": [
+          "4561c7c1-36bd-4469-9240-f2075d37ff97",
+          "4142f717-7b61-4ae2-b314-659642bdc2c9",
+          "bba2ed3e-58ec-460f-af8d-bac5acd21944",
+          "7aed6711-3eb7-44a2-9bc1-e149df4d88e2",
+          "824b85c9-360a-44be-ad2a-95d46cd59270",
+          "fd99488b-0207-4e3c-897d-da33204e337c"
+        ],
+        "settings": {
+          "enable_faq": true,
+          "id_faq": "faq-1",
+          "title": "Our Products"
+        }
+      },
+      "faq-content-2": {
+        "type": "faq-content-2",
+        "blocks": {
+          "5cc3f8c7-7be8-420d-a621-9745937ea106": {
+            "type": "qna",
+            "settings": {
+              "title": "How do I earn CALECIM® Coins?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "6d73c749-6ee3-4a6e-befe-98f2d7f2eea3": {
+            "type": "qna",
+            "settings": {
+              "title": "How does the redemption process work?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "2f1a96d5-bd52-4234-b2d8-933bd48132cd": {
+            "type": "qna",
+            "settings": {
+              "title": "How does the redemption process work?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "c4161ff8-ee61-4841-944e-d1f9f54c68ae": {
+            "type": "qna",
+            "settings": {
+              "title": "When will I receive my CALECIM® Coins?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "555a9dca-7c21-445a-9820-20e965594c57": {
+            "type": "qna",
+            "settings": {
+              "title": "Will my CALECIM® Coins expire?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "8e7cf326-85aa-4c64-9845-8a8c91d8fc92": {
+            "type": "qna",
+            "settings": {
+              "title": "Can my CALECIM® Coins be redeemed in clinics?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "34b42526-341a-4ee1-ad22-0ffd97969a76": {
+            "type": "qna",
+            "settings": {
+              "title": "Can I redeem multiple rewards at a time?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          }
+        },
+        "block_order": [
+          "5cc3f8c7-7be8-420d-a621-9745937ea106",
+          "6d73c749-6ee3-4a6e-befe-98f2d7f2eea3",
+          "2f1a96d5-bd52-4234-b2d8-933bd48132cd",
+          "c4161ff8-ee61-4841-944e-d1f9f54c68ae",
+          "555a9dca-7c21-445a-9820-20e965594c57",
+          "8e7cf326-85aa-4c64-9845-8a8c91d8fc92",
+          "34b42526-341a-4ee1-ad22-0ffd97969a76"
+        ],
+        "settings": {
+          "enable_faq": true,
+          "id_faq": "faq-2",
+          "title": "CALECIM® Rewards"
+        }
+      },
+      "faq-content-3": {
+        "type": "faq-content-3",
+        "blocks": {
+          "3470ae43-b700-44a2-ab82-6b1808ef1d9d": {
+            "type": "qna",
+            "settings": {
+              "title": "Why is the Professional Serum pink?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "b9d1d7ea-ed10-451f-a023-72c7530ad121": {
+            "type": "qna",
+            "settings": {
+              "title": "Why is there a smell to the Multi-Action Cream or Professional Serum?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "864ecd19-5f17-44c5-8dd8-888e7eb0d1a2": {
+            "type": "qna",
+            "settings": {
+              "title": "Can I use CALECIM® Professional products if I have acne?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "63ebfbce-427d-4322-8cc6-1bc3545b7dda": {
+            "type": "qna",
+            "settings": {
+              "title": "When can I start seeing results?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "70857c56-71ce-4dec-a50c-1cebce320a1d": {
+            "type": "qna",
+            "settings": {
+              "title": "Why does my Multi-Action Cream or Professional Serum look and smell different from the last one?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "b8a6f375-1eeb-44c9-aac8-52e4c98e1aad": {
+            "type": "qna",
+            "settings": {
+              "title": "Can I use CALECIM® Professional products if I am breast-feeding or pregnant?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          }
+        },
+        "block_order": [
+          "3470ae43-b700-44a2-ab82-6b1808ef1d9d",
+          "b9d1d7ea-ed10-451f-a023-72c7530ad121",
+          "864ecd19-5f17-44c5-8dd8-888e7eb0d1a2",
+          "63ebfbce-427d-4322-8cc6-1bc3545b7dda",
+          "70857c56-71ce-4dec-a50c-1cebce320a1d",
+          "b8a6f375-1eeb-44c9-aac8-52e4c98e1aad"
+        ],
+        "settings": {
+          "enable_faq": true,
+          "id_faq": "faq-3",
+          "title": "Subscribe and Save"
+        }
+      },
+      "faq-content-4": {
+        "type": "faq-content-4",
+        "blocks": {
+          "9e1c365b-dc02-473d-977c-9cf3c9bd0957": {
+            "type": "qna",
+            "settings": {
+              "title": "Why is the Professional Serum pink?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "bc553878-745a-49b3-a15a-f980cf325889": {
+            "type": "qna",
+            "settings": {
+              "title": "Why is there a smell to the Multi-Action Cream or Professional Serum?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "fe08940f-3524-43c0-b3a5-0b13a31ac4df": {
+            "type": "qna",
+            "settings": {
+              "title": "Can I use CALECIM® Professional products if I have acne?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "231e52de-df0b-4552-8c1e-25b0a4b25f5a": {
+            "type": "qna",
+            "settings": {
+              "title": "When can I start seeing results?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "71ef1a16-5a71-46c2-8c0e-2f3f7ba8d49c": {
+            "type": "qna",
+            "settings": {
+              "title": "Why does my Multi-Action Cream or Professional Serum look and smell different from the last one?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "213cbc45-0efe-4840-a2e0-6b3312536989": {
+            "type": "qna",
+            "settings": {
+              "title": "Can I use CALECIM® Professional products if I am breast-feeding or pregnant?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          }
+        },
+        "block_order": [
+          "9e1c365b-dc02-473d-977c-9cf3c9bd0957",
+          "bc553878-745a-49b3-a15a-f980cf325889",
+          "fe08940f-3524-43c0-b3a5-0b13a31ac4df",
+          "231e52de-df0b-4552-8c1e-25b0a4b25f5a",
+          "71ef1a16-5a71-46c2-8c0e-2f3f7ba8d49c",
+          "213cbc45-0efe-4840-a2e0-6b3312536989"
+        ],
+        "settings": {
+          "enable_faq": true,
+          "id_faq": "faq-4",
+          "title": "Orders and Shipping"
+        }
+      },
+      "faq-content-5": {
+        "type": "faq-content-5",
+        "blocks": {
+          "87ca39ee-de0c-4f2e-8a89-88c2c1d5b777": {
+            "type": "qna",
+            "settings": {
+              "title": "Why is the Professional Serum pink?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "28e8548d-fcb1-42b0-8dcb-956f8891ae0d": {
+            "type": "qna",
+            "settings": {
+              "title": "Why is there a smell to the Multi-Action Cream or Professional Serum?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "076bf2a2-b2e5-47ad-8665-82ed2ee08971": {
+            "type": "qna",
+            "settings": {
+              "title": "Can I use CALECIM® Professional products if I have acne?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "eb852797-5402-480b-9373-f8fe66345fbc": {
+            "type": "qna",
+            "settings": {
+              "title": "When can I start seeing results?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "83ea06c0-2edc-48aa-aeb1-5e38259c03bf": {
+            "type": "qna",
+            "settings": {
+              "title": "Why does my Multi-Action Cream or Professional Serum look and smell different from the last one?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          },
+          "c6eb1e10-94d3-4e79-88e4-2ff4222fc2bb": {
+            "type": "qna",
+            "settings": {
+              "title": "Can I use CALECIM® Professional products if I am breast-feeding or pregnant?",
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+            }
+          }
+        },
+        "block_order": [
+          "87ca39ee-de0c-4f2e-8a89-88c2c1d5b777",
+          "28e8548d-fcb1-42b0-8dcb-956f8891ae0d",
+          "076bf2a2-b2e5-47ad-8665-82ed2ee08971",
+          "eb852797-5402-480b-9373-f8fe66345fbc",
+          "83ea06c0-2edc-48aa-aeb1-5e38259c03bf",
+          "c6eb1e10-94d3-4e79-88e4-2ff4222fc2bb"
+        ],
+        "settings": {
+          "enable_faq": true,
+          "id_faq": "faq-5",
+          "title": "Returns and Exchange"
+        }
+      },
+      "faq-content-6": {
+        "type": "faq-content-6",
+        "settings": {
+          "enable_faq": false,
+          "id_faq": "",
+          "title": ""
+        }
+      },
+      "faq-content-7": {
+        "type": "faq-content-7",
+        "settings": {
+          "enable_faq": false,
+          "id_faq": "",
+          "title": ""
+        }
+      },
+      "faq-content-8": {
+        "type": "faq-content-8",
+        "settings": {
+          "enable_faq": false,
+          "id_faq": "",
+          "title": ""
+        }
+      },
+      "homepage-most-wanted": {
+        "type": "homepage-most-wanted",
+        "settings": {
+          "title": "BESTSELLERS",
+          "title_class": "h3",
+          "action_label": "Shop all",
+          "action_url": "",
+          "action_class": "btn1",
+          "number_of_product": 10,
+          "product_list": [
+            "advanced-hair-system-sg",
+            "multi-action-cream",
+            "professional-pigment-solution-pre-order-kit",
+            "professional-serum-sg",
+            "recovery-night-complex",
+            "restorative-hydration-cream",
+            "total-repair-kit"
+          ],
+          "top_padding_m": "40",
+          "bottom_padding_m": "40",
+          "top_padding_t": "50",
+          "bottom_padding_t": "50",
+          "top_padding": "70",
+          "bottom_padding": "70"
+        }
+      }
+    },
+    "content_for_index": [
+      "752a217b-4b01-40bf-8f51-7b543171adf6",
+      "15c68135-fd34-49e0-b094-f9689fe63322",
+      "b1ee52f8-7c2a-4d10-901b-15450c039147",
+      "4c4e8cc6-4bd6-4621-8ee8-86db91a96f63",
+      "c98b0845-daac-4325-8add-b639a7afab36",
+      "dd9e77a4-ba9a-4503-92ae-d59d29c8b280",
+      "b813ffc6-b3ed-4127-8af2-ffc17ecf3d02",
+      "ae98ef5b-7809-4ccb-8025-660dbb7b3ffb",
+      "e2548d6d-e8ba-47bf-8efd-026f24b2cf67",
+      "f474dc74-997b-4786-b954-ac4bce4bd851",
+      "c88d6782-d939-42c2-a96e-4db0794a3bd2",
+      "4629242c-0d8a-4a79-ac15-893b197e7322"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#788188",
+      "color_sale_text": "#7796A8",
+      "color_borders": "#e8e9eb",
+      "color_button": "#7796A8",
+      "color_button_text": "#fff",
+      "color_small_button": "#fff",
+      "color_small_button_text": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": 25,
+      "color_body_bg": "#fff",
+      "type_header_family": "Google_Work+Sans_600_sans",
+      "type_header_base_size": "26px",
+      "type_base_family": "Google_Work+Sans_400_sans",
+      "type_base_size": "16px",
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {}
+        }
+      },
+      "content_for_index": []
+    },
+    "Light": {
+      "color_text": "#162950",
+      "color_body_text": "#757575",
+      "color_sale_text": "#ff574f",
+      "color_borders": "#e4e4e4",
+      "color_button": "#ff574f",
+      "color_button_text": "#ffffff",
+      "color_small_button": "#eaeaea",
+      "color_small_button_text": "#162950",
+      "color_text_field": "#ffffff",
+      "color_text_field_text": "#162950",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#3d3d3d",
+      "image_overlay_opacity": 30,
+      "color_body_bg": "#f8f8f8",
+      "type_header_family": "Google_Muli_600_sans",
+      "type_header_base_size": "26px",
+      "type_base_family": "Google_Muli_600_sans",
+      "type_base_size": "18px",
+      "type_bold_product_titles": true,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#e8f3f6",
+      "checkout_heading_font": "Roboto",
+      "checkout_body_font": "Source Sans Pro",
+      "checkout_accent_color": "#1990c6",
+      "checkout_button_color": "#23314e",
+      "checkout_error_color": "#ff6d6d",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "main_linklist": "main-menu",
+            "message": true,
+            "color_bg": "#162950",
+            "color_text": "#ffffff"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {}
+        }
+      },
+      "content_for_index": []
+    }
+  }
+}

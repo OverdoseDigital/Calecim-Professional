@@ -1,0 +1,307 @@
+{% comment %} Calecim Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} .swiper-custom-arrow {
+        display: none;
+    }
+    #shopify-section-{{ section.id }} .swiper-custom-arrow.swiper-button-disabled {
+        opacity: 0;
+    }
+    #shopify-section-{{ section.id }} .swiper-custom-arrow.left{
+        left:10px;
+    }
+    #shopify-section-{{ section.id }} .swiper-custom-arrow.right{
+        right:10px;
+    }
+    #shopify-section-{{ section.id }} .swiper {
+        overflow: visible!important;
+        clip-path: inset(-100vw -100vw -100vw -100vw);
+    }
+    #shopify-section-{{ section.id }} .swiper-slide{
+        width: 75%;
+        flex: 0 0 75%;
+        padding: 0 7.5px;
+    }
+    #shopify-section-{{ section.id }} .carousel-wrapper{
+        margin: 0 -7.5px;
+    }
+    #shopify-section-{{ section.id }} .swiper-button,
+    #shopify-section-{{ section.id }} a.hide-m {
+        display:none;
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination{
+        top:unset;
+        bottom:0;
+        left:7.5px;
+        width:calc(100% - 15px);
+        height:2px;
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination-progressbar{
+        background:#E7E7E7;
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination-progressbar-fill{
+        background:#231D1D;
+    }
+
+    #shopify-section-{{ section.id }} .arrow-mobile {
+        font-size: 0;
+        width: 8px;
+        height: 8px;
+    }
+    #shopify-section-{{ section.id }} .arrow-mobile svg {
+        width: 8px;
+        height: 8px;
+    }
+
+    @media(min-width: 768px) {
+        #shopify-section-{{ section.id }} .swiper-slide{
+            width: 33.3333%;
+            flex: 0 0 33.3333%;
+        }
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .swiper {
+            overflow: hidden !important;
+        }
+        #shopify-section-{{ section.id }} .swiper-pagination{
+            left:10px;
+            width:calc(100% - 20px);
+        }
+        #shopify-section-{{ section.id }} a.show-d{
+            display:inline-block;
+        }
+        #shopify-section-{{ section.id }} a.hide-d{
+            display:none;
+        }
+        #shopify-section-{{ section.id }} .title-container{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:space-between;
+            align-items: center;
+        }
+        #shopify-section-{{ section.id }} .swiper-slide{
+            width: 25%;
+            flex: 0 0 25%;
+            padding: 0 10px;
+        }
+        #shopify-section-{{ section.id }} .carousel-wrapper{
+            margin: 0 -10px;
+        }
+        #shopify-section-{{ section.id }} .swiper-custom-arrow{
+            display: inline-flex;
+        }
+        #shopify-section-{{ section.id }} .swiper-custom-arrow.left{
+            left:30px;
+        }
+        #shopify-section-{{ section.id }} .swiper-custom-arrow.right{
+            right:30px;
+        }
+    }
+    @media(min-width: 1400px) {
+        #shopify-section-{{ section.id }} .swiper-slide{
+            width: 25%;
+            flex: 0 0 25%;
+            padding: 0 10px;
+        }
+    }
+</style>
+
+<section id="{{ section.id }}" class="homepage-most-wanted overflow">
+    <div class="container">
+        <div class="title-container">
+            <div class="{{section.settings.title_class}} global-flex ai-start">
+                {{section.settings.title}}
+
+                {%if section.settings.action_label != blank%}
+                    <a href="{{section.settings.action_url}}" class="hide-d show-m-inline-flex arrow-mobile ml-10 y3">
+                        {{ settings.icon_arrow_diagonal_up }}
+                    </a>
+                {%endif%}
+            </div>
+            {%if section.settings.action_label != blank%}
+                <a href="{{section.settings.action_url}}" class="{{section.settings.action_class}} hide-m show-d">{{section.settings.action_label}}<span class="ml-30" style="display:inline-flex;">{{settings.icon_btn_right}}</span></a>
+            {%endif%}
+        </div>
+        <div class="outer-wrapper mt-15 d-mt-30">
+            <div class="carousel-wrapper">
+                <div id="slider-{{ el_id }}" class="swiper swiper-container">
+                    <div class="swiper-wrapper pb-25 d-pb-30">
+                        {%- for product in section.settings.product_list limit: section.settings.number_of_product -%}
+                            <div class="swiper-slide">
+                                <div class="product-each-wrapper height-100">
+                                    {%- render 'product-each', product: product -%}
+                                </div>
+                            </div>
+                        {%- endfor -%}
+                    </div>
+
+                    <div class="swiper-custom-arrow left">{{ settings.icon_btn_left }}</div>
+                    <div class="swiper-custom-arrow right">{{ settings.icon_btn_right }}</div>
+                    <div class="swiper-pagination swiper-pagination-progressbar swiper-pagination-horizontal"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{%- assign function_name = el_id | replace: '-', '_' -%}
+{%- assign prefix = el_id | replace: '-', '_' | append: '_prefix' -%}
+<script>
+var {{ prefix }}Init= false;
+var {{ prefix }}Slider = Swiper;
+function sliderInit{{ function_name }}() {
+    const el_id = '#{{ el_id }}';
+    if(!{{ prefix }}Init) {
+        {{ prefix }}Init = true;
+        {{ prefix }}Slider = new Swiper('#slider-{{ el_id }}', {
+            {%if section.settings.enable_autoslide%}
+            autoplay: {
+                delay: {{section.settings.delay_autoslide}}
+            },
+            {%endif%}
+            slidesPerView: 'auto',
+            spaceBetween: 0,
+            loopedSlides: {{ section.blocks.size }},
+            loop: false,
+            preloadImages: false,
+            lazy: true,
+            centeredSlides: false,
+            pagination: {
+                el: "#slider-{{ el_id }} .swiper-pagination",
+                clickable: true,
+                type: "progressbar"
+            },
+            navigation: {
+                nextEl: '#slider-{{ el_id }} .swiper-custom-arrow.right',
+                prevEl: '#slider-{{ el_id }} .swiper-custom-arrow.left'
+            },
+            on: {
+                init: function() {
+                    $360.lazyLoadInstance.update();
+                },
+                slideChange: function() {
+                    $360.lazyLoadInstance.update();
+                },
+                resize: function() {
+                    $360.lazyLoadInstance.update();
+                }
+            }
+        });
+
+        //-- set arrow position
+        const image_height = document.querySelector('#slider-{{ el_id }}.swiper .global-image-wrapper').clientHeight;
+        const arrow_height = document.querySelector('#slider-{{ el_id }}.swiper .swiper-custom-arrow').clientHeight;
+        const arrows = document.querySelectorAll('#slider-{{ el_id }}.swiper .swiper-custom-arrow');
+        const top = (image_height-arrow_height)/2;
+        arrows.forEach(elem => {
+            elem.style.transform = 'unset';
+            elem.style.top = top + 'px';
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    sliderInit{{ function_name }}();
+    //window.addEventListener("resize", sliderInit{{ function_name }});
+});
+</script>
+
+{% schema %}
+    {
+        "name": "Homepage Most Wanted",
+        "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "radio",
+            "id": "title_class",
+            "label": "Title Class",
+            "options": [
+                {"value":"h3","label":"H3"},
+                {"value":"h4","label":"H4"},
+                {"value":"h5","label":"H5"}
+            ]
+        },
+        {
+            "type": "text",
+            "id": "action_label",
+            "label": "Action Label"
+        },
+        {
+            "type": "url",
+            "id": "action_url",
+            "label": "Action URL"
+        },
+        {
+            "type": "radio",
+            "id": "action_class",
+            "label": "Action Class",
+            "options": [
+                {"value":"btn1","label":"Button 1"},
+                {"value":"btn2","label":"Button 2"},
+                {"value":"btn3","label":"Button 3"},
+                {"value":"link1","label":"Link 1"},
+                {"value":"link2","label":"Link 2"},
+                {"value":"link3","label":"Link 3"}
+            ]
+        },
+        {
+            "type": "number",
+            "id": "number_of_product",
+            "label": "Product to show",
+            "default": 10
+        },
+        {
+            "type": "product_list",
+            "id": "product_list",
+            "label": "Products",
+            "limit": 20
+        },
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "presets": [
+        {
+            "name": "Homepage Most Wanted",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,480 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+
+<style>
+    #shopify-section-{{ section.id }} video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    #shopify-section-{{ section.id }} .main-video-wrapper .inner-wrapper {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        transform-origin: top left;
+    }
+    #shopify-section-{{ section.id }} .top-video-wrapper {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #shopify-section-{{ section.id }} .video-1 {
+        position: relative;
+        float: left;
+        margin-left: 25px;
+        width: 43%;
+        height: auto;
+        z-index: 1;
+    }
+    #shopify-section-{{ section.id }} .video-2 {
+        position: relative;
+        float: right;
+        margin-top: 40px;
+        margin-right: 25px;
+        width: 27%;
+        height: auto;
+        z-index: 1;
+    }
+    #shopify-section-{{ section.id }} .video-2 .video-container {
+        opacity: 0;
+    }
+    #shopify-section-{{ section.id }} .video-3 {
+        width: 100%;
+    }
+    #shopify-section-{{ section.id }} .arrow-icon {
+        position: fixed;
+        width: 20px;
+        height: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 30px;
+        z-index: 200;
+        font-size: 0;
+        transition: 0.3s ease all;
+    }
+    #shopify-section-{{ section.id }} .arrow-icon svg {
+        display: block;
+        width: 20px;
+        height: 10px;
+    }
+
+    @media screen and (min-width: 768px) {
+        #shopify-section-{{ section.id }} .video-1 {
+            margin-left: 30px;
+        }
+        #shopify-section-{{ section.id }} .video-2 {
+            margin-right: 30px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .title-container {
+            position: relative;
+            margin-top: -30px;
+            z-index: 2;
+        }
+
+        #shopify-section-{{ section.id }} .video-1 {
+            left: 40px;
+            top: 80px;
+            width: 27%;
+            margin: 0;
+        }
+        #shopify-section-{{ section.id }} .video-2 {
+            right: 40px;
+            top: 190px;
+            margin: 0;
+            width: 27%;
+        }
+        #shopify-section-{{ section.id }} .video-3 {
+            width: 40%;
+            transform: translateX(95%);
+        }
+    }
+</style>
+
+<section class="about-joyful-moments">
+    <a href="javascript:void(0)" @click="scrollToContent($event)" class="arrow-icon show-m hide-t">{{ settings.icon_accordion }}</a>
+    <div class="main-video-wrapper relative width-100">
+        <div class="inner-wrapper">
+            {%- assign video_type_desktop = '' -%}
+            {%- assign video_url_desktop = '' -%}
+            {%- for vid_source in section.settings.video_desktop.sources -%}
+                {%- if vid_source.mime_type == 'video/mp4' -%}
+                    {%- assign video_type_desktop = vid_source.mime_type -%}
+                    {%- assign video_url_desktop = vid_source.url -%}
+                {%- endif -%}
+            {%- endfor -%}
+
+            {%- assign video_type_mobile = '' -%}
+            {%- assign video_url_mobile = '' -%}
+            {%- for vid_source in section.settings.video_mobile.sources -%}
+                {%- if vid_source.mime_type == 'video/mp4' -%}
+                    {%- assign video_type_mobile = vid_source.mime_type -%}
+                    {%- assign video_url_mobile = vid_source.url -%}
+                {%- endif -%}
+            {%- endfor -%}
+
+            {%- assign id = "main-video-" | append: section.id -%}
+            {%- render 'global-video-wrapper-responsive',
+                desktop_image: section.settings.video_poster_desktop,
+                mobile_image: section.settings.video_poster_mobile,
+                desktop_video_url: video_url_desktop,
+                mobile_video_url: video_url_mobile,
+                video_id: id,
+                load_inside_vue: true
+            -%}
+        </div>
+    </div>
+
+    <div class="bottom-section pt-80 pb-40 t-pb-60 d-pb-80 relative">
+        <div class="top-video-wrapper">
+            <div class="video-1">
+                {%- if section.blocks[0].settings.url != blank -%}
+                    <a href="{{ section.blocks[0].settings.url }}" class="show-m">
+                {%- endif -%}
+
+                <div class="video-container">
+                    {%- assign video_type_desktop = '' -%}
+                    {%- assign video_url_desktop = '' -%}
+                    {%- for vid_source in section.blocks[0].settings.video_desktop.sources -%}
+                        {%- if vid_source.mime_type == 'video/mp4' -%}
+                            {%- assign video_type_desktop = vid_source.mime_type -%}
+                            {%- assign video_url_desktop = vid_source.url -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+
+                    {%- assign video_type_mobile = '' -%}
+                    {%- assign video_url_mobile = '' -%}
+                    {%- for vid_source in section.blocks[0].settings.video_mobile.sources -%}
+                        {%- if vid_source.mime_type == 'video/mp4' -%}
+                            {%- assign video_type_mobile = vid_source.mime_type -%}
+                            {%- assign video_url_mobile = vid_source.url -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+
+                    {%- assign id = "video-1-" | append: section.id -%}
+                    {%- render 'global-video-wrapper-responsive',
+                        desktop_image: section.blocks[0].settings.video_poster_desktop,
+                        mobile_image: section.blocks[0].settings.video_poster_mobile,
+                        desktop_video_url: video_url_desktop,
+                        mobile_video_url: video_url_mobile,
+                        video_id: id,
+                        load_inside_vue: true
+                    -%}
+                </div>
+                
+                {%- if section.blocks[0].settings.title != blank -%}
+                    <p class="p3 uppercase spacing-2 bold-600 mt-15 hide-m show-d">{{ section.blocks[0].settings.title }}</p>
+                {%- endif -%}
+
+                {%- if section.blocks[0].settings.url != blank -%}
+                    </a>
+                {%- endif -%}
+            </div>
+
+            <div class="video-2">
+                {%- if section.blocks[1].settings.url != blank -%}
+                    <a href="{{ section.blocks[1].settings.url }}" class="show-m">
+                {%- endif -%}
+
+                <div class="video-container">
+                    {%- assign video_type_desktop = '' -%}
+                    {%- assign video_url_desktop = '' -%}
+                    {%- for vid_source in section.blocks[1].settings.video_desktop.sources -%}
+                        {%- if vid_source.mime_type == 'video/mp4' -%}
+                            {%- assign video_type_desktop = vid_source.mime_type -%}
+                            {%- assign video_url_desktop = vid_source.url -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+
+                    {%- assign video_type_mobile = '' -%}
+                    {%- assign video_url_mobile = '' -%}
+                    {%- for vid_source in section.blocks[1].settings.video_mobile.sources -%}
+                        {%- if vid_source.mime_type == 'video/mp4' -%}
+                            {%- assign video_type_mobile = vid_source.mime_type -%}
+                            {%- assign video_url_mobile = vid_source.url -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+
+                    {%- assign id = "video-2-" | append: section.id -%}
+                    {%- render 'global-video-wrapper-responsive',
+                        desktop_image: section.blocks[1].settings.video_poster_desktop,
+                        mobile_image: section.blocks[1].settings.video_poster_mobile,
+                        desktop_video_url: video_url_desktop,
+                        mobile_video_url: video_url_mobile,
+                        video_id: id,
+                        load_inside_vue: true
+                    -%}
+                </div>
+
+                {%- if section.blocks[1].settings.title != blank -%}
+                    <p class="p3 uppercase spacing-2 bold-600 mt-15 hide-m show-d tr">{{ section.blocks[1].settings.title }}</p>
+                {%- endif -%}
+
+                {%- if section.blocks[1].settings.url != blank -%}
+                    </a>
+                {%- endif -%}
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="title-container mt-40 d-mt-0 max-710 ml-auto mr-auto tc">
+                <h1 class="h4">{{ section.settings.title | newline_to_br }}</h1>
+                {%- if section.settings.text != blank -%}
+                    <p class="p2 c-grey mt-10 d-mt-15">{{ section.settings.text | newline_to_br }}</p>
+                {%- endif -%}
+            </div>
+
+            {%- if section.blocks[2].settings.video_poster_desktop != blank -%}
+                <div class="video-3-wrapper mt-30 d-mt-50 width-100">
+                    <div class="video-3">
+                        {%- if section.blocks[2].settings.url != blank -%}
+                            <a href="{{ section.blocks[2].settings.url }}" class="show-m">
+                        {%- endif -%}
+
+                        <div class="video-container">
+                            {%- assign video_type_desktop = '' -%}
+                            {%- assign video_url_desktop = '' -%}
+                            {%- for vid_source in section.blocks[2].settings.video_desktop.sources -%}
+                                {%- if vid_source.mime_type == 'video/mp4' -%}
+                                    {%- assign video_type_desktop = vid_source.mime_type -%}
+                                    {%- assign video_url_desktop = vid_source.url -%}
+                                {%- endif -%}
+                            {%- endfor -%}
+
+                            {%- assign video_type_mobile = '' -%}
+                            {%- assign video_url_mobile = '' -%}
+                            {%- for vid_source in section.blocks[2].settings.video_mobile.sources -%}
+                                {%- if vid_source.mime_type == 'video/mp4' -%}
+                                    {%- assign video_type_mobile = vid_source.mime_type -%}
+                                    {%- assign video_url_mobile = vid_source.url -%}
+                                {%- endif -%}
+                            {%- endfor -%}
+
+                            {%- assign id = "video-3-" | append: section.id -%}
+                            {%- render 'global-video-wrapper-responsive',
+                                desktop_image: section.blocks[2].settings.video_poster_desktop,
+                                mobile_image: section.blocks[2].settings.video_poster_mobile,
+                                desktop_video_url: video_url_desktop,
+                                mobile_video_url: video_url_mobile,
+                                video_id: id,
+                                load_inside_vue: true
+                            -%}
+                        </div>
+
+                        {%- if section.blocks[2].settings.title != blank -%}
+                            <p class="p3 uppercase spacing-2 bold-600 mt-15 hide-m show-d">{{ section.blocks[2].settings.title }}</p>
+                        {%- endif -%}
+
+                        {%- if section.blocks[2].settings.url != blank -%}
+                            </a>
+                        {%- endif -%}
+                    </div>
+                </div>
+            {%- endif -%}
+        </div>
+    </div>
+</section>
+
+<script>
+    const aboutJoyfulVue = Vue.createApp({
+        delimiters: ['${','}'], 
+        data() {
+			return {
+                mainVideoObj: null,
+                smallVideoObj: null,
+                prevScrollPos: 0
+			}
+		},
+		mounted() {
+            const this_obj = this;
+            const doc = document.documentElement;
+            const body = document.body;
+
+            this.mainVideoObj = document.querySelector(`#shopify-section-{{ section.id }} .main-video-wrapper .inner-wrapper`);
+            const mainVideoHeight = this.mainVideoObj.offsetHeight;
+            const mainVideoWidth = this.mainVideoObj.offsetWidth;
+            const posMain = this.mainVideoObj.getBoundingClientRect();
+            const mainPosTop = posMain.top + window.pageYOffset;
+            const startTop = mainPosTop - window.innerHeight;
+            const mainPosLeft = posMain.left + window.pageXOffset;
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const arrowObj = document.querySelector(`#shopify-section-{{ section.id }} .arrow-icon`);
+
+            //-- set main video container height
+            document.querySelector(`#shopify-section-{{ section.id }} .main-video-wrapper`).style.height = mainVideoHeight + 'px';
+
+            //-- get small video dimension
+            this.smallVideoObj = document.querySelector(`#shopify-section-{{ section.id }} .video-2 .video-container`);
+            const smallWidth = this.smallVideoObj.offsetWidth;
+            const smallHeight = this.smallVideoObj.offsetHeight;
+            const pos = this.smallVideoObj.getBoundingClientRect();
+            const smallPosTop = pos.top + window.pageYOffset - headerHeight + 6;
+            const smallPosLeft = pos.left + window.pageXOffset;
+
+            const percentRedWidth = ((((mainVideoWidth-smallWidth)/smallWidth)*100).toFixed(0))/1000;
+            const percentRedWidthTotal = 1-percentRedWidth;
+
+            const percentRedHeight = ((((mainVideoHeight-smallHeight)/smallHeight)*100).toFixed(0))/1000;
+            const percentRedHeightTotal = 1-percentRedHeight;
+
+            window.addEventListener("scroll", () => { 
+                    const currentScrollPosition = Math.max(doc.scrollTop, body.scrollTop);
+                    const scrollDirection = currentScrollPosition > this.prevScrollPos ? "down" : "up";
+                    let currentScroll = window.scrollY - startTop;
+                    let scrollProgress = (currentScrollPosition/(smallPosTop-mainPosTop))*100;
+
+                    if(scrollDirection == 'down' && currentScrollPosition >= this_obj.mainVideoObj.offsetTop) {
+                        if(scrollProgress <= 100) {
+                            this_obj.mainVideoObj.style.transform = `translateY(${(smallPosTop*scrollProgress)/100}px) translateX(${(smallPosLeft*scrollProgress)/100}px) scale(${1-((percentRedWidthTotal*scrollProgress)/100)})`;
+                        } else {
+                            this_obj.mainVideoObj.style.transform = `translateY(${smallPosTop}px) translateX(${smallPosLeft}px) scale(${(percentRedWidth)})`;
+                        }
+                    } else if (scrollDirection == 'up' && currentScrollPosition-headerHeight < (this_obj.mainVideoObj.offsetTop+this_obj.mainVideoObj.offsetHeight)) {
+                        if(scrollProgress > 0 && scrollProgress <= 100) {
+                            this_obj.mainVideoObj.style.transform = `translateY(${(smallPosTop*scrollProgress)/100}px) translateX(${(smallPosLeft*scrollProgress)/100}px) scale(${1-((percentRedWidthTotal*scrollProgress)/100)})`;
+                        } else if (scrollProgress <= 0) {
+                            this_obj.mainVideoObj.style.transform = `translateY(0) translateX(0) scale(1)`;
+                        }
+                    }
+
+                    this_obj.prevScrollPos = currentScrollPosition;
+
+                if(currentScrollPosition > mainPosTop+(mainVideoHeight/2)) {
+                    arrowObj.style.opacity = 0;
+                } else {
+                    arrowObj.style.opacity = 1;
+                }
+            });
+        },
+        methods: {
+            scrollToContent(e) {
+                this.smallVideoObj.scrollIntoView({behavior: 'smooth'});
+            }
+        }
+    }).mount('#shopify-section-{{ section.id }} .about-joyful-moments');
+</script>
+
+{% schema %}
+    {
+        "name": "About - Joyful Moments",
+        "max_blocks": 3,
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "video_poster_desktop",
+                "label": "Video Poster (Desktop)"
+            },
+            {
+                "type": "video",
+                "id": "video_desktop",
+                "label": "Video (Desktop)"
+            },
+            {
+                "type": "image_picker",
+                "id": "video_poster_mobile",
+                "label": "Video Poster (Mobile)"
+            },
+            {
+                "type": "video",
+                "id": "video_mobile",
+                "label": "Video (Mobile)"
+            },
+            {
+                "type": "textarea",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "text",
+                "label": "Text"
+            },
+            {
+                "type": "header",
+                "content": "Section Padding"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_m",
+                "label": "Top padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_m",
+                "label": "Bottom padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_t",
+                "label": "Top padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_t",
+                "label": "Bottom padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding",
+                "label": "Top padding (Desktop)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding",
+                "label": "Bottom padding (Desktop)"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "video_poster_desktop",
+                        "label": "Video Poster (desktop)"
+                    },
+                    {
+                        "type": "video",
+                        "id": "video_desktop",
+                        "label": "Video (desktop)"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "video_poster_mobile",
+                        "label": "Video Poster (mobile)"
+                    },
+                    {
+                        "type": "video",
+                        "id": "video_mobile",
+                        "label": "Video (mobile)"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Caption"
+                    },
+                    {
+                        "type": "url",
+                        "id": "url",
+                        "label": "URL"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "About - Joyful Moments",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}

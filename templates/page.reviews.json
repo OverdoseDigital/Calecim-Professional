@@ -1,0 +1,57 @@
+{
+  "wrapper": "div.global-content-top-margin",
+  "sections": {
+    "657e65eb-b52d-4a13-92a7-1b47ec24b397": {
+      "type": "homepage-banner",
+      "blocks": {
+        "d8535b1c-71cf-470c-acf3-be42d65e7ef7": {
+          "type": "entry",
+          "settings": {
+            "text_color": "#2c2c2c",
+            "text_position": "center",
+            "title": "OUR REVIEWS",
+            "title_size": "h3",
+            "text": "Check out what our customers think about us.",
+            "button_label": "",
+            "button_url": "",
+            "desktop_image": "shopify:\/\/shop_images\/Reviews_banner_DP.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/Reviews_banner_MB.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "d8535b1c-71cf-470c-acf3-be42d65e7ef7"
+      ],
+      "settings": {
+        "enable_autoslide": false,
+        "delay_autoslide": 5000,
+        "mobile_overlay": true
+      }
+    },
+    "30e3208f-3868-47d4-84da-265031114754": {
+      "type": "app-embed-code",
+      "settings": {
+        "bg_color": "#f4faf8",
+        "title": "Hear It From Our Customers",
+        "text": "We'd like to be a part of your love story.",
+        "max_width": "890px",
+        "embed_code": "<div class=\"elfsight-sapp-b1532849-59ed-4ce2-844a-4ac82c425d91\"><\/div>",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "",
+        "bottom_padding_t": "80",
+        "top_padding": "80",
+        "bottom_padding": ""
+      }
+    },
+    "1684129876b4072469": {
+      "type": "apps",
+      "settings": {}
+    }
+  },
+  "order": [
+    "657e65eb-b52d-4a13-92a7-1b47ec24b397",
+    "30e3208f-3868-47d4-84da-265031114754",
+    "1684129876b4072469"
+  ]
+}

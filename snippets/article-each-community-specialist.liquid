@@ -1,0 +1,34 @@
+<div class="article-each community-specialist {{additional_class}}">
+	<a href="{{article.url}}" class="show-m relative">
+		{% if article.metafields.featured_image.grid_image != blank %}
+			{% assign article_image = article.metafields.featured_image.grid_image %}
+			{% assign acc = true %}
+		{% else %}
+			{% assign article_image = article.image %}
+			{% assign acc = false %}
+		{% endif %}
+		{%- render 'global-image-wrapper',
+			image: article_image,
+			additional_class:"",
+			acc: acc
+		%}
+
+        <div class="text-wrapper width-100 tl ab-bottom-left z-2 pl-30 pr-30 pb-30 pt-60">
+            <p class="p2 bold-500 c-white">{{ article.title }}</p>
+
+            {%- if type == "specialist" -%}
+                {%- if article.metafields.community_sa.clinic_address != blank -%}
+                    <p class="p3 c-white">{{ article.metafields.community_sa.clinic_address }}</p>
+                {%- else -%}
+                    <p class="p3 c-white">Clinic</p>
+                {%- endif -%}
+            {%- elsif type == "ambassador" -%}
+                {%- if article.metafields.community_sa.social_media != blank -%}
+                    <p class="p3 c-white">{{ article.metafields.community_sa.social_media }}</p>
+                {%- else -%}
+                    <p class="p3 c-white">@socialmedia</p>
+                {%- endif -%}
+            {%- endif -%}
+        </div>
+	</a>
+</div>

@@ -1,0 +1,37 @@
+<div class="article-each {{additional_class}}">
+	<a href="{{article.url}}" class="show-m relative">
+		{% if article.metafields.featured_image.grid_image != blank %}
+			{% assign article_image = article.metafields.featured_image.grid_image %}
+			{% assign acc = true %}
+		{% else %}
+			{% assign article_image = article.image %}
+			{% assign acc = false %}
+		{% endif %}
+		{%- render 'global-image-wrapper',
+			image: article_image,
+			additional_class:"",
+			acc: acc
+		%}
+		<div class="ae-caption {% unless mobile_tag_overlay %} hide-m show-t {% else %} show-m {% endunless %} ab-top-right z-2 d-pt-20 d-pb-20 d-pl-20 d-pr-20 pt-20 pb-20 pl-20 pr-20">
+			<div class="ae-tags tr font-0">
+				{% for tag in article.tags %}
+				<span class="p5 bg-white ml-5 mb-5 font-0">
+					{{ tag }}
+				</span>
+				{% endfor %}
+			</div>
+		</div>
+		
+		{%- unless mobile_tag_overlay -%}
+			<div class="tags-wrapper show-m hide-t width-100 mt-10 tl">
+				{% for tag in article.tags %}
+					<span class="p5 b-1 b-black image-tag mr-5 mb-5 font-0 show-m-inline-block">
+						{{ tag }}
+					</span>
+				{% endfor %}
+			</div>
+		{%- endunless -%}
+
+		<div class="h5 c-black ae-title {% unless mobile_tag_overlay %} mt-5 t-mt-10 {% else %} mt-10 {% endunless %} uppercase">{{ article.title }}</div>
+	</a>
+</div>

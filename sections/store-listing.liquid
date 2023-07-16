@@ -1,0 +1,140 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+<style>
+#shopify-section-{{ section.id }} .store-listing .col-12 {
+  background-color: #F9F9F9;
+  padding-left: 0;
+  padding-right: 0;
+}
+@media only screen and (min-width: 768px){
+  #shopify-section-{{ section.id }} .store-listing .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  #shopify-section-{{ section.id }} .store-listing .col-t-6 {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 7.5px;
+    margin-right: 7.5px;
+    width: calc(50% - 15px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  #shopify-section-{{ section.id }} .store-listing .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  #shopify-section-{{ section.id }} .store-listing .col-d-4 {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: calc(33.3333333333% - 20px);
+  }
+}
+</style>
+<div class="store-listing">
+  <div class="container">
+    <div class="global-flex flex-wrap width-100">
+    {% for block in section.blocks %}
+      <div class="col-d-4 col-t-6 col-12 mb-40 d-mb-45">
+        {%- assign image_id = "store-listing-" | append: block.id -%}
+        {%- render 'global-image-wrapper',
+          image_id: image_id,
+          image: block.settings.image,
+        %}
+        <div class="tc pt-40 pb-40 pl-30 pr-30">  
+          <h3 class="h11 pb-15">{{ block.settings.title }}</h3>
+          <p class="p2">{{ block.settings.text }}</p>
+          {% if block.settings.button_url != blank %}     
+            <div class="p3 bold-600 spacing-1 pt-25 t-pt-30">
+            {%- render 'link-icon',
+              id: 'store-listing',
+              label: block.settings.button_label,
+              url: block.settings.button_url,
+              text_class: 'p3 bold-600 spacing-1 pr-5',
+              icon_color: '#2c2c2c',
+              icon_svg: settings.icon_btn_right
+            -%}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Store Listing",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      }, {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Store",
+        "type": "text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label"
+          },
+          {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Store Listing"
+      }
+    ]
+  }
+{% endschema %}

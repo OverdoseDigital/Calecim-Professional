@@ -1,0 +1,82 @@
+{% comment %} Love&Co Theme {% endcomment %}
+
+<style>
+    #shopify-section-{{ section.id }} .overlay {
+        position: absolute;
+        width: 101%;
+        height: 101%;
+        left: 0;
+        top: 0;
+        background: {{ section.settings.overlay_color }};
+    }
+    #shopify-section-{{ section.id }} .text-overlay {
+        color: {{ section.settings.text_color }};
+    }
+</style>
+
+<section class="banner-gradient-overlay relative width-100 overflow">
+    <div class="image-container relative width-100 z-1">
+        {%- assign image_id = "image-" | append: section.id -%}
+        {%- render 'global-image-wrapper-responsive',
+            image_id: image_id,
+            desktop_image: section.settings.image_desktop,
+            mobile_image: section.settings.image_mobile
+        %}
+    </div>
+    <div class="overlay z-2"></div>
+    <div class="text-overlay z-3 ab-bottom width-100 pl-25 pr-25 t-pl-30 t-pr-30 pb-50 d-pb-60">
+        <div class="container">
+            <div class="max-450 ml-auto mr-auto tc">
+                {%- if section.settings.small_title != blank -%}
+                    <h6 class="p3 bold-600 uppercase spacing-2 mb-10 d-mb-15">{{ section.settings.small_title }}</h6>
+                {%- endif -%}
+                <h1 class="h2">{{ section.settings.title | newline_to_br }}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Banner - Gradient Overlay",
+        "settings": [
+            {
+                "type": "color",
+                "id": "text_color",
+                "label": "Text Color"
+            },
+            {
+                "type": "color_background",
+                "id": "overlay_color",
+                "label": "Overlay Color"
+            },
+            {
+                "type": "text",
+                "id": "small_title",
+                "label": "Small Title"
+            },
+            {
+                "type": "textarea",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_desktop",
+                "label": "Image (desktop)"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_mobile",
+                "label": "Image (mobile)"
+            }
+        ],
+        "blocks": [],
+        "presets": [
+            {
+                "name": "Banner - Gradient Overlay",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}

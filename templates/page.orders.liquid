@@ -1,0 +1,470 @@
+{%- if customer -%}
+  <style>
+    #order-page .item .bottom .icon-action,
+    #order-page .item .bottom .icon-action svg {
+      width: 15px;
+      height: 15px;
+    }
+    #order-page .item .bottom .text {
+      flex: 1;
+    }
+  </style>
+  <div id="order-page" class="global-content-top-margin">
+    {%- render 'account-top-section' -%}
+
+    <div v-if="order" class="container pb-50 t-pt-50 d-pt-100 d-pb-100">
+      <div class="row">
+        <div class="col-12 col-t-3">
+          {%- render 'account-sidebar' -%}
+        </div>
+        <div class="col-12 col-t-9">
+          <div class="t-flex t-jc-between t-ai-end bb-1 b-border-orange pb-20">
+            <h2 class="h4 c-greenb2 mb-10 t-mb-0">Order-${order.reference}</h2>
+            {%- assign price_summary_text = 'customer.order.price_summary' | t -%}
+            {%- render 'link-icon',
+              url: '#',
+              label: price_summary_text
+            -%}
+          </div>
+
+          <div class="row mt-25">
+            <div class="col-6">
+              <div class="mb-25">
+                <p class="p1 bold-700">{{ 'customer.order.date' | t }}</p>
+                <p class="p2">${formatDate(order.dateAdd)}</p>
+              </div>
+
+              {% comment %} Shipping address {% endcomment %}
+              <div>
+                <p class="p1 bold-700">{{ 'customer.order.shipping_address' | t }}</p>
+                {%- capture shipping_address -%}
+                  <p class="p2">${order.shippingAddress.firstName} ${order.shippingAddress.lastName}</p>
+                  <p v-if="order.shippingAddress.alias != ''" class="p2">{{ 'customer.order.alias' | t }}: ${order.shippingAddress.alias}</p>
+                  <p v-if="order.shippingAddress.companyName != ''" class="p2">${order.shippingAddress.companyName}</p>
+                  <p v-if="order.shippingAddress.streetAddress1" class="p2">${order.shippingAddress.streetAddress1}</p>
+                  <p v-if="order.shippingAddress.streetAddress2" class="p2">${order.shippingAddress.streetAddress2}</p>
+                  <p v-if="order.shippingAddress.city" class="p2">${order.shippingAddress.city}</p>
+                  <p class="p2">
+                    <span class="p2">${order.shippingAddress.country.country}</span>
+                    <span v-if="order.shippingAddress.postalCode" class="p2 ml-10">${order.shippingAddress.postalCode}</span>
+                  </p>
+                  <p v-if="order.shippingAddress.phone" class="p2">{{ 'customer.order.phone' | t }}: ${order.shippingAddress.phone}</p>
+                  <p v-if="order.shippingAddress.mobile_phone" class="p2">{{ 'customer.order.mobile_phone' | t }}: ${order.shippingAddress.mobile_phone}</p>
+                {%- endcapture -%}
+                {{ shipping_address }}
+              </div>
+              {% comment %} End shipping address {% endcomment %}
+            </div>
+            <div class="col-6">
+              <div class="mb-25">
+                <p class="p1 bold-700">{{ 'customer.order.total' | t }}</p>
+                <p class="p2">${formatMoney(order.total.gross.amount * 100)}</p>
+              </div>
+
+              {% comment %} billing address {% endcomment %}
+              <div>
+                <p class="p1 bold-700">{{ 'customer.order.billing_address' | t }}</p>
+                <p class="p2">${order.billingAddress.firstName} ${order.billingAddress.lastName}</p>
+                <p v-if="order.billingAddress.alias != ''" class="p2">{{ 'customer.order.alias' | t }}: ${order.billingAddress.alias}</p>
+                <p v-if="order.billingAddress.companyName != ''" class="p2">${order.billingAddress.companyName}</p>
+                <p v-if="order.billingAddress.streetAddress1" class="p2">${order.billingAddress.streetAddress1}</p>
+                <p v-if="order.billingAddress.streetAddress2" class="p2">${order.billingAddress.streetAddress2}</p>
+                <p v-if="order.billingAddress.city" class="p2">${order.billingAddress.city}</p>
+                <p class="p2">
+                  <span class="p2">${order.billingAddress.country.country}</span>
+                  <span v-if="order.billingAddress.postalCode" class="p2 ml-10">${order.billingAddress.postalCode}</span>
+                </p>
+                <p v-if="order.billingAddress.phone" class="p2">{{ 'customer.order.phone' | t }}: ${order.billingAddress.phone}</p>
+                <p v-if="order.billingAddress.mobile_phone" class="p2">{{ 'customer.order.mobile_phone' | t }}: ${order.billingAddress.mobile_phone}</p>
+              </div>
+              {% comment %} end billing address {% endcomment %}
+            </div>
+
+          </div>
+
+          <div class="bb-1 b-border-orange pb-20 mt-50 t-mt-100">
+            <h3 class="h5 c-greenb2">{{ 'customer.order.order_status' | t }}</h3>
+          </div>
+
+          {% comment %} order items {% endcomment %}
+          <div v-for="item in order.lines" :key="item.id" class="item pt-25 pb-25 bb-1 b-border-orange">
+            <div class="row t-flex">
+              <div class="col-3 mb-5 t-mb-0">
+                <img :src="item.combinationRenderUrl" :alt="item.translatedProductName">
+              </div>
+              <div class="col-9">
+                <div class="bb-1 b-border-orange pb-15 t-pb-20">
+                  <div class="flex jc-between">
+                    <div class="pr-15">
+                      <div class="p1 bold-700 mb-5">${item.translatedProductName} x${item.quantity}</div>
+                      <ul>
+                        <li class="p3 c-grey">Test test</li>
+                      </ul>
+                    </div>
+                    <div class="p1 bold-700 mb-5">${formatMoney(item.product.price * 100)}</div>
+                  </div>
+
+                  <p class="p1 bold-700 mt-20 t-mt-25">{{ 'customer.order.action_required' | t }}</p>
+                </div>
+                <div class="bottom row pt-15">
+                  <div class="col-12 col-t-6 mb-20 t-mb-0">
+                    <div v-if="item.images.edges.length" class="flex">
+                      <div class="icon-action flex jc-center ai-center mr-10">{{ settings.icon_check_green }}</div>
+                      <div class="text">
+                        <div class="p2 bold-700">{{ 'customer.order.photos_uploaded' | t }}</div>
+                        {%- assign review_photos_text = 'customer.order.review_photos' | t -%}
+                        {%- render 'link-icon',
+                          url: '#',
+                          label: review_photos_text
+                        -%}
+                      </div>
+                    </div>
+                    <div v-else class="flex">
+                      <div class="icon-action flex jc-center ai-center mr-10">{{ settings.icon_exclamation }}</div>
+                      <div class="text">
+                        <div class="p2 bold-700">{{ 'customer.order.pending_photo' | t }}</div>
+                        {% comment %} {%- assign upload_photos_text = 'customer.order.upload_photos' | t -%}
+                        {%- render 'link-icon',
+                          url: '#',
+                          label: upload_photos_text
+                        -%} {% endcomment %}
+                        <a :href="getUploadPhotoPageUrl(order, item)" class="link-icon flex ai-center jc-center w-max-cont comfort-orange">
+                          <span class="text bold-500 mr-10">{{ 'customer.order.upload_photos' | t }}</span> 
+                          <span class="icon flex ai-center jc-center">{{ settings.icon_link_icon }}</span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-t-6">
+                    <div v-if="item.measurementRequired" class="flex">
+                      <div class="icon-action flex jc-center ai-center mr-10">{{ settings.icon_exclamation }}</div>
+                      <div class="text">
+                        <div class="p2 bold-700">{{ 'customer.order.pending_measurements' | t }}</div>
+                        {%- assign upload_ms_text = 'customer.order.upload_measurements' | t -%}
+                        {%- render 'link-icon',
+                          url: '#',
+                          label: upload_ms_text
+                        -%}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% comment %} end order items {% endcomment %}
+
+          {% comment %} order summary {% endcomment %}
+          <div class="row mt-50 d-mt-100">
+            <div class="col-12 col-t-5 mb-50 t-mb-0">
+              <h3 class="h5 c-greenb2 mb-20">{{ 'customer.order.order_summary' | t }}</h3>
+              {{ shipping_address }}
+              <p class="p2 mt-15">{{ customer.email }}</p>
+            </div>
+            <div class="col-12 col-t-7">
+              <h3 class="h5 c-greenb2 mb-20">{{ 'customer.order.payment_summary' | t }}</h3>
+
+              <div class="flex jc-between bb-1 b-border-orange pb-15">
+                <div class="p2">{{ 'customer.order.price' | t }}</div>
+                <div class="p2">${formatMoney(order.subtotal.gross.amount * 100)}</div>
+              </div>
+              <div class="flex jc-between bb-1 b-border-orange pt-15 pb-15">
+                <div class="p2">{{ 'customer.order.tax' | t }}</div>
+                <div class="p2">${formatMoney(order.subtotal.tax.amount * 100)}</div>
+              </div>
+              <div class="flex jc-between bb-1 b-border-orange pt-15 pb-15">
+                <div class="p2">{{ 'customer.order.shipping_method' | t }}</div>
+                <div class="p2">${order.shippingMethod.name}</div>
+              </div>
+              <div class="flex jc-between bb-1 b-border-orange pt-15 pb-15">
+                <div class="p2">{{ 'customer.order.shipping_fee' | t }}</div>
+                <div class="p2">${formatMoney(order.shippingMethod.price.amount * 100)}</div>
+              </div>
+              <div class="flex jc-between bb-1 b-border-orange pt-15 pb-15">
+                <div class="p2">{{ 'customer.order.total' | t }}</div>
+                <div class="p2">${formatMoney(order.total.gross.amount * 100)}</div>
+              </div>
+              <div class="flex jc-between bb-1 b-border-orange pt-15 pb-15">
+                <div class="p2">{{ 'customer.order.payment_method' | t }}</div>
+                <div class="p2">${getPaymentName(order)}</div>
+              </div>
+            </div>
+          </div>
+          {% comment %} end order summary {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  Vue.createApp({
+    delimiters: ['${', '}'],
+    data() {
+        return {
+          pageLoading: document.querySelector('.page-loading'),
+          currentHost: 'gunrack.finance', // this host will change to a CW one in the future
+          _email: '{{ customer.email }}',
+          _salt: {{ customer.metafields.global.cw_salt.value }},
+          _uid: {{ customer.id }},
+          order: null,
+        }
+    },
+    mounted() {
+      this.getOrder();
+    },
+    methods: {
+      async getOrder() {
+        this.pageLoading.classList.add('active');
+
+        const url = window.location.href;
+        const urlSplitted = url.split("orders/");
+
+        if(urlSplitted.length < 2){
+          this.invalidUrl();
+          return;
+        }
+
+        if(!urlSplitted[1]){
+          this.invalidUrl();
+          return;
+        }
+
+        orderId = urlSplitted[1];
+
+        const payload = {
+          email: this._email,
+          salt: this._salt,
+          uid: this._uid,
+          operationName: 'getOrderById',
+          variables: {},
+          gqlc: `
+          query getOrderById {
+            order(id: "${orderId}") {
+              billingAddress {
+                id
+                country {
+                  code
+                  country
+                }
+                streetAddress1
+                streetAddress2
+                alias
+                lastName
+                firstName
+                postalCode
+                phone
+                phoneMobile
+                city
+                companyName
+              }
+              id
+              formExists
+              dateAdd
+              reference
+              measurementsSaved
+              feedbackSubmitted
+              currency
+              lines {
+                adminImages {
+                  edges {
+                    node {
+                      imagePath
+                    }
+                  }
+                }
+                combinationRenderUrl
+                customization
+                fabricPreorder {
+                  isPreorder
+                  preorderDate
+                  preorderInfo
+                }
+                feedbackImages {
+                  edges {
+                    node {
+                      imagePath
+                    }
+                  }
+                }
+                id
+                images {
+                  edges {
+                    node {
+                      imagePath
+                      index
+                    }
+                  }
+                }
+                measurementRequired
+                measurementSubmitted
+                product {
+                  brand {
+                      name
+                  }
+                  cover
+                  id
+                  price
+                  measurementsRequired
+                  optionGroupProductRef
+                  reference
+                }
+                quantity
+                translatedProductName
+              }
+              orderHistory{
+                edges{
+                  node{
+                    dateAdd
+                    id
+                    orderStatus{
+                      translations(lang: "en"){
+                        edges{
+                          node{
+                            name
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              shippingMethod {
+                id
+                name
+                price {
+                  amount
+                  currency
+                  localized
+                }
+              }
+              shippingAddress {
+                id
+                country {
+                  code
+                  country
+                }
+                streetAddress1
+                streetAddress2
+                alias
+                lastName
+                firstName
+                postalCode
+                phone
+                phoneMobile
+                city
+                companyName
+              }
+              currentStatus {
+                translations(lang: "en") {
+                  edges {
+                    node {
+                      name
+                    }
+                  }
+                }
+              }
+              payments {
+                edges {
+                  node {
+                    id
+                    gateway
+                    extraData
+                  }
+                }
+              }
+              shippingPrice {
+                gross {
+                  amount
+                  currency
+                  localized
+                }
+                net {
+                  amount
+                  currency
+                  localized
+                }
+                tax {
+                  amount
+                  currency
+                  localized
+                }
+              }
+              subtotal {
+                currency
+                gross {
+                  amount
+                  currency
+                }
+                net {
+                  amount
+                  currency
+                }
+                tax {
+                  amount
+                  currency
+                  localized
+                }
+              }
+              total {
+                currency
+                gross {
+                  amount
+                  currency
+                }
+                net {
+                  amount
+                  currency
+                }
+                tax {
+                  amount
+                  currency
+                  localized
+                }
+              }
+            }
+          }`
+        };
+
+        try {
+          const {data} = await axios.post('https://' + this.currentHost + '/shopify/gql', JSON.stringify(payload), {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+
+          this.order = data.data.order;
+          if(!this.order) {
+            alert('Order not found!');
+            this.invalidUrl();
+          }
+        } catch(error) {
+          console.log(error.response.data.message);
+        };
+
+        this.pageLoading.classList.remove('active');
+      },
+      invalidUrl() {
+        window.location.href = "/account";
+      },
+      getUploadPhotoPageUrl(order, item) {
+        return `https://comfortworkscovers.myshopify.com/pages/product-photos/?order=${order.id}&item=${item.id}&ref=${item.product.reference}`;
+      },
+      getPaymentName(order) {
+        let extraData = order.payments.edges[0].node.extraData;
+        if(!extraData) {
+          return '';
+        }
+
+        extraData = JSON.parse(extraData);
+        return extraData.paymentSource;
+      },
+      formatDate(dateIsoString) {
+        return $360.formatDate(dateIsoString);
+      },
+      formatMoney(num) {
+        return $360.formatMoney(num);
+      }
+    }
+  }).mount('#order-page');
+  </script>
+{%- endif -%}

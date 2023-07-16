@@ -1,0 +1,23 @@
+<ul class="global-pagination">
+	{% if paginate.previous %}
+	<li><a href="{{ paginate.previous.url }}">Prev</a></li>
+	{% else %}
+	<li>Prev</li>
+	{% endif %}
+	{% for part in paginate.parts %}
+	{% if part.is_link %}
+	<li>
+		<a href="{{ part.url }}">{{ part.title }}</a>
+	</li>
+	{% else %}
+	<li class="active">
+		{{ part.title }}
+	</li>
+	{% endif %}
+	{% endfor %}
+	{% if paginate.next %}
+	<li><a href="{{ paginate.next.url }}">Next</a></li>
+	{% else %}
+	<li>Prev</li>
+	{% endif %}
+</ul>

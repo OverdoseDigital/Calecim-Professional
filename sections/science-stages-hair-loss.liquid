@@ -1,0 +1,412 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color:{{section.settings.background_color}};
+    }
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        {% comment %} background-color:{{section.settings.background_color}}; {% endcomment %}
+        {%if section.settings.image_position == "row-reverse"%}
+        flex-direction:column-reverse;
+        {%endif%}
+    }
+    #shopify-section-{{ section.id }} .image-container{
+        width:100%;
+    }
+    #shopify-section-{{ section.id }} .image-container .text-tag {
+        background-color: #fff;
+        border-radius: 13px;
+        display: inline-block;
+        position: absolute;
+        top:0;
+        right: 0;
+    }
+    #shopify-section-{{ section.id }} .text-container{
+        width:100%;
+        max-width:{{section.settings.content_max_width}}px;
+        margin:0 auto;
+    }
+    {%- if section.settings.image_position_mobile == 'image-first' -%}
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            flex-direction: row;
+        }
+    {%- endif -%}
+    #shopify-section-{{ section.id }} .citi-it-con {
+        column-gap: 6px;
+        row-gap: 15px;
+    }
+    #shopify-section-{{ section.id }} .citi-it-item {
+        width: 100%;
+        align-items: center;
+    }
+    #shopify-section-{{ section.id }} .citi-icon{
+        min-width: 35px;
+        width: 35px;
+        height: 35px;
+        padding: 7px;
+        border-radius: 35px;
+        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .image-wrapper {
+        flex: 0 0 60px;
+    }
+    #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .text-wrapper {
+        flex: 0 0 calc(100% - 60px);
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination {
+        position: relative;
+        width: auto;
+        text-align: right;
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination .swiper-pagination-bullet {
+        opacity: 0.5;
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        opacity: 1;
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination .swiper-pagination-bullet:last-child {
+        margin-right: 0 !important;
+    }
+
+    {%- if section.settings.background_color == blank -%}
+        #shopify-section-{{ section.id }} .text-container{
+            padding-bottom: 0;
+        }
+    {%- endif -%}
+
+    {%- if section.settings.section_width == blank -%}
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    {%- endif -%}
+
+    @media(min-width: 768px) {
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left:30px;
+            padding-right:30px;
+        }
+        {%- if section.settings.text_align == 'tc' -%}
+            #shopify-section-{{ section.id }} .text-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        {%- endif -%}
+
+        {%- if section.settings.background_color == blank -%}
+            #shopify-section-{{ section.id }} .text-container{
+                padding-bottom: 0;
+            }
+        {%- endif -%}
+
+        {%- if section.settings.section_width == blank -%}
+            #shopify-section-{{ section.id }} .text-container{
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        {%- endif -%}
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .image-container{
+            width:50%;
+        }
+        #shopify-section-{{ section.id }} .text-container{
+            width:50%;
+            padding-left:40px;
+            padding-right:40px;
+        }
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            flex-direction:{{section.settings.image_position}};
+        }
+        #shopify-section-{{ section.id }} .citi-icon{
+            min-width: 40px;
+            width: 40px;
+            height: 40px;
+            padding: 9px;
+            border-radius: 40px;
+        }
+        #shopify-section-{{ section.id }} .citi-it-item {
+            width: calc(50% - 3px);
+        }
+        #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .image-wrapper {
+            flex: 0 0 80px;
+        }
+        #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .text-wrapper {
+            flex: 0 0 calc(100% - 80px);
+        }
+
+        {%- if section.settings.background_color == blank -%}
+            #shopify-section-{{ section.id }} .text-container{
+                padding-bottom: 60px;
+            }
+        {%- endif -%}
+
+        {%- if section.settings.section_width == blank -%}
+            #shopify-section-{{ section.id }} .text-container{
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+        {%- endif -%}
+    }
+</style>
+
+<section id="{{ section.id }}" class="cta-image-text">
+    <div class="{{section.settings.section_width}}">
+        <div class="flex flex-wrap align-flex flex-wrapper">
+            <div class="image-container relative">
+                {%assign image_id = "cta-image-text_" | append: section.id%}
+                {%- render 'global-image-wrapper-responsive',
+                    image_id: image_id,
+                    desktop_image: section.settings.desktop_image,
+                    mobile_image: section.settings.mobile_image
+                %} 
+                {%- if section.settings.tag != blank -%}
+                    <p class="uppercase p5 mb-15 d-mb-10 text-tag pt-5 pb-5 pr-10 pl-10 mt-20 mr-20 d-mt-30 d-mr-25 bold-500">{{ section.settings.tag }}</p>
+                {%- endif -%}   
+            </div>
+            <div class="text-container pt-40 pb-40 t-pt-40 t-pb-60 d-pt-60 d-pb-60 {{section.settings.text_align}}">
+                <div class="h3 pb-5 d-pb-10 c-black">{{section.settings.title}}</div>
+
+                <div class="p2 pb-20 d-pb-25 c-grey text-desc">{{section.settings.text | newline_to_br}}</div>
+                <div class="global-flex flex-wrap citi-it-con">
+                    {% for block in section.blocks %}
+                        {%- if block.type == 'icon' -%}
+                            <div class="global-flex citi-it-item tl">
+                                <span class="citi-icon" style="background-color: {{ block.settings.bg_color }};">{{ block.settings.icon }}</span>
+                                <span class="p2 pl-10 bold-500">{{ block.settings.title }}</span>
+                            </div>
+                        {%- endif -%}
+                    {% endfor %}
+                </div>
+
+                {%- if section.settings.stages_title != blank -%}
+                    <div class="stages-container mt-20 pt-20 d-mt-30 d-pt-30 bt-1 b-border">
+                        <div class="title-wrapper global-flex ai-center jc-between">
+                            <p class="p1">{{ section.settings.stages_title }}</p>
+                            <div class="swiper-pagination"></div>
+                        </div>
+
+                        <div class="carousel-wrapper mt-15 d-mt-20">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    {%- for block in section.blocks -%}
+                                        {%- if block.type == 'carousel' -%}
+                                            <div class="swiper-slide">
+                                                <div class="inner-wrapper p-20 d-p-25 bg-white global-flex ai-center">
+                                                    <div class="image-wrapper">
+                                                        {%- render 'global-image-wrapper',
+                                                            image: block.settings.image,
+                                                            additional_class: 'no-bg'
+                                                        -%}
+                                                    </div>
+                                                    <div class="text-wrapper pl-20 d-pl-30">
+                                                        <p class="p3 bold-500">{{ block.settings.title }}</p>
+                                                        <p class="p3 mt-5 opacity-5">{{ block.settings.text }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {%- endif -%}
+                                    {%- endfor -%}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {%- endif -%}
+            </div>
+        </div>
+    <div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let stages_hair_loss_carousel = new Swiper("#shopify-section-{{ section.id }} .swiper", {
+            direction: 'horizontal',
+            slidesPerView: 1,
+            watchSlidesProgress: true,
+            spaceBetween: 15,
+            loop: false,
+            pagination: {
+                el: "#shopify-section-{{ section.id }} .swiper-pagination",
+                clickable: true
+            }
+        });
+    });
+</script>
+
+{% schema %}
+    {
+        "name": "Science Stages Hair Loss",
+        "settings": [
+        {
+            "type": "radio",
+            "id": "section_width",
+            "label": "Section Width",
+            "options": [
+                {"value":"","label":"Full Width"},
+                {"value":"container","label":"Contained"}
+            ]
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "number",
+            "id": "content_max_width",
+            "label": "Content Max Width",
+            "default": 500
+        },
+        {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+        },
+        {
+            "type": "text",
+            "id": "stages_title",
+            "label": "Stages Title"
+        },
+        {
+            "type": "radio",
+            "id": "text_align",
+            "label": "Text Align",
+            "options": [
+                {"value":"tc","label":"Center"},
+                {"value":"tl","label":"Left"},
+                {"value":"tr","label":"Right"}
+            ]
+        },
+        {
+            "type": "image_picker",
+            "id": "desktop_image",
+            "label": "Desktop Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+        },
+        {
+            "type": "radio",
+            "id": "image_position",
+            "label": "Image Position (Desktop)",
+            "options": [
+                {"value":"row","label":"Left"},
+                {"value":"row-reverse","label":"Right"}
+            ]
+        },
+        {
+            "type": "radio",
+            "id": "image_position_mobile",
+            "label": "Image Position (Mobile)",
+            "options": [
+                {"value":"image-first","label":"Image First"},
+                {"value":"follow-desktop","label":"Follow Desktop Alignment"}
+            ],
+            "default": "follow-desktop"
+        },
+        {
+            "type": "text",
+            "id": "tag",
+            "label": "Image Caption"
+        },
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "blocks": [
+                {
+                    "type": "icon",
+                    "name": "Icon",
+                    "settings": [
+                        {
+                            "type": "color",
+                            "id": "bg_color",
+                            "label": "Icon Background Color",
+                            "default": "#F5F5F5"
+                        },
+                        {
+                            "type": "textarea",
+                            "id": "icon",
+                            "label": "Icon"
+                        },
+                        {
+                            "type": "textarea",
+                            "id": "title",
+                            "label": "Title"
+                        }
+                    ]
+                },
+                {
+                    "type": "carousel",
+                    "name": "Carousel Item",
+                    "settings": [
+                        {
+                            "type": "image_picker",
+                            "id": "image",
+                            "label": "Image"
+                        },
+                        {
+                            "type": "text",
+                            "id": "title",
+                            "label": "Title"
+                        },
+                        {
+                            "type": "textarea",
+                            "id": "text",
+                            "label": "Text"
+                        }
+                    ]
+                }
+            ],
+        "presets": [
+        {
+            "name": "Science Stages Hair Loss",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,56 @@
+{% comment %}
+Calecim Theme
+Description:
+Snippet for displaying promo on cart drawer
+
+Variables:
+wrapper_class: String, class for the wrapper
+text_class: String, class for the text
+{% endcomment %}
+
+<style>
+    .cart-promo-info-drawer .line-indicator{
+        width:calc(50% - 5px);
+        background-color:#231D1D;
+        border-radius:8px;
+        height:4px;
+    }
+    .cart-promo-info-drawer .text-indicator{
+        width:50%;
+    }
+    .cart-promo-info-drawer .text-indicator svg{
+        height:13px;
+        width:13px;
+    }
+    .cart-promo-info-drawer .line-indicator:not(.active){
+        opacity:50%;
+    }
+</style>
+
+{%- if true -%}
+    <div class="cart-promo-info-drawer {{ wrapper_class }}">
+        {%- assign cf = settings.cart_fs_free | times: 100 -%}
+        {%- if cart.total_price >= cf -%}
+            {%- assign text = settings.cart_fs_after -%}
+        {%- else -%}
+            {%- assign current = cf | minus: cart.total_price | money -%}
+            {%- assign text = settings.cart_fs_before | replace: "[amount]", current -%}
+        {%- endif -%}
+        <div class="{{ text_class }}">You’ve received 10% off this order! Spend $130 more to receive a free gift from us!</div>
+        
+        <div class="flex flex-wrap jc-between pt-10 pb-10">
+            <div class="line-indicator active"></div>
+            <div class="line-indicator"></div>
+        </div>
+
+        <div class="flex flex-wrap">
+            <div class="text-indicator p5 tc active">10% OFF ORDER</div>
+            <div class="text-indicator p5 tc "><span class="mr-5" style="display:inline-block">{{settings.icon_gift}}</span>FREE GIFT</div>
+        </div>
+
+        {% comment %} <div class="overflow" style="background: #d8e2de;height:4px;position:relative;">
+            <div style="position:absolute;background:#93D0B3;top:0;left:0;height:4px;width:{{ cart.total_price | divided_by:settings.cart_fs_free | round:2 }}%;"></div>
+        </div> {% endcomment %}
+    </div>
+{%- endif -%}
+<!-- end free shipping info -->

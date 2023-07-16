@@ -1,0 +1,142 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    {%if section.settings.enable_border_top%}
+    #shopify-section-{{ section.id }}{
+        border-top:1px solid #DBDBDB;
+    }
+    {%endif%}
+    {%if section.settings.enable_border_bottom%}
+    #shopify-section-{{ section.id }}{
+        border-bottom:1px solid #DBDBDB;
+    }
+    {%endif%}
+
+    
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        display:flex;
+        flex-wrap:wrap;
+        
+    }
+    #shopify-section-{{ section.id }} .flex-wrap{
+        width:100%;
+    }
+    #shopify-section-{{ section.id }} .image-container{
+        width:100%;
+    }
+    @media(min-width: 768px) {
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            margin:0 -10px;
+        }
+        #shopify-section-{{ section.id }} .flex-wrapper-each{
+            width:50%;
+            padding:0 10px;
+        }
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .flex-wrapper-each{
+            width:25%;
+        }
+    }
+
+</style>
+
+<section id="{{ section.id }}" class="appointment-types">
+    <div class="container overflow">
+        <div class=""><!--border-->
+            <div class="flex-wrapper">
+                {%for block in section.blocks%}
+                    <div class="flex-wrapper-each">  
+                        <div class="flex flex-wrap align-flex {%unless forloop.last%}mb-30 d-mb-0{%endunless%}">
+                            <div class="image-container">
+                                {%- render 'global-image-wrapper',
+                                    image: block.settings.image,
+                                    additional_class:""
+                                %}
+                            </div>
+                            <div class="text-container">
+                                <div class="h11 pt-20 d-pt-40">{{block.settings.title}}</div>
+                                <div class="p2 c-grey pt-10">{{block.settings.text}}</div>
+                            </div>
+                        </div>
+                    </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% schema %}
+    {
+        "name": "Appointment Types",
+        "settings": [
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "limit": 4,
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "text",
+                        "label": "Text"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+        {
+            "name": "Appointment Types",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

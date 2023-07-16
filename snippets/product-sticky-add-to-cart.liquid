@@ -1,0 +1,37 @@
+{% comment %} calecim {% endcomment %}
+{%- assign variant = product.selected_or_first_available_variant -%}
+<a href="javascript:void(0)" onclick="pdpGotoAtc()" rel="nofollow" class="product-sticky-add-to-cart btn4 width-100 show-m hide-d pt-15 pb-15 tc bg-black c-white">
+    {{ 'products.product.add_to_cart' | t }}&nbsp;&nbsp;—&nbsp;&nbsp;<span class="price">{{ variant.price | money }}</span>
+</a>
+
+<script>
+    function pdpGotoAtc(){
+        const atc_button = document.querySelector('.product-info-wrapper');
+        const atc_button_top = atc_button.offsetTop;
+
+        window.scrollTo({
+            top: atc_button_top,
+            behavior: 'smooth'
+        });
+    }
+
+    window.addEventListener('load', function() {
+        //-- scroll behaviour
+        const pdp_sticky_atc = document.querySelector('.product-sticky-add-to-cart');
+        const pdp_footer = document.querySelector('footer');
+        const pdp_footer_top = pdp_footer.offsetTop;
+        const pdp_top = document.querySelector('#product-page-top');
+        const pdp_top_height = pdp_top.offsetHeight;
+
+        window.addEventListener("scroll", () => {
+            const scrollPos = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+            if(screen.width < 1024) {
+                if(scrollPos > pdp_top_height && scrollPos < pdp_footer_top) {
+                    pdp_sticky_atc.classList.add('is-visible');
+                } else {
+                    pdp_sticky_atc.classList.remove('is-visible');
+                }
+            }
+        });
+    });
+</script>

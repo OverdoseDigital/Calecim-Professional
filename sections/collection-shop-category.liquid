@@ -1,0 +1,265 @@
+{%  comment  %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+<style>
+  #shopify-section-{{ section.id }} .csc-center .cscc-wrap {
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .cscc-caption {
+    position: absolute;
+    bottom: 0; 
+    color: #fff; 
+    z-index: 2; 
+    display: flex;   
+    flex-direction: column;
+    align-items: center;
+    text-align: center; 
+    width: 100%; 
+  }
+  #shopify-section-{{ section.id }} .cscc-caption h6 {
+    color: #fff;
+  }
+  #shopify-section-{{ section.id }} .cscc-caption h2 {
+    color: #fff;
+  }
+  #shopify-section-{{ section.id }} .cscc-caption h2 b {
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .cscc-caption p {
+    color: #fff;
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .csc-left,
+  #shopify-section-{{ section.id }} .csc-right {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .csc-mobile {
+    display: flex;
+    white-space: nowrap;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  #shopify-section-{{ section.id }} .csc-mobile::-webkit-scrollbar {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .csc-block {
+    min-width: 41.5%;
+    position: relative;
+    display: inline-block;
+  }
+  #shopify-section-{{ section.id }} .csc-block h5 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: #2C2C2C;
+    white-space: normal;
+  }
+  @media screen and (min-width: 1024px){
+    #shopify-section-{{ section.id }} .csc-mobile {
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .collection-shop-category .container {
+      display: flex;
+      justify-content: space-between;
+    }
+    #shopify-section-{{ section.id }} .csc-center {
+      width: 100%;
+    }
+    #shopify-section-{{ section.id }} .csc-center .cscc-wrap {
+      height: 100%;
+    }
+    #shopify-section-{{ section.id }} .csc-center .cscc-wrap .global-image-wrapper {
+      padding-bottom: unset !important;
+      height: 100%;
+    }
+    #shopify-section-{{ section.id }} .csc-center .cscc-wrap .global-image-wrapper img {
+      object-fit: cover;
+      height: 100%;
+    }
+    #shopify-section-{{ section.id }} .cscc-caption p {
+      display: block;
+    }
+    #shopify-section-{{ section.id }} .csc-left,
+    #shopify-section-{{ section.id }} .csc-right {
+      display: flex;
+      flex-direction: column;
+      min-width: 24%;
+      max-width: 24%;
+    }
+    #shopify-section-{{ section.id }} .csc-block h5 {
+      text-align: center;
+    }
+  }
+</style>
+<div class="collection-shop-category"> 
+  <div class="container"> 
+    <div class="csc-left">
+      {%- for block in section.blocks -%}
+        {%- if forloop.index < 3 -%}
+        <div class="csc-block {% if forloop.index == 1 %}mb-20{% endif %}">
+          <a href="{{ block.settings.url }}">
+            {%- render 'global-image-wrapper',
+              image: block.settings.image
+            %}
+            <h5 class="h11 bold-600 spacing-1 pt-30 pb-30 pl-30 pr-30 text-center">{{ block.settings.title }}</h5>
+          </a>
+        </div>
+        {%- endif -%}
+      {%- endfor-%}
+    </div>
+    <div class="csc-center d-pl-20 d-pr-20 pl-0 pr-0">
+      <div class="cscc-wrap">
+        {%- assign image_id = "collection-main-banner-" | append: section.id -%}
+        {%- render 'global-image-wrapper-responsive',
+          image_id: image_id,
+          desktop_image: section.settings.desktop_image,
+          mobile_image: section.settings.mobile_image
+        %}
+        <div class="cscc-caption pl-20 pr-20 pb-30 pt-30 t-pb-40 d-pl-30 d-pr-30 d-pb-45 d-pt-45">
+          <h6 class="p4 bold-600 spacing-2">{{ section.settings.small_title }}</h6>
+          <h2 class="h6 bold-600 mt-10 d-mt-15">{{ section.settings.title | newline_to_br }}</h2>
+
+          <p class="d-mt-5 max-max-400 d-max-330 d-ml-auto d-mr-auto">{{ section.settings.text }}</p>
+
+          {%- if section.settings.button_label != blank -%}
+            <a href="{{ section.settings.button_url }}" class="btn2 mt-15 d-mt-20">
+              {{ section.settings.button_label }}
+            </a>  
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    <div class="csc-right">
+      {%- for block in section.blocks -%}
+        {%- if forloop.index > 2 -%}
+        <div class="csc-block {% if forloop.index == 3 %}mb-20{% endif %}">
+          <a href="{{ block.settings.url }}">
+            {%- render 'global-image-wrapper',
+              image: block.settings.image
+            %}
+            <h5 class="h11 bold-600 spacing-1 pt-25 pb-25 pl-35 pr-35 d-p-25 text-center">{{ block.settings.title }}</h5>
+          </a>
+        </div>
+        {%- endif -%}
+      {%- endfor-%}
+    </div>
+  </div>
+  <div class="csc-mobile mt-15">
+    {%- for block in section.blocks -%}
+    <div class="csc-block  {% if forloop.index == section.blocks.size %}mr-25 t-mr-30{% else %}mr-15 t-mr-20{% endif %}  {% if forloop.index == 1 %}ml-25 t-ml-30{% endif %}">
+        <a href="{{ block.settings.url }}">
+          {%- render 'global-image-wrapper',
+            image: block.settings.image
+          %}
+          <h5 class="h11 bold-600 spacing-1 pt-15 pb-15 pl-20 pr-20 t-pl-35 t-pr-35 t-pt-25 t-pb-25">{{ block.settings.title }}</h5>
+        </a>
+      </div>
+    {%- endfor-%}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Collection Shop Category",
+    "settings": [
+      {
+        "type": "text",
+        "id": "small_title",
+        "label": "Small Title"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button Label"
+      },
+      {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button Url"
+      },
+      {
+        "type": "image_picker",
+        "id": "desktop_image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Entry",
+        "type": "entry",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Url"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Shop Category"
+      }
+    ]
+  }
+{% endschema %}

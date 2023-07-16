@@ -1,0 +1,525 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+
+<style>
+    #shopify-section-{{ section.id }} .visuallyhidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+        white-space: nowrap;
+    }
+    #shopify-section-{{ section.id }} .pagination .disabled {
+        visibility: hidden;
+    }
+    #shopify-section-{{ section.id }} .pagination {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #shopify-section-{{ section.id }} .pagination .pagination-number {
+        gap:30px;
+        align-items: center;
+    }
+    #shopify-section-{{ section.id }} .pagination .pagination-number li.active {
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    #shopify-section-{{ section.id }} .pagination .nav-btn {
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+    }
+    #shopify-section-{{ section.id }} .pagination .nav-btn .icon,
+    #shopify-section-{{ section.id }} .pagination .nav-btn .icon svg {
+        width: 10px;
+        height: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .library-filter-button {
+        display: flex;
+        align-items: flex-start;
+    }
+    #shopify-section-{{ section.id }} .library-filter-button .circle {
+        display: inline-block;
+        width: 12px;
+        flex: 0 0 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 1px solid var(--black);
+        margin-right: 8px;
+        transform: translateY(3px);
+    }
+    #shopify-section-{{ section.id }} .library-filter-button.active .circle {
+        background: var(--black);
+    }
+    #shopify-section-{{ section.id }} .filter-wrapper {
+        position: fixed;
+        width: 100%;
+        height: calc(100% - 50px);
+        overflow-y: auto;
+        z-index: 1000000;
+        left: 0;
+        top: 0;
+        background: #fff;
+        transition: 0.3s ease all;
+        transform: translateX(100%);
+    }
+    #shopify-section-{{ section.id }} .filter-wrapper.active {
+        transform: translateX(0);
+    }
+    #shopify-section-{{ section.id }} .filter-button-mobile-wrapper {
+        position: fixed;
+        width: 100%;
+        height: 50px;
+        z-index: 1000001;
+        left: 0;
+        bottom: 0;
+        transition: 0.3s ease all;
+        transform: translateY(100%);
+    }
+    #shopify-section-{{ section.id }} .filter-button-mobile-wrapper.active {
+        transform: translateY(0);
+    }
+    
+    @media screen and (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .pagination .pagination-number {
+            gap: 35px;
+        }
+        #shopify-section-{{ section.id }} .filter-wrapper {
+            position: relative;
+            height: auto;
+            overflow-y: hidden;
+            z-index: 2;
+            transform: translateX(0);
+        }
+    }
+</style>
+
+<section id="research-libary-list" class="blog-all-articles overflow">
+    <div class="container">
+        {%- paginate blog.articles by section.settings.article_per_page, window_size: 3 -%}
+            <div class="global-flex flex-wrap">
+                {%- comment -%} Left Side {%- endcomment -%}
+                <div class="col-12 pl-0 pr-0 col-d-8 d-pl-0 d-pr-0">
+                    <div class="row">
+                        <div class="global-flex flex-wrap">
+                            {%- for article in blog.articles -%}
+                                {%- assign main_index = forloop.index -%}
+
+                                {%- for block in section.blocks -%}
+                                    {%- if block.settings.index == main_index and block.type == 'cta_1' -%}
+                                        <div class="article-each-wrapper global-flex flex-wrap col-12 col-d-6 mt-20 d-mt-30 relative">
+                                            <div class="inner-wrapper relative width-100 p-25 d-pl-40 d-pr-40 d-pt-45 d-pb-45" style="background-color: {{ block.settings.bg_color }};">
+                                                <h3 class="h8 max-290">{{ block.settings.title }}</h3>
+
+                                                {%- if block.settings.link_label != blank -%}
+                                                    <div class="link-wrapper link2 relative mt-15">
+                                                        {%- assign link_id = "link-cta" | append: block.id  -%}                                    
+                                                        {% render 'link-icon',
+                                                            id: link_id,
+                                                            label: block.settings.link_label,
+                                                            url: block.settings.link_url,
+                                                            text_class: 'p3 mr-5',
+                                                            icon_color: '#231D1D',
+                                                            icon_svg: settings.icon_arrow_diagonal_up,
+                                                            load_inside_vue: true
+                                                        %}
+                                                    </div>
+                                                {%- endif -%} 
+                                            </div>
+                                        </div>
+                                    {%- endif -%}
+                                {%- endfor -%}
+                                
+                                <div class="article-each-wrapper global-flex flex-wrap col-12 col-d-6 mt-20 d-mt-30 relative">
+                                    {%- render 'article-each-research', article: article -%}
+                                </div>
+                            {%- endfor -%}
+                        </div>
+                    </div>
+                </div>
+                {%- comment -%} end Left Side {%- endcomment -%}
+
+                {%- comment -%} Right Side {%- endcomment -%}
+                <div class="col-12 pl-0 pr-0 col-d-4 d-pl-40 max-pl-75 d-pr-0">
+                    <div class="filter-wrapper width-100 t-b-1 b-border p-20 t-p-30 d-mt-30" :class="{ 'active': show_filter_wrapper }">
+                        {%- comment -%} by concern {%- endcomment -%}
+                        <div class="inner-wrapper">
+                            <p class="p3 bold-500 bb-1 b-border pb-15 mb-20">{{ 'blogs.article.by_concern' | t }}</p>
+
+                            {%- comment -%}
+                            {%- for tag in blog.all_tags -%}
+                                {%- if tag contains 'concern:' -%}
+                                    <a href="javascript:void(0)" rel="nofollow" @click="buildTags($event)" data-tag="{{ tag | handleize }}" class="library-filter-button mt-10 font-0 {% if current_tags contains tag %} active {% endif %}">
+                                        <span class="circle"></span>
+                                        <span class="p3">{{ tag | replace: 'concern:', '' }}</span>
+                                    </a>
+                                {%- endif -%}
+                            {%- endfor -%}
+                            {%- endcomment -%}
+
+                            {%- for tag in blog.all_tags -%}
+                                <a href="javascript:void(0)" @click="buildTags($event)" rel="nofollow" data-tag="{{ tag | handleize }}" class="library-filter-button mt-10 font-0 {% if current_tags contains tag %} active {% endif %}">
+                                    <span class="circle"></span>
+                                    <span class="p3">{{ tag }}</span>
+                                </a>
+                            {%- endfor -%}
+                        </div>
+                        {%- comment -%} end by concern {%- endcomment -%}
+                    </div>
+
+                    {%- for block in section.blocks -%}
+                        {%- if block.type == 'cta_2' -%}
+                            <div class="cta-2 relative width-100 mt-25 hide-m show-d">
+                                {%- assign image_id = 'cta-image-' | append: block.id -%}
+                                {%- render 'global-image-wrapper-responsive',
+                                    desktop_image: block.settings.image_desktop,
+                                    mobile_image: block.settings.image_mobile,
+                                    image_id: image_id,
+                                    load_inside_vue: true
+                                -%}
+
+                                <div class="text-wrapper width-100 ab-top-left z-2 p-30">
+                                    <h4 class="h4">{{ block.settings.title }}</h4>
+
+                                    {%- if block.settings.link_label != blank -%}
+                                        <div class="link-wrapper link2 relative mt-10">
+                                            {%- assign link_id = "link-cta" | append: block.id  -%}                                    
+                                            {% render 'link-icon',
+                                                id: link_id,
+                                                label: block.settings.link_label,
+                                                url: block.settings.link_url,
+                                                text_class: 'p3 mr-5',
+                                                icon_color: '#231D1D',
+                                                icon_svg: settings.icon_arrow_diagonal_up,
+                                                load_inside_vue: true
+                                            %}
+                                        </div>
+                                    {%- endif -%} 
+                                </div>
+                            </div>
+                        {%- endif -%}
+                    {%- endfor -%}
+                </div>
+                {%- comment -%} end Right Side {%- endcomment -%}
+            </div>
+
+            {%- if paginate.pages > 1 -%}
+                <nav role="navigation" class="mt-40 d-mt-80">
+                <ol class="pagination">
+                    {%- if paginate.previous-%}
+                        <li>
+                            <a class="nav-btn ai-center" href="{{ paginate.previous.url }}">
+                            <span aria-hidden="true" class="icon mr-10 font-0">{{ settings.icon_btn_left }}</span>
+                            <span class="hide-m show-t-inline-block">Previous</span> <span class="visuallyhidden">page</span>
+                            </a>
+                        </li>
+                    {%- else -%}
+                        <li class="disabled ai-center">
+                            <span aria-hidden="true" class="icon mr-10 font-0">{{ settings.icon_btn_left }}</span>
+                            Previous <span class="visuallyhidden">page</span>
+                        </li>
+                    {%- endif -%}
+
+                    <div class="pagination-number global-flex">
+                        {%- for part in paginate.parts -%}
+                            {%- if part.is_link -%}
+                                <li class="p2">
+                                    <a href="{{ part.url }}">
+                                        <span class="visuallyhidden">page</span> {{ part.title }}
+                                    </a>
+                                </li>
+                            {%- else -%}
+                                {%- if part.title == paginate.current_page -%}
+                                    <li class="active p2 c-white bg-black" aria-current="page">
+                                        <span class="visuallyhidden">page</span> {{ part.title }}
+                                    </li>
+                                {%- else -%}
+                                    <li>
+                                        <span class="visuallyhidden">page</span> {{ part.title }}
+                                    </li>
+                                {%- endif -%}
+                            {%- endif -%}
+                        {%- endfor -%}
+                    </div>
+
+                    {%- if paginate.next -%}
+                        <li>
+                            <a class="nav-btn ai-center" href="{{ paginate.next.url }}">
+                            <span class="hide-m show-t-inline-block">Next</span> <span class="visuallyhidden">page</span>
+                            <span aria-hidden="true" class="icon ml-10 font-0">{{ settings.icon_btn_right }}</span>
+                            </a>
+                        </li>
+                    {%- else -%}
+                        <li class="disabled ai-center">
+                            Next <span class="visuallyhidden">page</span>
+                            <span aria-hidden="true" class="icon ml-10 font-0">{{ settings.icon_btn_right }}</span>
+                        </li>
+                    {%- endif -%}
+                </ol>
+                </nav>
+            {%- endif -%}
+        {%- endpaginate -%}
+
+        {%- for block in section.blocks -%}
+            {%- if block.type == 'cta_2' -%}
+                <div class="cta-2 relative width-100 mt-40 show-m hide-d">
+                    {%- assign image_id = 'cta-image-' | append: block.id -%}
+                    {%- render 'global-image-wrapper-responsive',
+                        desktop_image: block.settings.image_desktop,
+                        mobile_image: block.settings.image_mobile,
+                        image_id: image_id,
+                        load_inside_vue: true
+                    -%}
+
+                    <div class="text-wrapper width-100 ab-top-left z-2 p-25 max-260">
+                        <h4 class="h4">{{ block.settings.title }}</h4>
+
+                        {%- if block.settings.link_label != blank -%}
+                            <div class="link-wrapper link2 relative mt-10">
+                                {%- assign link_id = "link-cta" | append: block.id  -%}                                    
+                                {% render 'link-icon',
+                                    id: link_id,
+                                    label: block.settings.link_label,
+                                    url: block.settings.link_url,
+                                    text_class: 'p3 mr-5',
+                                    icon_color: '#231D1D',
+                                    icon_svg: settings.icon_arrow_diagonal_up,
+                                    load_inside_vue: true
+                                %}
+                            </div>
+                        {%- endif -%} 
+                    </div>
+                </div>
+            {%- endif -%}
+        {%- endfor -%}
+    </div>
+
+    <div class="filter-button-mobile-wrapper active show-m-flex hide-d ai-center jc-between bg-black">
+        <a href="javascript:void(0)" @click="show_filter_wrapper = !show_filter_wrapper" :class="show_filter_wrapper ? 'hide-m' : 'show-m-flex'" class="p2 c-white tc height-100 width-100 ab-top-left ai-center jc-center z-1 filter-articles">{{ 'blogs.article.filter_articles' | t }}</a>
+
+        <div :class="!show_filter_wrapper ? 'hide-m' : 'show-m-flex'" class="apply-wrapper height-100 width-100 ab-top-left ai-center jc-between z-3 hide-m pl-20 pr-20 t-pl-30 t-pr-30 hide-m">
+            <a href="javascript:void(0)" @click="applyFilterMobile()" class="p2 c-white">{{ 'blogs.article.apply' | t }}</a>
+            <a href="javascript:void(0)" @click="show_filter_wrapper = !show_filter_wrapper" class="p2 c-white opacity-5">{{ 'blogs.article.close' | t }}</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    const researchLibVue = Vue.createApp({
+        delimiters: ['${','}'], 
+        data() {
+			return {
+                url: '',
+                tags: [],
+                show_filter_wrapper: false
+            }
+        },
+        mounted() {
+            const this_obj = this;
+            this_obj.buildUrl();
+            
+            const active_filters = document.querySelectorAll('#shopify-section-{{ section.id }} .library-filter-button.active');
+            active_filters.forEach(function(active_filter) {
+                const tag = active_filter.getAttribute('data-tag');
+                this_obj.tags.push(`${tag}`);
+            });
+
+            //-- filter button behaviour on mobile
+            if(screen.width < 1024) {
+                const delay = setTimeout(function(){
+                    const m_filter_btn_wrapper = document.querySelector(`#shopify-section-{{ section.id }} .filter-button-mobile-wrapper`);
+                    const footer_elem = document.querySelector('#site-footer');
+                    const footer_top = footer_elem.offsetTop - 50;
+    
+                    window.addEventListener('scroll', function(event) {
+                        const scrollPosition = window.scrollY;
+
+                        if(scrollPosition > footer_top - window.innerHeight) {
+                            m_filter_btn_wrapper.classList.remove('active');
+                        } else {
+                            m_filter_btn_wrapper.classList.add('active');
+                        }
+                    });
+
+                    clearTimeout(delay);
+                }, 500);
+            }
+        },
+        methods: {
+            applyFilterMobile() {
+                this.buildUrl();
+                window.location = this.url;
+            },
+            buildUrl(e) {
+                const this_obj = this;
+                this.url = window.location.origin + `/blogs/{{ blog.handle }}`;
+                const param = window.location.search;
+
+                if(this.tags.length > 0) { 
+                    if(this.url.indexOf('/tagged') < 0) {
+                        this.url += '/tagged/';
+                    }
+
+                    this.tags.forEach(function(tag){
+                        this_obj.url += `+${tag}`;
+                    });
+                } else {
+                    this.url = this.url.replace('/tagged', '');
+                }
+
+                this.url += param;
+            },
+            buildTags(e) {
+                const this_obj = this;
+                const curr_button = e.target.closest('.library-filter-button');
+                const tag = curr_button.getAttribute('data-tag');
+                const param = window.location.search;
+
+                if(!curr_button.classList.contains('active')) {
+                    curr_button.classList.add('active');
+                    this.tags.push(`${tag}`);
+                } else {
+                    curr_button.classList.remove('active');
+                    this.tags = this.tags.filter(function(element) {
+                        return element !== tag;
+                    });
+                }
+
+                if(screen.width > 1023) {
+                    this_obj.buildUrl();
+
+                    window.location = this.url;
+                }
+            }
+        }
+    }).mount('#shopify-section-{{ section.id }} #research-libary-list');
+</script>
+
+{% schema %}
+    {
+        "name": "Research Library - List",
+        "settings": [
+            {
+                "type": "number",
+                "id": "article_per_page",
+                "label": "Items Per Page"
+            },
+            {
+                "type": "header",
+                "content": "Padding Settings"
+            }, 
+            {
+                "type": "number",
+                "id": "top_padding_m",
+                "label": "Top Padding (Mobile)"
+            }, 
+            {
+                "type": "number",
+                "id": "bottom_padding_m",
+                "label": "Bottom Padding (Mobile)"
+            }, 
+            {
+                "type": "number",
+                "id": "top_padding_t",
+                "label": "Top Padding (Tablet)"
+            }, 
+            {
+                "type": "number",
+                "id": "bottom_padding_t",
+                "label": "Bottom Padding (Tablet)"
+            }, 
+            {
+                "type": "number",
+                "id": "top_padding",
+                "label": "Top Padding (Desktop)"
+            }, 
+            {
+                "type": "number",
+                "id": "bottom_padding",
+                "label": "Bottom Padding (Desktop)"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "cta_1",
+                "name": "CTA 1",
+                "settings": [
+                    {
+                        "type": "number",
+                        "id": "index",
+                        "label": "Position Index" 
+                    },
+                    {
+                        "type": "color",
+                        "id": "bg_color",
+                        "label": "Background Color"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "link_label",
+                        "label": "Link Label"
+                    },
+                    {
+                        "type": "url",
+                        "id": "link_url",
+                        "label": "Link URL"
+                    }
+                ]
+            },
+            {
+                "type": "cta_2",
+                "name": "CTA 2",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image_desktop",
+                        "label": "Image (desktop)"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image_mobile",
+                        "label": "Image (mobile)"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "link_label",
+                        "label": "Link Label"
+                    },
+                    {
+                        "type": "url",
+                        "id": "link_url",
+                        "label": "Link URL"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Research Library - List"
+            }
+        ]
+    }
+{% endschema %}

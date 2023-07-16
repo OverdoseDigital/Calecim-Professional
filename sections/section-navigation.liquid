@@ -1,0 +1,187 @@
+{% comment %} Calecim Theme {% endcomment %}
+
+<style>
+    #shopify-section-{{ section.id }} .nav-link {
+        transition: 0.3s ease all;
+        opacity: 0.3;
+    }
+    #shopify-section-{{ section.id }} .nav-link.active {
+        opacity: 1;
+        font-weight: 500;
+    }
+    #shopify-section-{{ section.id }} .nav-link:hover {
+        opacity: 1;
+    }
+    #shopify-section-{{ section.id }} .global-select-div .options {
+        z-index: 20;
+        width: calc(100% + 1px);
+    }
+</style>
+
+<section class="section-navigation d-pt-25 d-pb-25 d-bb-1 b-border">
+    <div class="desktop-nav hide-m show-d tc">
+        {%- for block in section.blocks -%}
+            {%- assign custom_class = '' -%}
+            {%- if section.settings.nav_type == 'same-page' and forloop.first -%}
+                {%- assign custom_class = 'active' -%}
+            {%- endif -%}
+
+            {%- assign href = block.settings.url -%}
+            {%- if section.settings.nav_type == 'same-page' -%}
+                {%- assign href = 'javascript:void(0)' -%}
+            {%- endif -%}
+
+            <a {% if section.settings.nav_type == 'same-page' %} onclick="switchSections{{ section.id | replace: '-', '' }}(event)" 
+                data-sections="{{ block.settings.section_ids }}" data-title="{{ block.settings.title }}" {% endif %} 
+                href="{{ href }}" 
+                class="nav-link nav-handler show-m-inline-block p2 mr-20 ml-20 {{ custom_class }}">
+                    {{ block.settings.title }}
+            </a>
+        {%- endfor -%}
+    </div>
+
+    <div class="global-select-div pt-20 pb-20 pl-20 pr-20 t-pl-30 t-pr-30 bb-1 b-border show-m hide-d">
+        <div class="inner relative">
+            <div class="text p2 bold-500 selected-div-text tl">
+                {%- if section.settings.nav_type == 'same-page' -%}
+                    {{ section.blocks[0].settings.title }}
+                {%- endif -%}
+            </div>
+            <div class="icons">
+                <div class="icon icon-caret">{{ settings.icon_select }}</div>
+            </div>
+        </div>
+        <ul class="options bt-1 bb-1 b-silver bg-white tl">
+            {% for block in section.blocks %}
+                <li>
+                    {%- assign href = block.settings.url -%}
+                    {%- if section.settings.nav_type == 'same-page' -%}
+                        {%- assign href = 'javascript:void(0)' -%}
+                    {%- endif -%}
+                    <a {% if section.settings.nav_type == 'same-page' %} onclick="switchSections{{ section.id | replace: '-', '' }}(event)" data-sections="{{ block.settings.section_ids }}" data-title="{{ block.settings.title }}" {% endif %} href="{{ href }}" class="nav-link-mobile nav-handler show-m-inline-block p2">{{ block.settings.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<script>
+    {%- if section.settings.nav_type == 'different-page' -%}
+        {%- for block in section.blocks -%}
+            if(window.location.href.indexOf('{{ block.settings.url }}') >= 0) {
+                const active_elem = document.querySelector(`#shopify-section-{{ section.id }} a[href="{{ block.settings.url }}"]`);
+                active_elem.classList.add('active');
+
+                const dropdown_label = document.querySelector(`#shopify-section-{{ section.id }} .selected-div-text`);
+                dropdown_label.innerHTML = '{{ block.settings.title }}';
+            }
+        {%- endfor -%}
+    {%- else -%}
+        let section;
+        let section_ids = [];
+
+        const delay = setTimeout(function(){
+            /* hide all sections */
+            {%- assign main_index = 0 -%}
+            {%- for block in section.blocks -%}
+                {%- assign main_index = forloop.index0 -%}
+                {%- assign section_ids = block.settings.section_ids | split: ',' -%}
+
+                {%- for section_id in section_ids -%}
+                    section_ids.push('{{ section_id }}');
+
+                    {%- if main_index > 0 -%}
+                        section = document.querySelector('{{ section_id }}');
+                        section.classList.add('hide-m');
+                    {%- endif -%}
+                {%- endfor -%}
+            {%- endfor -%}
+
+            clearTimeout(delay);
+        }, 50);
+
+        function switchSections{{ section.id | replace: '-', '' }}(e) {
+            const this_button = e.target.closest('.nav-handler');
+            const curr_title = this_button.getAttribute('data-title');
+            const this_sections = this_button.getAttribute('data-sections').split(',');
+            
+            /* hide all sections */
+            section_ids.forEach(function(section_id){
+                document.querySelector(section_id).classList.add('hide-m');
+            });
+
+            /* show the sections */
+            if(this_sections[0] != "" && this_sections.length > 0) {
+                this_sections.forEach(function(this_section){
+                    document.querySelector(this_section).classList.remove('hide-m');
+                });
+            }
+
+            const nav_handlers = document.querySelectorAll('#shopify-section-{{ section.id }} .nav-handler');
+            nav_handlers.forEach(function(nav_handler){
+                nav_handler.classList.remove('active');
+            });
+
+            this_button.classList.add('active');
+            const dropdown_label = document.querySelector(`#shopify-section-{{ section.id }} .selected-div-text`);
+            dropdown_label.innerHTML = curr_title;
+
+            return false;
+        }
+    {%- endif -%}
+</script>
+
+{% schema %}
+    {
+        "name": "Section Navigation",
+        "settings": [
+            {
+                "type": "select",
+                "id": "nav_type",
+                "label": "Navigation Type",
+                "options": [
+                    {
+                        "value": "different-page",
+                        "label": "Different Page"
+                    },
+                    {
+                        "value": "same-page",
+                        "label": "Same Page"
+                    }
+                ],
+                "default": "different-page"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "url",
+                        "id": "url",
+                        "label": "URL"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "section_ids",
+                        "label": "Section IDs",
+                        "info": "This is for same-page navigation type. Input separated by comma and please include the #."
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Section Navigation",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}
+

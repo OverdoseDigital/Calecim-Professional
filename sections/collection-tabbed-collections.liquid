@@ -1,0 +1,426 @@
+{%  comment  %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+<style>
+  #shopify-section-{{ section.id }} .container .ctc-left .ctc-tabs .ctc-tab {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .ctc-tab-mobile {
+    position: sticky;
+    top: 0px;
+    background: white;
+    display: flex;
+    z-index: 9;
+    transition: .3s;
+  }
+  #shopify-section-{{ section.id }} .ctc-tab-mobile.is-sticky {
+    box-shadow: 0 1px 7px 0px rgba(0,0,0,.15);
+  }
+  #shopify-section-{{ section.id }} .container .ctc-left .ctc-tabs .ctc-tab p,
+  #shopify-section-{{ section.id }} .ctc-tab-mobile p {
+    border-bottom: 1px solid transparent;
+    color: #2C2C2C;
+    opacity: .45;
+    transition: .5s;
+    cursor: pointer;
+  }
+  #shopify-section-{{ section.id }} .container .ctc-left .ctc-tabs .ctc-tab p.active,
+  #shopify-section-{{ section.id }} .container .ctc-left .ctc-tabs .ctc-tab p:hover,
+  #shopify-section-{{ section.id }} .ctc-tab-mobile p.active {
+    opacity: 1;
+    border-bottom-color: #6C6C6CB3;
+  }
+  #shopify-section-{{ section.id }} .container .ctc-left .ctc-tabs .ctc-tab-content .ctc-tabc {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .container .ctc-left .ctc-tabs .ctc-tab-content .ctc-tabc.active {
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .container .ctc-right .ctcr-content {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .container .ctc-right .ctcr-content.active {
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .container .ctc-right .ctcr-content .ctcr-item {
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .container .ctc-right .ctcr-content .ctcri-caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .container .ctc-right .ctcr-content .ctcri-caption h6 {
+    color: #2C2C2C;
+  }
+  #shopify-section-{{ section.id }} .container .ctc-right .ctcr-content .ctcri-caption a {
+    color: #2C2C2C;
+    display: inline-flex;
+    align-items: center;
+  }
+  @media screen and (min-width: 768px){
+    #shopify-section-{{ section.id }} .ctc-tab-mobile {
+      top: 0px;
+    }
+    #shopify-section-{{ section.id }} .container .ctc-right .ctcr-content.active {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+    #shopify-section-{{ section.id }} .container .ctc-right .ctcr-content .ctcr-item {
+      width: calc(50% - 20px);
+    }
+  }
+  @media screen and (min-width: 1024px){
+    #shopify-section-{{ section.id }} .container {
+      display: flex;
+      justify-content: space-between;
+    }
+    #shopify-section-{{ section.id }} .container .ctc-left {
+      width: 40%;
+    }
+    #shopify-section-{{ section.id }} .ctc-tab-mobile {
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .container .ctc-left .ctc-tabs .ctc-tab {
+      display: inline-flex;
+    }
+    #shopify-section-{{ section.id }} .container .ctc-right {
+      width: 60%;
+    }
+
+    #shopify-section-{{ section.id }} .ctc-tabs {
+      position: sticky;
+      top: 125px;
+      transition: 0.3s ease all;
+    }
+  }
+</style>
+<div class="collection-tabbed" id="collection-tabbed-{{ section.id }}">
+  <div class="ctc-tab-mobile p-25 t-pl-30 t-pr-30 d-pl-25 d-pr-25"> 
+    <p class="uppercase spacing-2 bold-600 p3 mr-30 active" data-target="1" @click="setTab(1)">{{ section.settings.small_title_1 }}</p>
+    <p class="uppercase spacing-2 bold-600 p3" data-target="2" @click="setTab(2)">{{ section.settings.small_title_2 }}</p>
+  </div>
+  <div class="container">
+    <div class="ctc-left" id="ctc-left-{{ section-id }}">
+      <div class="ctc-tabs d-pb-20">
+        <div class="ctc-tab">
+          <p class="uppercase spacing-2 bold-600 p3 mr-30 active" data-target="1" @click="setTab(1)">{{ section.settings.small_title_1 }}</p>
+          <p class="uppercase spacing-2 bold-600 p3" data-target="2" @click="setTab(2)">{{ section.settings.small_title_2 }}</p>
+        </div>
+        <div class="ctc-tab-content mt-5 d-mt-25">
+          <div class="ctc-tabc-1 ctc-tabc d-pr-60 max-pr-120 active">
+            <h3 class="h5">{{ section.settings.title_1 }}</h3>
+            <p class="p2 c-grey mt-10 d-mt-5 max-400 d-max-250 hd-max-350">{{ section.settings.text_1 }}</p>
+          </div>
+          <div class="ctc-tabc-2 ctc-tabc d-pr-60 max-pr-120 ">
+            <h3 class="h5">{{ section.settings.title_2 }}</h3>
+            <p class="p2 c-grey mt-10 d-mt-5 max-400 d-max-250 hd-max-350">{{ section.settings.text_2 }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ctc-right mt-30 t-mt-35 d-mt-0">
+      <div class="ctcr-1 ctcr-content active">
+        {% assign loop = 1 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'tab_1' %}
+          <div class="ctcr-item t-mt-0 t-mb-20 t-ml-10 t-mr-10 {% if loop == 1 %}mt-0{% else %}mt-20{% endif %}">
+            {%- if block.settings.link_url != blank -%}
+              <a href="{{ block.settings.link_url }}" class="show-m">
+            {%- endif -%}
+
+            {%- render 'global-image-wrapper',
+              image: block.settings.image
+            %}
+            <div class="ctcri-caption pt-40 d-pt-35 pl-20 pr-20">
+              <h6 class="h11">{{ block.settings.title }}</h6>
+              <div class="mt-5">
+                {%- assign link_id = "link-shop-collection-" | append: block.id  -%}                                    
+                {% render 'link-icon',
+                  id: link_id,
+                  label: block.settings.link_label,
+                  text_class: 'p3 uppercase c-black spacing-2 bold-600',
+                  icon_color: '#6C6C6C',
+                  icon_svg: settings.icon_btn_right,
+                  load_inside_vue: true
+                %}
+              </div>
+            </div>
+
+            {%- if block.settings.link_url != blank -%}
+              </a>
+            {%- endif -%}
+          </div>
+          {% assign loop = loop | plus: 1  %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="ctcr-2 ctcr-content">
+        {% assign loop = 1 %}
+        {% for block in section.blocks %}
+          {% if block.type == 'tab_2' %}
+          <div class="ctcr-item t-mt-0 t-mb-20 t-ml-10 t-mr-10 {% if loop == 1 %}mt-0{% else %}mt-20{% endif %}">
+            {%- if block.settings.link_url != blank -%}
+              <a href="{{ block.settings.link_url }}" class="show-m">
+            {%- endif -%}
+
+            {%- render 'global-image-wrapper',
+              image: block.settings.image
+            %}
+            <div class="ctcri-caption pt-40 d-pt-35 pl-20 pr-20">
+              <h6 class="h11">{{ block.settings.title }}</h6>
+              <div class="mt-5">
+                {%- assign link_id = "link-shop-collection-" | append: block.id  -%}                                    
+                {% render 'link-icon',
+                  id: link_id,
+                  label: block.settings.link_label,
+                  text_class: 'p3 uppercase c-black spacing-2 bold-600',
+                  icon_color: '#6C6C6C',
+                  icon_svg: settings.icon_btn_right,
+                  load_inside_vue: true
+                %}
+              </div>
+            </div>
+
+            {%- if block.settings.link_url != blank -%}
+              </a>
+            {%- endif -%}
+          </div>
+          {% assign loop = loop | plus: 1  %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    const collectiontabbed = Vue.createApp({
+        delimiters: [
+            '${', '}'
+        ],
+        data() {
+            return {
+              scrollPosition: 0,
+              tabTopPosition: 0,
+              headerheight: 0,
+              prevScrollPos: 0
+            }
+        },
+        mounted() {
+          const tab_mobile = document.querySelector(`#collection-tabbed-{{ section.id }} .ctc-tab-mobile`);
+          this.tabTopPosition = tab_mobile.offsetTop;
+          this.headerheight = document.querySelector('header').offsetHeight;
+
+          window.addEventListener('scroll', this.handleScroll);
+        },
+        methods: {
+          handleScroll(event){
+            const doc = document.documentElement;
+            const body = document.body;
+            const currentScrollPosition = Math.max(doc.scrollTop, body.scrollTop);
+            const scrollDirection = currentScrollPosition > this.prevScrollPos ? "down" : "up";
+
+            let tab = document.querySelector(`#collection-tabbed-{{ section.id }} .ctc-tab-mobile`);
+            if(currentScrollPosition < this.scrollPosition){
+              tab.style.top = (this.headerheight-1)  + 'px';
+            }
+            else{
+              tab.style.top = 0
+            }
+            this.scrollPosition = currentScrollPosition
+
+            if(screen.width < 1024) {
+              if(scrollDirection == 'down' && currentScrollPosition >= this.tabTopPosition) {
+                tab.classList.add('is-sticky');
+              } else if (scrollDirection == 'up' && (currentScrollPosition+this.headerheight) < this.tabTopPosition) {
+                tab.classList.remove('is-sticky');
+              }
+            }
+
+            this.prevScrollPos = currentScrollPosition;
+          },
+          setTab(target){
+            let tabs = document.querySelectorAll("#ctc-left-{{ section-id }} .ctc-tab p");
+            let tab = document.querySelector(`#ctc-left-{{ section-id }} .ctc-tab p[data-target="${target}"]`);
+            tabs.forEach(function(item) {
+              item.classList.remove("active")
+            });
+            tab.classList.add("active")
+
+            let tabsM = document.querySelectorAll("#collection-tabbed-{{ section.id }} .ctc-tab-mobile p");
+            let tabM = document.querySelector(`#collection-tabbed-{{ section.id }} .ctc-tab-mobile p[data-target="${target}"]`);
+            tabsM.forEach(function(item) {
+              item.classList.remove("active")
+            });
+            tabM.classList.add("active")
+
+            let tabContents = document.querySelectorAll("#ctc-left-{{ section-id }} .ctc-tab-content .ctc-tabc");
+            let tabContent = document.querySelector(`#ctc-left-{{ section-id }} .ctc-tab-content .ctc-tabc-${target}`);
+            tabContents.forEach(function(item) {
+              item.classList.remove("active")
+            });
+            tabContent.classList.add("active")
+
+            let rightContents = document.querySelectorAll("#collection-tabbed-{{ section.id }} .ctc-right .ctcr-content");
+            let rightContent = document.querySelector(`#collection-tabbed-{{ section.id }} .ctc-right .ctcr-${target}`);
+            rightContents.forEach(function(item) {
+              item.classList.remove("active")
+            });
+            rightContent.classList.add("active")
+            let screenWidth = screen.width
+            if(screenWidth < 769){
+              let targetScroll = document.querySelector('.collection-tabbed').offsetTop
+              let header = document.querySelector('#site-header').clientHeight
+              let top = Number(targetScroll) - Number(header)
+              console.log(top)
+              window.scrollTo({
+                top: top,
+                behavior: 'smooth',
+              })
+            }
+          }
+        }
+    }).mount('#collection-tabbed-{{ section.id }}');
+</script>
+{% schema %}
+  {
+    "name": "Collection Tabbed",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Tab 1"
+      },
+      {
+        "type": "text",
+        "id": "small_title_1",
+        "label": "Small Title"
+      },
+      {
+        "type": "text",
+        "id": "title_1",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "text_1",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "Tab 2"
+      },
+      {
+        "type": "text",
+        "id": "small_title_2",
+        "label": "Small Title"
+      },
+      {
+        "type": "text",
+        "id": "title_2",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "text_2",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Tab 1",
+        "type": "tab_1",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link Url"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "name": "Tab 2",
+        "type": "tab_2",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link Url"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Tabbed"
+      }
+    ]
+  }
+{% endschema %}

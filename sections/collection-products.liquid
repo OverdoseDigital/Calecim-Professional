@@ -1,0 +1,386 @@
+{% comment %} Calecim Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+{%- assign coll_size = collection.products.size -%}
+
+<style>
+    #shopify-section-{{ section.id }} .cta-1-wrapper,
+    #shopify-section-{{ section.id }} .cta-2-wrapper {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+    }
+    #shopify-section-{{ section.id }} .cta-1-wrapper .wrapper-inner {
+        background: var(--light-grey);
+    }
+    #shopify-section-{{ section.id }} .cta-1-wrapper .text-wrapper {
+        margin-top: -140px;
+    }
+
+    @media screen and (min-width: 768px) {
+        #shopify-section-{{ section.id }} .cta-1-wrapper,
+        #shopify-section-{{ section.id }} .cta-2-wrapper {
+            width: calc(100% + 60px);
+            margin-left: -30px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .cta-1-wrapper,
+        #shopify-section-{{ section.id }} .cta-2-wrapper {
+            width: 100%;
+            margin-left: 0;
+        }
+        #shopify-section-{{ section.id }} .cta-1-wrapper .text-wrapper {
+            margin-top: 0;
+        }
+        #shopify-section-{{ section.id }} .cta-1-wrapper .wrapper-inner {
+            background: #fff;
+        }
+    }
+</style>
+
+{%- paginate collection.products by settings.collection_limit -%}
+
+<div id="collection-products-list" class="collection-con">
+    <div class="container">
+        <div class="row">
+            <div class="global-flex flex-wrap product-wrapper">
+                {%- for product in collection.products limit: settings.collection_limit -%}
+                    {%- assign main_index = forloop.index -%}
+
+                    <div data-index="{{ main_index }}" class="col-12 col-t-6 col-d-3 mt-30 product-each-wrapper">
+                        {%- render 'product-each', product: product -%}
+                    </div>
+
+                    {%- for block in section.blocks -%}
+                        {%- if block.settings.index == main_index -%}
+                            {%- if block.type == 'cta_1' -%}
+                                <div data-index-desktop="{{ block.settings.index }}" data-index-mobile="{{ block.settings.index_mobile }}" class="product-each-wrapper collection-cta col-12 col-t-12 col-d-6 mt-30">
+                                    <div class="cta-1-wrapper relative width-100">
+                                        <div class="image-wrapper">
+                                            {%- assign id = 'collection-cta-' | append: block.id -%}
+                                            {%- render
+                                                'global-image-wrapper-responsive',
+                                                desktop_image: block.settings.image_desktop,
+                                                mobile_image: block.settings.image_mobile,
+                                                image_id: id,
+                                                load_inside_vue: true
+                                            -%}
+                                        </div>
+                                        <div class="text-wrapper relative d-ab-bottom-left pl-20 pr-20 t-pl-30 t-pr-30 d-p-40 width-100 z-2">
+                                            <div class="wrapper-inner width-100 d-max-390 p-35">
+                                                <h6 class="h8">{{ block.settings.title }}</h6>
+
+                                                <div class="bottom-wrapper global-flex jc-between ai-end mt-15 d-mt-15">
+                                                    {%- if block.settings.author != blank -%}
+                                                        <div>
+                                                            <p class="p3 bold-500">{{ block.settings.author }}</p>
+                                                            {%- if block.settings.social_media != blank -%}
+                                                                <p class="p3 c-black opacity-5">{{ block.settings.social_media }}</p>
+                                                            {%- endif -%}
+                                                        </div>
+                                                    {%- endif -%}
+
+                                                    {%- if block.settings.link_label != blank -%}
+                                                        <div class="show-m-inline-block link2">
+                                                            {%- assign link_id = "link-cta" | append: block.id  -%}                                    
+                                                            {% render 'link-icon',
+                                                                id: link_id,
+                                                                label: block.settings.link_label,
+                                                                url: block.settings.link_url,
+                                                                text_class: 'p3 mr-10',
+                                                                icon_color: '#231D1D',
+                                                                icon_svg: settings.icon_arrow_diagonal_up,
+                                                                load_inside_vue: true
+                                                            %}
+                                                        </div>
+                                                    {%- endif -%}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {%- endif -%}
+
+                            {%- if block.type == 'cta_2' -%}
+                                <div data-index-desktop="{{ block.settings.index }}" data-index-mobile="{{ block.settings.index_mobile }}" class="product-each-wrapper collection-cta col-12 col-t-12 col-d-6 mt-30">
+                                    <div class="cta-2-wrapper relative width-100">
+                                        <a href="{{ block.settings.url }}" class="show-m relative">
+                                            {%- assign id = 'collection-cta-' | append: block.id -%}
+                                            {%- render
+                                                'global-image-wrapper-responsive',
+                                                desktop_image: block.settings.image_desktop,
+                                                mobile_image: block.settings.image_mobile,
+                                                image_id: id,
+                                                load_inside_vue: true
+                                            -%}
+
+                                            {%- if block.settings.tags != blank -%}
+                                                <div class="tags-wrapper p-30 ab-top-right width-100 product-each">
+                                                    <div class="wrapper relative width-100 tr">
+                                                        {%- assign tags = block.settings.tags | split: ',' -%}
+                                                        {%- for tag in tags -%}
+                                                            <div class="image-tag ml-10 bg-white p5 uppercase bold-500 show-m-inline-block">{{ tag | strip }}</div>
+                                                        {%- endfor -%}
+                                                    </div>
+                                                </div>
+                                            {%- endif -%}
+
+                                            <div class="text-wrapper ab-bottom-left width-100 z-2 p-30">
+                                                <h3 class="h3 uppercase c-white max-270 d-max-380">{{ block.settings.title }}</h3>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            {%- endif -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+                {%- endfor -%}
+            </div>
+        </div>
+
+        {%- if settings.collection_limit < coll_size -%}
+            <div class="load-more-wrapper relative width-100 mt-50 tc">
+                <a href="javascript:void(0)" @click="loadMorePage($event)" class="btn5 load-more-button">Load More</a>
+            </div>
+        {%- endif -%}
+    </div>
+</div>
+
+<script>
+    let collProductsVue = Vue.createApp({
+        delimiters: ['${','}'], 
+		data() {
+			return {
+                max_page: 0,
+                current_page: 2,
+                loading: false,
+                filter_url: null,
+                load_more_button: null   
+            }
+        },
+        mounted() {
+            const params = new URLSearchParams(window.location.search);
+            const this_obj = this;
+
+            this_obj.max_page = Number('{{ paginate.pages }}');  
+            
+            if(params.get('page') != null) {
+                this_obj.current_page = Number(params.get('page')) + 1;
+            }
+
+            this_obj.load_more_button = document.querySelector('#shopify-section-{{ section.id }} .load-more-button');
+
+            if(this_obj.current_page > this_obj.max_page) {
+                this_obj.load_more_button.closest('.load-more-wrapper').remove();
+            }
+
+            //-- relocate CTA
+            this_obj.relocateCta();
+        },
+        methods: {
+            relocateCta() {
+                if(screen.width < 1024) {
+                    const ctas = document.querySelectorAll(`#shopify-section-{{ section.id }} .collection-cta`);
+                    ctas.forEach(function(cta){
+                        const index_desktop = Number(cta.getAttribute('data-index-desktop'));
+                        const index_mobile = Number(cta.getAttribute('data-index-mobile'));
+
+                        if(index_desktop != index_mobile) {
+                            const target_parent = document.querySelector(`#shopify-section-{{ section.id }} .product-wrapper`);
+                            const target_location = document.querySelector(`#shopify-section-{{ section.id }} .product-each-wrapper[data-index="${index_mobile+1}"]`);
+                            target_parent.insertBefore(cta,target_location);
+                        }
+                    });
+                }
+            },
+            buildUrl() {
+                const this_obj = this;
+                this_obj.filter_url = '?';
+
+                const params = new URLSearchParams(window.location.search);
+                let i = 0;
+                for (const [name, value] of params.entries()) {
+                    if(name == 'filter.p.tag') {
+                        if(i > 0) {
+                            this_obj.filter_url += '&';
+                        }
+
+                        this_obj.filter_url += 'filter.p.tag=' + encodeURIComponent(value);
+
+                        i += 1;
+                    }
+                }
+
+                this_obj.filter_url += '&page=' + this_obj.current_page;
+                window.history.replaceState({ path: this_obj.filter_url }, '', this_obj.filter_url);
+            },
+            loadMorePage(e) {
+                const this_obj = this;
+                const products_wrapper = document.querySelector(`#shopify-section-{{ section.id }} .product-wrapper`);
+                const this_button = e.target.closest('.load-more-button');
+
+                this_obj.buildUrl();
+
+                axios.get(`${window.Shopify.routes.root}{{ collection.url | remove_first:'/' }}${this_obj.filter_url}&view=json`).then(function(response) {
+                    products_wrapper.insertAdjacentHTML('beforeend', response.data);
+
+                    $360.lazyLoadInstance.update();
+                    this_obj.current_page += 1;
+
+                    if(this_obj.current_page > this_obj.max_page) {
+                        this_obj.load_more_button.closest('.load-more-wrapper').remove();
+                    }
+                }).catch(function(error) {
+                    console.log(error)
+                });
+            }
+        }
+    }).mount('#shopify-section-{{ section.id }} #collection-products-list');
+</script>
+
+{%- endpaginate -%}
+
+{% schema %}
+    {
+        "name": "Collection Product List",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section Padding"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_m",
+                "label": "Top padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_m",
+                "label": "Bottom padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_t",
+                "label": "Top padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_t",
+                "label": "Bottom padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding",
+                "label": "Top padding (Desktop)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding",
+                "label": "Bottom padding (Desktop)"
+            }
+      ],
+      "blocks":[
+        {
+            "type": "cta_1",
+            "name": "CTA Type 1",
+            "settings": [
+                {
+                    "type": "number",
+                    "id": "index",
+                    "label": "Placement Index"
+                },
+                {
+                    "type": "number",
+                    "id": "index_mobile",
+                    "label": "Placement Index (mobile)"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_desktop",
+                    "label": "Image (Desktop)"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_mobile",
+                    "label": "Image (Mobile)"
+                },
+                {
+                    "type": "textarea",
+                    "id": "title",
+                    "label": "Testimonial"
+                },
+                {
+                    "type": "text",
+                    "id": "author",
+                    "label": "Author"
+                },
+                {
+                    "type": "text",
+                    "id": "social_media",
+                    "label": "Social Media"
+                },
+                {
+                    "type": "text",
+                    "id": "link_label",
+                    "label": "Link Label"
+                },
+                {
+                    "type": "url",
+                    "id": "link_url",
+                    "label": "Link URL"
+                }
+            ]
+        },
+        {
+            "type": "cta_2",
+            "name": "CTA Type 2",
+            "settings": [
+                {
+                    "type": "number",
+                    "id": "index",
+                    "label": "Placement Index (desktop)"
+                },
+                {
+                    "type": "number",
+                    "id": "index_mobile",
+                    "label": "Placement Index (mobile)"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_desktop",
+                    "label": "Image (Desktop)"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_mobile",
+                    "label": "Image (Mobile)"
+                },
+                {
+                    "type": "textarea",
+                    "id": "tags",
+                    "label": "Tags",
+                    "info": "Each input separated by comma"
+                },
+                {
+                    "type": "textarea",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "URL"
+                }
+            ]
+        }
+      ],
+      "presets": [
+        {
+            "name": "Collection Product List",
+            "blocks": []
+        }
+      ]
+    }
+    {% endschema %}

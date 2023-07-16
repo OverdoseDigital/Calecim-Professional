@@ -1,0 +1,271 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    {%if section.settings.enable_border_top%}
+    #shopify-section-{{ section.id }}{
+        border-top:1px solid #DBDBDB;
+    }
+    {%endif%}
+    {%if section.settings.enable_border_bottom%}
+    #shopify-section-{{ section.id }}{
+        border-bottom:1px solid #DBDBDB;
+    }
+    {%endif%}
+
+    
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        display:flex;
+        flex-wrap:wrap;
+    }
+    #shopify-section-{{ section.id }} .form-input{
+        width: 100%;
+        padding: 15px 15px;
+        border: 1px solid #dbdbdb;;
+    }
+    
+    #shopify-section-{{ section.id }} select{
+        font-family:'Inter', sans-serif;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.707' height='6.061' viewBox='0 0 10.707 6.061'%3E%3Cpath d='M0,0,5,5,0,10' transform='translate(10.354 0.354) rotate(90)' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position-x: calc(100% - 20px);
+        background-position-y: center;
+    }
+
+    #shopify-section-{{ section.id }} .flex-wrapper select.date{
+        width:calc(100% / 3 - 20px);
+        margin:0 10px;
+    }
+    #shopify-section-{{ section.id }} .flex-wrapper select{
+        width:100%;
+        margin-left:10px;
+        margin-right:10px;
+    }
+
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .form-input{
+            padding: 18px 20px;
+        }
+
+        {% comment %} #shopify-section-{{ section.id }} .flex-wrapper input{
+            width:calc(50% - 10px);
+            margin-right:10px;
+        } {% endcomment %}
+        #shopify-section-{{ section.id }} .flex-wrapper select{
+            width:calc(50% - 20px);
+            margin:0 10px;
+        }
+    }
+
+</style>
+
+<section id="{{ section.id }}" class="appointment-form">
+    <div class="container tc">
+        <div class="max-700" style="margin: 0 auto">
+            <div class="h5">{{section.settings.title}}</div>
+            <div class="p2 c-grey pt-15 max-500 ml-auto mr-auto">{{section.settings.text}}</div>
+
+            <form id="booking-form" action="" method="POSt">
+                {% comment %} <input type="hidden" name="action" value="booking-form"> {% endcomment %}
+                <div class="h11 pt-30 d-pt-45">STORE DETAIL</div>
+                <div class="flex-wrapper" style="margin:15px -10px 0 -10px">
+                    <select name="store" required class="form-input mt-15 d-mt-20" id="">
+                        <option value="" disabled selected hidden>Select Store</option>
+                        <option value="Vivocity">Vivocity</option>
+                        <option value="Jurong (JEM)">Jurong (JEM)</option>
+                        <option value="Northpoint City">Northpoint City</option>
+                        <option value="Plaza Singapura">Plaza Singapura</option>
+                        <option value="Jurong Point">Jurong Point</option>
+                        <option value="ION Orchard">ION Orchard</option>
+                    </select>
+                    <select name="time" required class="form-input mt-15 d-mt-20" id="">
+                        <option value="" disabled selected hidden>Select Time</option>
+                        <option value="12:00 PM">12:00 PM</option>
+                        <option value="1:00 PM">1:00 PM</option>
+                        <option value="2:00 PM">2:00 PM</option>
+                        <option value="3:00 PM">3:00 PM</option>
+                        <option value="4:00 PM">4:00 PM</option>
+                        <option value="5:00 PM">5:00 PM</option>
+                        <option value="6:00 PM">6:00 PM</option>
+                        <option value="7:00 PM">7:00 PM</option>
+                    </select>
+                </div>
+                <div class="flex-wrapper" style="margin:15px -10px 0 -10px">
+                    <select id="year" required class="form-input date mt-10" onclick="$(this).addClass('chosen');$('#month').attr('disabled', false)">
+                        <option value="" disabled selected hidden>Year</option>
+                        {%- for i in (2023..2033) -%}
+                            <option value="{{i}}">{{i}}</option>
+                        {%- endfor -%}
+                    </select>
+
+                    <select id="month" required disabled class="form-input date mt-10" onclick="$(this).addClass('chosen');$('#day').attr('disabled', false);">
+                        <option value="" disabled selected hidden>Month</option>
+                        {%- for i in (1..12) -%}
+                            <option value="{{i}}">{{i}}</option>
+                        {%- endfor -%}
+                    </select>
+
+                    <select id="day" required disabled class="form-input date mt-10" onclick="$(this).addClass('chosen')">
+                        <option value="" disabled selected hidden>Day</option>
+                        {%- for i in (1..31) -%}
+                            <option value="{{i}}">{{i}}</option>
+                        {%- endfor -%}
+                    </select>
+                </div>
+                
+                <div class="h11 pt-30 d-pt-45">PERSONAL INFORMATION</div>
+                <input type="text" required placeholder="Name" class="form-input mt-15 d-mt-20" name="first_name" id="">
+                <input type="email" required placeholder="Email" class="form-input mt-10" name="email" id="">
+                <input type="tel" required placeholder="Phone Number e.g. +6512345678" class="form-input mt-10" pattern="[+][0-9]{1,3}[0-9]{7,12}" name="mobile_number" id="tel-input">
+                
+                <div class="h11 pt-30 d-pt-45">YOUR INTEREST</div>
+                <select name="interest" class="form-input mt-15 d-mt-20" id="">
+                    <option value="Engagement Rings">Engagement Rings</option>
+                    <option value="Wedding Bands">Wedding Bands</option>
+                    <option value="Gifting">Gifting</option>
+                    <option value="Fancy Shape Diamond Rings">Fancy Shape Diamond Rings</option>
+                    <option value="Others">Others</option>
+                </select>
+
+                <div class="mt-30">
+                    <button type="submit" class="btn1">Submit</button>
+                </div>
+
+                <div class="mt-30 fail-text hide-m">
+                    <div class="p2 c-red tc"></div>
+                </div>
+
+                <div class="mt-30 success-text hide-m">
+                    <div class="p2 tc">Thank you for booking a time with us. We will be contacting you shortly.</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{{ 'jquery-ajax-module.js' | asset_url | script_tag }}
+<script>
+      $(document).ready(function() {
+        $(document).on("submit", "#booking-form", function(e) {
+            e.preventDefault();
+            let listfields = $(this).serializeArray();
+
+            let month = $("#month").val() >= 10? $("#month").val() : "0"+$("#month").val();
+            let day = $("#day").val() >= 10? $("#day").val() : "0"+$("#day").val();
+            let birthday = $("#year").val()+"-"+month+"-"+day;
+            //console.log(birthday);
+            listfields.push({name: 'date', value: birthday});
+
+            console.log("sendBookingForm");
+            console.log(listfields)
+            sendBookingForm(listfields);
+            return false;
+        });
+      });
+  
+      function sendBookingForm(listfields){
+          listfields.push({name: "action", value:"booking-form"});
+          $.ajax({
+              type: "POST",
+              url: "/apps/integration",
+              data: listfields,
+              dataType: "json",
+              success: function(data) {
+                //alert(data.msg)
+                  if (data.api == true) {
+                        //Success
+                        //alert(data.msg);
+
+                        let myForm = document.getElementById("booking-form");
+
+                        for (var i = 0; i < myForm.elements.length; i++) {
+                            if (myForm.elements[i].type !== "button" && myForm.elements[i].type !== "submit" && myForm.elements[i].name !== "interest") {
+                                myForm.elements[i].value = "";
+                            }
+                        }
+
+                        document.querySelector(".success-text").style.display = "block";
+                        document.querySelector(".fail-text").style.display = "none";
+                        
+                  } else {
+                        //Failed
+                        //alert(data.msg);
+
+                        $(".fail-text .c-red").html(data.msg)
+                        document.querySelector(".success-text").style.display = "none";
+                        document.querySelector(".fail-text").style.display = "block";
+                  }
+              }
+          });
+      }
+</script>
+
+{% schema %}
+    {
+        "name": "Appointment Form",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "enable_border_top",
+                "label": "Enable Border Top"
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_border_bottom",
+                "label": "Enable Border Bottom"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "text",
+                "label": "Text"
+            },
+            {
+                "type": "header",
+                "content": "Section Padding"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_m",
+                "label": "Top padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_m",
+                "label": "Bottom padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_t",
+                "label": "Top padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_t",
+                "label": "Bottom padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding",
+                "label": "Top padding (Desktop)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding",
+                "label": "Bottom padding (Desktop)"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Appointment Form",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}

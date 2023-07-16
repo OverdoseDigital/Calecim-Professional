@@ -1,0 +1,368 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{%- if template contains 'product' -%}
+    <style>
+        #shopify-section-{{ section.id }} .overlay-wrapper {
+            position: fixed;
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            height: 100%;
+            z-index: 20000000;
+            top: 0;
+            left: 0;
+            background: rgba(108,108,108,.8);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s ease all;
+        }
+        #shopify-section-{{ section.id }} .overlay-wrapper.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        #shopify-section-{{ section.id }} .content-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            background: #fff;
+            transition: 0.5s ease all;
+            transform: translateX(100%);
+        }
+        #shopify-section-{{ section.id }} .content-wrapper.show {
+            transform: translateX(0);
+        }
+        #shopify-section-{{ section.id }} .top-section {
+            box-shadow: 0px 3px 6px #0000000D;
+        }
+        #shopify-section-{{ section.id }} .nav-each {
+            position: relative;
+            opacity: 0.45;
+            transition: 0.3s ease all;
+            margin: 0 12.5px;
+        }
+        #shopify-section-{{ section.id }} .nav-each.active,
+        #shopify-section-{{ section.id }} .nav-each.active::after {
+            opacity: 1;
+        }
+        #shopify-section-{{ section.id }} .nav-each::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            left: 0;
+            bottom: -3px;
+            background: var(--grey);
+            opacity: 0;
+            transition: 0.3s ease all;
+        }
+        #shopify-section-{{ section.id }} table {
+            width: 100%;
+        }
+        #shopify-section-{{ section.id }} table td {
+            padding: 10px 15px;
+            border: 1px solid var(--silver);
+            text-align: center;
+        }
+        #shopify-section-{{ section.id }} .close-size-guide {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            font-size: 0;
+            right: 20px;
+            top: 20px;
+            z-index: 2;
+        }
+        #shopify-section-{{ section.id }} .close-size-guide svg {
+            display: block;
+            width: 15px;
+            height: 15px;
+        }
+        #shopify-section-{{ section.id }} .content-each {
+            flex-direction: column-reverse;
+        }
+
+        @media screen and (min-width: 1024px) {
+            #shopify-section-{{ section.id }} .close-size-guide {
+                right: 30px;
+                top: 30px;
+            }
+            #shopify-section-{{ section.id }} .content-wrapper {
+                width: 780px;
+            }
+            #shopify-section-{{ section.id }} .nav-each { 
+                margin: 0 20px;
+            }
+            #shopify-section-{{ section.id }} .content-each {
+                flex-direction: unset;
+            }
+            #shopify-section-{{ section.id }} table td {
+                padding: 15px 40px;
+            }
+        }
+    </style>
+
+    <div id="size-guide-drawer">
+        <div v-if="showSizeGuideDrawer" class="overlay-wrapper" :class="{ 'show': fadeSizeGuideDrawer }">
+            <div class="content-wrapper" :class="{ 'show': fadeSizeGuideDrawer }">
+                <a href="javascript:void(0)" @click="toggleSizeGuideDrawer()" class="close-size-guide">{{ settings.icon_close }}</a>
+
+                {%- comment -%} Top Section {%- endcomment -%}
+                <div class="top-section pt-60 d-pt-50 pb-20 d-pl-80 d-pr-80 bg-white">
+                    <h6 class="h7 tc">Size Guide</h6>
+                    <div class="nav-container mt-20 d-mt-25 tc">
+                        <a href="javascript:void(0)" @click="setActiveTab(0)" class="nav-each p3 uppercase bold-600 spacing-2 c-black" :class="{ 'active': activeTab[0] }">Rings</a>
+                        <a href="javascript:void(0)" @click="setActiveTab(1)" class="nav-each p3 uppercase bold-600 spacing-2 c-black" :class="{ 'active': activeTab[1] }">NECKLACES & PENDANTS</a>
+                        <a href="javascript:void(0)" @click="setActiveTab(2)" class="nav-each p3 uppercase bold-600 spacing-2 c-black" :class="{ 'active': activeTab[2] }">BRACELETS</a>
+                    </div>
+                </div>
+                {%- comment -%} end Top Section {%- endcomment -%}
+
+                {%- comment -%} Table section {%- endcomment -%}
+                <div class="table-wrapper pt-25 pb-40 pl-25 pr-25 t-pl-30 t-pr-30 d-pt-40 d-pb-50 d-pl-80 d-pr-80">
+                    <div v-if="activeTab[0]" data-table="rings">
+                        <table>
+                            <tr>
+                                <td colspan="2" class="p2 uppercase bold-600">Size#1</td>
+                                <td class="p2 uppercase bold-600">CIRCUMFERENCE</td>
+                                <td class="p2 uppercase bold-600">DIAMETER</td>
+                            </tr>
+                            <tr>
+                                <td class="p2 uppercase">HK</td>
+                                <td class="p2 uppercase">US</td>
+                                <td class="p2 uppercase">MM</td>
+                                <td class="p2 uppercase">MM</td>
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td class="p2 uppercase">5</td>
+                                    <td class="p2 uppercase">-</td>
+                                    <td class="p2 uppercase">43.3</td>
+                                    <td class="p2 uppercase">13.8</td>
+                                </tr>
+                                <tr>
+                                    <td class="p2 uppercase">6</td>
+                                    <td class="p2 uppercase">3</td>
+                                    <td class="p2 uppercase">44.3</td>
+                                    <td class="p2 uppercase">14.1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div v-if="activeTab[1]" data-table="necklaces-pendants">
+                        <table>
+                            <tr>
+                                <td colspan="2" class="p2 uppercase bold-600">Size#2</td>
+                                <td class="p2 uppercase bold-600">CIRCUMFERENCE</td>
+                                <td class="p2 uppercase bold-600">DIAMETER</td>
+                            </tr>
+                            <tr>
+                                <td class="p2 uppercase">HK</td>
+                                <td class="p2 uppercase">US</td>
+                                <td class="p2 uppercase">MM</td>
+                                <td class="p2 uppercase">MM</td>
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td class="p2 uppercase">5</td>
+                                    <td class="p2 uppercase">-</td>
+                                    <td class="p2 uppercase">43.3</td>
+                                    <td class="p2 uppercase">13.8</td>
+                                </tr>
+                                <tr>
+                                    <td class="p2 uppercase">6</td>
+                                    <td class="p2 uppercase">3</td>
+                                    <td class="p2 uppercase">44.3</td>
+                                    <td class="p2 uppercase">14.1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div v-if="activeTab[2]" data-table="bracelets">
+                        <table>
+                            <tr>
+                                <td colspan="2" class="p2 uppercase bold-600">Size#3</td>
+                                <td class="p2 uppercase bold-600">CIRCUMFERENCE</td>
+                                <td class="p2 uppercase bold-600">DIAMETER</td>
+                            </tr>
+                            <tr>
+                                <td class="p2 uppercase">HK</td>
+                                <td class="p2 uppercase">US</td>
+                                <td class="p2 uppercase">MM</td>
+                                <td class="p2 uppercase">MM</td>
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td class="p2 uppercase">5</td>
+                                    <td class="p2 uppercase">-</td>
+                                    <td class="p2 uppercase">43.3</td>
+                                    <td class="p2 uppercase">13.8</td>
+                                </tr>
+                                <tr>
+                                    <td class="p2 uppercase">6</td>
+                                    <td class="p2 uppercase">3</td>
+                                    <td class="p2 uppercase">44.3</td>
+                                    <td class="p2 uppercase">14.1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {%- comment -%} end Table section {%- endcomment -%}
+
+                {%- comment -%} Bottom Section {%- endcomment -%}
+                <div class="bottom-section pt-40 pb-40 pl-25 pr-25 t-pl-30 t-pr-30 d-pt-50 d-pb-50 d-pl-80 d-pr-80" style="background: {{ section.settings.bottom_bg_color }};">
+                    <h6 class="h9 mb-20">{{ section.settings.bottom_title }}</h6>
+
+                    {%- for block in section.blocks -%}
+                        <div class="content-each global-flex ai-center flex-wrap {% unless forloop.last %} mb-20 d-mb-50 {% endunless %}">
+                            <div class="col-12 pl-0 pr-0 col-d-8 d-pl-0 d-pr-60 mt-20 d-mt-0">
+                                <p class="p2 uppercase bold-600">{{ block.settings.title }}</p>
+
+                                {%- if block.settings.content != blank -%}
+                                    <div class="rte">
+                                        <ol class="p2 mt-10 c-grey">
+                                            {%- assign contents = block.settings.content | strip | newline_to_br | split: '<br />' -%}
+                                            {%- for content in contents -%}
+                                                <li>{{ content }}</li>
+                                            {%- endfor -%}
+                                        </ol>
+                                    </div>
+                                {%- endif -%}
+                            </div>
+                            <div class="col-12 pl-0 pr-0 col-d-4 d-pl-0 d-pr-0">
+                                <div class="image-container max-250 ml-auto mr-auto t-ml-auto t-mr-auto d-ml-0 d-mr-0">
+                                    {%- render 'global-image-wrapper',
+                                        image: block.settings.image,
+                                        size: '500x',
+                                        additional_class: 'no-bg'
+                                    -%}
+                                </div>
+                            </div>
+                        </div>
+                    {%- endfor -%}
+
+                    {%- if section.settings.bottom_link_label != blank -%}
+                        <div class="relative width-100 mt-15 d-mt-25">
+                            {%- assign link_id = "link-size-guide-drawer" -%}
+                            {% render 'link-icon', 
+                                id: link_id,
+                                label: section.settings.bottom_link_label,
+                                url: section.settings.bottom_link_url,
+                                text_class: 'p3 uppercase c-black spacing-2 bold-600',
+                                icon_color: '#6C6C6C',
+                                icon_svg: settings.icon_btn_right,
+                                load_inside_vue: true
+                            %}
+                        </div>
+                    {%- endif -%}
+                </div>
+                {%- comment -%} end Bottom Section {%- endcomment -%}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sizeGuideDrawerVue = Vue.createApp({
+            delimiters: ['${','}'],
+            data() {
+                return {
+                    activeTab: [true,false,false],
+                    showSizeGuideDrawer: false,
+                    fadeSizeGuideDrawer: false
+                }
+            },
+            mounted() {
+                /* add click listener for size guide button #link-size-guide */
+                const this_obj = this;
+
+                const body = document.querySelector('body');
+                body.addEventListener('click', function(event){
+                    if(event.target.closest('#link-size-guide')) {
+                        this_obj.toggleSizeGuideDrawer();
+                    }
+                });
+            },
+            methods: {
+                toggleSizeGuideDrawer() {
+                    if(!this.showSizeGuideDrawer) {
+                        this.showSizeGuideDrawer = true;
+
+                        setTimeout(() => {
+                            this.fadeSizeGuideDrawer = true;
+                            $360.lazyLoadInstance.update();
+                        }, 100);
+                    } else {
+                        this.fadeSizeGuideDrawer = false;
+
+                        setTimeout(() => {
+                            this.showSizeGuideDrawer = false;
+                        }, 500);
+                    }
+                },
+                setActiveTab(index) {
+                    this.activeTab.fill(false);
+                    this.activeTab[index] = true;
+                }
+            }
+        }).mount('#size-guide-drawer');
+    </script>
+{%- endif -%}
+
+{% schema %}
+    {
+        "name": "Size Guide",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Bottom Section"
+            },
+            {
+                "type": "color",
+                "label": "Background Color",
+                "id": "bottom_bg_color"
+            },
+            {
+                "type": "textarea",
+                "label": "Title",
+                "id": "bottom_title"
+            },
+            {
+                "type": "text",
+                "label": "Link label",
+                "id": "bottom_link_label"
+            },
+            {
+                "type": "url",
+                "label": "Link url",
+                "id": "bottom_link_url"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "bottom_entry",
+                "name": "Bottom Section Content",
+                "settings": [
+                    {
+                        "type": "text",
+                        "label": "Title",
+                        "id": "title"
+                    },
+                    {
+                        "type": "textarea",
+                        "label": "List",
+                        "id": "content",
+                        "info": "Each entries separated by enter."
+                    },
+                    {
+                        "type": "image_picker",
+                        "label": "Image",
+                        "id": "image",
+                        "info": "Dimension: 450px X 450px"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

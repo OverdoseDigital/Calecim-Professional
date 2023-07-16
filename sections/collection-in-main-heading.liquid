@@ -1,0 +1,108 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color:{{section.settings.background_color}};
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            display:flex;
+            flex-wrap:wrap;
+        }
+        #shopify-section-{{ section.id }} .title-container{
+            width:50%;
+            padding-right:20px;
+        }
+        #shopify-section-{{ section.id }} .text-container{
+            width:50%;
+        }
+    }
+
+</style>
+
+<section id="{{ section.id }}" class="collection-in-main-heading">
+    <div class="container">
+        <div class="flex-wrapper">
+            <div class="title-container">
+                {%if section.settings.title != blank%}
+                <div class="h3">{{section.settings.title}}</div>
+                {%else%}
+                <div class="h3">{{collection.title}}</div>
+                {%endif%}
+            </div>
+            <div class="text-container">
+                {%if section.settings.text != blank%}
+                <div class="p2 c-grey">{{section.settings.text}}</div>
+                {%else%}
+                <div class="p2 c-grey">{{collection.description}}</div>
+                {%endif%}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Collection Main Heading",
+        "settings": [
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info": "Leave this empty to use the default collection title"
+        },
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+        },
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "presets": [
+        {
+            "name": "Collection Main Heading",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

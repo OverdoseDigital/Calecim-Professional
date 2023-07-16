@@ -1,0 +1,47 @@
+{
+  "wrapper": ".global-content-top-margin",
+  "sections": {
+    "main": {
+      "type": "page-title",
+      "settings": {
+        "background_color": "",
+        "title": "",
+        "title_size": "h3",
+        "title_dom_type": "h3",
+        "title_color": "",
+        "text": "",
+        "small_text": "",
+        "body_copy_color": "",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "1b861d94-7be9-4e50-92d9-29f11a10ffe8": {
+      "type": "banner-404",
+      "settings": {
+        "title": "404",
+        "title_size": "h1",
+        "title_dom_type": "h1",
+        "text": "We couldn't find the page you were looking for... Try one of the following:",
+        "links": "mobile",
+        "max_width": 550,
+        "image_desktop": "shopify:\/\/shop_images\/05Homepage-Featured_Banner-desktop-2740x1200.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/05Homepage-Featured_Banner-mobile-750x850.jpg",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1b861d94-7be9-4e50-92d9-29f11a10ffe8"
+  ]
+}

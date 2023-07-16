@@ -1,0 +1,84 @@
+{% comment %} calecim {% endcomment %}
+
+<style>
+    #product-faq .sf-container {
+        display: flex;
+        flex-direction: column;
+    }
+    #product-faq .sfc-left {
+        width: 100%;
+    }
+    #product-faq .sfc-right {
+        width: 100%;
+    }
+
+    @media(min-width: 1024px) {
+        #product-faq .sf-container {
+            justify-content: space-between;
+            flex-direction: row;
+        }
+        #product-faq .sfc-left {
+            width: 40%;
+        }
+        #product-faq .sfc-right {
+            width: 60%;
+        }
+    }
+</style>
+
+<section id="product-faq" class="d-mt-80 t-mt-60 mt-40">
+    <div class="container">
+        <div class="sf-container">
+            <div class="sfc-left d-pr-90">
+                {% if product.metafields.faq.title != blank %}
+                    <h3 class="h3 sfcl-title">{{ product.metafields.faq.title }}</h3>
+                {% endif %}
+                {% if product.metafields.faq.text != blank %}
+                    <div class="sfcl-text p2 mt-10">{{ product.metafields.faq.text }}</div>
+                {% endif %}
+                {% if product.metafields.faq.button_label != blank %}
+                    <div class="hide-m show-d mt-20">
+                        <a href="{{ product.metafields.faq.button_url }}" class="btn1">{{ product.metafields.faq.button_label }}<span class="ml-30" style="display:inline-flex;">{{settings.icon_btn_right}}</span></a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="sfc-right mt-20 d-mt-0">
+                <div class="faq-wrapper bb-1 b-silver">
+                    {%- for i in (1..10) -%}
+                        {%- assign question = 'question_' | append: i -%}
+                        {%- assign question_acc = product.metafields.faq[question] -%}
+                        {%- assign answer = 'answer_' | append: i -%}
+                        {%- assign answer_acc = product.metafields.faq[answer] -%}
+
+                        {%- assign wrapper_class = 'bt-1 b-silver mb-20' -%}
+                        {%- if forloop.first -%}
+                            {%- assign open_by_default = true -%}
+                        {%else%}
+                            {%- assign open_by_default = false -%}
+                        {%- endif -%}
+
+                        {%- if question_acc != blank -%}
+                            {%- render 'accordion',
+                                wrapper_class: wrapper_class,
+                                title: question_acc,
+                                description: answer_acc,
+                                title_class: "p2 bold-500 relative",
+                                title_no_pb: true,
+                                desc_class: "p2 c-grey pt-10",
+                                default_active: false,
+                                icon_rotate: true,
+                                desc_no_pt: true,
+                                desc_no_pb: true
+                            -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+                </div>
+                {% if product.metafields.faq.button_label != blank %}
+                    <div class="mt-20 hide-d show-m">
+                        <a href="{{ product.metafields.faq.button_url }}" class="btn1">{{ product.metafields.faq.button_label }}<span class="ml-30" style="display:inline-flex;">{{settings.icon_btn_right}}</span></a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

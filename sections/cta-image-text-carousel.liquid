@@ -1,0 +1,376 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+
+    }
+    #shopify-section-{{ section.id }} {
+        background-color:{{section.settings.background_color}};
+        background-color:{{section.settings.advanced_background_color}};
+    }
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        {% comment %} background-color:{{section.settings.background_color}}; {% endcomment %}
+        {%if section.settings.image_position == "row-reverse"%}
+        flex-direction:column-reverse;
+        {%endif%}
+    }
+    #shopify-section-{{ section.id }} .image-container{
+        width:100%;
+    }
+    #shopify-section-{{ section.id }} .text-container{
+        width:100%;
+        padding-left:20px;
+        padding-right:20px;
+        max-width:{{section.settings.content_max_width}}px;
+        margin:0 auto;
+    }
+    #shopify-section-{{ section.id }} .content-button{
+        {%if section.settings.button_color != blank%}
+        color:{{section.settings.button_color}};
+        {%endif%}
+        {%if section.settings.button_background != blank%}
+        background-color:{{section.settings.button_background}};
+        {%endif%}
+    }
+    #shopify-section-{{ section.id }} .content-button:hover{
+        {%if section.settings.button_color_hover != blank%}
+        color:{{section.settings.button_color_hover}};
+        {%endif%}
+        {%if section.settings.button_background_hover != blank%}
+        background-color:{{section.settings.button_background_hover}};
+        {%endif%}
+    }
+    {%- if section.settings.image_position_mobile == 'image-first' -%}
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            flex-direction: row;
+        }
+    {%- endif -%}
+
+    #shopify-section-{{ section.id }} .swiper-pagination {
+        padding: 0 20px 20px 20px;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-caption {
+        position: absolute;
+        width: 255px;
+        height: auto;
+        right: 25px;
+        bottom: 25px;
+        z-index: 2;
+    }
+    #shopify-section-{{ section.id }} .carousel-caption .icon,
+    #shopify-section-{{ section.id }} .carousel-caption .icon svg {
+        display: block;
+        width: 12px;
+        height: 9px;
+        font-size: 0;
+    }
+
+    @media(min-width: 768px) {
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left:30px;
+            padding-right:30px;
+        }
+
+        {%- if section.settings.text_align == 'tc' -%}
+            #shopify-section-{{ section.id }} .text-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        {%- endif -%}
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .image-container{
+            width:50%;
+        }
+        #shopify-section-{{ section.id }} .text-container{
+            width:50%;
+            padding-left:40px;
+            padding-right:40px;
+        }
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            flex-direction:{{section.settings.image_position}};
+        }
+        #shopify-section-{{ section.id }} .swiper-pagination {
+            padding: 0 25px 25px 25px;
+            text-align: left;
+        }
+        #shopify-section-{{ section.id }} .swiper-pagination .swiper-pagination-bullet:first-child {
+            margin-left: 0 !important;
+        }
+    }
+</style>
+
+<section id="{{ section.id }}" class="cta-image-text">
+    <div class="{{section.settings.section_width}}">
+        <div class="flex flex-wrap align-flex flex-wrapper">
+            <div class="image-container">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        {%- for block in section.blocks -%}
+                            <div class="swiper-slide relative">
+                                <div class="carousel-image-container width-100">
+                                    {% assign image_id = "cta-image-text_" | append: section.id %}
+                                    {%- render 'global-image-wrapper-responsive',
+                                        image_id: image_id,
+                                        desktop_image: block.settings.desktop_image,
+                                        mobile_image: block.settings.mobile_image
+                                    %}
+                                </div>
+                                <div class="carousel-caption bg-white p-15 hide-m show-d">
+                                    <a href="{{ block.settings.url }}" class="global-flex jc-between ai-center">
+                                        <div class="text-wrapper">
+                                            <div class="p2 bold-500 c-black">{{ block.settings.title }}</div>
+                                            {%- if block.settings.desc != blank -%}
+                                                <div class="p4 uppercase c-grey mt-10">{{ block.settings.desc }}</div>
+                                            {%- endif -%}
+                                        </div>
+                                        <div class="icon">
+                                            {{ settings.icon_btn_right }}
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {%- endfor -%}
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="text-container pt-40 pb-40 {{section.settings.text_align}}">
+                {%if section.settings.small_title != blank%}
+                <div class="p3 pb-10 d-pb-15 bold-600 spacing-2 c-darkgreen">{{section.settings.small_title}}</div>
+                {%endif%}
+                <div class="h6 pb-5 d-pb-10 c-black">{{section.settings.title}}</div>
+                <div class="p2 pb-20 d-pb-25 c-grey text-desc t-max-350">{{section.settings.text | newline_to_br}}</div>
+
+                {%if section.settings.link_label != blank%}
+                    {%- assign link_id = "link-cta" | append: section.id  -%}                                    
+                    {% render 'link-icon',
+                        id: link_id,
+                        label: section.settings.link_label,
+                        url: section.settings.link_url,
+                        text_class: 'p3 uppercase c-black spacing-2 bold-600',
+                        icon_color: '#6C6C6C',
+                        icon_svg: settings.icon_btn_right,
+                        load_inside_vue: false
+                    %}
+                {%endif%}
+                
+                {%if section.settings.button_label != blank%}
+                    <a href="{{section.settings.button_url}}" class="btn2 content-button">{{section.settings.button_label}}</a>
+                {%endif%}
+            </div>
+        </div>
+    <div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let cta_carousel = new Swiper("#shopify-section-{{ section.id }} .swiper", {
+            direction: 'horizontal',
+            slidesPerView: 1,
+            watchSlidesProgress: true,
+            loop: false,
+            pagination: {
+                el: "#shopify-section-{{ section.id }} .swiper .swiper-pagination",
+                clickable: true
+            }
+        });
+    });
+</script>
+
+{% schema %}
+    {
+        "name": "Image Carousel + Text CTA",
+        "settings": [
+        {
+            "type": "radio",
+            "id": "section_width",
+            "label": "Section Width",
+            "options": [
+                {"value":"","label":"Full Width"},
+                {"value":"container","label":"Contained"}
+            ]
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "text",
+            "id": "advanced_background_color",
+            "label": "Advanced Background Color"
+        },
+        {
+            "type": "number",
+            "id": "content_max_width",
+            "label": "Content Max Width",
+            "default": 500
+        },
+        {
+            "type": "text",
+            "id": "small_title",
+            "label": "Small Title"
+        },
+        {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+        },
+        {
+            "type": "radio",
+            "id": "text_align",
+            "label": "Text Align",
+            "options": [
+                {"value":"tc","label":"Center"},
+                {"value":"tl","label":"Left"},
+                {"value":"tr","label":"Right"}
+            ]
+        },
+        {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label"
+        },
+        {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL"
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+        },
+        {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button Text Color"
+        },
+        {
+            "type": "color",
+            "id": "button_background",
+            "label": "Button Background Color"
+        },
+        {
+            "type": "color",
+            "id": "button_color_hover",
+            "label": "Button Text Color Hover"
+        },
+        {
+            "type": "color",
+            "id": "button_background_hover",
+            "label": "Button Background Color Hover"
+        },
+        {
+            "type": "radio",
+            "id": "image_position",
+            "label": "Image Position (Desktop)",
+            "options": [
+                {"value":"row","label":"Left"},
+                {"value":"row-reverse","label":"Right"}
+            ]
+        },
+        {
+            "type": "radio",
+            "id": "image_position_mobile",
+            "label": "Image Position (Mobile)",
+            "options": [
+                {"value":"image-first","label":"Image First"},
+                {"value":"follow-desktop","label":"Follow Desktop Alignment"}
+            ],
+            "default": "follow-desktop"
+        },
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "blocks": [
+            {
+                "type": "image-entry",
+                "name": "Image Entry",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "desktop_image",
+                        "label": "Desktop Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "mobile_image",
+                        "label": "Mobile Image"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "desc",
+                        "label": "Description"
+                    },
+                    {
+                        "type": "url",
+                        "id": "url",
+                        "label": "URL"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+        {
+            "name": "Image Carousel + Text CTA",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

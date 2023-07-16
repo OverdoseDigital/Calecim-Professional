@@ -1,0 +1,72 @@
+<style>
+  .page-faq-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  .page-faq-left {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    transition: 0.3s ease all;
+  }
+  .site-header.fixed {
+    position: relative;
+  }
+
+  @media screen and (max-width: 768px) {
+    .page-faq > .container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    .page-faq.global-content-top-margin {
+      margin-top: 0 !important;
+    }
+    .site-header .header-con__inner::after {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .site-header.fixed {
+      position: fixed;
+    }
+
+    .page-faq-wrap {
+      flex-direction: row;
+    }
+    .page-faq-left {
+      max-width: 220px;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+    }
+    .page-faq-right {
+      width: 100%;
+      border-left: 1px solid #E7E7E7;
+    }
+  }
+</style>
+<div class="page-faq global-content-top-margin">
+  {% section 'faq-page-title' %}
+  <div class="container">
+    <div class="page-faq-wrap">
+      <div class="page-faq-left d-pr-50 d-pt-80 d-pb-80">
+        {% section 'faq-navigation' %}
+      </div>
+      <div class="page-faq-right d-pl-100 d-pt-30 d-pb-80 pb-40 pr-20 pl-20 t-pr-30 t-pl-30 d-pr-0">
+        {% section 'faq-content' %}
+        {% section 'faq-content-2' %}
+        {% section 'faq-content-3' %}
+        {% section 'faq-content-4' %}
+        {% section 'faq-content-5' %}
+        {% section 'faq-content-6' %}
+        {% section 'faq-content-7' %}
+        {% section 'faq-content-8' %}
+      </div>
+    </div>
+  </div>
+</div>

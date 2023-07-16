@@ -1,0 +1,215 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #section-{{ section.id }} .wishlist-share {
+        display: inline-block;
+        font-size: 0;
+        width: 15px;
+        height: 15px;
+    }
+    #section-{{ section.id }} .wishlist-share svg {
+        width: 15px;
+        height: 15px;
+    }
+    #share-form-popup .global-input {
+        padding: 15px;
+        color: #537289;
+    }
+    #share-form-popup .global-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #D2D3D0;
+    }
+    #share-form-popup .global-input::-moz-placeholder { /* Firefox 19+ */
+        color: #D2D3D0;
+    }
+    #share-form-popup .global-input:-ms-input-placeholder { /* IE 10+ */
+        color: #D2D3D0;
+    }
+    #share-form-popup .global-input:-moz-placeholder { /* Firefox 18- */
+        color: #D2D3D0;
+    }
+    #section-{{ section.id }} .text-no-login * {
+        font-size: inherit;
+    }
+    #section-{{ section.id }} .text-no-login a {
+        color: #2c2c2c;
+        text-decoration: underline;
+    }
+    #share-form-popup .close-button {
+        font-size: 0;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+    #share-form-popup .close-button svg {
+        width: 10px;
+        height: 10px;
+    }
+
+    #section-{{ section.id }} .has-wishlist > h3,
+    #section-{{ section.id }} .has-wishlist > .p2,
+    #section-{{ section.id }} .has-wishlist > .p2 p {
+        text-align: center;
+    }
+
+    
+    @media screen and (min-width: 767px) {
+        #section-{{ section.id }} .has-wishlist > h3,
+        #section-{{ section.id }} .has-wishlist > .p2,
+        #section-{{ section.id }} .has-wishlist > .p2 p {
+            text-align: left;
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        .mfp-container {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        #share-form-popup .close-button {
+            right: 20px;
+            top: 20px;
+        }
+    }
+
+    #share-form-popup{
+        display:none;
+    }
+</style>
+
+<!-- share form -->
+<div class="share-form relative max-480 m-max-100 width-100 pl-40 pr-40 pb-40 pt-50 t-p-50 d-p-65 mfp-hide bg-white" id="share-form-popup">
+    <a href="javascript:void(0)" class="close-button">{{ settings.icon_close }}</a>
+
+    <div class="inner">
+        <div class="form-wrapper mb-20">
+            <input type="text" class="form-input global-input p4" placeholder="Sender Name" name="sender_name" />
+        </div>
+        <div class="form-wrapper mb-20">
+            <input type="email" class="form-input global-input p4" placeholder="Recipients Email" name="recipients_email" />
+        </div>
+        <div class="form-wrapper mb-20">
+            <textarea class="form-input global-input p4" rows="4" placeholder="Message" name="message"></textarea>
+        </div>
+        <div class="form-wrapper tc">
+            <a href="javascript:void(0)" class="btn1 width-100 share-wishlist-handle">Share</a>
+        </div>
+
+        <p class="p4 tc notif-wrapper"></p>
+    </div>
+</div>
+<!-- end share form -->
+
+<div id="section-{{ section.id }}" class="wishlist-headline">
+    <div class="container">
+        <div class="has-wishlist hide-m">
+            <h3 class="h3 c-blue">{{ section.settings.title }}</h3>
+        
+            {% if customer %}
+                {% if section.settings.text != blank %}
+                    <p class="p2">{{ section.settings.text }}</p>
+                {% endif %}
+
+                <!-- share -->
+                <div class="share-container relative width-100 mt-15">
+                    <a href="javascript:void(0)" rel="nofollow" class="wishlist-share">{{ settings.email-icon }}</a>
+                </div>
+                <!-- end share -->
+            {% else %}
+                <div class="p2 text-no-login t-mt-0 d-mt-0 mt-10">{{ section.settings.text_no_login }}</div>
+            {% endif %}
+        </div>
+
+        <!-- empty wishlist -->
+        <div class="empty-wishlist max-240 t-max-450 ml-auto mr-auto pt-100 pb-100 d-pt-115 d-pb-115 tc">
+            <h3 class="h7">{{ section.settings.empty_title }}</h3>
+            <a href="{{ section.settings.empty_button_url }}" class="btn1 show-m-inline-block mt-20 t-mt-30">{{ section.settings.empty_button_label }}</a>
+        </div>
+        <!-- end empty wishlist -->
+    </div>
+</div>
+
+{% schema %}
+{
+	"name": "Headline",
+	"settings": [
+        {
+            "type": "color",
+            "id": "background",
+            "label": "Background color"
+        },
+        {
+            "type": "text",
+            "id": "top_padding_m",
+            "label": "Top padding (Mobile)"
+        },
+        {
+            "type": "text",
+            "id": "bottom_padding_m",
+            "label": "Bottom padding (Mobile)"
+        },
+        {
+            "type": "text",
+            "id": "top_padding_t",
+            "label": "Top padding (Tablet)"
+        },
+        {
+            "type": "text",
+            "id": "bottom_padding_t",
+            "label": "Bottom padding (Tablet)"
+        },
+        {
+            "type": "text",
+            "id": "top_padding",
+            "label": "Top padding (Desktop)"
+        },
+        {
+            "type": "text",
+            "id": "bottom_padding",
+            "label": "Bottom padding (Desktop)"
+        },
+        {
+            "type": "header",
+			"content": "Has Wishlist"
+        },
+		{
+			"type": "textarea",
+			"id": "title",
+			"label": "Title"
+		},
+		{
+			"type": "textarea",
+			"id": "text",
+			"label": "Text (already login)"
+		},
+        {
+			"type": "richtext",
+			"id": "text_no_login",
+			"label": "Text (not login)"
+		},
+        {
+            "type": "header",
+			"content": "Empty Wishlist"
+        },
+        {
+			"type": "textarea",
+			"id": "empty_title",
+			"label": "Title"
+		},
+        {
+			"type": "text",
+			"id": "empty_button_label",
+			"label": "Button Label"
+		},
+        {
+			"type": "url",
+			"id": "empty_button_url",
+			"label": "Button URL"
+		}
+	]
+}
+{% endschema %}

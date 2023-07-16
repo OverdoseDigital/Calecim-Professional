@@ -1,0 +1,204 @@
+<!doctype html>
+<!--[if IE 9]> <html class="ie9 no-js" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+  <html class="no-js" lang="{{ shop.locale }}"> <!--<![endif]-->
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+    <link rel="preconnect" href="//cdn.shopify.com" />
+    <link rel="dns-prefetch" href="//cdn.shopify.com" />
+    <link rel="preconnect" href="//v.shopify.com" />
+    <link rel="dns-prefetch" href="//v.shopify.com" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <link rel="canonical" href="{{ canonical_url }}">
+    {%- if settings.favicon != blank %}<link
+        rel="shortcut icon"
+        href="{{ settings.favicon | img_url:'100x' }}"
+        type="image/png">{%- endif -%}
+    {%- capture seo_title -%}
+      {{ page_title }}
+      {%- if current_tags -%}
+        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {%- endif -%}
+      {%- if current_page != 1 -%}
+        &ndash; {{ 'general.meta.page' | t: page: current_page }}
+      {%- endif -%}
+      {%- unless page_title contains shop.name -%}
+        &ndash; {{ shop.name }}
+      {%- endunless -%}
+    {%- endcapture -%}
+    <title>{{ seo_title }}</title>
+    {%- comment -%}
+    <link rel="preload" href="{{ 'vendor.js' | asset_url }}" as="script">
+    {%- endcomment -%}
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+    {%- if settings.typography != blank -%}
+      {{ settings.typography }}
+    {%- endif -%}
+    <style>
+      @font-face {
+          font-family: 'Perpetua';
+          src: url({{ 'Perpetua.eot' | asset_url }});
+          src: url({{ 'Perpetua.eot?#iefix' | asset_url }}) format('embedded-opentype'),
+              url({{ 'Perpetua.woff2' | asset_url }}) format('woff2'),
+              url({{ 'Perpetua.woff' | asset_url }}) format('woff'),
+              url({{ 'Perpetua.ttf' | asset_url }}) format('truetype');
+          font-weight: 500;
+          font-style: normal;
+          font-display: swap;
+      }
+    </style>
+
+    <link
+        rel="preload"
+        href="{{ 'style.css' | asset_url }}"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    {{ 'style-custom.css' | asset_url | stylesheet_tag }}
+
+    {%- if request.page_type == "article" or request.page_type == "blog" -%}
+      <link
+        rel="preload"
+        href="{{ 'blog.css' | asset_url }}"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    {%- elsif request.page_type == "index" -%}
+      <link
+        rel="preload"
+        href="{{ 'index.css' | asset_url }}"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    {%- elsif request.page_type contains "customers/" or template == 'page.orders' -%}
+      <link
+        rel="preload"
+        href="{{ 'account.css' | asset_url }}"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    {%- elsif request.page_type == "cart" -%}
+      <link
+        rel="preload"
+        href="{{ 'cart.css' | asset_url }}"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    {%- elsif request.page_type == "collection" or template.suffix == 'collection' -%}
+      <link
+        rel="preload"
+        href="{{ 'collection.css' | asset_url }}"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    {%- elsif request.page_type == "page" -%}
+      <link
+        rel="preload"
+        href="{{ 'page.css' | asset_url }}"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    {%- elsif request.page_type == "product" -%}
+      <link
+        rel="preload"
+        href="{{ product.featured_image | image_url: width: "2000" }}"
+        as="image"
+      >
+
+      <link
+        rel="preload"
+        href="{{ 'product.css' | asset_url }}"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    {%- elsif request.page_type == "search" -%}
+      <link
+        rel="preload"
+        href="{{ 'search.css' | asset_url }}"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    {%- endif -%}
+    <link
+      rel="preload"
+      href="{{ 'footer.css' | asset_url }}"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'">
+
+    {{ 'vendor.min.js' | asset_url | script_tag }}
+    
+    {%- comment -%} GWP script {%- endcomment -%}
+    {%- render 'gwp-script' -%}
+
+    {%- render 'social-meta-tags' -%} 
+
+    {{ content_for_header }}
+
+    {% comment %}
+    {% render 'boost-pfs-style' %}
+    {% endcomment %}
+
+    <script>
+      $360Shop = {
+        money_with_currency_format: '{{ shop.money_with_currency_format }}'
+      }
+    </script>
+
+    <!-- TrustBox script -->
+    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+    <!-- End TrustBox script -->
+  </head>
+
+  <body>
+    {% section 'redirect' %}
+    {% section 'typography-header' %}
+    {% section 'typography-body' %}
+    {% section 'colors' %}
+    {% section 'buttons' %}
+    {% section 'links' %}
+    {% section 'color-swatch' %}
+    {% section 'size-guide' %}
+
+    {%- comment -%} Subscription popup {%- endcomment -%}
+    {%- if settings.popup -%}
+      {%- render 'mailing-popup' -%}
+    {%- endif -%}
+    {%- comment -%} end Subscription popup {%- endcomment -%}
+    
+    <div class="page-loading w-full h-full fixed top-0 left-0 bg-white opacity-5 zi-9">&nbsp;</div>
+    <div class="page-overlay header-cart-overlay" onclick="$360.hideHeaderCart()">&nbsp;</div>
+    {%- assign has_cross_sel = false -%}
+    {%- for num in (1..5) -%}
+      {%- assign product_setting = 'cart_cross_sell_' | append: forloop.index -%}
+      {%- assign pro = settings[product_setting] -%}
+      {%- if pro != blank and cart.item_count > 0 -%}
+        {%- assign has_cross_sel = true -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+    <div class="header-cart relative no-cross-sell" id="header-cart"></div>
+    {%- section 'header' -%}
+    {% if canonical_url contains "challenge" %}
+      <section class="global-content-top-margin pt-20 t-pt-30 d-pt-50 pb-20 t-pb-30 d-pb-50">
+        <div class="container">
+          {{ content_for_layout }}
+        </div>
+      </section>
+    {% else %}
+      {{ content_for_layout }}
+    {% endif %}
+    {% section 'footer' %}
+    {% section 'footer-privacy' %}
+    <script>
+  </script>
+
+<!-- Back in Stock helper snippet -->
+{% render 'back-in-stock-helper' %}
+<!-- End Back in Stock helper snippet -->
+
+
+{% comment %}
+{% render 'boost-pfs' %}
+{% endcomment %}
+</body></html>

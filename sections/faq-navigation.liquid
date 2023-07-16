@@ -1,0 +1,118 @@
+{% comment %} Calecim Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        margin: 0;
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .nav-each{
+            display: block;
+        }
+        #shopify-section-{{ section.id }} .nav-each .nav-item {
+            opacity: .3;
+            cursor: pointer;
+        }
+        #shopify-section-{{ section.id }} .nav-each .nav-item.active {
+            opacity: 1;
+        }
+    }
+
+</style>
+
+<section id="{{ section.id }}" class="faq-navigation">
+    <div class="hide-m show-d">
+        {%for block in section.blocks%}
+        <a href="#{{block.settings.section_id}}" onclick="changeSection(event)" class="nav-each {% unless forloop.first == true %}pt-15{% endunless %}" data-tag="{{block.settings.section_id}}">
+                <div class="p2 bold-500 nav-item {%if forloop.first%}active{%endif%}">{{block.settings.title}}</div>
+            </a>
+        {%endfor%}
+    </div>
+
+    <div class="hide-d show-m">
+        <div class="global-select-div pt-20 pb-20 pl-20 pr-20 t-pl-30 t-pr-30 bb-1 b-border">
+            <div class="inner relative">
+                <div class="text p2 bold-500 selected-div-text tl">
+                    {{ section.blocks[0].settings.title }}
+                </div>
+                <div class="icons">
+                    <div class="icon icon-caret">{{ settings.icon_select }}</div>
+                </div>
+            </div>
+            <ul class="options bt-1 bb-1 b-silver bg-white tl">
+                {% for block in section.blocks %}
+                    <li>
+                        {%- assign href = 'javascript:void(0)' -%}
+                        <a onclick="switchSections{{ section.id | replace: '-', '' }}(event)" data-sections="{{ block.settings.section_id }}" data-title="{{ block.settings.title }}" href="{{ href }}" class="nav-link-mobile nav-handler show-m-inline-block p2">{{ block.settings.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script>
+    const selectElement = document.querySelector("#shopify-section-{{ section.id }} select");
+    //for mobile
+    function switchSections{{ section.id | replace: '-', '' }}(event){
+        event.preventDefault();
+        let tag_id = event.target.getAttribute("data-sections");
+        const curr_title = event.target.getAttribute('data-title');
+        let selectedFaq = document.querySelector(`#${tag_id}`);
+        //selectedFaq.scrollIntoView({behavior: 'smooth'})
+        var headerOffset = 45;
+        var elementPosition = selectedFaq.getBoundingClientRect().top;
+        var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        const dropdown_label = document.querySelector(`#shopify-section-{{ section.id }} .selected-div-text`);
+        dropdown_label.innerHTML = curr_title;
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+        });
+    };
+    //for desktop
+    function changeSection(e){
+        e.preventDefault();
+        let tag_id = e.target.closest('.nav-each').getAttribute("data-tag");
+        let navItem =  document.querySelectorAll(".nav-item");
+        navItem.forEach(ni => {
+            ni.classList.remove("active");
+        })
+        e.target.closest('.nav-item').classList.add("active");
+        let selectedFaq = document.querySelector(`#${tag_id}`);
+        selectedFaq.scrollIntoView({behavior: 'smooth'})
+    }
+</script>
+
+{% schema %}
+    {
+        "name": "FAQ Navigation",
+        "settings": [],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "section_id",
+                        "label": "Section ID"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+        {
+            "name": "FAQ Navigation",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

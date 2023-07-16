@@ -1,0 +1,220 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+      {% if section.settings.bg_color != blank %}
+      background-color: {{ section.settings.bg_color }};
+      {% endif %}
+    }
+    #shopify-section-{{ section.id }} .rwtwl-title,
+    #shopify-section-{{ section.id }} .rwtwl-text {
+      {% if section.settings.text_color != blank %}
+      color: {{ section.settings.text_color }};
+      {% endif %}
+    }
+    #shopify-section-{{ section.id }}  .rwte-container {
+      display: flex;
+      flex-direction: column;
+    }
+    #shopify-section-{{ section.id }} .rwte-left {
+      width: 100%;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .rwte-right {
+      width: 100%;
+    }
+    #shopify-section-{{ section.id }} .rwter-box {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    #shopify-section-{{ section.id }} .rwter-block {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 95px;
+    }
+    #shopify-section-{{ section.id }} .rwterb-image {
+      width: 65px;
+    }
+    #shopify-section-{{ section.id }} .reterb-text {
+      width: calc(100% - 65px);
+    }
+    @media (min-width: 1024px) {
+      #shopify-section-{{ section.id }}  .rwte-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+      }
+      #shopify-section-{{ section.id }} .rwte-left {
+        width: 30%;
+        text-align: left;
+      }
+      #shopify-section-{{ section.id }} .rwte-right {
+        width: 70%;
+      }
+      #shopify-section-{{ section.id }} .rwter-box {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-left: -10px;
+        margin-right: -10px;
+      }
+      #shopify-section-{{ section.id }} .rwter-block {
+        width: calc(50% - 20px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 123px;
+      }
+      #shopify-section-{{ section.id }} .rwterb-image {
+        width: 73px;
+      }
+      #shopify-section-{{ section.id }} .reterb-text {
+        width: calc(100% - 73px);
+      }
+    }
+    @media (min-width: 1200px) {
+      #shopify-section-{{ section.id }} .rwte-left {
+        width: 40%;
+      }
+      #shopify-section-{{ section.id }} .rwte-right {
+        width: 60%;
+      }
+    }
+</style>
+<div class="rewards-way-to-earn">
+  <div class="container">
+    <div class="rwte-container">
+      <div class="rwte-left max-pr-135 d-pr-20">
+        <h3 class="h3 rwtwl-title">{{ section.settings.title }}</h3>
+        <div class="p2 mt-10 rwtwl-text">{{ section.settings.text }}</div>
+      </div>
+      <div class="rwte-right mt-20 d-mt-0">
+        <div class="rwter-box">
+          {% assign block_size = section.blocks.size | minus: 1  %}
+          {% for block in section.blocks %}
+            <div class="rwter-block max-pl-40 max-pr-40 d-pl-30 d-pr-30 d-pt-25 d-pb-25 pl-15 pr-15 pt-15 pb-15 bg-white d-mr-10 d-ml-10 {% unless forloop.last == true or forloop.index == block_size %}d-mb-20{% else %}d-mb-0{% endunless %} {% unless forloop.last == true %}mb-10{% endunless %}">
+              <div class="rwterb-image">
+                {% if block.settings.image_png != blank %}
+                {%- assign image_id = "rewards-way-to-earn-image-" | append: block.id -%}
+                {%- render 'global-image-wrapper',
+                  image_id: image_id,
+                  image: block.settings.image_png,
+                  additional_class:"no-bg"
+                %}
+                {% else %}
+                {{ block.settings.image_svg }}
+                {% endif %}
+              </div>
+              <div class="reterb-text pl-20 d-pl-30">
+                <p class="p2 bold-500">{{ block.settings.title }}</p>
+                {% if block.settings.text != blank %}
+                <p class="p3 d-mt-5">{{ block.settings.text }}</p>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{ 
+	"name": "Rewards Ways To Earn",
+	"settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+    },
+    {
+        "type": "header",
+        "content": "Section Padding"
+    },
+    {
+        "type": "text",
+        "id": "top_padding_m",
+        "label": "Top padding (Mobile)"
+    },
+    {
+        "type": "text",
+        "id": "bottom_padding_m",
+        "label": "Bottom padding (Mobile)"
+    },
+    {
+        "type": "text",
+        "id": "top_padding_t",
+        "label": "Top padding (Tablet)"
+    },
+    {
+        "type": "text",
+        "id": "bottom_padding_t",
+        "label": "Bottom padding (Tablet)"
+    },
+    {
+        "type": "text",
+        "id": "top_padding",
+        "label": "Top padding (Desktop)"
+    },
+    {
+        "type": "text",
+        "id": "bottom_padding",
+        "label": "Bottom padding (Desktop)"
+    }
+	],
+  "blocks": [
+    {
+        "type": "entry",
+        "name": "Entry",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+              "type": "textarea",
+              "id": "text",
+              "label": "Text"
+          },
+          {
+              "type": "image_picker",
+              "id": "image_png",
+              "label": "Image (PNG)"
+          },
+          {
+              "type": "textarea",
+              "id": "image_svg",
+              "label": "Image (SVG)"
+          }
+        ]
+    }
+  ],
+	"presets": [
+    {
+      "name": "Rewards Ways To Earn",
+      "blocks": []
+    }
+	]
+}
+{% endschema %}

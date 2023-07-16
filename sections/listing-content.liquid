@@ -1,0 +1,144 @@
+{%- assign el_id = 'listing-content-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<style>
+#{{ el_id }} .ol {
+    margin: 0 15px;
+    list-style: decimal;
+}
+#{{ el_id }} .ol li {
+    padding: 0 10px;
+}
+#{{ el_id }} .ul {
+    margin: 0 15px;
+    list-style: disc;
+}
+#{{ el_id }} .ul li {
+    padding: 0 10px;
+}
+</style>
+<div id="{{ el_id }}" class="w-full relative">
+	<div class="container flex jc-center ai-start">
+        <div class="max-750">
+            {%- if section.settings.title != blank -%}
+                <h3 class="h3 mb-20 c-greenb2 tc">{{ section.settings.title }}</h3>
+            {%- endif -%}
+            {%- assign tag_open = '<ol class="ol">' -%}
+            {%- assign tag_close = '</ol>' -%}
+            {%- if section.settings.listing_type == 'ul' -%}
+                {%- assign tag_open = '<ul class="ul">' -%}
+                {%- assign tag_close = '</ul>' -%}
+            {%- endif -%}
+            <div class="w-full flex flex-column jc-start ai-start">
+                {{ tag_open }}
+                {% for block in section.blocks %}
+                    <li>{{ block.settings.text }}</li>
+                {% endfor %}
+                {{ tag_close }}
+            </div>
+            {%- if section.settings.btn_more and section.settings.btn_more_url != blank and section.settings.btn_more_label != blank -%}
+            <div class="w-full flex flex-column jc-start ai-center pt-30 pb-30">
+                <a href="{{ section.btn_more_url }}" class="btn3">{{ section.settings.btn_more_label }}</a>
+            </div>
+            {%- endif -%}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+	"name": "Listing Content",
+	"settings": [
+		{
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		},
+		{
+			"type": "header",
+			"content": "General Settings"
+		},
+		{
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		},
+        {
+			"type": "select",
+			"id": "listing_type",
+			"label": "Listing Type",
+			"options":[
+				{"value": "ol", "label": "Ordered List"},
+				{"value": "ul", "label": "Unordered List"}
+			],
+			"default": "ol"
+		},
+		{
+			"type" : "textarea",
+			"id" : "title",
+			"label" : "Title"
+		},
+        {
+            "type": "checkbox",
+            "id": "btn_more",
+            "label": "Enable More Button"
+        },
+        {
+            "type": "text",
+            "id": "btn_more_label",
+            "label": "More Button Label"
+        },
+        {
+            "type": "url",
+            "id": "btn_more_url",
+            "label": "More Button URL"
+        }
+	],
+    "blocks": [
+        {
+            "type": "text",
+            "name": "Listing",
+            "settings": [
+                {
+                    "type": "textarea",
+                    "id": "text",
+                    "label": "Text"
+                }
+            ]
+        }
+    ],
+	"presets": [
+		{
+			"name": "Listing Content",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

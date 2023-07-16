@@ -1,0 +1,433 @@
+{
+  "wrapper": ".global-content-top-margin",
+  "sections": {
+    "d80e3048-6625-4652-982a-be282b32b293": {
+      "type": "rewards-image-text-overlay",
+      "settings": {
+        "bg_color": "",
+        "width": "full-width",
+        "title": "MYCALECIM® REWARDS CLUB",
+        "title_size": "h2",
+        "title_dom_type": "h1",
+        "text": "Join MyCALECIM® Rewards Club now and treat yourself to full-size products, generous discounts, exclusive launch promos and more.",
+        "text_size": "p1",
+        "hide_text_mobile": false,
+        "text_max_width": "587",
+        "link_label": "",
+        "link_url": "",
+        "button_label_1": "Join now",
+        "button_url_1": "",
+        "button_label_2": "Login",
+        "button_url_2": "",
+        "text_align": "left",
+        "image_desktop": "shopify:\/\/shop_images\/01Rewards-Banner-desktop-2740x1200.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/01Rewards-Banner-mobile-750x840.jpg",
+        "mobile_layout": "overlay",
+        "top_padding_m": "50",
+        "bottom_padding_m": "",
+        "top_padding_t": "40",
+        "bottom_padding_t": "",
+        "top_padding": "40",
+        "bottom_padding": ""
+      }
+    },
+    "8e131c89-3916-47e4-a652-cb1c6d6b2a06": {
+      "type": "page-title",
+      "settings": {
+        "background_color": "",
+        "title": "HOW IT WORKS",
+        "title_size": "h3",
+        "title_dom_type": "h3",
+        "title_color": "",
+        "text": "",
+        "body_copy_color": "",
+        "top_padding_m": "40",
+        "bottom_padding_m": "10",
+        "top_padding_t": "60",
+        "bottom_padding_t": "20",
+        "top_padding": "80",
+        "bottom_padding": "50"
+      }
+    },
+    "634e0c98-8704-4716-a981-0e500a235758": {
+      "type": "homepage-icons",
+      "blocks": {
+        "2f48f069-97f3-4a20-ae90-114d338ff3c0": {
+          "type": "entry",
+          "settings": {
+            "icon_svg": "",
+            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons01-desktop-240x240.png",
+            "title": "Join the club",
+            "text": "It’s free and you get 10% off your first order",
+            "link_label_1": "",
+            "link_url_1": "",
+            "link_label_2": "",
+            "link_url_2": ""
+          }
+        },
+        "345a0a59-da60-4666-b9f9-7cd791e193a3": {
+          "type": "entry",
+          "settings": {
+            "icon_svg": "",
+            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons02-desktop-240x240.png",
+            "title": "Earn Coins",
+            "text": "Get CALECIM® Coins with every purchase",
+            "link_label_1": "",
+            "link_url_1": "",
+            "link_label_2": "",
+            "link_url_2": ""
+          }
+        },
+        "067f284d-0ca0-49a9-b468-c185523445b3": {
+          "type": "entry",
+          "settings": {
+            "icon_svg": "",
+            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons03-desktop-240x240.png",
+            "title": "Redeem Coins",
+            "text": "Redeem CALECIM® Coins for exclusive rewards",
+            "link_label_1": "",
+            "link_url_1": "",
+            "link_label_2": "",
+            "link_url_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "2f48f069-97f3-4a20-ae90-114d338ff3c0",
+        "345a0a59-da60-4666-b9f9-7cd791e193a3",
+        "067f284d-0ca0-49a9-b468-c185523445b3"
+      ],
+      "settings": {
+        "bg_color": "",
+        "title_text_color": "",
+        "body_text_color": "",
+        "top_padding_m": "0",
+        "bottom_padding_m": "40",
+        "top_padding_t": "0",
+        "bottom_padding_t": "60",
+        "top_padding": "0",
+        "bottom_padding": "80"
+      }
+    },
+    "d2eeb50e-81b6-4116-acc4-aee755715e27": {
+      "type": "rewards-ways-to-earn",
+      "blocks": {
+        "dd175c5e-a642-4147-aa3b-47fc693712f6": {
+          "type": "entry",
+          "settings": {
+            "title": "Make a purchase",
+            "text": "US$1 spent = 1 CALECIM® Coin",
+            "image_png": "shopify:\/\/shop_images\/02Rewards-Icons02-desktop-240x240.png",
+            "image_svg": ""
+          }
+        },
+        "015862ee-c24c-49ef-81f4-58b16c7f809b": {
+          "type": "entry",
+          "settings": {
+            "title": "Refer a friend",
+            "text": "300 CALECIM® Coins (Your friend gets 10% discount code!)",
+            "image_png": "shopify:\/\/shop_images\/02Rewards-Icons03-desktop-240x240.png",
+            "image_svg": ""
+          }
+        },
+        "0474ec95-d0b6-46cf-937e-ab10150e7397": {
+          "type": "entry",
+          "settings": {
+            "title": "Celebrate birthday",
+            "text": "200 CALECIM® Coins",
+            "image_png": "shopify:\/\/shop_images\/02Rewards-Icons03-desktop-240x240.png",
+            "image_svg": ""
+          }
+        },
+        "1c6def39-08e9-4683-8c73-0ce17eb9c2b3": {
+          "type": "entry",
+          "settings": {
+            "title": "Follow us on instagram",
+            "text": "20 CALECIM® Coins",
+            "image_png": "shopify:\/\/shop_images\/02Rewards-Icons02-desktop-240x240.png",
+            "image_svg": ""
+          }
+        },
+        "5f0d3529-285d-450c-aa4d-cbace9d5ed77": {
+          "type": "entry",
+          "settings": {
+            "title": "Like us on Facebook",
+            "text": "20 CALECIM® Coins",
+            "image_png": "shopify:\/\/shop_images\/02Rewards-Icons02-desktop-240x240.png",
+            "image_svg": ""
+          }
+        },
+        "c957a181-2b89-4bf0-814c-a85f3116006b": {
+          "type": "entry",
+          "settings": {
+            "title": "More to come",
+            "text": "Keep a lookout for more ways to earn CALECIM® Coins!",
+            "image_png": "shopify:\/\/shop_images\/02Rewards-Icons03-desktop-240x240.png",
+            "image_svg": ""
+          }
+        }
+      },
+      "block_order": [
+        "dd175c5e-a642-4147-aa3b-47fc693712f6",
+        "015862ee-c24c-49ef-81f4-58b16c7f809b",
+        "0474ec95-d0b6-46cf-937e-ab10150e7397",
+        "1c6def39-08e9-4683-8c73-0ce17eb9c2b3",
+        "5f0d3529-285d-450c-aa4d-cbace9d5ed77",
+        "c957a181-2b89-4bf0-814c-a85f3116006b"
+      ],
+      "settings": {
+        "bg_color": "#f5f5f5",
+        "text_color": "#231d1d",
+        "title": "WAYS TO EARN COINS",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "bd2091f6-4fc0-40cd-ba1a-8bda11596580": {
+      "type": "rewards-how-to-use-coins",
+      "blocks": {
+        "c6697d47-32ca-4e6d-b19d-17d24c6856ad": {
+          "type": "entry",
+          "settings": {
+            "title": "1. Redeem chosen reward",
+            "text": "Open the widget and redeem chosen reward",
+            "image": "shopify:\/\/shop_images\/03Rewards-How_to_use_your_coins-desktop-600x600.jpg"
+          }
+        },
+        "499f6f3e-164f-4da7-bfe6-88e116ab9250": {
+          "type": "entry",
+          "settings": {
+            "title": "2. Add reward to cart",
+            "text": "Redeem code and add chosen reward to cart",
+            "image": "shopify:\/\/shop_images\/03Rewards-How_to_use_your_coins-desktop-600x600.jpg"
+          }
+        },
+        "a71232d7-1ea0-4206-bf06-79f7bf0ad055": {
+          "type": "entry",
+          "settings": {
+            "title": "3. Checkout",
+            "text": "Your reward will be reflected at checkout when placing an order",
+            "image": "shopify:\/\/shop_images\/03Rewards-How_to_use_your_coins-desktop-600x600.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "c6697d47-32ca-4e6d-b19d-17d24c6856ad",
+        "499f6f3e-164f-4da7-bfe6-88e116ab9250",
+        "a71232d7-1ea0-4206-bf06-79f7bf0ad055"
+      ],
+      "settings": {
+        "bg_color": "rgba(0,0,0,0)",
+        "text_color": "#231d1d",
+        "title": "HOW TO USE YOUR CALECIM® COINS",
+        "text": "You can redeem your rewards (free products and gifts) when placing an order. Your rewards gift will be sent together with your purchase. Rewards discounts can be used anytime.",
+        "top_padding_m": 40,
+        "bottom_padding_m": 40,
+        "top_padding_t": 60,
+        "bottom_padding_t": 60,
+        "top_padding": 80,
+        "bottom_padding": 80
+      }
+    },
+    "ab9e5ea0-cbae-483d-bb78-77a2034fe6f8": {
+      "type": "horizontal-line",
+      "settings": {
+        "bg_color": "#e7e7e7",
+        "height": 1
+      }
+    },
+    "0f8d8b9c-9c33-42d6-b3c8-3ddd6405f9ff": {
+      "type": "rewards-gallery",
+      "blocks": {
+        "fd561757-b85b-4472-8a87-c9eb5d624760": {
+          "type": "content",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/rewards25.png",
+            "title": "25% OFF DISCOUNT",
+            "text": "Applicable for all products except lorem ipsum dolor sit amet, consetetur",
+            "coins_label": "1,800 CALECIM® Coins"
+          }
+        },
+        "dafe359b-167b-44a7-bc09-a365bf6a367f": {
+          "type": "product",
+          "settings": {
+            "product": "calecim-plushee",
+            "coins_label": "2,000 CALECIM® Coins"
+          }
+        },
+        "f923f358-b170-4998-b4c8-cc6218ebeca4": {
+          "type": "product",
+          "settings": {
+            "product": "pre-post-procedure-regimen-reward",
+            "coins_label": "2,500 CALECIM® Coins"
+          }
+        },
+        "2ebcc8f5-ca8c-43ea-a868-36cc2bac926d": {
+          "type": "product",
+          "settings": {
+            "product": "recovery-night-complex-30g-reward",
+            "coins_label": "280 CALECIM® Coins"
+          }
+        },
+        "027cd0cf-0344-45e3-96a9-5a3a3b2e21b9": {
+          "type": "product",
+          "settings": {
+            "product": "pre-post-procedure-regimen-reward",
+            "coins_label": "350 CALECIM® Coins"
+          }
+        },
+        "db2688cb-d3c9-4244-8c88-0cb69c8cfd20": {
+          "type": "product",
+          "settings": {
+            "product": "calecim-multi-action-cream-20g-reward",
+            "coins_label": "480 CALECIM® Coins"
+          }
+        },
+        "341ef03d-6d53-4613-bd84-dc895cf83da1": {
+          "type": "content",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/rewards15.png",
+            "title": "15% OFF DISCOUNT",
+            "text": "Applicable for all products except lorem ipsum dolor sit amet, consetetur",
+            "coins_label": "600 CALECIM® Coins"
+          }
+        },
+        "74b39442-f5ea-4fd5-871e-477cb985fad1": {
+          "type": "product",
+          "settings": {
+            "product": "starter-radiance-kit-reward",
+            "coins_label": "800 CALECIM® Coins"
+          }
+        },
+        "1a723c7f-bdb1-4df4-b308-eeaa7b467441": {
+          "type": "product",
+          "settings": {
+            "product": "total-repair-kit-reward",
+            "coins_label": "1,200 CALECIM® Coins"
+          }
+        },
+        "948246cd-c23b-4323-87ba-15f8704bc8dd": {
+          "type": "product",
+          "settings": {
+            "product": "pre-post-procedure-regimen-reward",
+            "coins_label": "1,500 CALECIM® Coins"
+          }
+        }
+      },
+      "block_order": [
+        "fd561757-b85b-4472-8a87-c9eb5d624760",
+        "dafe359b-167b-44a7-bc09-a365bf6a367f",
+        "f923f358-b170-4998-b4c8-cc6218ebeca4",
+        "2ebcc8f5-ca8c-43ea-a868-36cc2bac926d",
+        "027cd0cf-0344-45e3-96a9-5a3a3b2e21b9",
+        "db2688cb-d3c9-4244-8c88-0cb69c8cfd20",
+        "341ef03d-6d53-4613-bd84-dc895cf83da1",
+        "74b39442-f5ea-4fd5-871e-477cb985fad1",
+        "1a723c7f-bdb1-4df4-b308-eeaa7b467441",
+        "948246cd-c23b-4323-87ba-15f8704bc8dd"
+      ],
+      "settings": {
+        "title": "CALECIM® COINS REWARDS GALLERY",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut!",
+        "title_size": "h3",
+        "title_dom_type": "h3",
+        "top_padding_m": "40",
+        "bottom_padding_m": "20",
+        "top_padding_t": "60",
+        "bottom_padding_t": "40",
+        "top_padding": "80",
+        "bottom_padding": "30"
+      }
+    },
+    "d8cd282f-de82-48c9-a33d-9c5b7308189e": {
+      "type": "horizontal-line",
+      "settings": {
+        "bg_color": "#e7e7e7",
+        "height": 1
+      }
+    },
+    "6844c2e4-dd41-48a7-8731-4d72bf0977b2": {
+      "type": "subscription-faq",
+      "blocks": {
+        "35d67b55-27c8-48d6-a52c-6eb66b44b68e": {
+          "type": "entry",
+          "settings": {
+            "title": "How do I earn CALECIM® Coins?",
+            "answer": ""
+          }
+        },
+        "84ae0793-96a2-4d29-bde5-ac9146258c03": {
+          "type": "entry",
+          "settings": {
+            "title": "How does the redemption process work?",
+            "answer": ""
+          }
+        },
+        "dabb1c54-9567-4947-a832-14bc1d930a44": {
+          "type": "entry",
+          "settings": {
+            "title": "How does the redemption process work?",
+            "answer": ""
+          }
+        },
+        "d4ecc7ab-8de3-48b7-b734-5491f75d155f": {
+          "type": "entry",
+          "settings": {
+            "title": "When will I receive my CALECIM® Coins?",
+            "answer": ""
+          }
+        },
+        "75e2190b-f7fd-4a09-bbfc-c3f691f3ea43": {
+          "type": "entry",
+          "settings": {
+            "title": "Will my CALECIM® Coins expire?",
+            "answer": ""
+          }
+        },
+        "95f166e6-769b-4a6a-b91d-47d165f44972": {
+          "type": "entry",
+          "settings": {
+            "title": "Can my CALECIM® Coins be redeemed in clinics?",
+            "answer": ""
+          }
+        }
+      },
+      "block_order": [
+        "35d67b55-27c8-48d6-a52c-6eb66b44b68e",
+        "84ae0793-96a2-4d29-bde5-ac9146258c03",
+        "dabb1c54-9567-4947-a832-14bc1d930a44",
+        "d4ecc7ab-8de3-48b7-b734-5491f75d155f",
+        "75e2190b-f7fd-4a09-bbfc-c3f691f3ea43",
+        "95f166e6-769b-4a6a-b91d-47d165f44972"
+      ],
+      "settings": {
+        "title": "FREQUENT QUESTIONS",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut!",
+        "btn_label": "Other questions",
+        "btn_url": "",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    }
+  },
+  "order": [
+    "d80e3048-6625-4652-982a-be282b32b293",
+    "8e131c89-3916-47e4-a652-cb1c6d6b2a06",
+    "634e0c98-8704-4716-a981-0e500a235758",
+    "d2eeb50e-81b6-4116-acc4-aee755715e27",
+    "bd2091f6-4fc0-40cd-ba1a-8bda11596580",
+    "ab9e5ea0-cbae-483d-bb78-77a2034fe6f8",
+    "0f8d8b9c-9c33-42d6-b3c8-3ddd6405f9ff",
+    "d8cd282f-de82-48c9-a33d-9c5b7308189e",
+    "6844c2e4-dd41-48a7-8731-4d72bf0977b2"
+  ]
+}

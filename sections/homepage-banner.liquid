@@ -1,0 +1,661 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+
+    }
+    #shopify-section-{{ section.id }} .btn1.hide-m,
+    #shopify-section-{{ section.id }} .btn2.hide-m{
+        display:none !important;
+    }
+    #shopify-section-{{ section.id }} .text-container{
+        width:100%;
+        {%if section.settings.mobile_overlay%}
+        position:absolute;
+        {%else%}
+        padding-top:25px;
+        {%endif%}
+    }
+
+    #shopify-section-{{ section.id }} .swiper-pagination{
+        position:absolute;
+        left: 15px;
+        bottom: 40px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    #shopify-section-{{ section.id }} .text-content{
+        color:#6c6c6c;
+    }
+    
+    #shopify-section-{{ section.id }} .swiper-arrow {
+        {%- if section.settings.arrow_position == 'left' -%}
+            left: 20px;
+        {%- else -%}
+            right: 20px;
+        {%- endif -%}
+        
+        bottom: 20px;
+        position: absolute;
+        z-index: 10;
+        display: none;
+    }
+    #shopify-section-{{ section.id }} .swiper-arrow .swiper-custom-arrow {
+        display: inline-flex;
+        position: relative;
+        top: unset; 
+        left: unset;
+        right: unset;
+        transform: unset;
+    }
+    #shopify-section-{{ section.id }} .text-container {
+        position:absolute;
+        bottom: 80px;
+        left: 0;
+        width: auto;
+    }
+    #shopify-section-{{ section.id }} .text-container .text-tag {
+        border: 1px solid #231D1D;
+        border-radius: 13px;
+        display: inline-block;
+        padding: 6px 10px 6px 12px;
+    }
+    @media(min-width: 768px) {
+        #shopify-section-{{ section.id }} .text-container .h-title {
+            max-width: 75%;
+        }
+        #shopify-section-{{ section.id }} .text-container .text-content {
+            max-width: 50%;
+        }
+        #shopify-section-{{ section.id }} .swiper-pagination{
+            left: 25px;
+        }
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .text-container{
+            padding-top:0;
+            position:absolute;
+        }
+        #shopify-section-{{ section.id }} .btn1.hide-d,
+        #shopify-section-{{ section.id }} .btn2.hide-d{
+            display:none !important;
+        }
+        #shopify-section-{{ section.id }} .btn1.show-d,
+        #shopify-section-{{ section.id }} .btn2.show-d{
+            display:inline-block !important;
+        }
+        #shopify-section-{{ section.id }} .swiper-pagination{
+            position:absolute;
+            bottom: 60px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align:center;
+        }
+        #shopify-section-{{ section.id }} .swiper-arrow {
+            {%- if section.settings.arrow_position == 'left' -%}
+                left: 40px;
+            {%- else -%}
+                right: 40px;
+            {%- endif -%}
+
+            bottom: 60px;
+            display: flex;
+        }
+    }
+    @media(min-width: 1200px) {
+        #shopify-section-{{ section.id }} .swiper-arrow {
+            {%- if section.settings.arrow_position == 'left' -%}
+                left: 60px;
+            {%- else -%}
+                right: 60px;
+            {%- endif -%}
+        }
+    }
+
+</style>
+
+<section id="{{ section.id }}" class="homepage-banner">
+    <div id="slider-{{ el_id }}" class="flex flex-wrap swiper">
+        <div class="swiper-wrapper">
+            {%- for block in section.blocks -%}
+                <div class="swiper-slide slide-{{ forloop.index }}">
+                    <style>
+                        {%if section.settings.mobile_overlay%}
+                            {% if block.settings.text_position == "top_left" or block.settings.text_position == "top_right" %}
+                                #shopify-section-{{ section.id }} .btn-container.slide-{{forloop.index}} {
+                                    display: flex;
+                                    align-items: center;
+                                    position: absolute;
+                                    bottom: 30px;
+                                    left: 20px;
+                                    z-index: 20;
+                                }
+                                #shopify-section-{{ section.id }} .text-container.slide-{{forloop.index}} .btn2 {
+                                    display: none;
+                                }
+                                #shopify-section-{{ section.id }} .swiper-slide.slide-{{forloop.index}} .swiper-pagination {
+                                    display: none;
+                                }
+                                #shopify-section-{{ section.id }} .swiper-slide.slide-{{forloop.index}} .swiper-arrow {
+                                    display: flex;
+                                    right: 20px;
+                                    justify-content: flex-end;
+                                    height: 47.59px;
+                                    align-items: center;
+                                    bottom: 30px;
+                                }
+                            {% endif %}
+
+                            #shopify-section-{{ section.id }} .text-container.slide-{{forloop.index}}{
+                                color:{{block.settings.text_color}};
+                                
+                                {% if block.settings.text_position_mobile == "bottom_left" %}
+                                    bottom: 100px;
+                                {% else %}
+                                    {%if block.settings.text_position == "top_left"%}
+                                        top:40px;
+                                        left:0;
+                                        bottom: unset;
+                                    {%elsif block.settings.text_position == "top_center"%}
+                                        top:40px;
+                                        left:50%;
+                                        transform:translate(-50%,0);
+                                        text-align:center;
+                                        bottom: unset;
+                                    {%elsif block.settings.text_position == "top_right"%}
+                                        top:40px;
+                                        right:0;
+                                        text-align:right;
+                                        bottom: unset;
+                                    {%elsif block.settings.text_position == "center_left"%}
+                                        top:50%;
+                                        left:0;
+                                        text-align:left;
+                                        transform:translate(0,-50%);
+                                    {%elsif block.settings.text_position == "center"%}
+                                        top:50%;
+                                        left:50%;
+                                        text-align:center;
+                                        transform:translate(-50%,-50%);
+                                    {%elsif block.settings.text_position == "center_right"%}
+                                        top:50%;
+                                        right:0;
+                                        text-align:right;
+                                        transform:translate(0,-50%);
+                                    {%elsif block.settings.text_position == "bottom_left"%}
+                                        bottom:50px;
+                                        left:0;
+                                        text-align:left;
+                                        top: unset;
+                                    {%elsif block.settings.text_position == "bottom_center"%}
+                                        bottom:50px;
+                                        left:50%;
+                                        text-align:center;
+                                        transform:translate(-50%,0);
+                                        top: unset;
+                                    {%elsif block.settings.text_position == "bottom_right"%}
+                                        bottom:50px;
+                                        right:0;
+                                        text-align:right;
+                                        top: unset;
+                                    {%endif%}
+                                {% endif %}
+                            }
+                        {%endif%}
+
+                        #shopify-section-{{ section.id }} .btn-container.slide-{{forloop.index}} {
+                            display: none;
+                        }
+
+                        @media(min-width: 768px) {
+                            {% if block.settings.text_position == "top_left" or block.settings.text_position == "top_right" %}
+                                #shopify-section-{{ section.id }} .btn-container.slide-{{forloop.index}} {
+                                    left: 30px;
+                                }
+                                #shopify-section-{{ section.id }} .swiper-slide.slide-{{forloop.index}} .swiper-arrow {
+                                    right: 30px;
+                                }
+                            {% endif %}
+                        }
+
+                        @media(min-width: 1024px) {
+                            #shopify-section-{{ section.id }} .text-content{
+                                {%- if block.settings.text_color == '#2c2c2c' or block.settings.text_color == '#2C2C2C' or block.settings.text_color == '#000000' -%}
+                                    color: var(--grey);
+                                {%- else -%}
+                                    color:{{block.settings.text_color}};
+                                {%- endif -%}
+                            }
+                            #shopify-section-{{ section.id }} .text-container.slide-{{forloop.index}} .text-content{
+                                {%if block.settings.text_position == "top_left"%}
+                                    margin:0 auto 0 0;
+                                {%elsif block.settings.text_position == "top_center"%}
+                                    margin:0 auto;
+                                {%elsif block.settings.text_position == "top_right"%}
+                                    margin:0 0 0 auto;
+                                {%elsif block.settings.text_position == "center_left"%}
+                                    margin:0 auto 0 0;
+                                {%elsif block.settings.text_position == "center"%}
+                                    margin:0 auto;
+                                {%elsif block.settings.text_position == "center_right"%}
+                                    margin:0 0 0 auto;
+                                {%elsif block.settings.text_position == "bottom_left"%}
+                                    margin:0 auto 0 0;
+                                {%elsif block.settings.text_position == "bottom_center"%}
+                                    margin:0 auto;
+                                {%elsif block.settings.text_position == "bottom_right"%}
+                                    margin:0 0 0 auto;
+                                {%endif%}
+                            }
+                            #shopify-section-{{ section.id }} .text-container.slide-{{forloop.index}} .h-title{
+                                {%if block.settings.text_position == "top_left"%}
+                                    margin:0 auto 0 0;
+                                {%elsif block.settings.text_position == "top_center"%}
+                                    margin:0 auto;
+                                {%elsif block.settings.text_position == "top_right"%}
+                                    margin:0 0 0 auto;
+                                {%elsif block.settings.text_position == "center_left"%}
+                                    margin:0 auto 0 0;
+                                {%elsif block.settings.text_position == "center"%}
+                                    margin:0 auto;
+                                {%elsif block.settings.text_position == "center_right"%}
+                                    margin:0 0 0 auto;
+                                {%elsif block.settings.text_position == "bottom_left"%}
+                                    margin:0 auto 0 0;
+                                {%elsif block.settings.text_position == "bottom_center"%}
+                                    margin:0 auto;
+                                {%elsif block.settings.text_position == "bottom_right"%}
+                                    margin:0 0 0 auto;
+                                {%endif%}
+                            }
+                            
+                            {%if block.settings.text_position == "top_left" or block.settings.text_position == "top_right"%}
+                                #shopify-section-{{ section.id }} .swiper-slide.slide-{{forloop.index}} .swiper-pagination,
+                                #shopify-section-{{ section.id }} .swiper-slide.slide-{{forloop.index}} .swiper-arrow {
+                                    height: 46.8px;
+                                    align-items: center;
+                                    display: flex;
+                                }
+                                #shopify-section-{{ section.id }} .btn-container.slide-{{forloop.index}} {
+                                    display: flex;
+                                    align-items: center;
+                                    position: absolute;
+                                    bottom: 60px;
+                                    left: 40px;
+                                    z-index: 20;
+                                }
+                                #shopify-section-{{ section.id }} .text-container.slide-{{forloop.index}} .btn-below-title {
+                                    display: none;
+                                }
+                                #shopify-section-{{ section.id }} .swiper-slide.slide-{{forloop.index}} .swiper-arrow {
+                                    left: unset;
+                                    right: 40px;
+                                    bottom: 60px;
+                                    height: 48.8px;
+                                }
+                            {% endif %}
+
+                            #shopify-section-{{ section.id }} .text-container.slide-{{forloop.index}}{
+                                color:{{block.settings.text_color}};
+                                {%if block.settings.text_position == "top_left"%}
+                                    top:60px;
+                                    left:0;
+                                    bottom: unset;
+                                {%elsif block.settings.text_position == "top_center"%}
+                                    top:60px;
+                                    bottom: unset;
+                                    left:50%;
+                                    transform:translate(-50%,0);
+                                    text-align:center;
+                                {%elsif block.settings.text_position == "top_right"%}
+                                    top:60px;
+                                    bottom: unset;
+                                    right:0;
+                                    text-align:right;
+                                {%elsif block.settings.text_position == "center_left"%}
+                                    top:50%;
+                                    bottom: unset;
+                                    left:0;
+                                    text-align:left;
+                                    transform:translate(0,-50%);
+                                {%elsif block.settings.text_position == "center"%}
+                                    top:50%;
+                                    bottom: unset;
+                                    left:50%;
+                                    text-align:center;
+                                    transform:translate(-50%,-50%);
+                                {%elsif block.settings.text_position == "center_right"%}
+                                    top:50%;
+                                    bottom: unset;
+                                    right:0;
+                                    text-align:right;
+                                    transform:translate(0,-50%);
+                                {%elsif block.settings.text_position == "bottom_left"%}
+                                    bottom:50px;
+                                    top: unset;
+                                    left:0;
+                                    text-align:left;
+                                {%elsif block.settings.text_position == "bottom_center"%}
+                                    bottom:50px;
+                                    top: unset;
+                                    left:50%;
+                                    text-align:center;
+                                    transform:translate(-50%,0);
+                                {%elsif block.settings.text_position == "bottom_right"%}
+                                    bottom:50px;
+                                    top: unset;
+                                    right:0;
+                                    text-align:right;
+                                {%endif%}
+                            }
+
+                            #shopify-section-{{ section.id }} .text-container .h-title,
+                            #shopify-section-{{ section.id }} .text-container .text-content {
+                                max-width: {{ block.settings.max_width }}px;
+                            }
+                        }          
+                        
+                        @media screen and (min-width: 1200px) {
+                            {% if block.settings.text_position == "top_left" or block.settings.text_position == "top_right" %}
+                                #shopify-section-{{ section.id }} .btn-container.slide-{{forloop.index}} {
+                                    left: 60px;
+                                }
+                                #shopify-section-{{ section.id }} .swiper-slide.slide-{{forloop.index}} .swiper-arrow {
+                                    right: 60px;
+                                }
+                            {% endif %}
+                        }
+                    </style>
+                    <div class="relative">
+                        {%assign image_id = "homepage-banner-image_" | append: section.id | append: forloop.index %}
+                        {%- render 'global-image-wrapper-responsive',
+                            image_id: image_id,
+                            desktop_image: block.settings.desktop_image,
+                            mobile_image: block.settings.mobile_image
+                        %}
+                        <div class="text-container slide-{{forloop.index}}">
+                            <div class="container">
+                                {%- if block.settings.tag != blank -%}
+                                    <p class="uppercase p5 mb-15 d-mb-10 text-tag">{{ block.settings.tag }}</p>
+                                {%- endif -%}
+                                {% assign title_dom_type = 'h1' %}
+                                {% if block.settings.title_dom_type != blank %}
+                                {% assign title_dom_type = block.settings.title_dom_type %}
+                                {% endif %}
+                                {%- if block.settings.title != blank -%}
+                                <{{ title_dom_type }} class="{{block.settings.title_size}} h-title">{{block.settings.title}}</{{ title_dom_type }}>
+                                {% endif %}
+                                {%if block.settings.text != blank%}
+                                    <div class="p1 text-content pt-5 d-pt-5">{{block.settings.text}}</div>
+                                {%endif%}
+
+                                {%if block.settings.button_label != blank%}
+                                    <a href="{{block.settings.button_url}}" class="{{ block.settings.button_type }} btn-below-title with-icon mt-20 d-mt-25">
+                                        {{ block.settings.button_label }}
+                                        <span class="icon">{{ settings.icon_btn_right }}</span>
+                                    </a>
+                                {%endif%}
+                            </div>
+                        </div>
+                        {%if block.settings.button_label != blank%}
+                        <div class="btn-container slide-{{forloop.index}}">
+                            <a href="{{block.settings.button_url}}" class="btn1 with-icon">
+                                {{ block.settings.button_label }}
+                                <span class="icon">{{ settings.icon_btn_right }}</span>
+                            </a>
+                        </div>
+                        {%endif%}
+                        {%- if section.blocks.size > 1 -%}
+                        <div class="swiper-pagination"></div>
+                        {%- endif -%}
+
+                        {%- if section.settings.enable_arrows -%}
+                            <div class="swiper-arrow">
+                                <div class="swiper-custom-arrow previous mr-10">
+                                    {{ settings.icon_btn_left }}
+                                </div>
+                                <div class="swiper-custom-arrow next">
+                                    {{ settings.icon_btn_right }}
+                                </div>
+                            </div>
+                        {%- endif -%}
+                    </div>
+                </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</section>
+
+{%- if section.blocks.size > 1 -%}
+{%- assign function_name = el_id | replace: '-', '_' -%}
+{%- assign prefix = 'homepage_banner' -%}
+<script>
+var {{ prefix }}{{ function_name }}Init= false;
+var {{ prefix }}{{ function_name }}Slider = Swiper;
+function sliderInit{{ function_name }}() {
+    const el_id = '#{{ el_id }}';
+    console.log('slider init: ' + el_id)
+    if(!{{ prefix }}{{ function_name }}Init) {
+        {{ prefix }}{{ function_name }}Init = true;
+        {{ prefix }}{{ function_name }}Slider = new Swiper('#slider-{{ el_id }}', {
+            {%if section.settings.enable_autoslide%}
+            autoplay: {
+                delay: {{section.settings.delay_autoslide}}
+            },
+            {%endif%}
+            navigation: {
+                nextEl: '#slider-{{ el_id }} .swiper-custom-arrow.next',
+                prevEl: '#slider-{{ el_id }} .swiper-custom-arrow.previous'
+            },
+            slidesPerView: 1,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
+                duration: 1500 // your duration in milliseconds
+            },
+            speed: 1500,
+            spaceBetween: 0,
+            loopedSlides: {{ section.blocks.size }},
+            loop: false,
+            preloadImages: true,
+            lazy: true,
+            centeredSlides: true,
+            pagination: {
+                el: "#slider-{{ el_id }} .swiper-pagination",
+                clickable: true
+            },
+            on: {
+                init: function() {
+                    $360.lazyLoadInstance.update();
+                },
+                slideChange: function() {
+                    $360.lazyLoadInstance.update();
+                },
+                resize: function() {
+                    $360.lazyLoadInstance.update();
+                }
+            }
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    sliderInit{{ function_name }}();
+    //window.addEventListener("resize", sliderInit{{ function_name }});
+});
+</script>
+{%- endif -%}
+
+{% schema %}
+    {
+        "name": "Homepage Banner",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "enable_autoslide",
+                "label": "Enable Autoslide"
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_arrows",
+                "label": "Enable Arrows"
+            },
+            {
+                "type": "select",
+                "id": "arrow_position",
+                "label": "Arrow Position",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": "Left"
+                    },
+                    {
+                        "value": "right",
+                        "label": "Right"
+                    }
+                ],
+                "default": "left"
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_dots",
+                "label": "Enable Dots"
+            },
+            {
+                "type": "number",
+                "id": "delay_autoslide",
+                "label": "Delay for Autoslide (miliseconds)",
+                "default": 5000
+            },
+            {
+                "type": "checkbox",
+                "id": "mobile_overlay",
+                "label": "Mobile Enable Text Overlay"
+            }
+        ],
+        "blocks": [
+        {
+            "type": "entry",
+            "name": "Entry",
+            "limit": 12,
+            "settings": [
+                {
+                    "type": "color",
+                    "id": "text_color",
+                    "label": "Text Color"
+                },
+                {
+                    "type": "select",
+                    "id": "text_position",
+                    "label": "Text Position (desktop)",
+                    "options": [
+                        {"value":"top_left","label":"Top Left"},
+                        {"value":"top_center","label":"Top Center"},
+                        {"value":"top_right","label":"Top Right"},
+                        {"value":"center_left","label":"Center Left"},
+                        {"value":"center","label":"Center"},
+                        {"value":"center_right","label":"Center Right"},
+                        {"value":"bottom_left","label":"Bottom Left"},
+                        {"value":"bottom_center","label":"Bottom Center"},
+                        {"value":"bottom_right","label":"Bottom Right"}
+                    ]
+                },
+                {
+                    "type": "select",
+                    "id": "text_position_mobile",
+                    "label": "Text Position (mobile)",
+                    "options": [
+                        {"value":"follow_desktop","label":"Follow Desktop"},
+                        {"value":"bottom_left","label":"Bottom Left"}
+                    ],
+                    "default": "bottom_left" 
+                },
+                {
+                    "type": "text",
+                    "id": "tag",
+                    "label": "Tag"
+                },
+                {
+                    "type": "textarea",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "select",
+                    "id": "title_size",
+                    "label": "Title Size",
+                    "options": [
+                        {"value":"h1","label":"H1"},
+                        {"value":"h2","label":"H2"},
+                        {"value":"h3","label":"H3"},
+                        {"value":"h4","label":"H4"},
+                        {"value":"h5","label":"H5"}
+                    ]
+                },
+                {
+                    "type": "select",
+                    "id": "title_dom_type",
+                    "label": "Title DOM Type",
+                    "options": [
+                        {"value":"h1","label":"H1"},
+                        {"value":"h2","label":"H2"},
+                        {"value":"h3","label":"H3"}
+                    ]
+                },
+                {
+                    "type": "number",
+                    "id": "max_width",
+                    "label": "Title & Text Max Width",
+                    "info": "in px",
+                    "default": 500
+                },
+                {
+                    "type": "textarea",
+                    "id": "text",
+                    "label": "Text"
+                },
+                {
+                    "type": "text",
+                    "id": "button_label",
+                    "label": "Button Label"
+                },
+                {
+                    "type": "url",
+                    "id": "button_url",
+                    "label": "Button URL"
+                },
+                {
+                    "type": "select",
+                    "id": "button_type",
+                    "label": "Button Type",
+                    "options": [
+                        {"value":"btn1","label":"Without Background"},
+                        {"value":"btn2","label":"With Background"}
+                    ],
+                    "default": "btn2"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "desktop_image",
+                    "label": "Desktop Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "mobile_image",
+                    "label": "Mobile Image"
+                }
+            ]
+        }
+        ],
+        "presets": [
+        {
+            "name": "Homepage Banner",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,28 @@
+{%- comment -%}
+    Love&Co Theme
+    Description:
+    Snippet for displaying cart info
+
+    Variables:
+    - cart_msg_class: String. Class for cart message
+    - payment_icons_class: String. Class for payment icons
+{%- endcomment -%}
+<div class="payment-icons flex {{ payment_icons_class }}">
+    {%- for image in shop.metafields.globals.payment_image -%}
+        <div class="each flex ai-center jc-center mr-5 ml-5 max-35">
+            {%- render 'global-image-wrapper',
+                image: image,
+                acc: true,
+                additional_class: 'no-bg'
+            -%}
+        </div>
+    {%- endfor -%}
+</div>
+
+{%- if settings.cart_msg != blank -%}
+    {%if customer%}
+        <p class="p4 {{ cart_msg_class }}">{{ settings.cart_msg | newline_to_br }}</p>
+    {%else%}
+        <p class="p4 {{ cart_msg_class }}"><a class="bb-1" href="/account/register">Register</a> to enjoy 10% off first order and <a class="bb-1" href="/account/login">login</a> to start collecting loyalty points</p>
+    {%endif%}
+{%- endif -%}

@@ -1,0 +1,192 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+<style>
+#shopify-section-{{ section.id }} .c-darkgreen {
+  color: #5eb98d;
+}
+#shopify-section-{{ section.id }} .collection-banner-text-bottom {
+  background-color: {{ section.settings.background_color }};
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  #shopify-section-{{ section.id }} .collection-banner-text-bottom .container {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  #shopify-section-{{ section.id }} .collection-banner-text-bottom .container .cbtb-left {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  #shopify-section-{{ section.id }} .cbtb-left {
+    display: flex;
+    flex-direction: column;
+    min-width: auto;
+    justify-content: end;
+  }
+  #shopify-section-{{ section.id }} .cbtb-right {
+    display: flex;
+    flex-direction: column;
+    min-width: calc(50% + 15px);
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1180px) {
+  #shopify-section-{{ section.id }} .collection-banner-text-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 0px;
+  }
+  #shopify-section-{{ section.id }} .cbtb-left {
+    display: flex;
+    flex-direction: column;
+    min-width: calc(50% + 0px);
+    justify-content: end;
+  }
+  #shopify-section-{{ section.id }} .cbtb-right {
+    display: flex;
+    flex-direction: column;
+    min-width: calc(50% + 0px);
+    justify-content: center;
+  }
+  
+}
+@media screen and (min-width: 1181px) and (max-width: 1499px) {
+  #shopify-section-{{ section.id }} .collection-banner-text-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 0px;
+  }
+  #shopify-section-{{ section.id }} .cbtb-left {
+    display: flex;
+    flex-direction: column;
+    min-width: calc(36% + 0px);
+    justify-content: end;
+  }
+  #shopify-section-{{ section.id }} .cbtb-right {
+    display: flex;
+    flex-direction: column;
+    min-width: calc(64% + 0px);
+    justify-content: center;
+  }
+  
+}
+@media screen and (min-width: 1500px) {
+  #shopify-section-{{ section.id }} .collection-banner-text-bottom .container {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 0px;
+  }
+  #shopify-section-{{ section.id }} .cbtb-left {
+    display: flex;
+    flex-direction: column;
+    min-width: calc(34% - 20px);
+    max-width: calc(34% - 20px);
+    justify-content: end;
+  }
+  #shopify-section-{{ section.id }} .cbtb-right {
+    display: flex;
+    flex-direction: column;
+    min-width: calc(66% + 20px);
+    max-width: calc(66% + 20px);
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 767px) {
+  #shopify-section-{{ section.id }} .collection-banner-text-bottom .container {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  #shopify-section-{{ section.id }} .collection-banner-text-bottom .container .cbtb-left {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+</style>
+<div class="collection-banner-text-bottom">
+  <div class="container">
+    <div class="cbtb-left d-pr-100 d-pt-0 d-pb-50 pt-40 pb-40">
+      <p class="p3 bold-600 spacing-2 c-darkgreen">{{ section.settings.small_title }}</p>
+      {% if section.settings.url != blank %}<a href="{{ section.settings.url }}">{% endif %}
+      <h4 class="h4 mt-10 d-mt-20 c-black">{{ section.settings.title }}</h4>
+      {% if section.settings.url != blank %}</a>{% endif %}
+    </div>
+    <div class="cbtb-right">
+      {%- assign image_id = "collection-banner-text-bottom-" | append: section.id -%}
+      {%- render 'global-image-wrapper-responsive',
+        image_id: image_id,
+        desktop_image: section.settings.desktop_image,
+        mobile_image: section.settings.mobile_image
+      %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Collection Banner Text B",
+    "settings": [
+      {
+        "type": "text",
+        "id": "small_title",
+        "label": "Small Title"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "URL"
+      }, 
+      {
+        "type": "image_picker",
+        "id": "desktop_image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      }, {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Banner Text B"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,66 @@
+<div id="activate-account-page" class="global-content-top-margin pt-20 pb-50 d-pt-100 d-pb-100">
+  <div class="container">
+    {%- form 'activate_customer_password', id: 'activate-account-form' -%}
+      <h1 class="h2 tc c-greenb2 mb-30">{{ 'customer.activate_account.title' | t }}</h1>
+      
+      <div class="middle-max-355 mx-auto">
+        <p class="tc mb-30">{{ 'customer.activate_account.subtext' | t }}</p>
+
+        {%- if form.errors -%}
+          <div class="form-errors mb-30 c-sale-red rte p2">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+          <div class="mb-15">
+            <input type="password" v-model="password" name="customer[password]" id="password" class="global-input p2 rounded-8" placeholder="{{ 'customer.activate_account.password' | t }}" />
+            <div v-if="password_error" class="c-sale-red p3 mt-5">{{ 'customer.activate_account.error_password' | t }}</div>
+          </div>
+          <div class="mb-30">
+            <input type="password" v-model="password_confirm" name="customer[password_confirmation]" id="password_confirmation" class="global-input p2 rounded-8" placeholder="{{ 'customer.activate_account.password_confirm' | t }}" />
+            <div v-if="password_confirm_error" class="c-sale-red p3 mt-5">{{ 'customer.activate_account.error_password_confirm' | t }}</div>
+          </div>
+          <button type="submit" class="btn btn1 no-icon w-full">{{ 'customer.activate_account.submit' | t }}</button>
+      </div>
+    {%- endform -%}
+  </div>
+</div>
+
+<script>
+Vue.createApp({
+  delimiters: ['${', '}'],
+  data() {
+    return {
+      password: null,
+      password_confirm: null,
+      has_error: false,
+      password_error: false,
+      password_confirm_error: false,
+    }
+  },
+  mounted() {
+    const thisObj = this;
+    document.getElementById('activate-account-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      thisObj.has_error = false;
+      thisObj.password_error = false;
+      thisObj.password_confirm_error = false;
+
+      if(!thisObj.password) {
+        thisObj.password_error = true;
+        thisObj.has_error = true;
+      }
+
+      if(!thisObj.password_confirm) {
+        thisObj.password_confirm_error = true;
+        thisObj.has_error = true;
+      }
+
+      if(!thisObj.has_error) {
+        this.submit();
+      }
+    });
+  }
+}).mount('#activate-account-page');
+</script>

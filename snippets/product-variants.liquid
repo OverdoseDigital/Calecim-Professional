@@ -1,0 +1,490 @@
+{% comment %} calecim {% endcomment %}
+{%- assign variant = product.selected_or_first_available_variant -%}
+
+<div
+    id="product-form"
+    class="product-form mt-10 d-mt-15">
+
+	{% comment %} available in clinics {% endcomment %}
+	{%- if product.metafields.clinics.enable -%}
+		<div class="available-in-clinic tc width-100 hide-m">
+			{%- if product.metafields.clinics.text != blank -%}
+				<p class="p2">{{ product.metafields.clinics.text }}</p>
+			{%- endif -%}
+
+			{%- if product.metafields.clinics.button_label != blank -%}
+				<a href="{{ product.metafields.clinics.button_url }}" class="width-100 btn4 tc mt-15 d-mt-20">{{ product.metafields.clinics.button_label }}</a>
+			{%- endif -%}
+		</div>
+	{%- endif -%}
+	{% comment %} end available in clinics {% endcomment %}
+
+    <form
+        @submit.prevent="addToCart($event)"
+        class="product-form-wrapper overflow">
+        
+		<div {% if product.variants.size == 1 and product.variants[0].title == "Default Title" %}class="hide-m" {% else %} class="pt-25 d-pt-30 bt-1 b-border" {% endif %}>
+			{%- for option in product.options_with_values -%}
+				{%- assign index = forloop.index -%}
+				{%- assign option_id = "select-" | append: product.id | append: '-' | append: index -%}
+
+				<div class="variant-each {% unless forloop.last %} mb-20 d-mb-25 {% endunless %}"> 
+					<div class="option-wrapper">
+						<div class="global-flex inner-wrapper ai-center jc-between">
+							<p class="p2 variant-label mb-5 d-mb-0 d-mt-5">{{ 'products.product.select' | t }} {{ option.name }}:</p>
+
+							<div class="variant-each-wrapper d-max-380">
+								{%- assign current_option = 'option' | append: index -%}
+								{%- for option in option.values -%}
+									<div @click="changeVariantValue($event)" class="pointer variant-each-button p2 box mt-5 mr-5 b-silver show-m-inline-block {% if variant[current_option] == option %} active {% endif %}" data-value="{{ option }}">
+										{{ option }}
+									</div>
+								{%- endfor -%}
+							</div>
+						</div>
+					</div>
+					<select class="hide-m" name="{{ option_id }}" id="{{ option_id }}">
+						{%- for option in option.values -%}
+							{%- assign option_value = option -%}
+							<option value="{{ option_value | escape }}" {% if variant[current_option] == option %} selected="selected" {% endif %}>{{ option }}</option>
+						{%- endfor -%}
+					</select>
+				</div>
+			{%- endfor -%}
+        </div> 
+
+		{% comment %} subscription wrapper {% endcomment %}
+		{%- if product.selling_plan_groups[0].selling_plans[0] != blank -%}
+			<div class="subscription-picker one-time {% unless product.variants.size == 1 or product.variants[0].title == "Default Title" %} d-mt-30 mt-20 {% endunless %} active">
+				<div class="global-flex ai-center jc-between">
+					<a href="javascript:void(0)" @click="setSubscription($event,'one-time')" class="subscription-picker-each show-m-inline-flex ai-center">
+						<span class="radio"><span class="inner"></span></span>
+						<span class="text p2 ml-10">{{ 'products.product.one_time' | t }}</span>
+					</a>
+					<div class="one-time price p2">{{ variant.price | money }}</div>
+				</div>
+			</div>
+
+			<div class="subscription-picker subscribe mt-10">
+				<div class="global-flex ai-center jc-between">
+					<a href="javascript:void(0)" @click="setSubscription($event,'subscription')" class="subscription-picker-each show-m-inline-flex ai-center">
+						<span class="radio"><span class="inner"></span></span>
+						<span class="text p2 ml-10">{{ 'products.product.subscribe_and_save' | t }}</span>
+					</a>
+					{%- assign discount = 100 | minus: product.selling_plan_groups[0].selling_plans[0].price_adjustments[0].value -%}
+					<div class="subscribe price p2">{{ variant.price | times: discount | divided_by: 100 | money }}</div>
+				</div>
+			</div>
+
+			<div class="subscription-wrapper relative width-100">
+				<div v-if="subscribeSelected" class="interval-wrapper mt-20">
+					<div @click="adjustDropdownHeight($event)" class="global-select-div pt-20 pb-20 pl-20 pr-20 b-1 b-border">
+						<div class="inner relative">
+							<div data-discount="{{ product.selling_plan_groups[0].selling_plans[0].price_adjustments[0].value }}" data-value="{{ product.selling_plan_groups[0].selling_plans[0].id }}" class="text p2 selected-div-text tl">{{ product.selling_plan_groups[0].selling_plans[0].name }}</div>
+							<div class="icons">
+								<div class="icon icon-caret">{{ settings.icon_select }}</div>
+							</div>
+						</div>
+						<ul class="options b-1 b-border bg-white tl">
+							{%- for selling_plan in product.selling_plan_groups[0].selling_plans -%}
+								<li>
+									<a @click="setSellingPlan($event)" href="javascript:void(0)" data-title="{{ selling_plan.name }}" data-discount="{{ selling_plan.price_adjustments[0].value }}" data-value="{{ selling_plan.id }}" class="selling-plan-picker show-m p3">{{ selling_plan.name }}</a>
+								</li>
+							{%- endfor -%}
+						</ul>
+					</div>
+				</div>
+			</div>
+		{%- endif -%}
+		{% comment %} end subscription wrapper {% endcomment %}
+
+		{% comment %} Whats included {% endcomment %}
+		{%- if product.metafields.included.enable -%}
+			<div class="whats-included p-25" style="background-color: {{ product.metafields.included.bg_color }};">
+				<div class="title-container global-flex ai-center jc-between">
+					<p class="p1">{{ product.metafields.included.section_title }}</p>
+
+					{%- if product.metafields.included.discount != blank -%}
+						<div class="image-tag b-1 b-black p5 uppercase bold-500">{{ 'products.product.save' | t }} {{ product.metafields.included.discount }}%</div>
+					{%- endif -%}
+				</div>
+
+				<div class="products-wrapper global-flex flex-wrap mt-15 d-mt-25">
+					{%- assign included_products = product.metafields.included.products | split: '|' -%}
+					{%- for prd in included_products -%}
+						{%- assign product_obj = all_products[prd] -%}
+						
+						{%- if product_obj.title != blank -%}
+							<div class="product-each-wrapper mt-25 d-mt-30 width-100">
+								{%- render 'product-each-landscape',
+									product: product_obj,
+									hide_price: true,
+									no_bg: true
+								-%}
+							</div>
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+			</div>
+		{%- endif -%}
+		{% comment %} end Whats included {% endcomment %}
+
+		{%- assign atc_class = '' -%}
+		{%- unless product.variants.size == 1 or product.variants[0].title == "Default Title" %} 
+			{%- assign atc_class = 'mt-20 d-mt-30' -%}
+		{%- endunless -%}
+		{%- if product.metafields.included.enable -%}
+			{%- assign atc_class = 'mt-20 d-mt-30' -%}
+		{%- endif -%}
+
+        <button
+            type="submit"
+			class="btn4 w-full add-to-cart relative {{ atc_class }}"
+            ref="atc-btn">{{ 'products.product.add_to_cart' | t }}&nbsp;&nbsp;—&nbsp;&nbsp;<span class="price">{{ variant.price | money }}</span></button>
+
+		{%- if product.metafields.benefit.title_1 != blank -%}
+			<div class="product-benefit-wrapper global-flex flex-wrap ai-center jc-center mt-5 d-mt-10">
+				{%- for i in (1..3) -%}
+					{%- assign title = 'title_' | append: i -%}
+					{%- assign title_acc = product.metafields.benefit[title] -%}
+					{%- assign icon = 'icon_' | append: i -%}
+					{%- assign icon_acc = product.metafields.benefit[icon] -%}
+
+					{%- if title_acc != blank -%}
+						<div class="product-benefit-each ai-center show-m-inline-flex mt-5 ml-5 mr-5 d-ml-10 d-mr-10">
+							<span class="icon">{{ icon_acc[0].media_inline }}</span>
+							<span class="text p3 c-black opacity-5 ml-10">{{ title_acc }}</span>
+						</div>
+					{%- endif -%}
+				{%- endfor -%}
+			</div>
+		{%- endif -%}
+    </form>
+</div>
+
+<script>	
+	/* get users country */
+	{%- if product.metafields.clinics.enable -%}
+		axios.get('{{ shop.url }}/browsing_context_suggestions.json')
+		.then(function(response) {
+			const current_country = response.data.detected_values.country.handle;
+			const product_form_wrapper = document.querySelector('#product-form .product-form-wrapper');
+			const available_in_clinic_wrapper = document.querySelector('#product-form .available-in-clinic');
+
+			let can_atc = false;
+			{%- assign available_countries = product.metafields.clinics.countries | split: ',' -%}
+			{%- for available_country in available_countries -%}
+				if( current_country == '{{ available_country }}') {
+					can_atc = true;
+				}
+			{%- endfor -%}
+
+			if(!can_atc) {
+				product_form_wrapper.remove();
+				available_in_clinic_wrapper.classList.remove('hide-m');
+
+				const sticky_atc_button = document.querySelector('.product-sticky-add-to-cart');
+				sticky_atc_button.innerHTML = "{{ product.metafields.clinics.button_label }}";
+				sticky_atc_button.removeAttribute('onclick');
+				sticky_atc_button.setAttribute('href','{{ product.metafields.clinics.button_url }}');
+			}
+		})
+		.catch(function(error) {
+			console.log(error);
+		});
+	{%- endif -%}
+
+	const productVariantsVue = Vue.createApp({
+		delimiters: ['${','}'], 
+		data() {
+			return {
+				selectedGallery: null,
+				selectedSellingPlanId: 0,
+				subscribeSelected: false,
+				subscriptionDiscount: 20,
+				subscriptionPrice: 0,
+				oneTimePrice: 0,
+				product: {{ product | json }},
+				variantId: {{ variant.id }},
+				options: [null, null, null],
+				qty: 1
+			}
+		},
+		mounted() {
+			this.checkAvailableVariant(true);
+
+			/** back in stock integration **/
+			const this_obj = this;
+			const delay = setTimeout(function(){
+				this_obj.backInStockInit();
+				clearTimeout(delay);
+			}, 2000);
+		},
+		methods: {
+			adjustDropdownHeight(e) {
+				const delay = setTimeout(function(){
+					const this_dropdown = e.target.closest('.global-select-div');
+					const dropdown_parent = this_dropdown.closest('.interval-wrapper');
+
+					if(this_dropdown.classList.contains('active')) {
+						dropdown_parent.style.minHeight = '264px';
+					} else {
+						dropdown_parent.style.minHeight = 'unset';
+					}
+
+					clearTimeout(delay);
+				}, 50);
+			},
+			setSubscription(e,value) {
+				const this_obj = this;
+				const this_button = e.target.closest('.subscription-picker-each');
+				const one_time_parent = document.querySelector('.subscription-picker.one-time');
+				const subscription_parent = document.querySelector('.subscription-picker.subscribe');
+				const atc_button_price = document.querySelector('button.add-to-cart .price');
+				const sticky_atc_button_price = document.querySelector('.product-sticky-add-to-cart .price');
+
+				if(value == 'one-time') {
+					this_obj.selectedSellingPlanId = 0;
+					this_obj.subscribeSelected = false;
+					subscription_parent.classList.remove('active');
+					one_time_parent.classList.add('active');
+					atc_button_price.innerHTML = this_obj.oneTimePrice;
+					sticky_atc_button_price.innerHTML = this_obj.oneTimePrice;
+				} else {
+					this_obj.subscribeSelected = true;
+					one_time_parent.classList.remove('active');
+					subscription_parent.classList.add('active');
+					atc_button_price.innerHTML = this_obj.subscriptionPrice;
+					sticky_atc_button_price.innerHTML = this_obj.subscriptionPrice;
+
+					const delay = setTimeout(function(){
+						const dropdown_text_dom = document.querySelector('.interval-wrapper .selected-div-text');
+						this_obj.selectedSellingPlanId = dropdown_text_dom.getAttribute('data-value');
+						clearTimeout(delay);
+					}, 10);
+				}
+			},
+			setSellingPlan(e) {
+				const this_button = e.target.closest('.selling-plan-picker');
+				const selected_text_dom = e.target.closest('.global-select-div').querySelector('.selected-div-text');
+				const selected_title = this_button.getAttribute('data-title');
+				const selling_plan_id = this_button.getAttribute('data-value');
+				const discount = this_button.getAttribute('data-discount');
+				this.selectedSellingPlanId = selling_plan_id;
+
+				/* set selected text */
+				selected_text_dom.innerHTML = selected_title;
+				selected_text_dom.setAttribute('data-value', selling_plan_id);
+				selected_text_dom.setAttribute('data-discount', discount);
+				this_obj.subscriptionDiscount = discount;
+			},
+			backInStockInit(){
+				if (BIS.urlIsProductPage() === true) {
+					BIS.popup.ready.then(function() {
+						if (BIS.popup.variants.length < 1) {
+							return;
+						}
+
+						var button = document.createElement('button');
+						button.setAttribute('id', 'BIS_trigger');
+						button.setAttribute('type', 'button');
+						button.setAttribute('class', 'product-submit action-button submit');
+						button.style.cssText = 'margin-top: -10px';
+						button.textContent = BIS.currentButtonCaption();
+
+						BIS.inlineButtonAnchor = '.product-form';
+						var anchor = document.querySelector(BIS.inlineButtonAnchor);
+						anchor.insertAdjacentElement('beforeend', button);
+
+						var variantId;
+						var originalDisplay = button.style.display; 
+						BIS.refreshInlineButton = function() {
+						try {
+							var variant = BIS.detectVariant(BIS.popup);
+
+							if (variant && BIS.popup.variantIsUnavailable(variant)) {
+							variantId = variant.id;
+							button.style.display = originalDisplay;
+							} else {
+							button.style.display = 'none';
+							}
+						} catch (e) {
+							console.log(e);
+						}
+						};
+						
+						BIS.refreshInlineButton()
+						
+						BIS.delayedRefreshInlineButton = function() {
+						setTimeout(function() { BIS.refreshInlineButton() }, 15)
+						};
+
+						document.addEventListener('change', BIS.delayedRefreshInlineButton);
+
+						button.addEventListener('click', function() {
+							BIS.popup.form.selectVariant(this.variantId);
+						});
+					});
+				}
+			},
+			formatMoney(num) {
+				return Shopify.formatMoney(num, '{{ localization.country.currency.symbol }}{% raw %}{{amount}}{% endraw %}');
+			},
+			changeVariantValue(e) {
+				const clicked_variant_each = e.target.closest('.variant-each-button');
+				const active_variant_each = e.target.closest('.variant-each-wrapper').querySelector('.variant-each-button.active');
+				const variant_each_label = e.target.closest('.variant-each-wrapper').querySelector('.variant-each-label');
+				const active_value = clicked_variant_each.getAttribute('data-value');
+				const variant_each_select = e.target.closest('.variant-each').querySelector('select.hide-m');
+
+				active_variant_each.classList.remove('active');
+				clicked_variant_each.classList.add('active');
+				variant_each_select.value = active_value;
+				
+				if(variant_each_label !== null) {
+					variant_each_label.innerHTML = active_value;
+				}
+
+				this.checkAvailableVariant();
+			},
+			checkAvailableVariant(first_load) {	
+				const price_elem = document.querySelector(`.product-info .product-price`);
+
+				if(document.querySelector(`#select-{{ product.id }}-1`) !== null ) {
+					this.options[0] = document.querySelector(`#select-{{ product.id }}-1`).value;
+				}
+
+				if(document.querySelector(`#select-{{ product.id }}-2`) !== null ) {
+					this.options[1] = document.querySelector(`#select-{{ product.id }}-2`).value;
+				}
+
+				if(document.querySelector(`#select-{{ product.id }}-3`) !== null ) {
+					this.options[2] = document.querySelector(`#select-{{ product.id }}-3`).value;
+				}
+				
+				let variant;
+				const allVariants = this.product.variants;
+				const variants = allVariants.filter((v) => v.option1 == this.options[0] && v.option2 == this.options[1] && v.option3 == this.options[2]);
+				if(variants.length) {
+					variant = variants[0];
+					this.variantId = variant.id;
+				}
+
+				/*-- update url */
+				$360.updateQueryString('variant', this.variantId);
+
+				/*-- scroll to the featured image */
+				let curr_featured_image;
+				let gallery_elem;
+				let gallery_index;
+
+				if(variants[0].featured_image != null) {
+					curr_featured_image = variants[0].featured_image.src.replace("https:","");
+					if(document.querySelector(`img[data-src="${curr_featured_image}&width=2000"]`) == null) {
+						gallery_elem = document.querySelector(`img[src="${curr_featured_image}&width=2000"]`).closest('.swiper-slide');
+					} else {
+						gallery_elem = document.querySelector(`img[data-src="${curr_featured_image}&width=2000"]`).closest('.swiper-slide');
+					}
+
+					gallery_index = gallery_elem.getAttribute('data-index');
+					this.selectedGallery = gallery_elem;
+					ProducImagesVue.productImagesCarousel.slideTo(gallery_index);
+				}
+
+				/*-- update price */
+				let price_html = "0";
+				let price_num = Number(variants[0].price);
+				let compare_at_price_num = Number(variants[0].compare_at_price);
+				
+				if(compare_at_price_num > price_num) {
+					price_html = `<span class="onsale mr-10">${this.formatMoney(price_num)}</span><strike>${this.formatMoney(compare_at_price_num)}</strike>`;
+				} else {
+					price_html = `<span class="">${this.formatMoney(price_num)}</span>`;
+				}
+
+				/*-- update buttton */
+				let is_available = variants[0].available;
+				let add_to_cart_elem = document.querySelector(`button.add-to-cart`);
+				let sticky_atc_button = document.querySelector('.product-sticky-add-to-cart');
+
+				if(!is_available) {
+					add_to_cart_elem.setAttribute('data-available','false');
+					add_to_cart_elem.innerHTML = "Notify Me When Available";
+
+					sticky_atc_button.setAttribute('data-available','false');
+					sticky_atc_button.innerHTML = "Notify Me When Available";
+				} else {
+					add_to_cart_elem.removeAttribute('data-available');
+					add_to_cart_elem.innerHTML = `{{ 'products.product.add_to_cart' | t }}&nbsp;&nbsp;—&nbsp;&nbsp;<span class="price">${this.formatMoney(price_num)}</span>`;
+
+					sticky_atc_button.removeAttribute('data-available');
+					sticky_atc_button.innerHTML = `{{ 'products.product.add_to_cart' | t }}&nbsp;&nbsp;—&nbsp;&nbsp;<span class="price">${this.formatMoney(price_num)}</span>`;
+				}
+
+				/* update one-time price */
+				if(document.querySelector('.one-time.price') != null) {
+					document.querySelector('.one-time.price').innerHTML = this.formatMoney(price_num);
+					this.oneTimePrice = this.formatMoney(price_num);
+
+					if(document.querySelector('.subscription-picker.one-time').classList.contains('active') && is_available) {
+						add_to_cart_elem.innerHTML = `{{ 'products.product.add_to_cart' | t }}&nbsp;&nbsp;—&nbsp;&nbsp;<span class="price">${this.formatMoney(price_num)}</span>`;
+						sticky_atc_button.innerHTML = `{{ 'products.product.add_to_cart' | t }}&nbsp;&nbsp;—&nbsp;&nbsp;<span class="price">${this.formatMoney(price_num)}</span>`;
+					}
+				}
+
+				/* update subscription price */
+				if(document.querySelector('.subscribe.price') != null) {
+					const discounted_price = (price_num*(100-Number(this.subscriptionDiscount)))/100;
+					document.querySelector('.subscribe.price').innerHTML = this.formatMoney(discounted_price);
+					this.subscriptionPrice = this.formatMoney(discounted_price);
+
+					if(document.querySelector('.subscription-picker.subscribe').classList.contains('active') && is_available) {
+						add_to_cart_elem.innerHTML = `{{ 'products.product.add_to_cart' | t }}&nbsp;&nbsp;—&nbsp;&nbsp;<span class="price">${this.formatMoney(discounted_price)}</span>`;
+						sticky_atc_button.innerHTML = `{{ 'products.product.add_to_cart' | t }}&nbsp;&nbsp;—&nbsp;&nbsp;<span class="price">${this.formatMoney(discounted_price)}</span>`;
+					}
+				}
+
+				price_elem.innerHTML = price_html;
+			},
+			addToCart(e) {
+				e.preventDefault();
+
+				const atc_button = document.querySelector(`button.add-to-cart`);
+				if(atc_button.getAttribute('data-available') == 'false') {
+					const bis_button = document.querySelector('.BIS_trigger');
+					bis_button.setAttribute('data-variant-id',this.variantId);
+					bis_button.click();
+				} else {
+					if(this.selectedSellingPlanId != 0) {
+						$360.addToCart({
+							qty: this.qty,
+							variantId: this.variantId,
+							button: atc_button,
+							selling_plan: this.selectedSellingPlanId
+						});
+					} else {
+						let properties = {};
+						{%- if product.metafields.included.enable -%}
+							{%- assign pro_list = '' -%}
+							{%- assign included_products = product.metafields.included.products | split: '|' -%}
+							{%- for prd in included_products -%}
+								{%- assign product_obj = all_products[prd] -%}
+								{%- assign pro_list = pro_list | append: product_obj.title | append: ', ' -%}
+							{%- endfor -%}
+							{%- assign pro_list = pro_list | remove_last: ',' -%}
+
+							properties["Includes"] = "{{ pro_list }}";
+						{%- endif -%}
+
+						$360.addToCart({
+							qty: this.qty,
+							variantId: this.variantId,
+							button: atc_button,
+							properties: properties
+						});
+					}
+				}
+			},
+		}
+	}).mount('#product-form');
+</script>

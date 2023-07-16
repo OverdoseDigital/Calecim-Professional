@@ -1,0 +1,156 @@
+<style>
+.posts-listing-box {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+}
+.posts-listing-box .items-list-box {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: row;
+	flex-wrap: wrap;
+	column-gap: 32px;
+}
+.posts-listing-box .items-list-box .item-each {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.posts-listing-box .items-list-box .item-each .img,
+.posts-listing-box .items-list-box .item-each .title,
+.posts-listing-box .items-list-box .item-each .body {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+@media screen and (min-width: 768px) {
+	.posts-listing-box .items-list-box .item-each {
+		width: calc(33.33% - 21.33px);
+	}
+}
+@media screen and (min-width: 1024px) {
+	.posts-listing-box .items-list-box .item-each {
+		width: calc(33.33% - 21.33px);
+	}
+}
+</style>
+{%- assign el_id = 'posts-listing-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<div id="{{ el_id }}" class="relative" {% if section.settings.bg_color != blank %}style="background-color: {{ section.settings.bg_color }}"{% endif %}>
+    <div class="container">
+        <div class="posts-listing-box">
+            {% if section.settings.title != blank %}
+            <h3 class="h3 c-greenb2 pb-20 t-pb-30 d-pb-30">{{ section.settings.title }}</h3>
+            {% endif %}
+            <ul class="items-list-box">
+                {% for block in section.blocks %}
+                <li class="item-each pb-40 t-pb-0 d-pb-0">
+                    <div class="img pb-20 t-pb-25 d-pb-25">
+						{%- assign image_id = "posts-listing" | append: forloop.index  -%}
+						{%- render 'global-image-wrapper-responsive',
+							image_id: image_id,
+							desktop_image: block.settings.image,
+							mobile_image: block.settings.image,
+							additional_class: 'rounded-24'
+						%}
+					</div>
+                    <div class="title pb-10 t-pb-10 d-pb-10">
+						<h3 class="h6 tl c-greenb2">{{ block.settings.title }}</h3>
+					</div>
+					<div class="body">
+						<p class="p1 c-black">{{ block.settings.text }}</p>
+					</div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+	"name": "Post Listing",
+	"settings": [
+		{
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "number",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		},
+		{
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		},
+		{
+			"type": "textarea",
+			"id": "title",
+			"label": "Title"
+		}
+	],
+	"blocks" : [
+		{
+			"type": "post",
+			"name": "Post",
+			"settings": [
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Title"
+				},
+				{
+					"type": "textarea",
+					"id": "text",
+					"label": "Text"
+				},
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Post Listing",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

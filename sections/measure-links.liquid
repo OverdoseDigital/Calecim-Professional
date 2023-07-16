@@ -1,0 +1,209 @@
+<style>
+#shopify-section-{{ section.id }} svg{
+    fill:var(--comfort-orange);
+    width:12px;
+    height:12px;
+}
+#shopify-section-{{ section.id }} svg path {
+    fill:var(--comfort-orange);
+}
+#shopify-section-{{ section.id }} .title{
+    display:flex;
+    align-items: center;
+    {% if section.settings.mode == 'icon' %}
+    justify-content: center;
+    {% endif %}
+}
+#shopify-section-{{ section.id }} .link1{
+    display:block;
+}
+{% if section.settings.mode == 'image' %}
+@media screen and (min-width:768px) {
+    #shopify-section-{{ section.id }} .title{
+        justify-content: center;
+    }
+}
+{% endif %}
+</style>
+{%- assign el_id = 'collection-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<div id="{{ el_id }}" class="collection-box" {% if section.settings.bg_color != blank %}style="background-color: {{ section.settings.bg_color }}"{% endif %}>
+    <div class="container row flex jc-center ai-center">
+        {%- if section.settings.container == 'nofull' -%}
+        <div class="col-12 col-t-8">
+        {%- endif -%}
+        <div class="w-full grid-flex m-{{ section.settings.mobile }} t-{{ section.settings.tablet }} d-{{ section.settings.desktop }} tc t-jc-center">
+            {%- assign sM = section.settings.mobile | times: 1 -%}
+            {%- assign sT = section.settings.tablet | times: 1 -%}
+            {%- assign sD = section.settings.desktop | times: 1 -%}
+            {%- assign last_m = section.blocks.size | minus: sM -%}
+            {%- assign last_t = section.blocks.size | minus: sT -%}
+            {%- assign last_d = section.blocks.size | minus: sD -%}
+            {% for block in section.blocks %}
+                {%- assign m_pb = 'pb-0' -%}
+                {%- assign t_pb = 't-pb-0' -%}
+                {%- assign d_pb = 'd-pb-0' -%}
+                {%- if section.blocks.size > sM and forloop.index <= last_m -%}
+                    {%- assign m_pb = 'pb-30' -%}
+                {%- endif -%}
+                {%- if section.blocks.size > sT and forloop.index <= last_t -%}
+                    {%- assign t_pb = 't-pb-40' -%}
+                {%- endif -%}
+                {%- if section.blocks.size > sD and forloop.index <= last_d -%}
+                    {%- assign d_pb = 'd-pb-40' -%}
+                {%- endif -%}
+                <div class="rte tc {{ m_pb }} {{ t_pb }} {{ d_pb }} t-pr-10 t-pl-10">
+                    <a href="{{ block.settings.url }}" class="tl t-tc">
+                        {%- if section.settings.mode == 'image' -%}
+                            {%- render 'global-image-wrapper',
+                                image: block.settings.image,
+                                additional_class: 'no-bg rounded-20 t-rounded-24'
+                            %}
+                        {%- else -%}
+                            {%- render 'global-image-wrapper',
+                                image: block.settings.image,
+                                additional_class: 'no-bg rounded-20 t-rounded-24'
+                            %}
+                        {%- endif -%}
+                        <div class="flex jc-start t-jc-start d-jc-center ai-center {% if section.settings.mode == 'image' %}mt-10 {% else %} mt-10 {% endif %}">
+                            <div class="tl t-tl d-tc bold-500">{{ block.settings.title }}</div>
+                            <div class="ml-10">{{ settings.icon_btn_right }}</div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        {%- if section.settings.container == 'nofull' -%}
+        </div>
+        {%- endif -%}
+    </div>
+</div>
+{% schema %}
+{
+	"name": "Measure - links",
+	"settings": [
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)",
+            "default": 0
+		},
+        {
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		},
+        {
+            "type": "radio",
+            "id": "container",
+            "label": "Container",
+            "options": [
+                {"value":"full","label":"Full"},
+                {"value":"nofull","label":"Not Full"}
+            ],
+            "default": "full"
+        },
+        {
+            "type": "radio",
+            "id": "mode",
+            "label": "Mode",
+            "options": [
+            {"value":"icon","label":"Icon"},
+            {"value":"image","label":"Image"}
+            ]
+        },
+        {
+            "type": "radio",
+            "id": "mobile",
+            "label": "Number of items per row on mobile",
+            "options": [
+            {"value":"1","label":"1"},
+            {"value":"2","label":"2"}
+            ]
+        },
+        {
+            "type": "radio",
+            "id": "tablet",
+            "label": "Number of items per row on tablet",
+            "options": [
+                {"value":"2","label":"2"},
+                {"value":"3","label":"3"},
+                {"value":"4","label":"4"}
+            ]
+        },
+        {
+            "type": "radio",
+            "id": "desktop",
+            "label": "Number of items per row on desktop",
+            "options": [
+                {"value":"2","label":"2"},
+                {"value":"3","label":"3"},
+                {"value":"4","label":"4"}
+            ]
+        }
+	],
+	"blocks":[
+    {
+      "type": "entry",
+      "name": "Entry",
+      "settings": [
+      {
+        "type" : "image_picker",
+        "id" : "image",
+        "label" : "Image"
+      },
+        {
+          "type" : "textarea",
+          "id" : "title",
+          "label" : "Title"
+        },
+		{
+			"type" : "url",
+			"id" : "url",
+			"label" : "URL"
+		  }
+      ]
+    }
+  ],
+	"presets": [
+		{
+			"name": "Measure - links",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

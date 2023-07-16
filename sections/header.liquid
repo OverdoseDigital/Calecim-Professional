@@ -1,0 +1,1584 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{%- assign transparent_class = '' -%}
+
+{%- if template == 'index' or template contains "collection" or template contains "page" or template contains "blog" or template contains "research-article" -%}
+  {%- assign transparent_class = 'transparent' -%}
+  <style>
+    .global-content-top-margin.index-con .shopify-section:first-child,
+    .global-content-top-margin.collection-con .shopify-section:first-child,
+    .global-content-top-margin .shopify-section:first-child {
+      margin-top: -61px;
+    }
+
+    @media screen and (min-width: 768px) {
+    }
+
+    @media screen and (min-width: 1024px) {
+      .global-content-top-margin.index-con .shopify-section:first-child,
+      .global-content-top-margin.collection-con .shopify-section:first-child,
+      .global-content-top-margin .shopify-section:first-child {
+        margin-top: -81px;
+      }
+    }
+  </style>  
+{%- endif -%}
+
+<div id="header-con">
+  <header id="site-header" class="site-header fixed {{ transparent_class }}" :class="{ 'hidden': hideSiteHeader }">
+    {%- if section.settings.message -%}
+      <div
+        id="header-bar"
+        v-if="showHeaderBar"
+        @mouseover="activeSubmenu = null"
+        class="header-bar relative pt-10 pb-10 z-2"
+        ref="header-bar"
+        style="background-color:{{ section.settings.color_bg }}">
+        <div class="container">
+          <div class="global-flex jc-between ai-center">
+            {%- comment -%} Message wrapper {%- endcomment -%}
+            <div class="col-12 pl-0 pr-0 col-d-8 d-pl-0">
+              <div class="message-wrapper d-pr-50 overflow">
+                <div class="swiper">
+                  <div class="swiper-wrapper">
+                    {%- for i in (1..3) -%}
+                      {%- assign message_url = "message_link" | append: '_' | append: i -%}
+                      {%- assign message_url = section.settings[message_url] -%}
+                      {%- assign message_text = "message_text" | append: '_' | append: i -%}
+                      {%- assign message_text = section.settings[message_text] -%}
+
+                      {%- if message_text != blank -%}
+                        <div class="swiper-slide tc d-tl">
+                          {%- if message_url != blank -%}
+                            <a
+                              href="{{ message_url }}"
+                              class="c-white p4 pl-30 pr-30 d-pl-0 d-pr-0 show-m"
+                              style="color:{{ section.settings.color_text }}">
+                              {{ message_text }}
+                            </a>
+                          {%- else -%}
+                            <div class="c-white p4 pl-30 pr-30 d-pl-0 d-pr-0 show-m" style="color:{{ section.settings.color_text }}">{{ message_text }}</div>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+
+                  <div class="swiper-button swiper-prev show-m hide-d">{{ settings.icon_slide_left }}</div>
+                  <div class="swiper-button swiper-next show-m hide-d">{{ settings.icon_slide_right }}</div>
+                </div>
+              </div>
+            </div>
+            {%- comment -%} end Message wrapper {%- endcomment -%}
+
+            {%- comment -%} Menu wrapper {%- endcomment -%}
+            <div class="col-d-4 d-pr-0 tr hide-m show-d">
+              <a href="/account" class="p4 c-white show-m-inline-block mr-20">{{ 'layout.customer.account' | t }}</a>
+              <div class="currency-selector show-m-inline-block mr-20 relative">
+                {%- assign current_country = localization.country -%}
+                {%- assign currencies = '' -%}
+
+                {%- form 'localization' -%}
+                  {% render 'link-icon', 
+                    id: 'currency-select-trigger',
+                    label: current_country.currency.iso_code, 
+                    url: 'javascript:void(0)',
+                    text_class: 'currency-picker p4 c-white uppercase',
+                    icon_color: "#ffffff",
+                    icon_svg: settings.icon_select,
+                    load_inside_vue: true,
+                    event: '@click="toggleCurrencySwitcher($event)"'
+                  %}
+
+                  <input type="hidden" name="currency_code" value="">
+                {%- endform -%}
+
+                <div id="currency-select-dropdown">
+                  {%- for country in localization.available_countries -%}
+                    {%- unless currencies contains country.currency.iso_code -%}
+                      {%- assign currencies = currencies | append: country.currency.iso_code | append: ',' -%}
+                      <a href="javascript:void(0)" @click="changeCurrency('{{ country.currency.iso_code }}')" rel="nofollow" class="currency-each p4 uppercase p-10">{{ country.currency.iso_code }}</a>
+                    {%- endunless -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+
+              {%- if section.settings.message_button_label != blank -%}
+                <a href="{{ section.settings.message_button_label }}" class="ann-button p4 c-black pl-15 pr-15 pt-10 pb-10" style="background-color: {{ section.settings.message_button_bg }};">
+                  {{ section.settings.message_button_label }}
+                </a>
+              {%- endif -%}
+            </div>
+            {%- comment -%} end Menu wrapper {%- endcomment -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="header-con container relative z-1">
+      <div class="header-con__inner flex ai-center pt-20 pb-20 d-pt-30 d-pb-30 relative z-2">
+        <button
+          @click="toggleMobileMenu"
+          type="button"
+          class="header-mobile-menu hide-d">
+          <span class="icon icon-menu flex ai-center jc-center">{{ settings.icon_menu }}</span>
+          <span class="icon icon-close-menu ai-center jc-center hide-m">{{ settings.icon_close }}</span>
+        </button>
+        <div class="header-search-form-toggle ml-20 hide-d y-1" @click="showSearchForm = !showSearchForm" :class="{ 'showSearchForm': showSearchForm }">
+            <button type="button" class="icon flex jc-center ai-center">
+              <span class="icon-search">{{ settings.icon_search }}</span>
+              <span class="icon-close hide-m">{{ settings.icon_close }}</span>
+            </button>
+        </div>
+
+        <a
+          @mouseover="activeSubmenu = null"
+          href="/"
+          class="header-logo flex jc-center ai-center">
+          {%- if section.settings.logo_type == 'image' -%}
+            <div class="logo-mobile width-100 hide-d">
+              {%- render 'global-image-wrapper', 
+                image: section.settings.logo_image_mobile, 
+                preload: true,
+                additional_class: 'no-bg'
+              -%}
+            </div>
+            <div class="logo-desktop width-100 hide-m show-d">
+              {%- render 'global-image-wrapper', 
+                image: section.settings.logo_image, 
+                preload: true,
+                additional_class: 'no-bg'
+              -%}
+            </div>
+          {%- else -%}
+            <div class="logo-mobile hide-d">{{ section.settings.logo_svg_mobile }}</div>
+            <div class="logo-desktop hide-m show-d">{{ section.settings.logo_svg }}</div>
+          {%- endif -%}
+        </a>
+
+        <nav class="header-nav hide-m show-d">
+          <ul class="nav h-full ab-middle-left flex ai-center jc-between" @mouseleave="mainNavMouseLeave($event)">
+            {% for parent in linklists[section.settings.main_linklist].links %}
+              {% assign block = section.blocks[forloop.index0] %}
+              {%- if forloop.first or forloop.index == 4 -%}
+                <div class="height-100">
+              {%- endif -%}
+
+              <li
+                @mouseover="showDropdown({{ forloop.index }},$event)"
+                class="mb-10 d-mb-0 parent {% if block != blank and block.settings.enable %}with-children{% endif %}"
+                {% if block != blank and block.settings.enable %}data-id="menu-dropdown-{{ forloop.index }}"{% endif %}>
+                <a
+                  href="{{ parent.url }}"
+                  class="header-link flex jc-center ai-center p3 bold-500 uppercase"
+                  :class="{active: activeSubmenu == {{ forloop.index }}}"
+                  {% if block != blank and block.settings.enable %}data-no-instant{% endif %}>
+                  <span class="text">{{ parent.title }}</span>
+                </a>
+              </li>
+
+              {%- if forloop.last or forloop.index == 3 -%}
+                </div>
+              {%- endif -%}
+            {% endfor %}
+          </ul>
+        </nav>
+
+        <ul @mouseover="activeSubmenu = null" class="header-right">
+          <li class="header-search-form-toggle mr-20 max-mr-25 hide-m show-d" @click="showSearchForm = !showSearchForm" :class="{ 'showSearchForm': showSearchForm }">
+            <button type="button" class="icon flex jc-center ai-center">
+              <span class="icon-search">{{ settings.icon_search }}</span>
+              <span class="icon-close hide-m">{{ settings.icon_close }}</span>
+            </button>
+          </li>
+          <li class="relative cart-icon y-2">
+            <a
+              href="/cart"
+              class="header-cart-link header-icon-heights header-icons header-carts icon flex jc-center ai-center"
+              @click.prevent="showHeaderCart">
+              {{ settings.icon_cart }}
+              <span class="header-cart-number bg-green ai-center jc-center absolute {% if cart.item_count > 0 %}flex{% else %}hide-m{% endif %}">
+                <span class="cart-count p3 c-white">{%- render 'custom-cart-count' -%}</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {%- comment -%} Search form {%- endcomment -%}
+      <div class="header-desktop-search z-1" :class="{show: showSearchForm}">
+        <div class="form-wrapper pt-20 pb-20 d-pt-25 d-pb-25 bg-lightgrey">
+          <div class="container">
+            <form
+              action="{{ routes.search_url }}"
+              class="header-search-form">
+              <input
+                type="text"
+                class="input p2 c-black opacity-5"
+                placeholder="{{ 'general.search.placeholder' | t }}"
+                name="q">
+              <button type="submit">{{ settings.icon_search }}</button>
+            </form>
+          </div>
+        </div>
+        <div class="content-wrapper bt-1 b-border">
+          <div class="global-flex flex-wrap">
+            {% comment %} col left {% endcomment %}
+            <div class="col-12 pl-0 pr-0 col-d-7 d-pl-0 d-pr-20 max-pr-80 pt-30 pb-30 d-pt-35 d-pb-35 br-1 b-border">
+              <div class="container d-pr-0">
+                {%- if settings.search_lc_title != blank -%}
+                  <p class="p5 bold-500 uppercase mb-15 d-mb-20">{{ settings.search_lc_title }}</p>
+                {%- endif -%}
+
+                <div class="products-wrapper">
+                  <div class="global-flex flex-wrap width-100">
+                      <div class="swiper">
+                        <div class="swiper-wrapper">
+                          {%- for pro in settings.search_lc_product_list -%}
+                            <div class="swiper-slide">
+                              {%- render 'product-each', 
+                                  product: pro,
+                                  disable_hover: true,
+                                  hide_desc: true,
+                                  title_size: 'p3'
+                              -%}
+                            </div>
+                          {%- endfor -%}
+                        </div>
+                      </div>
+
+                      <div class="swiper-pagination show-m hide-t mt-25"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% comment %} end col left {% endcomment %}
+
+            {% comment %} col right {% endcomment %}
+            <div class="col-12 pl-0 pr-0 col-d-5 d-pr-0 d-pl-20 max-pl-80 pt-0 pb-30 d-pt-35 d-pb-35">
+              <div class="container d-pl-0">
+                {%- if settings.search_rc_title != blank -%}
+                  <p class="p5 bold-500 uppercase mb-15 d-mb-20">{{ settings.search_rc_title }}</p>
+                {%- endif -%}
+
+                <div class="articles-wrapper">
+                  {%- for art in settings.search_blog.articles limit: 2 -%}
+                  <div class="article-each-wrapper width-100 {% unless forloop.first %} mt-20 {% endunless %}">
+                      {%- render 'article-each-landscape',
+                        article: art
+                      -%}
+                    </div>
+                  {%- endfor -%}
+                </div>
+              </div>
+            </div>
+            {% comment %} end col right {% endcomment %}
+          </div>
+        </div>
+      </div>
+      {%- comment -%} end search form {%- endcomment -%}
+    </div>
+  </header>
+
+  <div class="mobile-menu-wrapper bg-white zi-3 bt-1 b-border pb-20" :class="{active: showMobileMenu}">
+    <div class="container pl-0 pr-0">
+      <ul class="mobile-menu">
+        {%- for parent in linklists[section.settings.main_linklist].links -%}
+          {%- assign block = section.blocks[forloop.index0] -%}
+          <li class="parent pt-20 bb-1 b-silver {% if block != blank and block.settings.enable %}with-children{% endif %}">
+            <a
+              href="{{ parent.url }}"
+              @click.prevent="toggleMobileMenuDrop($event, `{{ parent.title }}`)"
+              class="main-menu-title accordion-title flex jc-between ai-center pl-20 pr-20 t-pr-30 t-pr-30 mb-20">
+              <span class="text h11 uppercase spacing-1 flex ai-center">{{ parent.title }}</span>
+              {%- if block != blank and block.settings.enable -%}
+                <span class="icon">{{ settings.icon_accordion }}</span>
+              {%- endif -%}
+            </a>
+            {%- assign mm_block_index = 0 -%}
+
+            {%- if block != blank and block.settings.enable -%}
+              {%- assign mm_block_index = mm_block_index | plus: 1 -%}
+              <div class="mobile-menu-dropdown hide-m relative">
+                {% comment %} Dropdown 1 {% endcomment %}
+                {%- if block.type == 'dropdown_1' -%}
+                  {% comment %} Col 1 {% endcomment %}
+                  <div class="dropdown-main-wrapper dropdown-1 global-flex flex-wrap bg-lightgrey pt-25 pb-25 pl-20 pr-20">
+                    <div class="title-wrapper global-flex ai-center jc-between width-100">
+                      <h6 class="p2 bold-500">{{ block.settings.col_1_title }}</h6>
+                      
+                      {%- if block.settings.col_1_link_label != blank -%}
+                        <div class="global-flex jc-end link2">
+                          {%- assign link_id = "submenu-" | append: block.id -%}
+                          {%- render 'link-icon',
+                            id: link_id,
+                            label: block.settings.col_1_link_label,
+                            url: block.settings.col_1_link_url,
+                            text_class: 'p3',
+                            icon_color: '#231D1D',
+                            icon_svg: settings.icon_arrow_diagonal_up,
+                            load_inside_vue: true
+                          -%}
+                        </div>
+                      {%- endif -%}
+                    </div>
+
+                    <div class="products-wrapper mt-20 width-100">
+                      {%- for pro in block.settings.col_1_products -%}
+                        <div class="pro-each {% unless forloop.last %} mb-10 {% endunless %}">
+                          <div class="each-wrapper pt-10 pb-10 pl-10 pr-25 bg-white">
+                            {%- render 'product-each-simple-landscape', product: pro -%}
+                          </div>
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                  {% comment %} end Col 1 {% endcomment %}
+
+                  {% comment %} Col 2 {% endcomment %}
+                  <div class="dropdown-main-wrapper dropdown-1 global-flex flex-wrap bg-white pt-25 pb-25 pl-20 pr-20 overflow">
+                    <div class="title-wrapper global-flex ai-center jc-between width-100">
+                      <h6 class="p2 bold-500">{{ block.settings.col_2_title }}</h6>
+                      
+                      {%- if block.settings.col_2_link_label != blank -%}
+                        <div class="global-flex jc-end link2">
+                          {%- assign link_id = "submenu-" | append: block.id -%}
+                          {%- render 'link-icon',
+                            id: link_id,
+                            label: block.settings.col_2_link_label,
+                            url: block.settings.col_2_link_url,
+                            text_class: 'p3',
+                            icon_color: '#231D1D',
+                            icon_svg: settings.icon_arrow_diagonal_up,
+                            load_inside_vue: true
+                          -%}
+                        </div>
+                      {%- endif -%}
+                    </div>
+
+                    <div class="products-wrapper mt-20 width-100">
+                      <div class="swiper swiper-progress">
+                        <div class="swiper-wrapper">
+                          {%- for pro in block.settings.col_1_products -%}
+                            <div class="swiper-slide">
+                              <div class="each-wrapper pt-10 pb-10 pl-10 pr-25 bg-white b-1 b-border height-100">
+                                {%- render 'product-each-simple-landscape', product: pro -%}
+                              </div>
+                            </div>
+                          {%- endfor -%}
+                        </div>
+
+                        <div class="swiper-pagination swiper-pagination-progressbar swiper-pagination-horizontal mt-20"></div>
+                      </div>
+                    </div>
+                  </div>
+                  {% comment %} end Col 2 {% endcomment %}
+                {%- endif -%}
+                {% comment %} end Dropdown 1 {% endcomment %}
+
+                {% comment %} Dropdown 2 {% endcomment %}
+                {%- if block.type == 'dropdown_2' -%}
+                  {% comment %} Col 1 {% endcomment %}
+                  <div class="dropdown-main-wrapper dropdown-2 global-flex flex-wrap bg-lightgrey pt-25 pb-25 pl-20 pr-20">
+                    <div class="title-wrapper global-flex ai-center jc-between width-100">
+                      <h6 class="p2 bold-500">{{ block.settings.col_1_title }}</h6>
+                      
+                      {%- if block.settings.col_1_link_label != blank -%}
+                        <div class="global-flex jc-end link2">
+                          {%- assign link_id = "submenu-" | append: block.id -%}
+                          {%- render 'link-icon',
+                            id: link_id,
+                            label: block.settings.col_1_link_label,
+                            url: block.settings.col_1_link_url,
+                            text_class: 'p3',
+                            icon_color: '#231D1D',
+                            icon_svg: settings.icon_arrow_diagonal_up,
+                            load_inside_vue: true
+                          -%}
+                        </div>
+                      {%- endif -%}
+                    </div>
+
+                    <div class="products-wrapper mt-20 width-100">
+                        <div class="product-each-container pt-10 pb-10 pl-10 pr-25 bg-white height-100">
+                          {%- render 'product-each-simple-landscape', product: block.settings.col_1_product -%}
+                        </div>
+                    </div>
+                  </div>
+                  {% comment %} end Col 1 {% endcomment %}
+
+                  {% comment %} Col 2 {% endcomment %}
+                  <div class="dropdown-main-wrapper dropdown-2 global-flex flex-wrap bg-white pt-25 pb-25 pl-20 pr-20 overflow">
+                    <div class="title-wrapper global-flex ai-center jc-between width-100">
+                      <h6 class="p2 bold-500">{{ block.settings.col_2_title }}</h6>
+                      
+                      {%- if block.settings.col_2_link_label != blank -%}
+                        <div class="global-flex jc-end link2">
+                          {%- assign link_id = "submenu-" | append: block.id -%}
+                          {%- render 'link-icon',
+                            id: link_id,
+                            label: block.settings.col_2_link_label,
+                            url: block.settings.col_2_link_url,
+                            text_class: 'p3',
+                            icon_color: '#231D1D',
+                            icon_svg: settings.icon_arrow_diagonal_up,
+                            load_inside_vue: true
+                          -%}
+                        </div>
+                      {%- endif -%}
+                    </div>
+
+                    <div class="submenu-carousel-wrapper mt-20 width-100">
+                      <div class="swiper swiper-progress">
+                          <div class="swiper-wrapper">
+                            {%- for i in (1..5) -%}
+                              {%- assign image_before = 'col_2_image_' | append: i | append: '_before' -%}
+                              {%- assign image_after = 'col_2_image_' | append: i | append: '_before' -%}
+                              {%- assign image_caption = 'col_2_image_' | append: i | append: '_caption' -%}
+
+                              {%- if block.settings[image_before] != blank -%}
+                                <div class="swiper-slide">
+                                  <div class="image-wrapper">
+                                    <div class="global-flex flex-wrap">
+                                      <div class="col-6 pl-5 pr-5 relative">
+                                        {%- render 'global-image-wrapper',
+                                          image: block.settings[image_before]
+                                        -%}
+                                        <p class="c-white uppercase p5 p-15 ab-bottom width-100 tc">{{ 'general.before_after.before' | t }}</p>
+                                      </div>
+                                      <div class="col-6 pl-5 pr-5 relative">
+                                        {%- render 'global-image-wrapper',
+                                          image: block.settings[image_after]
+                                        -%}
+                                        <p class="c-white uppercase p5 p-15 ab-bottom width-100 tc">{{ 'general.before_after.after' | t }}</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                  {%- if block.settings[image_caption] != blank -%}
+                                    <p class="p4 c-black mt-15">{{ block.settings[image_caption] }}</p>
+                                  {%- endif -%}
+                                </div>
+                              {%- endif -%}
+                            {%- endfor -%}
+                          </div>
+                        <div class="swiper-pagination swiper-pagination-progressbar swiper-pagination-horizontal mt-20"></div>
+                      </div>
+                    </div>
+                  </div>
+                  {% comment %} end Col 2 {% endcomment %}
+
+                  {% comment %} Col 3 {% endcomment %}
+                  <div class="dropdown-main-wrapper dropdown-2 global-flex flex-wrap bg-white bt-1 b-border pt-25 pb-25 pl-20 pr-20 overflow">
+                    <div class="testimonial-wrapper tc width-100">
+                      {%- if block.settings.col_3_small_title != blank -%}
+                        <h6 class="p5 bold-500 uppercase mb-30">{{ block.settings.col_3_small_title }}</h6>
+                      {%- endif -%}
+
+                      <div class="testimonial-wrapper">
+                        <p class="h8">{{ block.settings.col_3_testimonial }}</p>
+                        <p class="p3 bold-500 mt-25">{{ block.settings.col_3_author }}</p>
+                        <p class="p4 mt-5 opacity-5">{{ block.settings.col_3_occupation }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {% comment %} end Col 3 {% endcomment %}
+                {%- endif -%}
+                {% comment %} end Dropdown 2 {% endcomment %}
+
+                {% comment %} Dropdown 3 {% endcomment %}
+                {%- if block.type == 'dropdown_3' -%}
+                  {% comment %} col 1-3 {% endcomment %}
+                  <div class="dropdown-main-wrapper dropdown-3 global-flex flex-wrap bg-lightgrey pt-25 pb-25 pl-20 pr-20">
+                    <div class="row">
+                      <div class="menu-wrapper global-flex flex-wrap">
+                        {%- for i in (1..3) -%}
+                          {%- assign title = 'col_' | append: i | append: '_title' -%}
+                          {%- assign menu = 'col_' | append: i | append: '_menu' -%}
+            
+                          <div class="menu-each col-6 mt-20">
+                            <h6 class="p2 bold-500 mb-15">{{ block.settings[title] }}</h6>
+            
+                            <ul class="">
+                              {%- for link in linklists[block.settings[menu]].links -%}
+                                <li class="show-m {% unless forloop.first %} mt-15 {% endunless %}"><a href="{{ link.url }}" class="p2 show-m-inline-block">{{ link.title }}</a></li>
+                              {%- endfor -%}
+                            </ul>
+                          </div>
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  </div>
+                  {% comment %} col 1-3 {% endcomment %}
+
+                  {% comment %} col 4 {% endcomment %}
+                  <div class="dropdown-main-wrapper dropdown-2 global-flex flex-wrap bg-white pt-25 pb-25 pl-20 pr-20 overflow">
+                    <div class="cta-container width-100 relative">
+                      <a href="{{ block.settings.col_4_link_url }}" class="relative show-m">
+                        {%- assign image_id = "image-" | append: block.id -%}
+                        {%- render 'global-image-wrapper-responsive',
+                            image_id: image_id,
+                            desktop_image: block.settings.col_4_image_desktop,
+                            mobile_image: block.settings.col_4_image_mobile,
+                            load_inside_vue: true
+                        %}
+
+                        <div class="text-container p-25 ab-middle-left width-100">
+                          <div class="max-215">
+                            <h4 class="h5 uppercase">{{ block.settings.col_4_title }}</h4>
+                            {%- if block.settings.col_4_text != blank -%}
+                              <p class="mt-5 p3 opacity-5">{{ block.settings.col_4_text }}</p>
+                            {%- endif -%}
+
+                            {%- if block.settings.col_4_link_label != blank -%}
+                              <div class="link-container mt-10 link2">
+                                {%- assign link_id = "col-4-" | append: block.id -%}
+                                {% render 'link-icon', 
+                                  id: link_id,
+                                  label: block.settings.col_4_link_label, 
+                                  text_class: 'p3 c-black',
+                                  icon_color: "#231D1D",
+                                  icon_svg: settings.icon_arrow_diagonal_up,
+                                  load_inside_vue: true
+                                %}
+                              </div>
+                            {%- endif -%}
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  {% comment %} end col 4 {% endcomment %}
+                {%- endif -%}
+                {% comment %} end Dropdown 3 {% endcomment %}
+
+                {% comment %} Dropdown 4 {% endcomment %}
+                {%- if block.type == 'dropdown_4' -%}
+                  {% comment %} col 1-3 {% endcomment %}
+                  <div class="dropdown-main-wrapper dropdown-4 global-flex flex-wrap bg-lightgrey pt-25 pb-25 pl-20 pr-20">
+                    <div class="row">
+                      <div class="menu-wrapper global-flex flex-wrap">
+                        {%- for i in (1..3) -%}
+                          {%- assign title = 'col_' | append: i | append: '_title' -%}
+                          {%- assign menu = 'col_' | append: i | append: '_menu' -%}
+            
+                          <div class="menu-each col-6 mt-20">
+                            <h6 class="p2 bold-500 mb-15">{{ block.settings[title] }}</h6>
+            
+                            <ul class="">
+                              {%- for link in linklists[block.settings[menu]].links -%}
+                                <li class="show-m {% unless forloop.first %} mt-15 {% endunless %}"><a href="{{ link.url }}" class="p2 show-m-inline-block">{{ link.title }}</a></li>
+                              {%- endfor -%}
+                            </ul>
+                          </div>
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  </div>
+                  {% comment %} col 1-3 {% endcomment %}
+
+                  {% comment %} col 4 {% endcomment %}
+                  <div class="dropdown-main-wrapper dropdown-4 global-flex flex-wrap bg-white pt-25 pb-25 pl-20 pr-20 overflow">
+                    <div class="products-wrapper width-100">
+                      <div class="swiper swiper-progress">
+                        <div class="swiper-wrapper">
+                          {%- for art in block.settings.col_4_blog.articles limit: 2 -%}   
+                            <div class="swiper-slide">
+                              {%- render 'article-each', 
+                                article: art,
+                                mobile_tag_overlay: true
+                              -%}
+                            </div> 
+                          {%- endfor -%} 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% comment %} end col 4 {% endcomment %}
+                {%- endif -%}
+                {% comment %} end Dropdown 4 {% endcomment %}
+              </div>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    {% comment %} mobile cta {% endcomment %}
+    {%- if section.settings.mob_cta_image != blank -%}
+    <div class="container">
+      <a href="{{ section.settings.mob_cta_link_url }}" class="show-m relative width-100 mt-45">
+        <div class="image-container">
+          {%- render 'global-image-wrapper',
+            image: section.settings.mob_cta_image
+          -%}
+        </div>
+        <div class="text-container ab-middle-right width-100 p-20">
+          <div class="max-205 ml-auto mr-0 tl">
+            <h5 class="h5 uppercase">{{ section.settings.mob_cta_title }}</h5>
+
+            <div class="link-wrapper mt-5 link2">
+              {%- assign link_id = "bottom-cta-link" -%}
+              {%- render 'link-icon',
+                id: link_id,
+                label: section.settings.mob_cta_link_label,
+                text_class: 'p2',
+                icon_color: '#231D1D',
+                icon_svg: settings.icon_arrow_diagonal_up,
+                load_inside_vue: true
+              -%}
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    {%- endif -%}
+    {% comment %} end mobile cta {% endcomment %}
+
+    {% comment %} bottom menu wrapper {% endcomment %}
+    <div class="container">
+      <div class="bottom-menu-wrapper mt-15 relative width-100 global-flex ai-center jc-between">
+        {%- if section.settings.bottom_menu != blank -%}
+          <ul class="bottom-menu">
+            {%- for link in linklists[section.settings.bottom_menu].links -%}
+                <li class="show-m-inline-block mr-30">
+                  <a href="{{ link.url }}" class="p2 show-m-inline-block">{{ link.title }}</a>
+                </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        <div class="currency-selector relative">
+          {%- assign current_country = localization.country -%}
+          {%- assign currencies = '' -%}
+
+          {%- form 'localization' -%}
+            {% render 'link-icon', 
+              id: 'currency-select-trigger',
+              label: current_country.currency.iso_code, 
+              url: 'javascript:void(0)',
+              text_class: 'currency-picker p3 c-black uppercase',
+              icon_color: "#231D1D",
+              icon_svg: settings.icon_select,
+              load_inside_vue: true,
+              event: '@click="toggleCurrencySwitcher($event)"'
+            %}
+
+            <input type="hidden" name="currency_code" value="">
+          {%- endform -%}
+
+          <div id="currency-select-dropdown">
+            {%- for country in localization.available_countries -%}
+              {%- unless currencies contains country.currency.iso_code -%}
+                {%- assign currencies = currencies | append: country.currency.iso_code | append: ',' -%}
+                  <a href="javascript:void(0)" @click="changeCurrency('{{ country.currency.iso_code }}')" rel="nofollow" class="currency-each p3 uppercase pl-15 pr-15 pt-10 pb-10">{{ country.currency.iso_code }}</a>
+              {%- endunless -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% comment %} end bottom menu wrapper {% endcomment %}
+  </div>
+
+  {%- for block in section.blocks -%}
+    {%- if block != blank and block.settings.enable -%}
+      <div
+        id="menu-dropdown-{{ forloop.index }}"
+        class="menu-dropdown"
+        :class="{show: activeSubmenu == {{ forloop.index }}}">
+        {% comment %} Dropdown 1 {% endcomment %}
+        {%- if block.type == 'dropdown_1' -%}
+          <div class="dropdown-main-wrapper dropdown-1 global-flex flex-wrap">
+            {% comment %} col 1 {% endcomment %}
+            <div class="left-side col-d-9 d-pl-0 d-pr-0 br-1 b-border">
+              <div class="container d-pr-40 d-pt-35 d-pb-40 width-100">
+                <div class="title-wrapper global-flex ai-center jc-between">
+                  <h6 class="p2 bold-500">{{ block.settings.col_1_title }}</h6>
+                  <div class="swiper-arrow global-flex ai-center">
+                    <div class="swiper-custom-arrow previous mr-10">
+                      {{ settings.icon_btn_left }}
+                    </div>
+                    <div class="swiper-custom-arrow next">
+                      {{ settings.icon_btn_right }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="submenu-carousel-wrapper pt-30">
+                  <div class="swiper">
+                    <div class="swiper-wrapper">
+                      {%- for pro in block.settings.col_1_products -%}
+                        <div class="swiper-slide">
+                          <div class="pro-each pl-10 pr-10">
+                            {%- render 'product-each-simple-portrait', product: pro -%}
+                          </div>
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {%- if block.settings.col_1_link_label != blank -%}
+                <div class="global-flex jc-center pt-15 pb-15 width-100 bt-1 b-border button-wrapper">
+                  {%- assign link_id = "submenu-" | append: block.id -%}
+                  {%- render 'link-icon',
+                    id: link_id,
+                    label: block.settings.col_1_link_label,
+                    url: block.settings.col_1_link_url,
+                    text_class: 'p3',
+                    icon_color: '#231D1D',
+                    icon_svg: settings.icon_arrow_diagonal_up,
+                    load_inside_vue: true
+                  -%}
+                </div>
+              {%- endif -%}
+            </div>
+            {% comment %} end col 1 {% endcomment %}
+
+            {% comment %} col 2 {% endcomment %}
+            <div class="right-side col-d-3 d-pl-0 d-pr-0">
+              <div class="container d-pl-40 d-pt-40 d-pb-40 y2">
+                <h6 class="p2 bold-500">{{ block.settings.col_2_title }}</h6>
+
+                <div class="products-wrapper mt-20">
+                  {%- for pro in block.settings.col_2_products -%}
+                    <div class="pro-each {% unless forloop.last %} mb-15 {% endunless %}">
+                      {%- render 'product-each-simple-landscape', product: pro -%}
+                    </div>
+                  {%- endfor -%}
+                </div>
+              </div>
+
+              {%- if block.settings.col_2_link_label != blank -%}
+                <div class="global-flex jc-center pt-15 pb-15 width-100 bt-1 b-border button-wrapper">
+                  {%- assign link_id = "submenu-" | append: block.id -%}
+                  {%- render 'link-icon',
+                    id: link_id,
+                    label: block.settings.col_2_link_label,
+                    url: block.settings.col_2_link_url,
+                    text_class: 'p3',
+                    icon_color: '#231D1D',
+                    icon_svg: settings.icon_arrow_diagonal_up,
+                    load_inside_vue: true
+                  -%}
+                </div>
+              {%- endif -%}
+            </div>
+            {% comment %} end col 2 {% endcomment %}
+          </div>
+        {%- endif -%}
+        {% comment %} end Dropdown 1 {% endcomment %}
+
+        {% comment %} Dropdown 2 {% endcomment %}
+        {%- if block.type == 'dropdown_2' -%}
+          <div class="dropdown-main-wrapper dropdown-2 global-flex flex-wrap">
+            {% comment %} col 1 {% endcomment %}
+            <div class="left-side col-d-3 d-pl-0 d-pr-0 br-1 b-border">
+              <div class="container d-pr-40 d-pt-40 d-pb-40 y2">
+                <h6 class="p2 bold-500">{{ block.settings.col_1_title }}</h6>
+
+                <div class="products-wrapper mt-30">
+                  {%- render 'product-each-simple-portrait', product: block.settings.col_1_product -%}
+                </div>
+              </div>
+            </div>
+            {% comment %} end col 1 {% endcomment %}
+
+            {% comment %} col 2 {% endcomment %}
+            <div class="center-side col-d-5 d-pl-0 d-pr-0 br-1 b-border">
+              <div class="width-100 d-pl-40 d-pr-40 d-pt-35 d-pb-40">
+                <div class="title-wrapper global-flex ai-center jc-between">
+                  <h6 class="p2 bold-500">{{ block.settings.col_2_title }}</h6>
+                  <div class="swiper-arrow global-flex ai-center">
+                    <div class="swiper-custom-arrow previous mr-10">
+                      {{ settings.icon_btn_left }}
+                    </div>
+                    <div class="swiper-custom-arrow next">
+                      {{ settings.icon_btn_right }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="submenu-carousel-wrapper pt-30">
+                  <div class="swiper">
+                    <div class="swiper-wrapper">
+                      {%- for i in (1..5) -%}
+                        {%- assign image_before = 'col_2_image_' | append: i | append: '_before' -%}
+                        {%- assign image_after = 'col_2_image_' | append: i | append: '_before' -%}
+                        {%- assign image_caption = 'col_2_image_' | append: i | append: '_caption' -%}
+
+                        {%- if block.settings[image_before] != blank -%}
+                          <div class="swiper-slide">
+                            <div class="image-wrapper">
+                              <div class="global-flex flex-wrap">
+                                <div class="col-6 pl-5 pr-5 relative">
+                                  {%- render 'global-image-wrapper',
+                                    image: block.settings[image_before]
+                                  -%}
+                                  <p class="c-white uppercase p5 p-20 ab-bottom width-100 tc">{{ 'general.before_after.before' | t }}</p>
+                                </div>
+                                <div class="col-6 pl-5 pr-5 relative">
+                                  {%- render 'global-image-wrapper',
+                                    image: block.settings[image_after]
+                                  -%}
+                                  <p class="c-white uppercase p5 p-20 ab-bottom width-100 tc">{{ 'general.before_after.after' | t }}</p>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            {%- if block.settings[image_caption] != blank -%}
+                              <p class="p4 c-black mt-10">{{ block.settings[image_caption] }}</p>
+                            {%- endif -%}
+                          </div>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {%- if block.settings.col_2_link_label != blank -%}
+                <div class="global-flex jc-center pt-15 pb-15 width-100 bt-1 b-border button-wrapper">
+                  {%- assign link_id = "submenu-" | append: block.id -%}
+                  {%- render 'link-icon',
+                    id: link_id,
+                    label: block.settings.col_2_link_label,
+                    url: block.settings.col_2_link_url,
+                    text_class: 'p3',
+                    icon_color: '#231D1D',
+                    icon_svg: settings.icon_arrow_diagonal_up,
+                    load_inside_vue: true
+                  -%}
+                </div>
+              {%- endif -%}
+            </div>
+            {% comment %} end col 2 {% endcomment %}
+
+            {% comment %} col 3 {% endcomment %}
+            <div class="right-side col-d-4 d-pl-0 d-pr-0">
+              <div class="container d-pl-40 d-pt-40 d-pb-40 y2 tc height-100">
+                <h6 class="p5 bold-500 uppercase">{{ block.settings.col_3_small_title }}</h6>
+
+                <div class="testimonial-wrapper">
+                  <p class="h8">{{ block.settings.col_3_testimonial }}</p>
+                  <p class="p3 bold-500 mt-25">{{ block.settings.col_3_author }}</p>
+                  <p class="p4 mt-5 opacity-5">{{ block.settings.col_3_occupation }}</p>
+                </div>
+              </div>
+            </div>
+            {% comment %} end col 3 {% endcomment %}
+          </div>
+        {%- endif -%}
+        {% comment %} end Dropdown 2 {% endcomment %}
+
+        {% comment %} Dropdown 3 {% endcomment %}
+        {%- if block.type == 'dropdown_3' -%}
+          <div class="dropdown-main-wrapper dropdown-3 global-flex flex-wrap">
+            {% comment %} col 1-3 {% endcomment %}
+            {%- for i in (1..3) -%}
+              {%- assign title = 'col_' | append: i | append: '_title' -%}
+              {%- assign menu = 'col_' | append: i | append: '_menu' -%}
+
+              <div class="col-wrapper menu-wrapper col-d-2 d-pl-0 d-pr-0 br-1 b-border">
+                <div class="container {% if i > 1 %} d-pl-40 {% endif %} d-pr-40 d-pt-40 d-pb-40 y2 width-100">
+                  <h6 class="p2 bold-500">{{ block.settings[title] }}</h6>
+
+                  <ul class="menu-wrapper mt-25">
+                    {%- for link in linklists[block.settings[menu]].links -%}
+                      <li class="show-m {% unless forloop.last %} mb-15 {% endunless %}"><a href="{{ link.url }}" class="p2 show-m-inline-block">{{ link.title }}</a></li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            {%- endfor -%}
+            {% comment %} end col 1-3 {% endcomment %}
+
+            {% comment %} col 4 {% endcomment %}
+            {%- if block.settings.col_4_image_desktop != blank -%}
+              <div class="col-wrapper cta-wrapper col-d-6 d-pl-0 d-pr-0">
+                <div class="container d-pl-40 d-pt-40 d-pb-40 y2 width-100">
+                  <div class="cta-container width-100 relative">
+                    <a href="{{ block.settings.col_4_link_url }}" class="relative show-m">
+                      {%- assign image_id = "image-" | append: block.id -%}
+                      {%- render 'global-image-wrapper-responsive',
+                          image_id: image_id,
+                          desktop_image: block.settings.col_4_image_desktop,
+                          mobile_image: block.settings.col_4_image_mobile,
+                          load_inside_vue: true
+                      %}
+
+                      <div class="text-container d-p-30 ab-middle-left width-100">
+                        <div class="max-260">
+                          <h4 class="h4 uppercase">{{ block.settings.col_4_title }}</h4>
+                          {%- if block.settings.col_4_text != blank -%}
+                            <p class="mt-5 p3 opacity-5">{{ block.settings.col_4_text }}</p>
+                          {%- endif -%}
+
+                          {%- if block.settings.col_4_link_label != blank -%}
+                            <div class="link-container mt-10 link2">
+                              {%- assign link_id = "col-4-" | append: block.id -%}
+                              {% render 'link-icon', 
+                                id: link_id,
+                                label: block.settings.col_4_link_label, 
+                                text_class: 'p3 c-black',
+                                icon_color: "#231D1D",
+                                icon_svg: settings.icon_arrow_diagonal_up,
+                                load_inside_vue: true
+                              %}
+                            </div>
+                          {%- endif -%}
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+            {% comment %} end col 4 {% endcomment %}
+          </div>
+        {%- endif -%}
+        {% comment %} end Dropdown 3 {% endcomment %}
+
+        {% comment %} Dropdown 4 {% endcomment %}
+        {%- if block.type == 'dropdown_4' -%}
+          <div class="dropdown-main-wrapper dropdown-4 global-flex flex-wrap">
+            {% comment %} col 1-3 {% endcomment %}
+            {%- for i in (1..3) -%}
+              {%- assign title = 'col_' | append: i | append: '_title' -%}
+              {%- assign menu = 'col_' | append: i | append: '_menu' -%}
+
+              <div class="col-wrapper menu-wrapper col-d-2 d-pl-0 d-pr-0 br-1 b-border">
+                <div class="container {% if i > 1 %} d-pl-40 {% endif %} d-pr-40 d-pt-40 d-pb-40 y2 width-100">
+                  <h6 class="p2 bold-500">{{ block.settings[title] }}</h6>
+
+                  <ul class="menu-wrapper mt-25">
+                    {%- for link in linklists[block.settings[menu]].links -%}
+                      <li class="show-m {% unless forloop.last %} mb-15 {% endunless %}"><a href="{{ link.url }}" class="p2 show-m-inline-block">{{ link.title }}</a></li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              </div>
+            {%- endfor -%}
+            {% comment %} end col 1-3 {% endcomment %}
+
+            {% comment %} col 4 {% endcomment %}
+            <div class="col-wrapper cta-wrapper col-d-6 d-pl-0 d-pr-0 overflow">
+                <div class="container d-pl-40 d-pt-40 d-pb-40 y2 width-100">
+                  <div class="row">
+                    <div class="global-flex flex-wrap">
+                      {%- for art in block.settings.col_4_blog.articles limit: 2 -%}   
+                        <div class="cta-each col-d-6">
+                          {%- render 'article-each', 
+                            article: art,
+                            mobile_tag_overlay: true
+                          -%}
+                        </div> 
+                      {%- endfor -%} 
+                    </div>
+                  </div>
+                </div>
+
+                {%- if block.settings.col_4_link_label != blank -%}
+                  <div class="global-flex jc-center pt-15 pb-15 width-100 bt-1 b-border button-wrapper">
+                    {%- assign link_id = "submenu-" | append: block.id -%}
+                    {%- render 'link-icon',
+                      id: link_id,
+                      label: block.settings.col_4_link_label,
+                      url: block.settings.col_4_link_url,
+                      text_class: 'p3',
+                      icon_color: '#231D1D',
+                      icon_svg: settings.icon_arrow_diagonal_up,
+                      load_inside_vue: true
+                    -%}
+                  </div>
+                {%- endif -%}
+            </div>
+            {% comment %} end col 4 {% endcomment %}
+          </div>
+        {%- endif -%}
+        {% comment %} end Dropdown 4 {% endcomment %}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+
+  <div
+    class="page-overlay header-overlay"
+    :class="{'active': activeSubmenu || showSearchForm}"
+    @mouseover="activeSubmenu = null">&nbsp;</div>
+</div>
+
+<script>
+  if ($360.getCookie('no-bar') == 'true') {
+    document.querySelector('body').classList.add('no-bar');
+    if (document.querySelector('.header-bar')) {
+      document.querySelector('.header-bar').classList.add('hide-m');
+    }
+  }
+
+  if (!document.querySelector('.header-bar')) {
+    document.querySelector('body').classList.add('no-bar');
+  }
+
+  /** Header bar carousel */
+  function headerBarCarouselInit() {
+    let header_bar_carousel;
+    header_bar_carousel = new Swiper("#header-bar .swiper", {
+      direction: 'horizontal',
+      slidesPerView: 1,
+      watchSlidesProgress: true,
+      loop: true,
+      navigation: {
+        nextEl: '#header-bar .swiper-next',
+        prevEl: '#header-bar .swiper-prev'
+      },
+      autoplay: {
+        delay: 3500
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    headerBarCarouselInit();
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Logo"
+      },
+      {
+        "type": "radio",
+        "id": "logo_type",
+        "label": "Logo type",
+        "options": [
+          {
+            "value": "image",
+            "label": "Image"
+          }, {
+            "value": "svg",
+            "label": "SVG"
+          }
+        ],
+        "default": "image"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "Logo image"
+      },
+      {
+        "type": "textarea",
+        "id": "logo_svg",
+        "label": "Logo SVG"
+      }, {
+        "type": "image_picker",
+        "id": "logo_image_mobile",
+        "label": "Logo image Mobile"
+      }, {
+        "type": "textarea",
+        "id": "logo_svg_mobile",
+        "label": "Logo SVG Mobile"
+      }, 
+      {
+        "type": "header",
+        "content": "Main Menu"
+      }, 
+      {
+        "type": "link_list",
+        "id": "main_linklist",
+        "label": "Menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "link_list",
+        "id": "bottom_menu",
+        "label": "Bottom Menu",
+        "default": "main-menu",
+        "info": "Appear on mobile"
+      },
+      {
+        "type": "header",
+        "content": "Mobile CTA"
+      },
+      {
+        "type": "image_picker",
+        "label": "Image",
+        "id": "mob_cta_image"
+      },
+      {
+        "type": "textarea",
+        "label": "Title",
+        "id": "mob_cta_title"
+      },
+      {
+        "type": "text",
+        "label": "Link Label",
+        "id": "mob_cta_link_label"
+      },
+      {
+        "type": "url",
+        "label": "Link URL",
+        "id": "mob_cta_link_url"
+      },
+      {
+        "type": "header",
+        "content": "Announcement bar"
+      }, 
+      {
+        "type": "checkbox",
+        "id": "message",
+        "label": "Show announcement",
+        "default": false
+      }, 
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Bar",
+        "default": "#7796a8"
+      }, 
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#fff"
+      }, 
+      {
+        "type": "textarea",
+        "id": "message_text_1",
+        "label": "Message #1"
+      }, 
+      {
+        "type": "url",
+        "id": "message_link_1",
+        "label": "Link #1"
+      }, 
+      {
+        "type": "textarea",
+        "id": "message_text_2",
+        "label": "Message #2"
+      }, 
+      {
+        "type": "url",
+        "id": "message_link_2",
+        "label": "Link #2"
+      }, 
+      {
+        "type": "textarea",
+        "id": "message_text_3",
+        "label": "Message #3"
+      }, 
+      {
+        "type": "url",
+        "id": "message_link_3",
+        "label": "Link #3"
+      }, 
+      {
+        "type": "text",
+        "id": "message_button_label",
+        "label": "Button Label"
+      },
+      {
+        "type": "url",
+        "id": "message_button_url",
+        "label": "Button URL"
+      },
+      {
+        "type": "color",
+        "id": "message_button_bg",
+        "label": "Button Background Color"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "dropdown_1",
+        "name": "Mega Dropdown #1",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "enable",
+            "label": "Enable dropdown"
+          },
+          {
+            "type": "header",
+            "content": "Column #1"
+          },
+          {
+            "type": "text",
+            "id": "col_1_title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "col_1_link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "col_1_link_url",
+            "label": "Link URL"
+          },
+          {
+            "type": "product_list",
+            "id": "col_1_products",
+            "label": "Products"
+          },
+          {
+            "type": "header",
+            "content": "Column #2"
+          },
+          {
+            "type": "text",
+            "id": "col_2_title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "col_2_link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "col_2_link_url",
+            "label": "Link URL"
+          },
+          {
+            "type": "product_list",
+            "id": "col_2_products",
+            "label": "Products"
+          }
+        ]
+      },
+      {
+        "type": "dropdown_2",
+        "name": "Mega Dropdown #2",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "enable",
+            "label": "Enable dropdown"
+          },
+          {
+            "type": "header",
+            "content": "Column #1"
+          },
+          {
+            "type": "text",
+            "id": "col_1_title",
+            "label": "Title"
+          },
+          {
+            "type": "product",
+            "id": "col_1_product",
+            "label": "Product"
+          },
+          {
+            "type": "header",
+            "content": "Column #2"
+          },
+          {
+            "type": "text",
+            "id": "col_2_title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "col_2_link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "col_2_link_url",
+            "label": "Link URL"
+          },
+          {
+            "type": "header",
+            "content": "Column #2 Image #1"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_2_image_1_before",
+            "label": "Image Before #1"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_2_image_1_after",
+            "label": "Image After #1"
+          },
+          {
+            "type": "textarea",
+            "id": "col_2_image_1_caption",
+            "label": "Image Caption #1"
+          },
+          {
+            "type": "header",
+            "content": "Column #2 Image #2"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_2_image_2_before",
+            "label": "Image Before #2"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_2_image_2_after",
+            "label": "Image After #2"
+          },
+          {
+            "type": "textarea",
+            "id": "col_2_image_2_caption",
+            "label": "Image Caption #2"
+          },
+          {
+            "type": "header",
+            "content": "Column #2 Image #3"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_2_image_3_before",
+            "label": "Image Before #3"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_2_image_3_after",
+            "label": "Image After #3"
+          },
+          {
+            "type": "textarea",
+            "id": "col_2_image_3_caption",
+            "label": "Image Caption #3"
+          },
+          {
+            "type": "header",
+            "content": "Column #2 Image #4"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_2_image_4_before",
+            "label": "Image Before #4"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_2_image_4_after",
+            "label": "Image After #4"
+          },
+          {
+            "type": "textarea",
+            "id": "col_2_image_4_caption",
+            "label": "Image Caption #4"
+          },
+          {
+            "type": "header",
+            "content": "Column #2 Image #5"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_2_image_5_before",
+            "label": "Image Before #5"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_2_image_5_after",
+            "label": "Image After #5"
+          },
+          {
+            "type": "textarea",
+            "id": "col_2_image_5_caption",
+            "label": "Image Caption #5"
+          },
+          {
+            "type": "header",
+            "content": "Column #3"
+          },
+          {
+            "type": "text",
+            "id": "col_3_small_title",
+            "label": "Small Title"
+          },
+          {
+            "type": "textarea",
+            "id": "col_3_testimonial",
+            "label": "Testimonial"
+          },
+          {
+            "type": "text",
+            "id": "col_3_author",
+            "label": "Author"
+          },
+          {
+            "type": "text",
+            "id": "col_3_occupation",
+            "label": "Occupation"
+          }
+        ]
+      },
+      {
+        "type": "dropdown_3",
+        "name": "Mega Dropdown #3",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "enable",
+            "label": "Enable dropdown"
+          },
+          {
+            "type": "header",
+            "content": "Column #1"
+          },
+          {
+            "type": "text",
+            "id": "col_1_title",
+            "label": "Title"
+          },
+          {
+            "type": "link_list",
+            "id": "col_1_menu",
+            "label": "Menu"
+          },
+          {
+            "type": "header",
+            "content": "Column #2"
+          },
+          {
+            "type": "text",
+            "id": "col_2_title",
+            "label": "Title"
+          },
+          {
+            "type": "link_list",
+            "id": "col_2_menu",
+            "label": "Menu"
+          },
+          {
+            "type": "header",
+            "content": "Column #3"
+          },
+          {
+            "type": "text",
+            "id": "col_3_title",
+            "label": "Title"
+          },
+          {
+            "type": "link_list",
+            "id": "col_3_menu",
+            "label": "Menu"
+          },
+          {
+            "type": "header",
+            "content": "Column #4"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_4_image_desktop",
+            "label": "Image (desktop)"
+          },
+          {
+            "type": "image_picker",
+            "id": "col_4_image_mobile",
+            "label": "Image (mobile)"
+          },
+          {
+            "type": "textarea",
+            "id": "col_4_title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "col_4_text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "col_4_link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "col_4_link_url",
+            "label": "Link URL"
+          }
+        ]
+      },
+      {
+        "type": "dropdown_4",
+        "name": "Mega Dropdown #4",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "enable",
+            "label": "Enable dropdown"
+          },
+          {
+            "type": "header",
+            "content": "Column #1"
+          },
+          {
+            "type": "text",
+            "id": "col_1_title",
+            "label": "Title"
+          },
+          {
+            "type": "link_list",
+            "id": "col_1_menu",
+            "label": "Menu"
+          },
+          {
+            "type": "header",
+            "content": "Column #2"
+          },
+          {
+            "type": "text",
+            "id": "col_2_title",
+            "label": "Title"
+          },
+          {
+            "type": "link_list",
+            "id": "col_2_menu",
+            "label": "Menu"
+          },
+          {
+            "type": "header",
+            "content": "Column #3"
+          },
+          {
+            "type": "text",
+            "id": "col_3_title",
+            "label": "Title"
+          },
+          {
+            "type": "link_list",
+            "id": "col_3_menu",
+            "label": "Menu"
+          },
+          {
+            "type": "header",
+            "content": "Column #4"
+          },
+          {
+            "type": "text",
+            "id": "col_4_link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "col_4_link_url",
+            "label": "Link URL"
+          },
+          {
+            "type": "header",
+            "content": "Column #4 Articles"
+          },
+          {
+            "type": "blog",
+            "id": "col_4_blog",
+            "label": "Blog"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

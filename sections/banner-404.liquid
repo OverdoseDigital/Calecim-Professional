@@ -1,0 +1,193 @@
+{% comment %} calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+  #shopify-section-{{ section.id }} .banner-404 {
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .bnf-caption {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #shopify-section-{{ section.id }} .bnfc-wrap .bnfc-title,
+  #shopify-section-{{ section.id }} .bnfc-wrap .bnfc-text {
+    {% if section.settings.max_width != blank %}
+    max-width: {{ section.settings.max_width }}px;
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .bnfc-links {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    max-width: 300px;
+  }
+  #shopify-section-{{ section.id }} .bnfc-links a {
+    width: 140px;
+    margin: 5px;
+    padding: 10px 20px;
+  }
+  @media screen and (min-width: 768px) {
+    #shopify-section-{{ section.id }} .bnfc-links {
+      max-width: unset;
+    }
+    #shopify-section-{{ section.id }} .bnfc-links a {
+      width: unset;
+      margin: 5px;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .bnfc-links {
+      display: block;
+      flex-wrap: unset;
+      margin: 0;
+    }
+    #shopify-section-{{ section.id }} .bnfc-links a {
+      margin: 0 7.5px;
+      width: unset;
+    }
+  }
+</style>
+<section class="banner-404">
+  {%- assign image_id = "image-banner-404-" | append: section.id -%}
+  {%- render 'global-image-wrapper-responsive',
+    image_id: image_id,
+    desktop_image: section.settings.image_desktop,
+    mobile_image: section.settings.image_mobile
+  %}
+  <div class="bnf-caption tc">
+    <div class="bnfc-wrap pl-20 pr-20 d-pl-0 d-pr-0">
+      <{{ section.settings.title_dom_type}} class="bnfc-title ml-auto mr-auto {{ section.settings.title_size}}">{{ section.settings.title}}</{{ section.settings.title_dom_type}}>
+      <div class="h8 bnfc-text ml-auto mr-auto mt-5 d-mt-0">{{ section.settings.text }}</div>
+      <div class="bnfc-links pt-20 d-pt-30 tc">
+        {% for link in linklists[section.settings.links].links %}
+        <a href="{{ link.url }}" class="btn1">{{ link.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Banner 404",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "select",
+        "id": "title_size",
+        "label": "Title Size",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          }, {
+            "value": "h2",
+            "label": "H2"
+          }, {
+            "value": "h3",
+            "label": "H3"
+          }, {
+            "value": "h4",
+            "label": "H4"
+          }
+        ],
+        "default": "h1"
+      },
+      {
+        "type": "select",
+        "id": "title_dom_type",
+        "label": "Title DOM type",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          }, {
+            "value": "h2",
+            "label": "H2"
+          }, {
+            "value": "h3",
+            "label": "H3"
+          }
+        ],
+        "default": "h1"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      }, 
+      {
+        "type": "link_list",
+        "id": "links",
+        "label": "Links"
+      }, 
+      {
+        "type": "number",
+        "id": "max_width",
+        "label": "Max Width"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_desktop",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "header",
+        "content": "Section Padding"
+      },
+      {
+        "type": "text",
+        "id": "top_padding_m",
+        "label": "Top padding (Mobile)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_padding_m",
+        "label": "Bottom padding (Mobile)"
+      },
+      {
+        "type": "text",
+        "id": "top_padding_t",
+        "label": "Top padding (Tablet)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_padding_t",
+        "label": "Bottom padding (Tablet)"
+      },
+      {
+        "type": "text",
+        "id": "top_padding",
+        "label": "Top padding (Desktop)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_padding",
+        "label": "Bottom padding (Desktop)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Banner 404",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

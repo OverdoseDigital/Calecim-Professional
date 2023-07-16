@@ -1,0 +1,357 @@
+<style>
+	.header-cart .header-cart-items .carousel-wrapper .title-wrapper {
+		display: -webkit-box;
+	}
+</style>
+
+<div class="header-cart-loading absolute top-0 left-0 w-full h-full zi-1 bg-white opacity-5">&nbsp;</div>
+{%- assign has_cross_sel = false -%}
+{%- for num in (1..5) -%}
+	{%- assign product_setting = 'cart_cross_sell_' | append: forloop.index -%}
+	{%- assign product = settings[product_setting] -%}
+	{%- if product != blank and cart.item_count > 0 -%}
+		{%- assign has_cross_sel = true -%}
+		{%- break -%}
+	{%- endif -%}
+{%- endfor -%}
+
+{%- if has_cross_sel == true -%}
+	{% assign item_product_ids = '' %}
+	{%- for item in cart.items -%}
+		{% capture item_product_ids %}{{ item_product_ids }},{{ item.product_id }}{% endcapture %}
+	{%- endfor -%}
+
+	{% capture cross_sell_html %}
+		<div class="cross-sell-wrapper mt-25">
+			<div class="title-container global-flex ai-center jc-between mb-20">
+				<h4 class="p3 uppercase bold-600 spacing-2">{{ settings.cart_cross_sell_section_title }}</h4>
+
+				<div class="controls-wrapper hide-m show-t">
+					<div class="swiper-custom-arrow left">{{ settings.icon_slide_left }}</div>
+                    <div class="swiper-custom-arrow right ml-10">{{ settings.icon_slide_right }}</div>
+				</div>
+			</div>
+			<div class="carousel-wrapper-outer">
+				<div class="carousel-wrapper">
+					<div class="swiper">
+						<div class="swiper-wrapper">
+							{%- for num in (1..10) -%}
+								{%- assign product_setting = 'cart_cross_sell_' | append: forloop.index -%}
+								{%- assign pro = settings[product_setting] -%}
+								{%- if pro != blank -%}
+									{%- unless item_product_ids contains pro.id -%}
+										<div class="swiper-slide pl-15 pr-15">
+											<div class="wrapper global-flex ai-center bg-lightgrey pl-20">
+												<div class="image-container">
+													<a href="{{ pro.url }}" class="show-m">
+														{%- render 'global-image-wrapper',
+															image:  pro.featured_image,
+															size: '200x'
+														-%}
+													</a>
+												</div>
+												<div class="text-container pt-20 pb-20 pl-15 pr-20">
+													<div class="global-flex ai-center jc-between">
+														<div class="pr-10">
+															<a href="{{ pro.url }}" class="p2 bold-500 pr-20 show-m title-wrapper">{{ pro.title }}</a>
+															<span class="p2 bold-500 show-m mt-5">{{ pro.price | money }}</span>
+														</div>
+
+														<a href="javascript:void(0)" rel="nofollow" data-variant-id="{{ pro.selected_or_first_available_variant.id }}" class="icon-add">{{ settings.icon_plus }}</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									{%- endunless -%}
+								{%- endif -%}
+							{%- endfor -%}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endcapture %}
+{%- endif -%}
+
+<div class="header-cart-wrapper h-full bg-beige-5 relative step-1">
+	{%- if cart.item_count == 0 -%}
+		<div class="header-cart-top relative pt-20 pb-20 pl-20 pr-20 t-pl-30 t-pr-30 bg-lightgrey global-flex ai-center jc-between bb-1 b-border">
+			<h5 class="h5 uppercase">Your Cart</h6>
+			<button type="button" class="header-cart-close flex ai-center jc-center zi-1" onclick="$360.hideHeaderCart()">{{ settings.icon_close }}</button>
+		</div>
+		{% comment %} {%- render 'free-shipping-info', 
+			wrapper_class: 'pt-20 pb-20 pl-25 pr-25 t-pt-25 t-pb-25 t-pl-30 t-pr-30 bg-pale30', 
+			text_class: 'p3 tl mb-8 bold-500' 
+		-%} {% endcomment %}
+
+		<div class="empty-message-wrapper container tc global-flex ai-center jc-center">
+			<div>
+				{%- if settings.cart_empty_message != blank -%}
+					<h3 class="h7 max-310 ml-auto mr-auto">{{ settings.cart_empty_message | newline_to_br }}</h3>
+				{%- endif -%}
+				{%- if settings.cart_empty_button_label != blank -%}
+					<a href="{{ settings.cart_empty_button_url }}" class="btn1 show-m-inline-block mt-15 t-mt-20">{{ settings.cart_empty_button_label }}<span class="ml-30" style="display:inline-flex;">{{settings.icon_btn_right}}</span></a>
+				{%- endif -%}
+			</div>
+		</div>
+		<div class="quick-add-collection pt-20 pb-20 pl-20 pr-20 t-pl-30 t-pr-30 bg-lightgrey">
+			<div class="p1 pb-15">Bestsellers</div>
+			{%- assign best_collection = collections['skincare-only'] -%}
+			{% for pro in best_collection.products limit:2%}
+				<div class="bg-white pt-25 pb-25 pl-20 pr-20 {%unless forloop.last%}mb-10{%endunless%}">
+					<div class="flex flex-wrap ai-center jc-between">
+						<div class="flex ai-center">
+							<div class="image-container">
+								{%- render 'global-image-wrapper', 
+									image: pro.featured_image, 
+									preload: true,
+									additional_class: 'no-bg'
+								-%}
+							</div>
+							<div class="text-container">
+								<div class="p3 bold-600 uppercase">{{pro.title}}</div>
+								<div class="p3">{{pro.price | money}}</div>
+							</div>
+						</div>
+						<div class="button-container">
+							<a href="javascript:void(0)" onclick="$360.quickAddToCart(event)" data-variant-id="{{ pro.selected_or_first_available_variant.id }}" data-quantity="1" class="btn7 quick-add-to-cart relative show-m-inline-block">ADD</a>
+						</div>
+					</div>
+				</div>
+			{%endfor%}
+
+		</div>
+	{%- else -%}
+		<div class="header-cart-top relative pt-20 pb-20 pl-20 pr-20 t-pl-30 t-pr-30 bg-lightgrey global-flex ai-center jc-between bb-1 b-border">
+			<div class="flex ai-end">
+				<div onclick="document.querySelector('.header-cart-wrapper').classList.remove('step-2');document.querySelector('.header-cart-wrapper').classList.add('step-1');" class="prev-step-button mr-5 y1 cursor">{{settings.icon_btn_left}}</div>
+				<h5 class="h5 uppercase pr-5">Your Cart</h6>
+				<div class="p5 bold-500 step-text-1 uppercase">step 1 of 2</div>
+				<div class="p5 bold-500 step-text-2 uppercase">step 2 of 2</div>
+			</div>
+			<button type="button" class="header-cart-close flex ai-center jc-center zi-1" onclick="$360.hideHeaderCart()">{{ settings.icon_close }}</button>
+		</div>
+
+		<form action="/checkout" method="post" id="header-cart">
+			<div class="header-cart-middle">
+				{% comment %} {%- render 'free-shipping-info', 
+					wrapper_class: 'pt-20 pb-20 pl-25 pr-25 t-pt-25 t-pb-25 t-pl-30 t-pr-30 bg-pale30', 
+					text_class: 'p3 tl mb-8 bold-500' 
+				-%} {% endcomment %}
+				{%- render 'cart-promo-info-drawer', 
+					wrapper_class: 'pt-20 pb-20 pl-20 pr-20 t-pl-30 t-pr-30', 
+					text_class: 'p3 tc' 
+				-%}
+
+				{%- assign has_fabric = false -%}
+				{%- assign has_regular_items = false -%}
+				<div class="cart-items-wrapper pl-25 pr-25 t-pl-30 t-pr-30 pt-25 d-pt-30 bg-lightgrey">
+					<ul class="header-cart-items">
+						{%- for item in cart.items -%}
+							{%- assign pro = item.product -%}
+							{%- if pro.type == 'Fabric' -%}
+								{%- assign has_fabric = true -%}
+							{%- else -%}
+								{%- assign has_regular_items = true -%}
+								{%- assign group_id = false -%}
+								{%- assign group_parent = false -%}
+								{%- if item.properties['_group_id'] != blank -%}
+									{%- assign group_id = item.properties['_group_id'] -%}
+								{%- endif -%}
+								{%- if item.properties['_group_parent'] != blank -%}
+									{%- assign group_parent = item.properties['_group_parent'] -%}
+								{%- endif -%}
+
+								<li class="flex relative pt-15 pb-15 pr-15 pl-15 d-pr-20 d-pl-20 bg-white mb-25 d-mb-30 {% if group_parent == false and group_id != false %}pl-25{% endif %}">
+									<div class="image-con">
+										{%- capture item_img -%}
+											{%- if item.image == blank -%}
+												<img src="{{ item.image | img_url: '200x' }}" alt="{{ item.image.alt }}" class="image">
+											{%- else -%}
+												{%- render 'global-image-wrapper', image: item.image, size: 200, preload: true -%}
+											{%- endif -%}
+										{%- endcapture -%}
+										{%- if item.product.tags contains "hidden" -%}
+											{{ item_img }}
+										{%- else -%}
+											<a href="{{ item.url }}" title="{{ item.title }}">{{ item_img }}</a>
+										{%- endif -%}
+									</div>
+									<div class="details-con pl-15">
+										<div class="top-part flex jc-between">
+											<div class="left-side pr-20">
+												{%- if item.product.tags contains "hidden" -%}
+													<h6 class="p3 uppercase bold-600">{{ item.product.title }}</h6>
+												{%- else -%}
+													<h6 class="p3 uppercase bold-600"><a href="{{ item.url }}" class="">{{ item.product.title }}</a></h6>
+												{%- endif -%}
+
+												{%- if item.options_with_values[0].value != 'Default Title' -%}
+													<div class="variant-options mt-5 p3 bold-500 c-grey">
+														{%- for opt in item.options_with_values -%}
+															{%- if opt.name contains 'size' or opt.name contains 'Size' -%}Size {{ opt.value }}{%- else -%}{{ opt.value }}{%- endif -%}
+															{%- unless forloop.last -%}
+																,&nbsp;
+															{%- endunless -%}
+														{%- endfor -%}
+													</div>
+												{%- endif -%}
+
+												{%- assign prop_num = 0 -%}
+												{%- for prop in item.properties -%}
+													{%- assign ff = prop | first -%}
+													{%- unless ff contains "_" -%}
+														{%- assign prop_num = prop_num | plus: 1 -%}
+														<div class="p3 c-grey {% if prop_num == 1 %}mt-5{% endif %}">{{ ff }}: {{ prop | last }}</div>
+													{%- endunless -%}
+												{%- endfor -%}
+
+											</div>
+											<div class="right-side relative">
+												<div class="item-price tr">
+													{%- assign compare_at_price = item.variant.compare_at_price -%}
+													{%- assign price = item.line_price -%}
+													{%- if compare_at_price > item.variant.price -%}
+														<span class="p3 c-sale-red">{{ price | money }}</span>
+														{%- if item.line_price < item.original_line_price -%}
+															<strike class="p3 c-grey t-ml-10">{{ item.original_line_price | money }}</strike>
+														{%- else -%}
+															<strike class="p3 c-grey t-ml-10">{{ compare_at_price | times: item.quantity | money }}</strike>
+														{%- endif -%}
+													{%- else -%}
+														<span class="p2 {% if item.line_price < item.original_line_price %}c-sale-red{% endif %}">{{ price | money }}</span>
+														{%- if item.line_price < item.original_line_price -%}
+															<strike class="p3 c-grey t-ml-10">{{ item.original_line_price | money }}</strike>
+														{%- endif -%}
+													{%- endif -%}
+												</div>
+											</div>
+										</div>
+
+										<div class="bottom-part width-100 flex jc-between ai-end mt-10">
+											{%- assign allow_edit = true -%}
+											{%- if group_id != false and group_parent == false -%}
+												{%- assign allow_edit = false -%}
+											{%- endif -%}
+
+											{%- if allow_edit == true -%}
+												<div class="global-form-qty small mt-10">
+													<button type="button" class="toggle global-minus normal-flex">{{ settings.icon_minus }}</button>
+													<input type="number" class="global-qty-text p2" name="quantity" value="{{ item.quantity }}" min="0" {% if item.variant.inventory_management == 'shopify' %} max="{{ item.variant.inventory_quantity }}" {% endif %} oninput="$360.updateItemQty({index: {{ forloop.index }}, qty: this.value, groupId: {{ group_id }}, removeSameGroup: {{ group_parent }}}, function() { $360.showHeaderCart({update: true}); $360.refreshCartPage(); })" readonly>
+													<button 
+														type="button" 
+														class="toggle global-plus normal-flex"
+														{% if item.variant.inventory_management == 'shopify' %} data-max="{{ item.variant.inventory_quantity }}" {% endif %}
+														{% if item.quantity == item.variant.inventory_quantity and item.variant.inventory_management == 'shopify' %}disabled{% endif %}
+													>{{ settings.icon_plus }}</button>
+												</div>
+
+												<button type="button" class="close p3 uppercase bold-600 c-grey opacity-7 spacing-2" onclick="$360.updateItemQty({index: {{ forloop.index }}, qty: 0, groupId: {{ group_id }}, removeSameGroup: {{ group_parent }}}, function() { $360.showHeaderCart({update: true}); $360.refreshCartPage(); })">{{ settings.icon_trash }}</button>
+											{%- endif -%}
+										</div>
+									</div>
+								</li>
+							{%- endif -%}
+						{%- endfor -%}
+
+						{%- comment -%} cross sell {%- endcomment -%}
+						{%- if has_cross_sel -%}
+							{{ cross_sell_html }}
+						{%- endif -%}
+					</ul>
+
+					{%- comment -%} deals {%- endcomment -%}
+
+					<div class="starter-deal-collection pt-20 pb-20 bg-lightgrey">
+						<div class="p1 pb-10 d-pb-15 bb-1 b-border">Ongoing starter size deals</div>
+						<div class="p4 pt-10 d-pt-15 pb-10 d-pb-15">Limited time only, max 2 per order</div>
+						{%- assign best_collection = collections['skincare-only'] -%}
+						{% for pro in best_collection.products limit:2%}
+							<div class="bg-white pt-25 pb-25 pl-20 pr-20 {%unless forloop.last%}mb-10{%endunless%}">
+								<div class="flex ai-center jc-between">
+									<div class="flex ai-center">
+										<div class="image-container">
+											{%- render 'global-image-wrapper', 
+												image: pro.featured_image, 
+												preload: true,
+												additional_class: 'no-bg'
+											-%}
+										</div>
+										<div class="text-container">
+											<div class="p3 bold-600 uppercase">{{pro.title}}</div>
+											<div class="p3">{{pro.price | money}}</div>
+										</div>
+									</div>
+									<div class="button-container">
+										<a href="javascript:void(0)" onclick="$360.quickAddToCart(event)" data-variant-id="{{ pro.selected_or_first_available_variant.id }}" data-quantity="1" class="btn7 quick-add-to-cart relative show-m-inline-block">ADD</a>
+									</div>
+								</div>
+							</div>
+						{%endfor%}
+			
+					</div>
+
+					<div class="free-sample-collection bg-lightgrey">
+						<div class="p1 pb-10 d-pb-15 bb-1 b-border">Select your free sample(s)</div>
+						<div class="p4 pt-10 d-pt-15 pb-10 d-pb-15">Limited to 2 per order</div>
+						<div class="bg-white">
+							{%- assign best_collection = collections['skincare-only'] -%}
+							{% for pro in best_collection.products limit:2%}
+								<div class="bg-white pt-25 pb-25 pl-20 pr-20">
+									<div class="flex flex-wrap ai-center jc-between">
+										<div class="flex ai-center">
+											<div class="image-container">
+												{%- render 'global-image-wrapper', 
+													image: pro.featured_image, 
+													preload: true,
+													additional_class: 'no-bg'
+												-%}
+											</div>
+											<div class="text-container">
+												<div class="p3 bold-600 uppercase">{{pro.title}}</div>
+												<div class="p3">{{pro.price | money}}</div>
+											</div>
+										</div>
+										<div class="button-container">
+											<a href="javascript:void(0)" onclick="$360.quickAddToCart(event)" data-variant-id="{{ pro.selected_or_first_available_variant.id }}" data-quantity="1" class="btn7 quick-add-to-cart relative show-m-inline-block">ADD</a>
+										</div>
+									</div>
+								</div>
+							{%endfor%}
+							<div class="tc p-15">
+								<div onclick="" class="btn1 header-cart-add-sample cursore uppercase w-full">add samples</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header-cart-bottom pt-20 pb-20 pl-25 pr-25 t-pl-30 t-pr-30 bg-lightgrey">
+				<div class="flex ai-center jc-between opacity-4">
+					<div class="p3">Subtotal</div>
+					<div class="price p3">{{ cart.original_total_price | money }}</div>
+				</div>
+
+				{%- if cart.total_discount > 0 -%}
+					<div class="flex ai-center jc-between mt-5 opacity-4">
+						<div class="p3">Savings</div>
+						<div class="price p3">-{{ cart.total_discount | money }}</div>
+					</div>
+				{%- endif -%}
+
+				<div class="flex ai-center jc-between pt-10">
+					<div class="p3">Total</div>
+					<div class="price p3 bold-500">{{ cart.total_price | money }}</div>
+				</div>
+
+				<div class="tc mt-15 header-cart-next-button cursor">
+					<div onclick="document.querySelector('.header-cart-wrapper').classList.remove('step-1');document.querySelector('.header-cart-wrapper').classList.add('step-2');" class="btn2 uppercase w-full">Next</div>
+				</div>
+				<div class="tc mt-15 header-cart-submit-button">
+					<button type="submit" class="btn2 uppercase btn-checkout w-full" value="Checkout"><span class="icon">{{ settings.icon_lock }}</span>Checkout</button>
+				</div>
+
+				{%- render 'cart-info', cart_msg_class: 'mt-10 tc', payment_icons_class: 'jc-center' -%}
+			</div>
+		</form>
+	{%- endif -%}
+</div>

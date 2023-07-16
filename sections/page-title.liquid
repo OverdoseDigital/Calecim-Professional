@@ -1,0 +1,223 @@
+{% comment %} Calecim {% endcomment %}
+{%- if section.settings.image_desktop == blank -%}
+    {% assign el_id = "shopify-section-" | append: section.id %}
+    {% render 'section-padding', section:section , el_id : el_id %}
+{%- endif -%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        {% if section.settings.background_color != blank %}
+        background-color: {{ section.settings.background_color }};
+        {% endif %}
+    }
+    #shopify-section-{{ section.id }} .pt-container {
+        display: block;
+        width: 100%;
+        text-align: left;
+        {% if section.settings.max_width != blank %}
+        margin: 0 auto;
+        max-width: {{ section.settings.max_width }}px;
+        display: block;
+        {% endif %}
+        text-align: center;
+    }
+
+    {%- if section.settings.image_desktop != blank -%}
+        #shopify-section-{{ section.id }} .pt-container {
+            padding-top: {{ section.settings.top_padding_m }}px;
+            padding-bottom: {{ section.settings.bottom_padding_m }}px;
+        }
+
+        @media screen and (min-width: 768px) {
+            #shopify-section-{{ section.id }} .pt-container {
+                padding-top: {{ section.settings.top_padding_t }}px;
+                padding-bottom: {{ section.settings.bottom_padding_t }}px;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            #shopify-section-{{ section.id }} .pt-container {
+                padding-top: {{ section.settings.top_padding }}px;
+                padding-bottom: {{ section.settings.bottom_padding }}px;
+            }
+        }
+    {%- endif -%}
+</style>
+<div class="page-title relative">
+    {%- if section.settings.image_desktop != blank -%}
+        {%- assign image_id = 'page-tile-' | append: section.id -%}
+        {%- render 'global-image-wrapper-responsive',
+            desktop_image: section.settings.image_desktop,
+            mobile_image: section.settings.image_mobile,
+            image_id: image_id
+        -%}
+
+        <div class="text-wrapper ab-middle z-2 width-100">
+    {%- endif -%}
+
+    <div class="container">
+        <div class="pt-container">
+            {% if section.settings.title != blank %}
+                <{{ section.settings.title_dom_type}} class="pt-title {{ section.settings.title_size}}">{{ section.settings.title | newline_to_br }}</{{ section.settings.title_dom_type}}>
+            {% endif %}
+
+            {% if section.settings.text != blank %}
+                <div class="pt-text p1 d-mt-10 mt-5">
+                    {{ section.settings.text }}
+                </div>
+            {% endif %}
+
+            {%- if section.settings.small_text != blank -%}
+                <p class="p4 max-400 mt-15 d-mt-20 {% if section.settings.max_width != blank %} ml-auto mr-auto {% endif %}">{{ section.settings.small_text }}</p>
+            {%- endif -%}
+        </div>
+    </div>
+
+    {%- if section.settings.image_desktop != blank -%}
+        </div>
+    {%- endif -%}
+</div>
+{% schema %}
+    {
+        "name": "Page Title",
+        "settings": [
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background Color"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_desktop",
+                "label": "Background Image (Desktop)"
+            },
+            {
+                "type": "image_picker",
+                "id": "image_mobile",
+                "label": "Background Image (Mobile)"
+            },
+            {
+                "type": "textarea",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "select",
+                "id": "title_size",
+                "label": "Title Size",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "H3"
+                    },
+                    {
+                        "value": "h4",
+                        "label": "H4"
+                    },
+                    {
+                        "value": "h5",
+                        "label": "H5"
+                    }
+                ],
+                "default": "h3"
+            },
+            {
+                "type": "select",
+                "id": "title_dom_type",
+                "label": "Title Dom Type",
+                "options": [
+                    {
+                        "value": "h1",
+                        "label": "H1"
+                    },
+                    {
+                        "value": "h2",
+                        "label": "H2"
+                    },
+                    {
+                        "value": "h3",
+                        "label": "H3"
+                    }
+                ],
+                "default": "h3"
+            },
+            {
+                "type": "color",
+                "id": "title_color",
+                "label": "Title Color"
+            },
+            {
+                "type": "textarea",
+                "id": "text",
+                "label": "Text"
+            },
+            {
+                "type": "textarea",
+                "id": "small_text",
+                "label": "Small Text"
+            },
+            {
+                "type": "color",
+                "id": "body_copy_color",
+                "label": "Body Copy Color"
+            },
+            {
+                "type": "number",
+                "id": "max_width",
+                "label": "Max Width"
+            },
+            {
+                "type": "header",
+                "content": "Section Padding"
+            },
+            {
+                "type": "paragraph",
+                "content": "Paddings will be applied to the text if the section is using image background"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_m",
+                "label": "Top padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_m",
+                "label": "Bottom padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_t",
+                "label": "Top padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_t",
+                "label": "Bottom padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding",
+                "label": "Top padding (Desktop)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding",
+                "label": "Bottom padding (Desktop)"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Page Title",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}

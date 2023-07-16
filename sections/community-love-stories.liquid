@@ -1,0 +1,522 @@
+{%  comment  %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+<style>
+  #shopify-section-{{ section.id }} .cls-items {
+    display: flex;
+    flex-direction: column;
+  }
+  #shopify-section-{{ section.id }} .cls-item {
+    display: flex;
+    flex-direction: column;
+  }
+  #shopify-section-{{ section.id }} .community-love-stories .container > h1,
+  #shopify-section-{{ section.id }} .community-love-stories .container > p {
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .clsir-top p {
+    max-height: 80px;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .clsir-bot video {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .clsirb-video {
+    display: none;
+    cursor: pointer;
+  }
+  #shopify-section-{{ section.id }} .clsirb-image {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #shopify-section-{{ section.id }} .clsirb-play-btn {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 1000px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #shopify-section-{{ section.id }} .clsirb-play-btn svg {
+    height: 13px;
+    width: 10px;
+  }
+  #shopify-section-{{ section.id }} .clsirb-play-btn svg * {
+    fill: #6c6c6c;
+  }
+  #shopify-section-{{ section.id }} .cls-item .clsi-left {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .video-popup-wrapper {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: rgba(108,108,108,.8);
+    z-index: 1000000;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s ease all;
+    overflow-y: auto;
+  }
+  .video-popup-wrapper.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .video-popup-wrapper .popup-outer-wrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  .video-popup-wrapper .popup-inner-wrapper {
+    position: relative;
+    width: 100%;
+    font-size: 0;
+    height: auto;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+  }
+  .video-popup-wrapper .popup-inner-wrapper iframe {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  .video-popup-wrapper .popup-inner-wrapper .close-popup {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    font-size: 0;
+    top: -40px;
+    right: 25px;
+  }
+  .video-popup-wrapper .popup-inner-wrapper .close-popup svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+  .video-popup-wrapper .popup-inner-wrapper .close-popup svg * {
+    stroke: #fff;
+  }
+  #shopify-section-{{ section.id }} .cls-item.hide-m {
+    display: none !important;
+  }
+  @media screen and (min-width: 768px){
+    .video-popup-wrapper .popup-inner-wrapper {
+      width: 80%;
+    }
+    .video-popup-wrapper .popup-inner-wrapper .close-popup {
+      right: 0;
+    }
+  }
+  @media screen and (min-width: 1024px){
+    .video-popup-wrapper .popup-inner-wrapper {
+      width: 70%;
+    }
+    #shopify-section-{{ section.id }} .community-love-stories .container > p {
+      max-width: 490px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+    #shopify-section-{{ section.id }} .cls-item {
+      flex-direction: row;
+    }
+    #shopify-section-{{ section.id }} .cls-item.right {
+      flex-direction: row-reverse;
+    }
+    #shopify-section-{{ section.id }} .cls-item .clsi-left,
+    #shopify-section-{{ section.id }} .cls-item.right .clsi-right {
+      padding-right: 10px;
+      padding-left: 0;
+    }
+    #shopify-section-{{ section.id }} .cls-item .clsi-right,
+    #shopify-section-{{ section.id }} .cls-item.right .clsi-left {
+      padding-left: 10px;
+      padding-right: 0;
+    }
+    #shopify-section-{{ section.id }} .clsi-left {
+      width: 50%;
+    }
+    #shopify-section-{{ section.id }} .clsi-right {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+    #shopify-section-{{ section.id }} .clsir-top {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+    }
+    #shopify-section-{{ section.id }} .clsirb-play-btn {
+      width: 47px;
+      height: 47px;
+    }
+    #shopify-section-{{ section.id }} .clsirb-play-btn svg {
+      height: 17px;
+      width: 13px;
+    }
+  }
+  @media screen and (min-width: 1366px){
+  }
+</style>
+<div class="community-love-stories" id="community-love-stories-{{ section.id }}">
+  <teleport to="body">
+    <div id="" class="video-popup-wrapper" @click="hidePopup($event)" v-if="showVideoPopup" :class="{ 'show': showVideoPopupFade }">
+      <div class="popup-outer-wrapper">
+        <div class="popup-inner-wrapper relative pl-25 pr-25 t-pl-0 t-pr-0">
+          <a href="javascript:void(0)" rel="nofollow" @click="togglePopup($event)" class="close-popup">{{ settings.icon_close }}</a>
+
+          <iframe class="hide-m" id="video-popup-iframe" src="" frameborder="0" allowfullscreen></iframe>
+          <video class="hide-m" id="video-popup-video" controls playsinline>
+            <source src="" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </teleport>
+  <div class="container">
+    <h1 class="h5">{{ section.settings.title }}</h1>
+    <p class="p2 mt-5 d-mt-0 mb-20 d-mb-50 c-grey">{{ section.settings.text }}</p>
+    <div class="cls-items">
+      {%- assign content_per_page = 2 -%}
+      {% for block in section.blocks %}
+        {%- if forloop.index > content_per_page -%}
+          {%- assign additional_class = 'hide-m' -%}
+        {%- endif -%}
+        <div data-index="{{ forloop.index }}" class="cls-item {{ block.settings.image_position }} {% unless forloop.first == true %}mt-35 d-mt-60{% endunless %} {{ additional_class }}">
+          {%- assign video_type = '' -%}
+          {%- assign video_url = '' -%}
+          {%- for vid_source in block.settings.big_video.sources -%}
+            {%- if vid_source.mime_type == 'video/mp4' -%}
+              {%- assign video_type = vid_source.mime_type -%}
+              {%- assign video_url = vid_source.url -%}
+            {%- endif -%}
+          {%- endfor -%}
+          <div class="clsi-left mb-20 d-mb-0 video-toggle" {% if block.settings.big_video != blank %} data-video-url="{{ video_url }}" @click="togglePopup($event)" {% endif %}>
+            {%- assign image_id = "community-love-stories-big-" | append: block.id -%}
+            {%- render 'global-image-wrapper',
+              image_id: image_id,
+              image: block.settings.big_image
+            %}
+            {% if block.settings.big_video != blank %}
+            <span class="clsirb-play-btn">
+              {{ settings.icon_play }}
+            </span>
+            {% endif %}
+          </div>
+          <div class="clsi-right">
+            <div class="clsir-top d-pl-65 d-pr-65">
+              <h5 class="p2 spacing-1 bold-600 c-black ">{{ block.settings.title }}</h5>
+              <p class="p2 mt-10">{{ block.settings.text }}</p>
+              <div class="mt-10 mb-20 d-mb-0">
+                {% render 'link-icon',
+                  id: link_id,
+                  label: block.settings.link_label,
+                  url: block.settings.link_url,
+                  text_class: 'p3 uppercase c-grey spacing-1 bold-600',
+                  icon_color: '#fffff',
+                  icon_svg: settings.icon_btn_right,
+                  load_inside_vue: true
+                %}
+              </div>
+            </div>
+            <div class="clsir-bot">
+              <!-- {%- assign video_type = '' -%}
+              {%- assign video_url = '' -%}
+              {%- for vid_source in block.settings.small_video.sources -%}
+                {%- if vid_source.mime_type == 'video/mp4' -%}
+                  {%- assign video_type = vid_source.mime_type -%}
+                  {%- assign video_url = vid_source.url -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%assign id = "clsir-small-video-" | append: block.id %}
+              {%- render
+                  'global-video-wrapper-responsive',
+                  desktop_image: block.settings.small_image,
+                  mobile_image: block.settings.small_image,
+                  desktop_video_url: video_url,
+                  mobile_video_url: video_url,
+                  video_id: id,
+                  load_inside_vue: true
+              -%} -->
+              {%- assign video_type = '' -%}
+              {%- assign video_url = '' -%}
+              {%- for vid_source in block.settings.small_video.sources -%}
+                {%- if vid_source.mime_type == 'video/mp4' -%}
+                  {%- assign video_type = vid_source.mime_type -%}
+                  {%- assign video_url = vid_source.url -%}
+                {%- endif -%}
+              {%- endfor -%}
+              <div class="clsirb-image video-toggle" id="clsirb-image-{{ block.id }}" @click="togglePopup($event)" data-video-url="{{ video_url }}">
+                {%- assign image_id = "community-love-stories-small-" | append: block.id -%}
+                {%- render 'global-image-wrapper',
+                  image_id: image_id,
+                  image: block.settings.small_image
+                %}
+                <span class="clsirb-play-btn">
+                  {{ settings.icon_play }}
+                </span>
+              </div>
+              <!-- <div class="clsirb-video" id="clsirb-video-{{ block.id }}" @click="playVideo('{{ block.id }}', false)">
+                {{ block.settings.small_video | video_tag: autoplay: false, loop: false, muted: false, controls: false }}
+              </div> -->
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    {%- if content_per_page < section.blocks.size -%}
+    <div class="width-100 tc cls-load-more d-pt-50 pt-30">
+      <a href="javascript:void(0)" @click="nextPage($event)" class="load-more-btn btn1">{{ section.settings.load_more_btn_label }}</a>
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+<script>
+    const communitylovestories = Vue.createApp({
+        delimiters: [
+            '${', '}'
+        ],
+        data() {
+            return {
+              showVideoPopup: false,
+              showVideoPopupFade: false,
+              videoURL: null,
+              iframeObj: null,
+              videoObj: null,
+              currentPage: 1,
+              contentPerPage: 2,
+              maxPage: 1
+            }
+        },
+        mounted() {
+          this.maxPage = Math.floor(Number(`{{ section.blocks.size }}`)/this.contentPerPage);
+        },
+        created() {
+          
+        },
+        methods: {    
+          hidePopup(e) {
+            if(e.target.classList.contains('popup-outer-wrapper')) {
+              this.togglePopup();
+            }
+          },
+          nextPage(e) {
+            this.currentPage += 1;
+            const nextVisibleContent = this.currentPage * this.contentPerPage;
+            const contentObjs = document.querySelectorAll(`#shopify-section-{{ section.id }} .cls-item`);
+            
+            contentObjs.forEach(function(content){
+              let thisIndex = content.getAttribute('data-index');
+
+              if(thisIndex <= nextVisibleContent) {
+                content.classList.remove('hide-m');
+              }
+            });
+
+            if(this.currentPage >= this.maxPage) {
+              document.querySelector(`#shopify-section-{{ section.id }} .cls-load-more`).classList.add('hide-m');
+            }
+          },
+          setVideo() {
+            if(this.videoURL.indexOf('.mp4') >= 0) {
+              this.videoObj.querySelector('source').setAttribute('src', this.videoURL);
+              this.iframeObj.classList.add('hide-m');
+              this.videoObj.classList.remove('hide-m');
+
+              this.videoObj.load();
+            }
+          },
+          togglePopup(e) {
+            const this_obj = this;
+            let button_obj = null;
+
+            if(e != null) {
+              button_obj = e.target.closest('.video-toggle')
+            }
+            console.log(button_obj)
+
+            if(!this_obj.showVideoPopup) {
+              this_obj.showVideoPopup = true;
+
+              setTimeout(() => {
+                this.iframeObj = document.querySelector('#video-popup-iframe');
+                this.videoObj = document.querySelector('#video-popup-video');
+                this_obj.showVideoPopupFade = true;
+                this_obj.videoURL = button_obj.getAttribute('data-video-url');
+
+                this_obj.setVideo();
+              }, 100);
+            } else {
+              this_obj.showVideoPopupFade = false;
+
+              setTimeout(() => {
+                this_obj.showVideoPopup = false;
+              }, 500);
+            }
+          },
+          playVideo(id, state){
+            console.log(id, state)
+            let image = document.querySelector(`#community-love-stories-{{ section.id }} #clsirb-image-${id}`)
+            let video = document.querySelector(`#community-love-stories-{{ section.id }} #clsirb-video-${id}`)
+            let videoPlayer = document.querySelector(`#community-love-stories-{{ section.id }} #clsirb-video-${id} video`)
+            if(state){
+              video.style.display = 'flex'
+              image.style.display = 'none'
+              videoPlayer.play()
+            } else {
+              video.style.display = 'none'
+              image.style.display = 'flex'
+              videoPlayer.pause()
+            }
+          }
+        }
+    }).mount('#community-love-stories-{{ section.id }}');
+</script>
+{% schema %}
+  {
+    "name": "Community Love Stories",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "load_more_btn_label",
+        "label": "Load More Button Label"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Entry",
+        "type": "entry",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link Url"
+          },
+          {
+            "type": "header",
+            "content": "Big Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "big_image",
+            "label": "Image"
+          },
+          {
+            "type": "select",
+            "id": "image_position",
+            "label": "Image Position",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "default": "left"
+          },
+          {
+            "type": "video",
+            "id": "big_video",
+            "label": "Video"
+          },
+          {
+            "type": "header",
+            "content": "Small Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "small_image",
+            "label": "Image"
+          },
+          {
+            "type": "video",
+            "id": "small_video",
+            "label": "Video"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Community Love Stories"
+      }
+    ]
+  }
+{% endschema %}

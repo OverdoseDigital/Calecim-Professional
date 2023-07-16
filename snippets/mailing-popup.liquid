@@ -1,0 +1,183 @@
+{%- comment -%} Calecim theme {%- endcomment -%}
+
+<style>
+    .mailing-popup-wrapper {
+        position: fixed;
+        display: flex;
+        justify-content: flex-start;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        background: rgba(108,108,108,.8);
+        z-index: 1000000;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s ease all;
+        overflow-y: auto;
+    }
+    .mailing-popup-wrapper.show { 
+        opacity: 1;
+        visibility: visible;
+    }
+    .mailing-popup-wrapper .popup-outer-wrapper {
+        position: relative;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .mailing-popup-wrapper .popup-inner-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 870px;
+        font-size: 0;
+        height: auto;
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,.1);
+        background-color: #fff;
+    }
+    .mailing-popup-wrapper .popup-inner-wrapper .close-popup {
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        font-size: 0;
+        top: 25px;
+        right: 25px;
+    }
+    .mailing-popup-wrapper .popup-inner-wrapper .close-popup svg {
+        display: block;
+        width: 15px;
+        height: 15px;
+    }
+
+    @media screen and (min-width: 768px){
+        .mailing-popup-wrapper {
+            justify-content: center;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .mailing-popup-wrapper .popup-inner-wrapper {
+            width: 100%;
+        }
+        .mailing-popup-wrapper .image-container .global-image-wrapper {
+            height: 100%;
+        }
+        .mailing-popup-wrapper .image-container .global-image-wrapper img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    @media screen and (min-width: 1024px){
+        .mailing-popup-wrapper .popup-inner-wrapper {
+            width: 70%;
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        .mailing-popup-wrapper .popup-inner-wrapper .close-popup {
+            top: 30px;
+            right: 30px;
+        }
+    }
+</style>
+
+<div id="mailing-popup">
+    <teleport to="body">
+        <div id="" class="mailing-popup-wrapper" @click="hidePopup($event)" v-if="showMailingPopup" :class="{ 'show': showMailingPopupFade }">
+            <div class="popup-outer-wrapper pl-20 pr-20 t-pl-30 t-pr-30">
+                <div class="popup-inner-wrapper">
+                    <div class="global-flex flex-wrap width-100 relative">
+                        <a href="javascript:void(0)" rel="nofollow" @click="togglePopup($event)" class="close-popup z-3">{{ settings.icon_close }}</a>
+
+                        <div class="image-container col-12 pl-0 pr-0 col-t-5 t-pl-0 t-pr-0">
+                            {%- assign id = 'mailing-popup-image' -%}
+                            {%- render
+                                'global-image-wrapper-responsive',
+                                desktop_image: settings.popup_image_desktop,
+                                mobile_image: settings.popup_image_mobile,
+                                image_id: id,
+                                load_inside_vue: true
+                            -%} 
+                        </div>
+                        <div class="text-container col-12 pt-30 pb-30 pl-25 pr-25 col-t-7 t-pl-40 t-pr-40 max-pl-70 max-pr-70 d-pt-60 d-pb-60 global-flex flex-wrap ai-center">
+                            <div class="wrapper tc">
+                                <h4 class="h4 uppercase">{{ settings.popup_title }}</h4>
+                                {%- if settings.popup_text != blank -%}
+                                    <p class="mt-10 p2 c-black opacity-5">{{ settings.popup_text }}</p>
+                                {%- endif -%}
+
+                                <form>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        class="p2 width-100 p-20 bg-lightgrey c-darkgrey mt-15 d-mt-20"
+                                        placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}">
+                                    
+                                    <button type="submit" class="btn2 width-100 tc mt-15">{{ settings.popup_button_label }}</button>
+                                </form>
+
+                                {%- if settings.popup_skip_text != blank -%}
+                                    <a href="javascript:(0)" rel="nofollow" class="p2 c-black opacity-5 mt-10 d-mt-15 tc show-m-inline-block" @click="togglePopup($event)">{{ settings.popup_skip_text }}</a>
+                                {%- endif -%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </teleport>
+</div>
+
+<script>
+    const mailingPopupVue = Vue.createApp({
+        delimiters: [
+            '${', '}'
+        ],
+        data() {
+            return {
+              showMailingPopup: false,
+              showMailingPopupFade: false
+            }
+        },
+        mounted() {
+        },
+        methods: {
+            hidePopup(e) {
+                if(e.target.classList.contains('popup-outer-wrapper')) {
+                  this.togglePopup();
+                }
+            },
+            togglePopup(e) {
+                const this_obj = this;
+
+                if(!this_obj.showMailingPopup) {
+                    this_obj.showMailingPopup = true;
+
+                    setTimeout(() => {
+                        this_obj.showMailingPopupFade = true;
+                        $360.lazyLoadInstance.update();
+                    }, 100);
+                } else {
+                    this_obj.showMailingPopupFade = false;
+
+                    setTimeout(() => {
+                        this_obj.showMailingPopup = false;
+                    }, 500);
+                }
+            }
+        }
+    }).mount('#mailing-popup');
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const mailing_popup_trigger = document.querySelector(`a[href="#{{ settings.popup_id }}"]`);
+
+        if(mailing_popup_trigger != null) {
+            mailing_popup_trigger.addEventListener('click', function(event){
+                event.preventDefault();
+                mailingPopupVue.togglePopup();
+            });
+        }
+    });
+</script>

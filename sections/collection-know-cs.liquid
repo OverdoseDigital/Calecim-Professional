@@ -1,0 +1,461 @@
+{%  comment  %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }}
+  }
+  {%- if section.settings.bg_color == '#ffffff' or section.settings.bg_color == '#FFFFFF' -%}
+    #shopify-section-{{ section.id }} .ck-text-content .cktc-item {
+      border: 1px solid var(--silver);
+    }
+  {%- endif -%}
+
+  #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-left {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-left,
+  #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-right {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content {
+    background: #F9F9F9;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content .ckic-image .ckici-item {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content .ckic-image .ckici-item .global-image-wrapper {
+    background: transparent;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content .ckic-image .ckici-item.active {
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail {
+    display: flex;
+    justify-content: center;
+    background: #FFFFFF;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail .ckict-item {
+    text-align: center;
+    color: #dbdbdb;
+    cursor: pointer;
+    margin-left: 7.5px;
+    margin-right: 7.5px;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail .ckict-item span {
+    border-bottom: 1px solid transparent;
+    display: inline-block;
+    padding-bottom: 3px;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail .ckict-item.active {
+    color: #2C2C2C;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail .ckict-item.active span {
+    border-bottom: 1px solid #2c2c2c;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail .ckict-item.active svg * {
+    stroke: #2C2C2C;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail .ckict-item svg {
+    height: 30px;
+    color: #dbdbdb;
+    stroke: #dbdbdb;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail .ckict-item svg * {
+    stroke: #dbdbdb;
+  }
+  #shopify-section-{{ section.id }} .ck-text-content .cktc-item {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .ck-text-content .cktc-item.active {
+    display: block;
+    background: #fff;
+  }
+  #shopify-section-{{ section.id }} .ck-text-content .cktc-item .cktci-title {
+    border-bottom: 1px solid #dbdbdb;
+  }
+
+  @media screen and (min-width: 768px) {
+    #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail .ckict-item {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  @media screen and (min-width: 1024px){
+    #shopify-section-{{ section.id }} .collection-knowcs > .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-left {
+      display: block;
+      width: 58%;
+    }
+    #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-right {
+      display: block;
+      width: 42%;
+    }
+    #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-left .ck-image-content {
+      display: flex;
+      justify-content: space-between;
+    }
+    #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-left .ck-image-content .ckic-image {
+      flex: 0 0 calc(100% - 115px);
+    }
+    #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-left .ck-image-content .ckic-thumbnail {
+      flex-direction: column;
+      flex: 0 0 115px;
+    }
+    #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-right .ck-image-content  {
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail .ckict-item svg {
+      width: 50px;
+      height: 40px;
+    }
+  }
+
+  {%- if section.settings.section_width == "" -%}
+    #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail {
+      position: relative;
+      width: calc(100% - 20px);
+      left: 10px;
+      bottom: 10px;
+    }
+    #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-right .ck-text-content .container {
+      max-width: 480px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      #shopify-section-{{ section.id }} .collection-knowcs > .container.main-container {
+        align-items: unset;
+      }
+      #shopify-section-{{ section.id }} .ck-image-content .ckic-thumbnail {
+        display: flex;
+        justify-content: center;
+        background: #FFFFFF;
+        width: 100%;
+        left: unset;
+        bottom: unset;
+      }
+      #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-left,
+      #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-right {
+        width: 50%;
+      }
+
+      #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-left {
+        display: flex;
+        flex-direction: column;
+      }
+      #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-right {
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        max-width: 480px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-left .ck-image-content .ckic-image {
+        flex: 0 0 calc(100% - 105px);
+      }
+      #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-left .ck-image-content {
+        position: relative;
+        height: 100%;
+      }
+      #shopify-section-{{ section.id }} .collection-knowcs > .container .ck-left .ck-image-content .ckic-thumbnail {
+        position: absolute;
+        width: 105px;
+        flex: 0 0 105px;
+        height: calc(100% - 50px);
+        top: 25px;
+        right: 25px;
+      }
+    }
+  {%- endif -%}
+</style>
+<div class="collection-knowcs" id="collection-knowcs-{{ section.id }}">
+  {%- assign container_class = "container pl-0 pr-0 d-pl-60 d-pr-60" -%}
+  {%- if section.settings.section_width == "" -%}
+    {%- assign container_class = "container main-container global-flex flex-wrap pl-0 pr-0" -%}
+  {%- endif -%}
+
+  <div class="{{ container_class }}">
+    <div class="ck-left">
+      <div class="ck-image-content">
+        <div class="ckic-image global-flex ai-center">
+          <div class="relative width-100">
+            {% for block in section.blocks %}
+            <div class="ckici-item {% if forloop.index == 1 %}active{% endif %} ckici-item-{{ forloop.index }}">
+              {%- render 'global-image-wrapper',
+                image: block.settings.image
+              %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="ckic-thumbnail pt-20 pb-20">
+          {% for block in section.blocks %}
+          <div class="ckict-item ckict-item-{{ forloop.index }} d-mt-15 d-mb-15 max-mt-25 max-mb-25 ml-15 mr-15 {% if forloop.index == 1 %}active{% endif %}" @click="setActive({{ forloop.index }})">
+            <div class="icon-wrapper global-flex jc-center">
+              {{ block.settings.icon }}
+            </div>
+            
+            <span class="p3 spacing-2 bold-600 mt-10">{{ block.settings.title }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="ck-right d-pl-60">
+      <div class="outer-wrapper">
+        {%- assign headline_class = "" -%}
+        {%- if section.settings.section_width == "" -%}
+          {%- assign headline_class = "hide-m show-d" -%}
+        {%- endif -%}
+
+        <div class="ck-headline pb-25 t-pb-40 d-pb-0 {{ headline_class }}">
+          <div class="container d-pl-0 d-pr-0">
+            <h2 class="h6">{{ section.settings.title | newline_to_br }}</h2>
+            <p class="p2 mt-5 c-grey d-mt-10">{{ section.settings.text | newline_to_br }}</p>
+          </div>
+        </div>
+        <div class="ck-image-content">
+          <div class="ckic-image">
+            <div class="container pl-0 pr-0">
+              {% for block in section.blocks %}
+              <div class="ckici-item {% if forloop.index == 1 %}active{% endif %} ckici-item-{{ forloop.index }}">
+                {%- render 'global-image-wrapper',
+                  image: block.settings.image_mobile
+                %}
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="ckic-thumbnail pt-20 pb-20">
+            {% for block in section.blocks %}
+            <div class="ckict-item ckict-item-{{ forloop.index }} ml-10 mr-10 {% if forloop.index == 1 %}active{% endif %}" @click="setActive({{ forloop.index }})">
+              {{ block.settings.icon }}
+              <span class="p3 spacing-2 bold-600 mt-10">{{ block.settings.title }}</span>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="ck-text-content pt-40 d-pt-0 d-mt-25">
+          <div class="container d-pl-0 d-pr-0">
+            {%- assign headline_class = "hide-m" -%}
+            {%- if section.settings.section_width == "" -%}
+              {%- assign headline_class = "show-m hide-d" -%}
+            {%- endif -%}
+
+            <div class="ck-headline mb-20 {{ headline_class }}">
+              <h2 class="h6">{{ section.settings.title | newline_to_br }}</h2>
+              <p class="p2 mt-5 c-grey d-mt-10">{{ section.settings.text | newline_to_br }}</p>
+            </div>
+
+            {% for block in section.blocks %}
+              {%- if block.settings.text != blank -%}
+                <div class="cktc-item cktc-item-{{ forloop.index }} {% if forloop.index == 1 %}active{% endif %}">
+                  <div class="cktci-title pt-20 pb-20 pl-20 pr-20 d-pl-30 d-pr-30">
+                    <h6 class="h11">{{ block.settings.title }}</h6>
+                  </div>
+                  <div class="cktci-content pt-20 pb-20 pl-20 pr-20 d-pb-20 d-pl-30 d-pr-30 c-grey">
+                    {{ block.settings.text | newline_to_br }}
+                    <div class="mt-15 d-mt-20">
+                      {%- assign link_id = "link-shop-collection-knowcs" | append: block.id  -%}                                    
+                      {% render 'link-icon',
+                        id: link_id,
+                        label: block.settings.link_label,
+                        url: block.settings.link_url,
+                        text_class: 'p3 uppercase c-black spacing-2 bold-600',
+                        icon_color: '#6C6C6C',
+                        icon_svg: settings.icon_btn_right,
+                        load_inside_vue: true
+                      %}
+                    </div>
+                  </div>
+                </div>
+              {%- endif -%}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    const collectionknowcs = Vue.createApp({
+        delimiters: [
+            '${', '}'
+        ],
+        data() {
+            return {}
+        },
+        mounted() {
+        },
+        methods: {
+          setActive(idx){
+            let thumbnails = document.querySelectorAll("#collection-knowcs-{{ section.id }} .ck-left .ckic-thumbnail .ckict-item");
+            let thumbnail = document.querySelector(`#collection-knowcs-{{ section.id }} .ck-left .ckic-thumbnail .ckict-item-${idx}`);
+            let thumbnailsR = document.querySelectorAll("#collection-knowcs-{{ section.id }} .ck-right .ckic-thumbnail .ckict-item");
+            let thumbnailR = document.querySelector(`#collection-knowcs-{{ section.id }} .ck-right .ckic-thumbnail .ckict-item-${idx}`);
+            let thumbnailsLabel = document.querySelectorAll("#collection-knowcs-{{ section.id }} .ckic-thumbnail .ckict-item span");
+            let thumbnailLabel = document.querySelector(`#collection-knowcs-{{ section.id }} .ckic-thumbnail .ckict-item-${idx} span`);
+            thumbnails.forEach(function(item) {
+              item.classList.remove("active")
+            });
+            thumbnail.classList.add("active")
+            thumbnailsR.forEach(function(item) {
+              item.classList.remove("active")
+            });
+            thumbnailR.classList.add("active")
+            //thumbnailsLabel.forEach(function(item) {
+              //item.classList.remove("spacing-2")
+              //item.classList.remove("bold-600")
+            //});
+            //thumbnailLabel.classList.add("bold-600")
+            //thumbnailLabel.classList.add("spacing-2")
+
+            let images = document.querySelectorAll("#collection-knowcs-{{ section.id }} .ck-left .ckic-image .ckici-item");
+            let image = document.querySelector(`#collection-knowcs-{{ section.id }} .ck-left .ckic-image .ckici-item-${idx}`);
+            let imagesR = document.querySelectorAll("#collection-knowcs-{{ section.id }} .ck-right .ckic-image .ckici-item");
+            let imageR = document.querySelector(`#collection-knowcs-{{ section.id }} .ck-right .ckic-image .ckici-item-${idx}`);
+            images.forEach(function(item) {
+              item.classList.remove("active")
+            });
+            image.classList.add("active") 
+
+            imagesR.forEach(function(item) {
+              item.classList.remove("active")
+            });
+            imageR.classList.add("active") 
+            
+            let contents = document.querySelectorAll("#collection-knowcs-{{ section.id }} .ck-text-content .cktc-item");
+            let content = document.querySelector(`#collection-knowcs-{{ section.id }} .ck-text-content .cktc-item-${idx}`);
+            contents.forEach(function(item) {
+              item.classList.remove("active")
+            });
+            content.classList.add("active") 
+          }
+        }
+    }).mount('#collection-knowcs-{{ section.id }}');
+</script>
+{% schema %}
+  {
+    "name": "Collection Know CS",
+    "settings": [
+      {
+        "type": "radio",
+        "id": "section_width",
+        "label": "Section Width",
+        "options": [
+          {"value":"","label":"Full Width"},
+          {"value":"container","label":"Contained"}
+        ],
+        "default": "container"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Entry",
+        "type": "entry",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link Url"
+          },
+          {
+            "type": "textarea",
+            "id": "icon",
+            "label": "Icon (SVG)"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image (desktop)"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Image (mobile)"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Know CS"
+      }
+    ]
+  }
+{% endschema %}

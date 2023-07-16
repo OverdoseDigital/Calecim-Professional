@@ -1,0 +1,68 @@
+<style>
+#sticky-atc {
+    top: -80px;
+    left: 0;
+    transition: all 0.3s linear;
+}
+#sticky-atc.show {
+    top: 82px;
+}
+#sticky-atc .left-side .image-con {
+    width: 100px;
+}
+#sticky-atc .right-side .btn {
+    font-size: 14px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media only screen and (min-width: 1024px) {
+    #sticky-atc.show {
+        top: 105px;
+    }
+}
+</style>
+<div id="sticky-atc" class="fixed w-full bg-white bb-1 b-border-orange zi-2 pt-10 pb-10">
+    <div class="container">
+        <div class="flex jc-between">
+            <div class="left-side hide-m t-flex t-ai-center">
+                <div class="image-con mr-20">
+                    {%- render 'global-image-wrapper', image: product.featured_image, size: 200 -%}
+                </div>
+                <p class="p1 bold-700">{{ product.title }}</p>
+            </div>
+            <div class="right-side w-full t-w-auto flex ai-center jc-between">
+                <div class="text-con pr-20">
+                    <p class="p1 bold-700 hide-t">{{ product.title }}</p>
+                    <p class="p1"><span class="mr-10">from</span> {%- render 'product-price', product: product -%}</p>
+                </div>
+                <button type="button" @click="scrollToProductForm" class="btn btn1 no-icon">{{ 'products.product.buy_now' | t }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+Vue.createApp({
+    mounted() {
+        new Waypoint({
+            element: document.getElementById('product-page-top'),
+            handler: function(direction) {
+                const stickyAtc = document.getElementById('sticky-atc');
+                if(direction == 'down') {
+                    stickyAtc.classList.add('show');
+                } else {
+                    stickyAtc.classList.remove('show');
+                }
+            },
+            offset: `-${document.getElementById('product-page-top').offsetHeight}`
+        });
+    },
+    methods: {
+        scrollToProductForm() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    }
+}).mount('#sticky-atc');
+</script>

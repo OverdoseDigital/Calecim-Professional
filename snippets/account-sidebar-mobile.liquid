@@ -1,0 +1,38 @@
+<style>
+    .global-select-div{
+        border-top: 0;
+        border-color: #e7e7e7;
+    }
+</style>
+<div class="hide-t">
+    {%- case template -%}
+        {%- when 'customers/account' -%}
+            {%- assign default_value = '/account' -%}
+            {%- assign default_text = 'customer.account.order_history' | t -%}
+        {%- when 'customers/addresses' -%}
+            {%- assign default_value = '/account/addresses' -%}
+            {%- assign default_text = 'customer.account.address_book' | t -%}
+        {%- else -%}
+            {%- assign default_value = '/account' -%}
+            {%- assign default_text = 'customer.account.order_history' | t -%}
+    {%- endcase -%}
+    {%- if template.suffix == 'orders' -%}
+        {%- assign default_value = '/account' -%}
+        {%- assign default_text = 'customer.account.order_history' | t -%}
+    {%- endif -%}
+
+    {% capture values %}{{ 'customer.account.order_history' | t }},{{ 'customer.account.address_book' | t }},{{ 'customer.account.logout' | t }}{% endcapture %}
+    {%- assign values = values | split: ',' -%}
+    {%- assign option_values = '/account,/account/addresses,/account/logout' | split: ',' -%}
+
+    {%- render 'global-select',
+        default_value: default_value,
+        default_text: default_text,
+        values: values,
+        option_values: option_values,
+        id: 'mobile-account-menu',
+        selected_text_class: 'p2 bold-500',
+        select_icon: 'caret'
+        onchange: 'window.location.href = this.value;'
+    -%}
+</div>

@@ -1,0 +1,199 @@
+{% comment %} Calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<section class="heading">
+    <div class="container">
+        <{{ section.settings.title_dom }} class="{{ section.settings.size }} {{ section.settings.text_align }}"
+            style="color: {{ section.settings.text_color }}; font-weight: {{ section.settings.font_weight }}; letter-spacing: {{ section.settings.letter_spacing }}"
+        >
+            {{ section.settings.title | newline_to_br }}
+        </{{ section.settings.title_dom }}>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Heading",
+        "settings": [
+        {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text Color"
+        },
+        {
+            "type": "select",
+            "id": "size",
+            "label": "Size",
+            "options": [
+                {
+                    "value": "h1",
+                    "label": "H1"
+                },
+                {
+                    "value": "h2",
+                    "label": "H2"
+                },
+                {
+                    "value": "h3",
+                    "label": "H3"
+                },
+                {
+                    "value": "h4",
+                    "label": "H4"
+                },    
+                {
+                    "value": "h5",
+                    "label": "H5"
+                },
+                {
+                    "value": "h6",
+                    "label": "H6"
+                },    
+                {
+                    "value": "h7",
+                    "label": "H7"
+                },
+                {
+                    "value": "h8",
+                    "label": "H8"
+                },    
+                {
+                    "value": "h9",
+                    "label": "H9"
+                },
+                {
+                    "value": "h10",
+                    "label": "H10"
+                },
+                {
+                    "value": "h11",
+                    "label": "H11"
+                },
+                {
+                    "value": "p1",
+                    "label": "P1"
+                },
+                {
+                    "value": "p2",
+                    "label": "P2"
+                },
+                {
+                    "value": "p3",
+                    "label": "P3"
+                }
+            ],
+            "default": "h1"
+        },
+        {
+            "type": "text",
+            "id": "letter_spacing",
+            "label": "Letter Spacing",
+            "info": "e.g. 2px"
+        },
+        {
+            "type": "select",
+            "id": "font_weight",
+            "label": "Font Weight",
+            "options": [
+                {
+                    "value": "400",
+                    "label": "Regular"
+                },
+                {
+                    "value": "500",
+                    "label": "Medium"
+                },
+                {
+                    "value": "600",
+                    "label": "Semi Bold"
+                }
+            ],
+            "default": "500"
+        },
+        {
+            "type": "select",
+            "id": "text_align",
+            "label": "Text Align",
+            "options": [
+                {
+                    "value": "tl",
+                    "label": "Left"
+                },
+                {
+                    "value": "tc",
+                    "label": "Center"
+                },
+                {
+                    "value": "tr",
+                    "label": "Right"
+                }
+            ],
+            "default": "tc"
+        },
+        {
+            "type": "select",
+            "id": "title_dom",
+            "label": "Title DOM Type",
+            "options": [
+            {
+                "value": "h1",
+                "label": "H1"
+            },
+            {
+                "value": "h2",
+                "label": "H2"
+            }
+            ],
+            "default": "h2",
+            "info": "This is for SEO purposes. Please choose H1 if this section is the first section of the page"
+        },
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "blocks": [],
+        "presets": [
+            {
+                "name": "Heading",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}

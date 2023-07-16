@@ -1,0 +1,106 @@
+{% comment %} Calecim {% endcomment %}
+
+<div class="global-content-top-margin">
+    <section class="article-influencer-con">
+        <div class="global-flex flex-wrap ai-center bg-lightgrey">
+            <div class="image-container col-12 pl-0 pr-0 col-d-6 d-pl-0 d-pr-0">
+                {%- render 'global-image-wrapper',
+                    image: article.image,
+                    preload: true
+                -%}
+
+                <div class="link-wrapper ab-top z-2 pt-20 d-pt-30 width-100 tl">
+                    <div class="container">
+                        <div class="link-wrapper-inner font-0">
+                            {%- assign link_id = "link-back" -%}
+                            {%- assign url = routes.root_url | append: 'blogs/community/' -%}
+                            {%- assign label = 'blogs.article.back_to_community' | t -%}
+                            {%- render 'link-icon',
+                                id: link_id,
+                                label: label,
+                                url: url,
+                                text_class: 'p4 c-black',
+                                icon_color: '#231D1D',
+                                icon_svg: settings.icon_btn_left,
+                                left_arrow: true,
+                                load_inside_vue: false
+                            -%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 pl-20 pr-20 t-pl-30 t-pr-30 col-d-6 d-pl-90 d-pr-90 pt-40 pb-40 t-pt-60 t-pb-60 d-pt-0 d-pb-0">
+                <div class="max-500">
+                    {%- if article.metafields.community_sa.occupation != blank -%}
+                        <p class="p5 bold-500 mb-10 uppercase">{{ article.metafields.community_sa.occupation }}</p>
+                    {%- endif -%}
+
+                    <h1 class="h3 bold-600">{{ article.title }}</h1>
+
+                    {%- if article.metafields.community_sa.clinic_address != blank -%}
+                        <p class="p3 bold-500 d-pb-10">{{ article.metafields.community_sa.clinic_address }}</p>
+                    {%- endif -%}
+
+                    {%- if article.content != blank -%}
+                        <div class="mt-20 d-mt-10 p1">{{ article.content }}</div>
+                    {%- endif -%}
+
+                    {%- if article.metafields.community_sa.fb_url != blank or article.metafields.community_sa.ig_url != blank or article.metafields.community_sa.yt_url != blank -%}
+                        <div class="social-media-wrapper width-100 mt-20 d-mt-25">
+                            {%- if article.metafields.community_sa.fb_url != blank -%}
+                                <a href="{{ article.metafields.community_sa.fb_url }}" class="social-media-icons fb mr-10">{{ settings.facebook-icon }}</a>
+                            {%- endif -%}
+
+                            {%- if article.metafields.community_sa.ig_url != blank -%}
+                                <a href="{{ article.metafields.community_sa.ig_url }}" class="social-media-icons mr-10">{{ settings.instagram-icon }}</a>
+                            {%- endif -%}
+
+                            {%- if article.metafields.community_sa.yt_url != blank -%}
+                                <a href="{{ article.metafields.community_sa.yt_url }}" class="social-media-icons mr-10">{{ settings.youtube-icon }}</a>
+                            {%- endif -%}
+                        </div>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+
+        {%- if article.metafields.community_sa.testimonial != blank -%}
+            <div class="testimonial-wrapper pl-20 pr-20 t-pl-30 t-pr-30 d-pt-100 d-pb-100 t-pt-60 t-pb-60 pt-40 pb-40">
+                <div class="max-950 ml-auto mr-auto tc">
+                    <h2 class="h7">{{ article.metafields.community_sa.testimonial }}</h2>
+                    <p class="p3 mt-20 d-mt-30">
+                        {{- article.title -}}
+                        {%- if article.metafields.community_sa.occupation != blank -%}
+                            , {{ article.metafields.community_sa.occupation }}
+                        {%- endif -%}
+                    </p>
+                </div>
+            </div>
+        {%- endif -%}
+
+        {%- if article.metafields.community_sa.recommend_product != blank -%}
+            <div class="recommends-wrapper">
+                <div class="global-flex flex-wrap ai-center d-bt-1 b-border">
+                    <div class="col-12 pl-0 pr-0 col-d-6 d-pl-0 d-pr-0 push-d-6">
+                        {%- assign image_id = 'recommends-image' -%}
+                        {%- render 'global-image-wrapper-responsive',
+                            desktop_image: article.metafields.community_sa.recommend_image_desktop[0],
+                            mobile_image: article.metafields.community_sa.recommend_image_mobile[0],
+                            mobile_acc: true,
+                            desktop_acc: true
+                        -%}
+                    </div>
+                    <div class="col-12 pl-20 pr-20 t-pl-30 t-pr-30 col-d-6 d-pl-0 d-pr-0 pull-d-6">
+                        <div class="content-wrapper pt-40 pb-40 t-pt-60 t-pb-60 d-pt-0 d-pb-0">
+                            <h2 class="h3 tl d-tc max-350 ml-auto mr-auto">{{ 'blogs.article.recommends' | t }}</h2>
+                            <div class="product-wrapper width-100 t-max-350 d-max-290 t-ml-auto t-mr-auto mt-20 d-mt-25">
+                                {%- assign pro_obj = all_products[article.metafields.community_sa.recommend_product] -%}
+                                {%- render 'product-each', product: pro_obj -%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {%- endif -%}
+    </section>
+</div>

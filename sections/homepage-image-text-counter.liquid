@@ -1,0 +1,334 @@
+<style>
+  #shopify-section-{{ section.id }} {
+    {% if section.settings.bg_color != blank %}
+    background-color: {{ section.settings.bg_color }};
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .homepage-text-counter {
+
+  }
+  #shopify-section-{{ section.id }} .htc-container {
+    display: flex;
+    flex-direction: column;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-left {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    margin: 0 auto;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top > .htcr-title,
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top > .htcr-text {
+    text-align: center;
+    {% if section.settings.text_align != blank %}
+    text-align: {{ section.settings.text_align }};
+    {% endif %}
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item {
+    width: 50%;
+    padding: 7.5px;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item:nth-child(1){
+    padding-top: 0; 
+    padding-left: 0;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item:nth-child(2) {    
+    padding-top: 0; 
+    padding-right: 0;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item:nth-child(3){
+    padding-bottom: 0;
+    padding-left: 0;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item:nth-child(4) {    
+    padding-bottom: 0; 
+    padding-right: 0;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item .htcrci-box {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item .htcrci-box .icon svg {
+    display: block;
+    width: 7px;
+    height: 7px;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item .htcrci-box > div {
+    max-width: 130px;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item .htcrci-box > div,
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item .htcrci-box > div * {
+    opacity: .5;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-bot {
+    border-top: 1px solid rgba(35, 29, 29,.1);
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-bot > div {
+    width: 100%;
+    display: block;
+  }
+  @media(min-width: 1024px) {
+    #shopify-section-{{ section.id }} .htc-container {
+      width: 100%;
+      {% if section.settings.section_width == 'container' %}
+      margin: 0 auto;
+      {% endif %}
+      display: flex;
+      flex-direction: row;
+      {% if section.settings.image_position == 'right' %}
+      flex-direction: row-reverse;
+      {% endif %}
+      justify-content: space-between;
+    }
+    #shopify-section-{{ section.id }} .htc-container .htc-left {
+      width: 50%;
+    }
+    #shopify-section-{{ section.id }} .htc-container .htc-right {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top {
+      max-width: 420px;
+      {% if section.settings.c_max_width != blank %}
+      max-width: {{ section.settings.c_max_width }}px;
+      {% endif %}
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      margin: 0 auto;
+    }
+    #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+    #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item {
+      width: 50%;
+      padding: 10px;
+    }
+    #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item .htcrci-box {
+      background-color: #fff;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item .htcrci-box > div {
+      max-width: 130px;
+    }
+    #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item .htcrci-box > div,
+    #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-top .htcr-counter .htcrc-item .htcrci-box > div * {
+      opacity: .5;
+    }
+    #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-bot {
+      border-top: 1px solid rgba(35, 29, 29,.1);
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .htc-container .htc-right .htcr-bot > div {
+      width: 100%;
+      display: block;
+    }
+  }
+</style>
+<div class="homepage-text-counter">
+  <div class="htc-container {{ section.settings.section_width }}">
+    <div class="htc-left">
+      {%- assign image_id = "htcl-image-" | append: section.id -%}
+      {%- render 'global-image-wrapper-responsive',
+          image_id: image_id,
+          desktop_image: section.settings.desktop_image,
+          mobile_image: section.settings.mobile_image
+      %}
+    </div>
+    <div class="htc-right">
+    <div class="htcr-top d-pt-0 d-pb-0 d-pl-0 d-pr-0 pt-40 pb-40 {% unless section.settings.section_width == 'container' %} pl-20 pr-20 t-pl-30 t-pr-30 {% endunless %}">
+        <h1 class="h3 c-black htcr-title">{{ section.settings.title }}</h1>
+        <div class="mt-10 p2 c-black htcr-text">
+          {{ section.settings.text }}
+        </div>
+        <div class="htcr-counter d-mt-30 mt-20">
+          {% for block in section.blocks %}
+            <div class="htcrc-item">
+              {%- if block.settings.url != blank -%}
+                <a href="{{ block.settings.url }}" class="show-m height-100">
+              {%- endif -%}
+              
+              <div class="htcrci-box relative height-100">
+                {%- if block.settings.url != blank -%}
+                  <span class="icon ab-top-right p-15 z-2 font-0">{{ settings.icon_arrow_diagonal_up }}</span>
+                {%- endif -%}
+
+                <h4 class="h7 c-black">{{ block.settings.counter }}</h4>
+                <div class="p4 c-black">
+                  {{ block.settings.title }}
+                </div>
+              </div>
+
+              {%- if block.settings.url != blank -%}
+                </a>
+              {%- endif -%}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      {%- if section.settings.link_label != blank -%}
+        <div class="htcr-bot">
+          <div class="link3">
+            {%- assign link_id = "htcrb-link-" | append: section.id -%}
+            {%- render 'link-icon',
+                id: link_id,
+                label: section.settings.link_label,
+                url: section.settings.link_url,
+                text_class: 'p3 mr-10 pt-20 pb-20',
+                icon_color: '#231D1D',
+                icon_svg: settings.icon_arrow_diagonal_up,
+                load_inside_vue: false
+            -%}
+        </div>
+      {%- endif -%}
+      
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Homepage Text Counter",
+    "settings": [
+      {
+        "type": "select",
+        "id": "section_width",
+        "label": "Section Width",
+        "options": [
+            {"value":"","label":"Full Width"},
+            {"value":"container","label":"Contained"}
+        ]
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "number",
+        "id": "c_max_width",
+        "label": "Content Max Width"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text Align",
+        "options": [
+            {"value":"left","label":"Left"},
+            {"value":"center","label":"Center"},
+            {"value":"right","label":"Right"}
+        ]
+      },
+      {
+        "type": "text",
+        "id": "link_label",
+        "label": "Link Label"
+      },
+      {
+        "type": "url",
+        "id": "link_url",
+        "label": "Link URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "desktop_image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "label": "Image Position",
+        "options": [
+            {"value":"left","label":"Left"},
+            {"value":"right","label":"Right"}
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "entry",
+        "name": "Entry",
+        "limit": 4,
+        "settings": [
+          {
+              "type": "text",
+              "id": "counter",
+              "label": "Counter"
+          },
+          {
+              "type": "textarea",
+              "id": "title",
+              "label": "Title"
+          },
+          {
+              "type": "url",
+              "id": "url",
+              "label": "URL"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage Text Counter",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

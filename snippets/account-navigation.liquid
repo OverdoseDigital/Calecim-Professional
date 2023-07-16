@@ -1,0 +1,63 @@
+<style>
+    .account-navigation .filter-active{
+        color:#2c2c2c;
+        border-bottom:1px solid #dbdbdb;
+    }
+
+    .account-navigation .nav-item{
+        margin:0 12.5px;
+    }
+
+    .account-navigation .flex-wrapper{
+        display:flex;
+        white-space:nowrap;
+        overflow:auto;
+        margin:0 -12.5px;
+    }
+
+    .account-navigation .flex-each{
+        display:inline-block;
+    }
+
+    .account-navigation{
+        box-shadow: 0px 3px 6px #0000000D;
+    }
+
+    @media(min-width: 1024px) {
+        .account-navigation .flex-wrapper{
+            margin:0 -20px;
+            justify-content:center;
+        }
+        .account-navigation .price-item{
+            margin:0 20px;
+            
+        }
+    }
+</style>
+
+<div class="account-navigation">
+    <div class="container">
+        <div class="flex-wrapper pt-20 pb-20">
+            <div class="flex-each">
+                <a href="/account">
+                    <div class="p3 bold-500 cursor uppercase nav-item c-grey spacing-2 {%if filter_active == "profile"%}filter-active{%endif%}">YOUR PROFILE</div>
+                </a>
+            </div>
+            <div class="flex-each">
+                <a href="/pages/order-history">
+                    <div class="p3 bold-500 cursor uppercase nav-item c-grey spacing-2 {%if filter_active == "order"%}filter-active{%endif%}">ORDER HISTORY</div>
+                </a>
+            </div>
+            <div class="flex-each">
+                <a href="/account/addresses">
+                    <div class="p3 bold-500 cursor uppercase nav-item c-grey spacing-2 {%if filter_active == "address"%}filter-active{%endif%}">ADDRESS BOOK</div>
+                </a>
+            </div>
+            <div class="flex-each">
+                <a href="/pages/reset-password">
+                    <div class="p3 bold-500 cursor uppercase nav-item c-grey spacing-2 {%if filter_active == "reset"%}filter-active{%endif%}">RESET PASSWORD</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,175 @@
+{%- assign el_id = 'banner-breadcrumbs2-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<style>
+{%- if section.settings.bg_color != blank -%}
+#{{ el_id }} {
+	background-color: {{ section.settings.bg_color }};
+}
+{%- endif -%}
+#{{ el_id }} .breadcrumb-box {
+	z-index: 11 !important;
+}
+@media screen and (min-width:768px){
+	#shopify-section-{{ section.id }} .inner{
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		z-index:10;
+	}
+	/*
+	#shopify-section-{{ section.id }} h1{
+		color:#fff;
+	}
+	*/
+	#shopify-section-{{ section.id }} .bc-item, #shopify-section-{{ section.id }} .c-comfort-orange{
+		color:var(--grey);
+	}
+	#shopify-section-{{ section.id }} .breadcrumb path{
+		fill:var(--grey);
+	}
+}
+</style>
+
+<div id="{{ el_id }}" class="collection-box">
+    <div class="relative">
+		<div class="overlay hide-m show-t"></div>
+		<div class="inner breadcrumb-box">
+			{%- render 'breadcrumbs',
+				first_text: section.settings.first_text,
+				first_url: section.settings.first_url,
+				blocks: section.blocks
+			-%}
+		</div>
+		<div class="inner h-full flex flex-column jc-center ai-start pt-30 t-pt-0">
+            <div class="container w-full flex jc-start ai-start flex-column">
+				<div class="row w-full h-full">
+					<div class="col-12 col-t-6 col-d-6 tl flex jc-start ai-start flex-column">
+						{%- if section.settings.title != blank -%}
+						<h1 class="h1 c-greenb2 t-tl t-max-500 t-mx-auto">{{ section.settings.title }}</h1>
+						{%- endif -%}
+						{%- if section.settings.subtitle != blank -%}
+						<h5 class="h5 c-greenb2 mt-10 mb-20 t-mt-10 t-mb-0 d-mt-10 d-mb-0 t-tl t-max-500 t-mx-auto">{{ section.settings.subtitle }}</h5>
+						{%- endif -%}
+					</div>
+				</div>
+			</div>
+        </div>
+		{%- assign image_id = "image-" | append: section.id -%}
+		{%- render 'global-image-wrapper-responsive',
+			image_id: image_id,
+			desktop_image: section.settings.image,
+			mobile_image: section.settings.image_mobile
+		%}
+	</div>
+</div>
+{% schema %}
+{
+	"name": "Banner with breadcrumbs 2",
+	"settings": [
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)",
+            "default": 0
+		},
+        {
+			"type": "header",
+			"content": "Section Content"
+		},
+		{
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		},
+        {
+			"type": "image_picker",
+			"id": "image_mobile",
+			"label": "Mobile image"
+		},
+        {
+            "type" : "image_picker",
+            "id" : "image",
+            "label" : "Desktop image"
+        },
+        {
+            "type" : "text",
+            "id" : "title",
+            "label" : "Title"
+        },
+        {
+            "type" : "text",
+            "id" : "subtitle",
+            "label" : "Sub Title"
+        },
+		{
+			"type": "text",
+			"id": "first_text",
+			"label": "First Text for breadcrumb"
+		},
+        {
+			"type": "url",
+			"id": "first_url",
+			"label": "First URL for breadcrumb"
+		}
+	],
+	"blocks" : [
+		{
+			"type": "text",
+			"name": "Breadcrumb",
+			"settings": [
+				{
+					"type": "text",
+					"id": "text",
+					"label": "Text"
+				},
+				{
+					"type": "url",
+					"id": "url",
+					"label": "URL"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Banner with breadcrumbs 2",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

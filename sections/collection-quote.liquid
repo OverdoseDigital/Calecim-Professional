@@ -1,0 +1,217 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+<style>
+#shopify-section-{{ section.id }} {
+  background-color: {{ section.settings.background_color }};
+}
+#shopify-section-{{ section.id }} .collection-quote .container.show-m {
+  display: block;
+}
+#shopify-section-{{ section.id }} .collection-quote .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#shopify-section-{{ section.id }} .cq-left {
+  width: 50%;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding-right: 7.5px;
+  order: 2;
+}
+#shopify-section-{{ section.id }} .cq-center {
+  width: 100%;
+  order: 1;
+}
+#shopify-section-{{ section.id }} .cq-right {
+  width: 50%;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding-left: 7.5px;
+  order: 3;
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  #shopify-section-{{ section.id }} .collection-quote .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  #shopify-section-{{ section.id }} .cq-center {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+}
+@media screen and (min-width: 1024px) {
+  #shopify-section-{{ section.id }} .collection-quote .container {
+    padding-left: 40px;
+    padding-right: 40px;
+    align-items: unset;
+    flex-wrap: nowrap;
+  }
+  #shopify-section-{{ section.id }} .cq-left {
+    width: 20%;
+    justify-content: start;
+    padding-right: 0;
+    order: 1;
+  }
+  #shopify-section-{{ section.id }} .cq-center {
+    width: 60%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: 2;
+  }
+  #shopify-section-{{ section.id }} .cq-right {
+    width: 20%;
+    justify-content: end;
+    padding-left: 0;
+    order: 3;
+  }
+}
+</style>
+<div class="collection-quote">
+  <div class="container relative">
+    <div class="cq-left pr-15">
+      <div class="d-max-200 width-100">
+        {%- assign image_id = "collection-quote-" | append: section.id -%}
+        {%- render 'global-image-wrapper',
+          image_id: image_id,
+          image: section.settings.image_1,
+        %}  
+        {% if section.settings.image_1_title != blank %}     
+          <div class="p3 bold-600 spacing-1 pt-10 t-pt-15">
+          {%- render 'link-icon',
+            id: 'collection-quote-image_1',
+            label: section.settings.image_1_title,
+            url: section.settings.image_1_url,
+            text_class: 'p3 bold-600 spacing-1 pr-5',
+            icon_color: '#2c2c2c',
+            icon_svg: settings.icon_btn_right
+          -%}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="cq-center d-mt-75 d-mb-75 mb-40">
+      <h6 class="h7 c-black tc max-800 t-pl-50 t-pr-50">{{ section.settings.title }}</h6>
+      <p class="h11 pt-15 d-pt-25 bold-600 spacing-2 c-black tc">{{ section.settings.author }}</p>
+    </div>
+    <div class="cq-right">
+      <div class="d-max-200 width-100">
+        {%- assign image_id = "collection-quote-" | append: section.id -%}
+        {%- render 'global-image-wrapper',
+          image_id: image_id,
+          image: section.settings.image_2,
+        %}
+        {% if section.settings.image_2_title != blank %}
+          <div class="p3 bold-600 spacing-1 pt-10 t-pt-15">
+            {%- render 'link-icon',
+              id: 'collection-quote-image_2',
+              label: section.settings.image_2_title,
+              url: section.settings.image_2_url,
+              text_class: 'p3 bold-600 spacing-1 pr-5',
+              icon_color: '#2c2c2c',
+              icon_svg: settings.icon_btn_right
+            -%}
+            </div>
+        {% endif %}
+        </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Collection Quote",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "author",
+        "label": "Author"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "header",
+        "content": "Image 1"
+      }, {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "image_1_title",
+        "label": "Title"
+      },
+      {
+        "type": "url",
+        "id": "image_1_url",
+        "label": "URL"
+      },
+      {
+        "type": "header",
+        "content": "Image 2"
+      }, {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Image"
+      },
+      {
+        "type": "text",
+        "id": "image_2_title",
+        "label": "Title"
+      },
+      {
+        "type": "url",
+        "id": "image_2_url",
+        "label": "URL"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      }, {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Quote"
+      }
+    ]
+  }
+{% endschema %}

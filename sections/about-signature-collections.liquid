@@ -1,0 +1,295 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} .swiper .swiper-pagination {
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        top: unset;
+        height: 2px;
+        background: var(--silver);
+    }
+    #shopify-section-{{ section.id }} .swiper .swiper-pagination .swiper-pagination-progressbar-fill {
+        background: #707070;
+    }
+    #shopify-section-{{ section.id }} .carousel-wrapper {
+        overflow: hidden;
+    }
+
+    @media screen and (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .carousel-wrapper {
+            overflow: unset;
+        }
+        #shopify-section-{{ section.id }} .swiper {
+            width: 100%;
+            height: calc(100vh);
+        }
+        #shopify-section-{{ section.id }} .swiper .swiper-slide-inner,
+        #shopify-section-{{ section.id }} .swiper .global-image-wrapper {
+            height: 100%;
+        }
+        #shopify-section-{{ section.id }} .swiper .global-image-wrapper img {
+            height: 100%;
+            object-fit: cover;
+        }
+        #shopify-section-{{ section.id }} .carousel-wrapper {
+            position: relative;
+            width: 50%;
+        }
+        #shopify-section-{{ section.id }} .carousel-wrapper-inner {
+            position: sticky;
+            width: 200%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        #shopify-section-{{ section.id }} .carousel-container .content-scroller {
+            position: relative;
+            width: 50%;
+            {%- assign row_size = section.blocks.size | times: 100 -%}
+            height: {{ row_size }}vh;
+        }
+        #shopify-section-{{ section.id }} .progress-bar {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--silver);
+            overflow: hidden;
+        }
+        #shopify-section-{{ section.id }} .progress-bar .progress {
+            position: relative;
+            width: 100%;
+            height: 0;
+            background: #707070;
+            display: block;
+        }
+    }
+</style>
+
+<section id="about-signature-coll">
+    {%- if section.settings.small_title != blank -%}
+        <h6 class="p3 uppercase spacing-2 bold-600 c-darkgreen d-mb-50 tc">{{ section.settings.small_title }}</h6>
+    {%- endif -%}
+    
+    <div class="container">
+        <div class="carousel-container global-flex flex-wrap relative">
+            <div class="content-scroller relative width-100 hide-m show-d">
+                <div class="progress-bar"><span class="progress"></span></div>
+            </div>
+            <div class="carousel-wrapper overflow">
+                <div class="carousel-wrapper-inner">
+                    <div class="swiper pt-25 pb-25 d-pt-40 d-pb-40">
+                        <div class="swiper-wrapper">
+                            {%- for block in section.blocks -%}
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner global-flex flex-wrap">
+                                        <div class="col-12 pl-0 pr-0 col-d-6 d-pl-0 d-pr-90">
+                                            {%- render 'global-image-wrapper',
+                                                image: block.settings.image
+                                            -%}
+                                        </div>
+                                        <div class="col-12 pl-0 pr-0 col-d-6 d-pl-40 d-pr-40 global-flex ai-center mt-20 d-mt-0">
+                                            <div class="text-container d-max-440 d-ml-auto d-mr-auto">
+                                                <h5 class="h5">{{ block.settings.title }}</h5>
+                                                {%- if block.settings.text != blank -%}
+                                                    <p class="p2 c-grey mt-5">{{ block.settings.text | newline_to_br }}</p>
+                                                {%- endif -%}
+
+                                                {%- if block.settings.link_label != blank -%}
+                                                    <div class="mt-15 d-mt-25 tl show-m">
+                                                        {%- assign link_id = "about-signature-coll-link" -%}
+                                                        {%- render 'link-icon',
+                                                            id: link_id,
+                                                            label: block.settings.link_label,
+                                                            url: block.settings.link_url,
+                                                            text_class: 'p3 uppercase spacing-2 bold-600',
+                                                            icon_color: '#2C2C2C',
+                                                            icon_svg: settings.icon_btn_right,
+                                                            load_inside_vue: true
+                                                        -%}
+                                                    </div>
+                                                {%- endif -%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {%- endfor -%}
+                        </div>
+
+                        <div class="swiper-pagination show-m hide-d"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const aboutSignatureColl = Vue.createApp({
+        delimiters: ['${','}'], 
+		data() {
+			return {
+				desktop_carousel: null,
+                mobile_carousel: null,
+                sticky_container_parent: null,
+                sticky_container: null,
+                progress_bar: null,
+                main_obj: null,
+                main_obj_height: null,
+                main_obj_top: null,
+                prevScrollPos: 0,
+                slide_total: 0,
+                curr_slide: 0
+			}
+		},
+        mounted() {
+            const doc = document.documentElement;
+            const body = document.body;
+            const headerHeight = document.querySelector('.site-header').offsetHeight;
+            const this_obj = this;
+
+            this_obj.main_obj = document.querySelector('#about-signature-coll');
+            this_obj.main_obj_top = this_obj.main_obj.offsetTop;
+            this_obj.main_obj_height = this_obj.main_obj.offsetHeight;
+            this_obj.progress_bar = document.querySelector('#shopify-section-{{ section.id }} .progress-bar .progress');
+            this_obj.slide_total = Number(`{{ section.blocks.size }}`);
+
+            if(screen.width > 1023) {
+                this.desktop_carousel = new Swiper("#shopify-section-{{ section.id }} .swiper", {
+                    direction: 'vertical',
+                    slidesPerView: 'auto',
+                    loop: false,
+                    effect: 'fade',
+                    fadeEffect: {
+                        crossFade: true
+                    }
+                });
+
+                window.addEventListener("scroll", () => {
+                    const currentScrollPosition = Math.max(doc.scrollTop, body.scrollTop);
+                    const scrollDirection = currentScrollPosition > this.prevScrollPos ? "down" : "up";
+                    let percentage = 0;
+                    
+                    if(scrollDirection == 'down' && currentScrollPosition >= this_obj.main_obj_top) {
+                        percentage = ((currentScrollPosition-this_obj.main_obj_top)/(this_obj.main_obj_height-window.innerHeight))*100;
+                    } else if (scrollDirection == 'up') {
+                        percentage = ((currentScrollPosition-this_obj.main_obj_top)/(this_obj.main_obj_height-window.innerHeight))*100;
+                    }
+
+                    this_obj.progress_bar.style.height = `${percentage}%`;
+
+                    //-- get slide
+                    const next_slide = Math.floor((percentage*this_obj.slide_total)/100);
+                    if(next_slide >= 0 && next_slide < this_obj.slide_total) {
+                        this_obj.desktop_carousel.slideTo(next_slide);
+                    }
+
+                    this.prevScrollPos = currentScrollPosition;
+                });
+            } else {
+                this.mobile_carousel = new Swiper("#shopify-section-{{ section.id }} .swiper", {
+                    direction: 'horizontal',
+                    slidesPerView: 'auto',
+                    loop: false,
+                    spaceBetween: 30,
+                    pagination: {
+                        el: "#shopify-section-{{ section.id }} .swiper .swiper-pagination",
+                        type: "progressbar",
+                    }
+                });
+            }
+        },
+        methods: {
+            
+        }
+    }).mount('#about-signature-coll');
+</script>
+
+{% schema %}
+    {
+        "name": "About - Signature Coll",
+        "settings": [
+            {
+                "type": "text",
+                "id": "small_title",
+                "label": "Small Title"
+            },
+            {
+                "type": "header",
+                "content": "Section Padding"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_m",
+                "label": "Top padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_m",
+                "label": "Bottom padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_t",
+                "label": "Top padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_t",
+                "label": "Bottom padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding",
+                "label": "Top padding (Desktop)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding",
+                "label": "Bottom padding (Desktop)"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "settings": [
+                    {
+                        "type": "text",
+                        "label": "Title",
+                        "id": "title"
+                    },
+                    {
+                        "type": "textarea",
+                        "label": "Text",
+                        "id": "text"
+                    },
+                    {
+                        "type": "text",
+                        "label": "Link Label",
+                        "id": "link_label"
+                    },
+                    {
+                        "type": "url",
+                        "label": "Link URL",
+                        "id": "link_url"
+                    },
+                    {
+                        "type": "image_picker",
+                        "label": "Image",
+                        "id": "image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "About - Signature Coll",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}

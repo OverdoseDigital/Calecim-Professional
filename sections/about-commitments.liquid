@@ -1,0 +1,226 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+
+<style>
+    @media screen and (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .content-each.image-right {
+            flex-direction: row-reverse;
+        }
+        #shopify-section-{{ section.id }} .content-each {
+            position: relative;
+            z-index: 2;
+        }
+
+        #shopify-section-{{ section.id }} .content-each[data-index="2"] {
+            margin-top: -85px;
+            z-index: 1;
+        }
+        #shopify-section-{{ section.id }} .content-each[data-index="2"] .text-container {
+            padding-top: 85px;
+        }
+        #shopify-section-{{ section.id }} .content-each[data-index="1"] .text-container {
+            padding-bottom: 85px;
+        }
+    }
+</style>
+
+<section class="about-commitments">
+    <div class="container">
+        {%- if section.settings.title != blank -%}
+            <h2 class="h5 tc mb-20 d-mb-80">{{ section.settings.title }}</h2>
+        {%- endif -%}
+
+        <div class="content-wrapper relative width-100">
+            {%- for block in section.blocks -%}
+            <div data-index="{{ forloop.index }}" class="content-each global-flex flex-wrap ai-center image-{{ block.settings.image_pos }} {% unless forloop.first %} mt-25 d-mt-0 {% endunless %}">
+                    <div class="image-container col-12 pl-0 pr-0 col-d-7 d-pl-0 d-pr-0">
+                        {%- render 'global-image-wrapper',
+                            image: block.settings.image
+                        -%}
+                    </div>
+                    <div class="text-container col-12 pl-0 pr-0 col-d-5 d-pl-70 d-pr-70 mt-25 d-mt-0">
+                        <div class="wrapper">
+                            {%- if block.settings.title_1 != blank -%}
+                                <p class="h11 mb-10 d-mb-10">{{ block.settings.title_1 }}</p>
+                            {%- endif -%}
+                            {%- if block.settings.text_1 != blank -%}
+                                <p class="p2 c-grey">{{ block.settings.text_1 | newline_to_br }}</p>
+                            {%- endif -%}
+                            {%- if block.settings.link_label_1 != blank -%}
+                                <div class="show-m mt-10 d-mt-25">
+                                    {%- assign link_id = "commitments-1-link-" | append: block.id -%}
+                                    {%- render 'link-icon',
+                                        id: link_id,
+                                        label: block.settings.link_label_1,
+                                        url: block.settings.link_url_1,
+                                        text_class: 'p3 uppercase spacing-2 bold-600',
+                                        icon_color: '#2C2C2C',
+                                        icon_svg: settings.icon_btn_right,
+                                        load_inside_vue: false
+                                    -%}
+                                </div>
+                            {%- endif -%}
+
+                            {%- if block.settings.title_2 != blank -%}
+                                <p class="h11 mb-10 d-mb-10 mt-30 d-mt-55">{{ block.settings.title_2 }}</p>
+                            {%- endif -%}
+                            {%- if block.settings.text_2 != blank -%}
+                                <p class="p2 c-grey">{{ block.settings.text_2 | newline_to_br }}</p>
+                            {%- endif -%}
+                            {%- if block.settings.link_label_2 != blank -%}
+                                <div class="show-m mt-10 d-mt-25">
+                                    {%- assign link_id = "commitments-2-link-" | append: block.id -%}
+                                    {%- render 'link-icon',
+                                        id: link_id,
+                                        label: block.settings.link_label_2,
+                                        url: block.settings.link_url_2,
+                                        text_class: 'p3 uppercase spacing-2 bold-600',
+                                        icon_color: '#2C2C2C',
+                                        icon_svg: settings.icon_btn_right,
+                                        load_inside_vue: false
+                                    -%}
+                                </div>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "About - Commitments",
+        "max_blocks": 2,
+        "settings": [
+            {
+                "type": "textarea",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "header",
+                "content": "Section Padding" 
+            },
+            {
+                "type": "text",
+                "id": "top_padding_m",
+                "label": "Top padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_m",
+                "label": "Bottom padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_t",
+                "label": "Top padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_t",
+                "label": "Bottom padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding",
+                "label": "Top padding (Desktop)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding",
+                "label": "Bottom padding (Desktop)"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "settings": [
+                    {
+                        "type": "header",
+                        "content": "Content 1"
+                    },
+                    {
+                        "type": "text",
+                        "label": "Title",
+                        "id": "title_1"
+                    },
+                    {
+                        "type": "textarea",
+                        "label": "Text",
+                        "id": "text_1"
+                    },
+                    {
+                        "type": "text",
+                        "label": "Link Label",
+                        "id": "link_label_1"
+                    },
+                    {
+                        "type": "url",
+                        "label": "Link URL",
+                        "id": "link_url_1"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Content 2"
+                    },
+                    {
+                        "type": "text",
+                        "label": "Title",
+                        "id": "title_2"
+                    },
+                    {
+                        "type": "textarea",
+                        "label": "Text",
+                        "id": "text_2"
+                    },
+                    {
+                        "type": "text",
+                        "label": "Link Label",
+                        "id": "link_label_2"
+                    },
+                    {
+                        "type": "url",
+                        "label": "Link URL",
+                        "id": "link_url_2"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Images"
+                    },
+                    {
+                        "type": "image_picker",
+                        "label": "Image",
+                        "id": "image"
+                    },
+                    {
+                        "type": "select",
+                        "id": "image_pos",
+                        "label": "Image Position",
+                        "options": [
+                            {
+                                "value": "left",
+                                "label": "Left"
+                            },
+                            {
+                                "value": "right",
+                                "label": "Right"
+                            }
+                        ],
+                        "default": "left"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "About - Commitments",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}

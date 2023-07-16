@@ -1,0 +1,162 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+  #shopify-section-{{ section.id }} .sf-container {
+    display: flex;
+    flex-direction: column;
+  }
+  #shopify-section-{{ section.id }} .sfc-left {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .sfc-right {
+    width: 100%;
+  }
+
+  @media(min-width: 1024px) {
+    #shopify-section-{{ section.id }} .sf-container {
+      justify-content: space-between;
+      flex-direction: row;
+    }
+    #shopify-section-{{ section.id }} .sfc-left {
+      width: 40%;
+    }
+    #shopify-section-{{ section.id }} .sfc-right {
+      width: 60%;
+    }
+  }
+</style>
+<div class="subscription-faq">
+  <div class="container">
+    <div class="sf-container">
+      <div class="sfc-left d-pr-90">
+        {% if section.settings.title != blank %}
+        <h3 class="h3 sfcl-title">{{ section.settings.title }}</h3>
+        {% endif %}
+        {% if section.settings.text != blank %}
+        <div class="sfcl-text p2 mt-10">{{ section.settings.text }}</div>
+        {% endif %}
+        {% if section.settings.btn_label != blank %}
+        <div class="hide-m show-d mt-20">
+          <a href="{{section.settings.btn_url}}" class="btn1">{{section.settings.btn_label}}<span class="ml-30" style="display:inline-flex;">{{settings.icon_btn_right}}</span></a>
+        </div>
+        {% endif %}
+      </div>
+      <div class="sfc-right mt-20 d-mt-0">
+        <div class="faq-wrapper bb-1 b-silver">
+          {%- for block in section.blocks -%}
+              {%- assign wrapper_class = 'bt-1 b-silver mb-20' -%}
+              {%- if forloop.first -%}
+                  {%- assign open_by_default = true -%}
+              {%else%}
+                  {%- assign open_by_default = false -%}
+              {%- endif -%}
+              {%- render 'accordion',
+                  wrapper_class: wrapper_class,
+                  title: block.settings.title,
+                  description: block.settings.answer,
+                  title_class: "p2 bold-500 relative",
+                  title_no_pb: true,
+                  desc_class: "p2 c-grey pt-10",
+                  default_active: false,
+                  icon_rotate: true,
+                  desc_no_pt: true,
+                  desc_no_pb: true
+              -%}
+          {%- endfor -%}
+        </div>
+        {% if section.settings.btn_label != blank %}
+        <div class="mt-20 hide-d show-m">
+          <a href="{{section.settings.btn_url}}" class="btn1">{{section.settings.btn_label}}<span class="ml-30" style="display:inline-flex;">{{settings.icon_btn_right}}</span></a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Subscription - FAQ",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "text",
+      "id": "top_padding_m",
+      "label": "Top padding (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "bottom_padding_m",
+      "label": "Bottom padding (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "top_padding_t",
+      "label": "Top padding (Tablet)"
+    },
+    {
+      "type": "text",
+      "id": "bottom_padding_t",
+      "label": "Bottom padding (Tablet)"
+    },
+    {
+      "type": "text",
+      "id": "top_padding",
+      "label": "Top padding (Desktop)"
+    },
+    {
+      "type": "text",
+      "id": "bottom_padding",
+      "label": "Bottom padding (Desktop)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "entry",
+      "name": "Entry",
+      "settings": [
+        {
+            "type": "textarea",
+            "id": "title",
+            "label": "Question"
+        },
+        {
+            "type": "textarea",
+            "id": "answer",
+            "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+        "name": "Subscription - FAQ",
+        "blocks": []
+    }
+  ]
+}
+{% endschema %}

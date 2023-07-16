@@ -1,0 +1,251 @@
+<style>
+    #login-page .borderline::before{
+        content:"";
+        border-bottom:1px solid #dbdbdb;
+        position:absolute;
+        top:50%;
+        transform:translate(0,-50%);
+        width:100%;
+    }
+
+    #login-page input{
+        background:#f5f5f5;;
+    }
+
+    #forgot-link{
+        
+    }
+
+    @media (min-width: 1024px) {
+        {% comment %} #login-page .flex-wrapper{
+            display:flex;
+            flex-wrap:wrap;
+        }
+        #login-page .login-container{
+            width:50%;
+            padding:50px 100px;
+        }
+        #login-page .register-container{
+            width:50%;
+            padding:50px 100px;
+        } {% endcomment %}
+    }
+</style>
+
+<div id="login-page" class="global-content-top-margin pt-50 pb-50 d-pt-80 d-pb-80">
+  <div class="container">
+    <div v-show="showSuccess" id="success-div">
+      <h1 class="h5 tc mb-30">{{ 'customer.recover_password.title' | t }}</h1>
+      <div class="middle-max-355 mx-auto tc">
+        <p class="mb-25 d-mb-30">{{ 'customer.recover_password.success' | t }}</p>
+        <div>
+          <a href="/account" class="btn1">{{ 'customer.recover_password.back_to_account_my_account' | t }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div v-show="showReset" id="forgot-div">
+        {%- form 'recover_customer_password', id: 'recover-password' -%}
+            <h1 class="h2 pb-10 tc">{{ 'customer.recover_password.title' | t }}</h1>
+            <div class="middle-max-355 mx-auto">
+            <p class="p2 pb-20 tc">{{ 'customer.recover_password.subtext' | t }}</p>
+            
+            {%- if form.errors -%}
+                <div class="form-errors mb-30 c-sale-red rte p2">
+                {{ form.errors | default_errors }}
+                </div>
+            {%- endif -%}
+
+            <div class="mb-30">
+                <input type="email" v-model="resetForm.email" name="email" id="email" class="global-input p2 " placeholder="{{ 'customer.recover_password.email' | t }}" />
+                <div v-if="resetForm.email_error" class="c-sale-red p3 mt-5">{{ 'customer.recover_password.error_email' | t }}</div>
+            </div>
+            <div class="mb-20">
+                <button type="submit" class="btn btn2 uppercase no-icon w-full">{{ 'customer.recover_password.submit' | t }}</button>
+            </div>
+            <p class="p3 tc">
+                <a href="#" @click.prevent="showLoginHtml" class="link1">{{ 'customer.recover_password.back_to_login' | t }}<span class="ml-10" style="display:inline-flex;">{{settings.icon_btn_right}}</span></a>
+            </p>
+            </div>
+            <input type="hidden" name="return_to" value="/account/login#recover-success" />
+        {%- endform -%}
+    </div>
+
+    <div v-show="showLogin" id="login-div">
+        {% comment %} <div class="flex-wrapper"> {% endcomment %}
+            <div class="login-container pb-50 tc">
+                <div class="max-400 mx-auto">
+                    {%- form 'customer_login' -%}
+                        <h1 class="h2 pb-10">{{ 'customer.login.title' | t }}</h1>
+                        <div class="p2 pb-20">{{ 'customer.login.not_a_member' | t }}&nbsp;
+                            <div class="link-wrapper relative link2">
+                                {%- assign link_id = "link-cta-account-register" -%}                                    
+                                {% render 'link-icon',
+                                    id: link_id,
+                                    label: "Register Now",
+                                    url: "/account/register",
+                                    text_class: 'p2 mr-10',
+                                    icon_color: '#231D1D',
+                                    icon_svg: settings.icon_arrow_diagonal_up,
+                                    load_inside_vue: false
+                                %}
+                            </div>
+                        </div>
+                        {% comment %} <div class="one-click-social-login"></div> {% endcomment %}
+
+                        {% comment %} <div class="flex mb-20 d-mb-40">
+                            <div class="borderline width-100 relative"></div>
+                            <div class="p2 bold-500 c-grey pl-15 pr-15">OR</div>
+                            <div class="borderline width-100 relative"></div>
+                        </div> {% endcomment %}
+
+                        {%- if form.errors -%}
+                            <div class="form-errors mb-30 c-sale-red rte p2">
+                            {{ form.errors | default_errors }}
+                            </div>
+                        {%- endif -%}
+
+                        <div class="mb-15">
+                            <input type="email" v-model="loginForm.email" name="customer[email]" id="email" class="global-input p2 " placeholder="{{ 'customer.login.email' | t }}" />
+                            <div v-if="loginForm.email_error" class="c-sale-red p3 mt-5">{{ 'customer.login.error_email' | t }}</div>
+                        </div>
+                        <div class="mb-30">
+                            <input type="password" v-model="loginForm.password" name="customer[password]" id="password" class="global-input p2 " placeholder="{{ 'customer.login.password' | t }}" />
+                            <div v-if="loginForm.password_error" class="c-sale-red p3 mt-5">{{ 'customer.login.error_password' | t }}</div>
+                            
+                        </div>
+                        <div class="mb-10">
+                            <button type="submit" class="btn btn2 no-icon w-full uppercase">{{ 'customer.login.submit' | t }}</button>
+                        </div>
+                        <div class="tc">
+                            <a href="#" @click.prevent="showResetHtml" id="forgot-link" class="p2">{{ 'customer.login.forgot_password' | t }}</a>
+                        </div>
+                        {% comment %} <p class="p3">{{ 'customer.login.register_text_html' | t }}</p>   {% endcomment %}
+                    {%- endform -%}
+                </div>
+            </div>
+            {% comment %} <div class="register-container pt-50">
+                <div class="h5">{{ 'customer.login.register_title' | t }}</div>
+                <div class="p2">{{ 'customer.login.register_text' | t }}</div>
+                <div class="flex ai-center mt-30">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="42.914" height="36.831" viewbox="0 0 42.914 36.831"><g transform="translate(-18.215 -4149.063)"><path d="M-19716.66-12205.176c-.061-.014,4.814,8.672,4.76,8.625.094.044,8.5,26.693,8.5,26.693l8.631-26.693,5.307-8.625,6.846,8.625-20.783,26.693-20.631-26.693,7.375-8.625h27.193" transform="translate(19743 16355)" fill="none" stroke="#81c8a6" stroke-linejoin="round" stroke-width="1.5"></path><path d="M-19717.941-12193.5h40.51" transform="translate(19737.811 16352)" fill="none" stroke="#81c8a6" stroke-width="1.5"></path><path d="M-19694.436-12196.677l-8.791-8.753-8.68,8.753" transform="translate(19743 16355.253)" fill="none" stroke="#81c8a6" stroke-linejoin="round" stroke-width="1.5"></path></g></svg>
+                    </span>
+                    <div class="p2 c-grey ml-10">{{ 'customer.login.register_benefit_1' | t }}</div>
+                </div>
+                <div class="flex ai-center mt-15">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="42.914" height="36.831" viewbox="0 0 42.914 36.831"><g transform="translate(-18.215 -4149.063)"><path d="M-19716.66-12205.176c-.061-.014,4.814,8.672,4.76,8.625.094.044,8.5,26.693,8.5,26.693l8.631-26.693,5.307-8.625,6.846,8.625-20.783,26.693-20.631-26.693,7.375-8.625h27.193" transform="translate(19743 16355)" fill="none" stroke="#81c8a6" stroke-linejoin="round" stroke-width="1.5"></path><path d="M-19717.941-12193.5h40.51" transform="translate(19737.811 16352)" fill="none" stroke="#81c8a6" stroke-width="1.5"></path><path d="M-19694.436-12196.677l-8.791-8.753-8.68,8.753" transform="translate(19743 16355.253)" fill="none" stroke="#81c8a6" stroke-linejoin="round" stroke-width="1.5"></path></g></svg>
+                    </span>
+                    <div class="p2 c-grey ml-10">{{ 'customer.login.register_benefit_2' | t }}</div>
+                </div>
+                <div class="flex ai-center mt-15">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="42.914" height="36.831" viewbox="0 0 42.914 36.831"><g transform="translate(-18.215 -4149.063)"><path d="M-19716.66-12205.176c-.061-.014,4.814,8.672,4.76,8.625.094.044,8.5,26.693,8.5,26.693l8.631-26.693,5.307-8.625,6.846,8.625-20.783,26.693-20.631-26.693,7.375-8.625h27.193" transform="translate(19743 16355)" fill="none" stroke="#81c8a6" stroke-linejoin="round" stroke-width="1.5"></path><path d="M-19717.941-12193.5h40.51" transform="translate(19737.811 16352)" fill="none" stroke="#81c8a6" stroke-width="1.5"></path><path d="M-19694.436-12196.677l-8.791-8.753-8.68,8.753" transform="translate(19743 16355.253)" fill="none" stroke="#81c8a6" stroke-linejoin="round" stroke-width="1.5"></path></g></svg>
+                    </span>
+                    <div class="p2 c-grey ml-10">{{ 'customer.login.register_benefit_3' | t }}</div>
+                </div>
+                <div class="flex ai-center mt-15">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="42.914" height="36.831" viewbox="0 0 42.914 36.831"><g transform="translate(-18.215 -4149.063)"><path d="M-19716.66-12205.176c-.061-.014,4.814,8.672,4.76,8.625.094.044,8.5,26.693,8.5,26.693l8.631-26.693,5.307-8.625,6.846,8.625-20.783,26.693-20.631-26.693,7.375-8.625h27.193" transform="translate(19743 16355)" fill="none" stroke="#81c8a6" stroke-linejoin="round" stroke-width="1.5"></path><path d="M-19717.941-12193.5h40.51" transform="translate(19737.811 16352)" fill="none" stroke="#81c8a6" stroke-width="1.5"></path><path d="M-19694.436-12196.677l-8.791-8.753-8.68,8.753" transform="translate(19743 16355.253)" fill="none" stroke="#81c8a6" stroke-linejoin="round" stroke-width="1.5"></path></g></svg>
+                    </span>
+                    <div class="p2 c-grey ml-10">{{ 'customer.login.register_benefit_4' | t }}</div>
+                </div>
+                <div class="flex ai-center mt-15">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="42.914" height="36.831" viewbox="0 0 42.914 36.831"><g transform="translate(-18.215 -4149.063)"><path d="M-19716.66-12205.176c-.061-.014,4.814,8.672,4.76,8.625.094.044,8.5,26.693,8.5,26.693l8.631-26.693,5.307-8.625,6.846,8.625-20.783,26.693-20.631-26.693,7.375-8.625h27.193" transform="translate(19743 16355)" fill="none" stroke="#81c8a6" stroke-linejoin="round" stroke-width="1.5"></path><path d="M-19717.941-12193.5h40.51" transform="translate(19737.811 16352)" fill="none" stroke="#81c8a6" stroke-width="1.5"></path><path d="M-19694.436-12196.677l-8.791-8.753-8.68,8.753" transform="translate(19743 16355.253)" fill="none" stroke="#81c8a6" stroke-linejoin="round" stroke-width="1.5"></path></g></svg>
+                    </span>
+                    <div class="p2 c-grey ml-10">{{ 'customer.login.register_benefit_5' | t }}</div>
+                </div>
+                <div class="tc mt-30">
+                    <a href="/account/register" title="Register Now" class="btn1 width-100">Register Now</a>
+                </div>
+            </div> {% endcomment %}
+        {% comment %} </div> {% endcomment %}
+    </div>
+  </div>
+</div>
+
+<script>
+  Vue.createApp({
+  delimiters: ['${', '}'],
+  data() {
+    return {
+      loginForm: {
+        email: null,
+        password: null,
+        has_error: false,
+        email_error: false,
+        password_error: false,
+      },
+      resetForm: {
+        email: null,
+        has_error: false,
+        email_error: false,
+      },
+      showSuccess: false,
+      showReset: false,
+      showLogin: true
+    }
+  },
+  mounted() {
+    if (window.location.hash == '#recover-password' || window.location.hash == '#recover') { 
+      this.showResetHtml()
+    } else if (window.location.hash == '#recover-success') { 
+      this.showSuccess = true;
+      this.showLogin = false;
+      this.showReset = false;
+    }
+
+    const thisObj = this;
+    document.getElementById('customer_login').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      thisObj.loginForm.has_error = false;
+      thisObj.loginForm.email_error = false;
+      thisObj.loginForm.password_error = false;
+
+      if(!thisObj.loginForm.email) {
+        thisObj.loginForm.email_error = true;
+        thisObj.loginForm.has_error = true;
+      }
+      if(!thisObj.loginForm.password) {
+        thisObj.loginForm.password_error = true;
+        thisObj.loginForm.has_error = true;
+      }
+
+      if(thisObj.loginForm.has_error) {
+        e.stopImmediatePropagation();
+      }
+    });
+
+    document.getElementById('recover-password').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      thisObj.resetForm.has_error = false;
+      thisObj.resetForm.email_error = false;
+
+      if(!thisObj.resetForm.email) {
+        thisObj.resetForm.email_error = true;
+        thisObj.resetForm.has_error = true;
+      }
+
+      if(thisObj.resetForm.has_error) {
+        e.stopImmediatePropagation();
+      }
+    });
+  },
+  methods: {
+    showLoginHtml() {
+      this.showLogin = true;
+      this.showReset = false;
+      this.showSuccess = false;
+    },
+    showResetHtml() {
+      this.showLogin = false;
+      this.showReset = true;
+      this.showSuccess = false;
+    }
+  }
+}).mount('#login-page');
+</script>

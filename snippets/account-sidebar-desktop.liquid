@@ -1,0 +1,14 @@
+<div class="hide-m show-t">
+    <!--{{template}}-->
+    <ul>
+        <li class="mb-15">
+            <a href="/account" class="p2 opacity-3 {% if template == 'customers/account' or template == 'customers/order' or template.suffix == 'orders' %} opacity-10 bold-700 {% endif %}" title="{{ 'customer.account.order_history' | t }}">{{ 'customer.account.order_history' | t }}</a>
+        </li>
+        <li class="mb-15">
+            <a href="/account/addresses" class="p2 opacity-3 {% if template == 'customers/addresses' %} opacity-10 bold-700 {% endif %}" title="{{ 'customer.account.address_book' | t }}">{{ 'customer.account.address_book' | t }}</a>
+        </li>
+        <li>
+            <a href="/account/logout" class="p2 opacity-3" title="{{ 'customer.account.logout' | t }}">{{ 'customer.account.logout' | t }}</a>
+        </li>
+    </ul>
+</div>

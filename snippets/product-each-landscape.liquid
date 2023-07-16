@@ -1,0 +1,42 @@
+{%- comment -%}
+Calecim
+
+Description:
+Snippet for displaying featured product on article
+
+{%- endcomment -%}
+<a href="{{ product.url | within:collection }}" >
+    <div class="product-each product-each-landscape global-flex ai-center">
+        <div class="image-container">
+            {%- render 'global-image-wrapper', image:product.featured_image -%}
+        </div>
+        <div class="text-container">
+            <div class="global-flex ai-start">
+                <span class="p3 bold-600 uppercase">{{ product.title }}</span>
+                <span class="icon ml-10">{{ settings.icon_arrow_diagonal_up }}</span>
+            </div>
+            {%- unless hide_desc -%}
+                {%- assign desc = product.description | strip_html | truncate: 90 -%}
+                {%- if product.metafields.info.short_desc != blank -%}
+                    {%- assign desc = product.metafields.info.short_desc -%}
+                {%- endif -%}
+                {%- if desc != blank -%}
+                    <p class="p4 c-black opacity-5 mt-5">{{ desc }}</p>
+                {%- endif -%}
+            {%- endunless -%}
+
+            {%- unless hide_price -%}
+                <div class="pt-10 font-0">
+                    {%- if product.price_min < product.price_max -%}
+                        <span class="p4">From {{ product.price_min | money }}</span>
+                    {%- else -%}
+                        <span class="p4">{{ product.price | money }}</span>
+                        {%- if product.price < product.compare_at_price -%}
+                            <span class="p4 ml-10"><strike>{{ product.compare_at_price | money }}</strike></span>
+                        {%- endif -%}
+                    {%- endif -%}
+                </div>
+            {%- endunless -%}
+        </div>
+    </div>
+</a>

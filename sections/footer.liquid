@@ -1,0 +1,324 @@
+<footer id="site-footer" class="site-footer pt-30 d-pt-60 overflow" style="background: {{ section.settings.footer_bg }};">
+  <div class="container">
+    <div class="main-wrapper">
+      {% comment %} Get in touch {% endcomment %}
+      <div class="col-d-4 get-in-touch">
+        <h6 class="h8">{{ section.settings.git_title }}</h6>
+        {%- if section.settings.git_desc != blank -%}
+          <p class="p3 opacity-5 mt-5 max-265">{{ section.settings.git_desc | newline_to_br }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.git_link_label_1 != blank -%}
+          <div class="links-wrapper mt-20 relative width-100">
+            {%- for i in (1..5) -%}
+              {%- assign label = 'git_link_label_' | append: i -%}
+              {%- assign url = 'git_link_url_' | append: i -%}
+              {%- assign icon = 'git_link_icon_' | append: i -%}
+
+              {%- if section.settings[label] != blank -%}
+                <a href="{{ section.settings[url] }}" class="p5 uppercase link-icon bg-white bb-1 b-lightgrey p-20 bold-500">
+                  <span class="icon">{{ section.settings[icon] }}</span>
+                  {{ section.settings[label] }}
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+      {% comment %} end get in touch {% endcomment %}
+
+      {% comment %} footer menu {% endcomment %}
+      <div class="col-d-4 footer-menu-wrapper bt-1 b-border d-bt-0 mt-30 d-mt-0">
+        <div class="row">
+          <div class="global-flex flex-wrap">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'footer_menu' -%}
+                <div class="footer-menu pt-20 pb-20 d-pt-0 d-pb-0 bb-1 b-border d-bb-0 d-pl-25 d-pr-25 d-mb-30">
+                  <div class="f-menu-header accordion-title flex jc-between ai-center" @click="footerAccordion($event)">
+                    <div class="title-wrapper">
+                      {%- if block.settings.icon != blank -%}
+                        <div class="icon-title mb-10 hide-m show-d">{{ block.settings.icon }}</div>
+                      {%- endif -%}
+                      <h4 class="p3 bold-500">{{ block.settings.title }}</h4>
+                    </div>
+                    
+                    <span class="hide-d">
+                      <span class="icon icon-plus ai-center jc-center">{{ settings.icon_select }}</span>
+                    </span>
+                  </div>
+                  <ul class="hide-m show-d pb-0 mt-15">
+                    {%- for link in linklists[block.settings.menu].links -%}
+                      <li class="{% unless forloop.last %}mb-10{% endunless %}">
+                        <a
+                          href="{{ link.url }}"
+                          title="{{ link.title }}"
+                          class="p3 show-m-inline-block">{{ link.title }}</a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+      {% comment %} end footer menu {% endcomment %}
+
+      {% comment %} social media container {% endcomment %}
+      <div class="col-d-4 social-media-container mt-20 d-mt-0">
+        <div class="content-block-wrapper">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {%- for block in section.blocks -%}
+                {%- if block.type == "content_block" -%}
+                  <div class="swiper-slide">
+                    <div class="footer-content-each mb-20 d-mb-30">
+                      <div class="img-container">
+                        {%- assign image_id = "footer-img-" | append: block.id -%}
+                        {%- render 'global-image-wrapper-responsive',
+                          desktop_image: block.settings.image_desktop,
+                          mobile_image: block.settings.image_mobile,
+                          image_id: image_id,
+                          load_inside_vue: true
+                        -%}
+                      </div>
+                      <div class="text-container p-20 bg-white">
+                        <a href="{{ block.settings.url }}" class="global-flex jc-between title">
+                          <span class="p3 bold-500 mr-20">{{ block.settings.title }}</span>
+                          <span class="icon y5">{{ settings.icon_arrow_diagonal_up }}</span>
+                        </a>
+                        {%- if block.settings.desc != blank -%}
+                          <p class="p4 opacity-5 mt-5">{{ block.settings.desc }}</p>
+                        {%- endif -%}
+
+                        <div class="swiper-pagination mt-15 d-mt-20"></div>
+                      </div>
+                    </div>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+
+        <div class="social-media-icons width-100">
+          {%- render 'social-links', additional_class: 'jc-left', icons_class: 'mr-25' -%}
+        </div>
+      </div>
+      {% comment %} end social media container {% endcomment %}
+    </div>
+  </div>
+    
+  <div class="copyright-wrapper pt-25 pb-25 d-pt-30 d-pb-30">
+    <div class="row">
+      <div class="container">
+        <div class="global-flex flex-wrap ai-center jc-between">
+          <div class="col-12 col-d-6">
+            <p class="p4 opacity-3">© {{ 'now' | date: "%Y" }} Calecim. All rights reserved. Designed by 360&5</p>
+          </div>
+          <div class="col-12 col-d-6 mt-10 d-mt-0" style="background: {{ section.settings.footer_right_bg }};">
+            <ul class="tc-menu tl d-tr font-0 opacity-3">
+                {%- for link in linklists[section.settings.footer_terms_menu].links -%}
+                  <li class="show-m-inline-block">
+                    <a href="{{ link.url }}" class="p4 mr-15 d-mr-0 d-ml-15">{{ link.title }}</a>
+                  </li>
+                {%- endfor -%}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "color",
+        "id": "footer_bg",
+        "label": "Background color"
+      },
+      {
+        "type": "header",
+        "content": "Get in touch"
+      },
+      {
+        "type": "text",
+        "id": "git_title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "git_desc",
+        "label": "Description"
+      },
+      {
+        "type": "text",
+        "id": "git_link_label_1",
+        "label": "Link label #1"
+      },
+      {
+        "type": "url",
+        "id": "git_link_url_1",
+        "label": "Link URL #1"
+      },
+      {
+        "type": "textarea",
+        "id": "git_link_icon_1",
+        "label": "Link icon #1"
+      },
+      {
+        "type": "text",
+        "id": "git_link_label_2",
+        "label": "Link label #2"
+      },
+      {
+        "type": "url",
+        "id": "git_link_url_2",
+        "label": "Link URL #2"
+      },
+      {
+        "type": "textarea",
+        "id": "git_link_icon_2",
+        "label": "Link icon #2"
+      },
+      {
+        "type": "text",
+        "id": "git_link_label_3",
+        "label": "Link label #3"
+      },
+      {
+        "type": "url",
+        "id": "git_link_url_3",
+        "label": "Link URL #3"
+      },
+      {
+        "type": "textarea",
+        "id": "git_link_icon_3",
+        "label": "Link icon #3"
+      },
+      {
+        "type": "text",
+        "id": "git_link_label_4",
+        "label": "Link label #4"
+      },
+      {
+        "type": "url",
+        "id": "git_link_url_4",
+        "label": "Link icon #4"
+      },
+      {
+        "type": "textarea",
+        "id": "git_link_icon_4",
+        "label": "Link URL #4"
+      },
+      {
+        "type": "text",
+        "id": "git_link_label_5",
+        "label": "Link label #5"
+      },
+      {
+        "type": "url",
+        "id": "git_link_url_5",
+        "label": "Link URL #5"
+      },
+      {
+        "type": "textarea",
+        "id": "git_link_icon_5",
+        "label": "Link icon #5"
+      },
+      {
+        "type": "header",
+        "content": "Footer Menu"
+      },
+      {
+        "type": "text",
+        "id": "footer_linklist_title1",
+        "label": "Menu 1 Title"
+      }, {
+        "type": "link_list",
+        "id": "footer_linklist1",
+        "label": "Menu 1",
+        "default": "footer"
+      }, {
+        "type": "text",
+        "id": "footer_linklist_title2",
+        "label": "Menu 2 Title"
+      }, {
+        "type": "link_list",
+        "id": "footer_linklist2",
+        "label": "Menu 2",
+        "default": "footer"
+      }, {
+        "type": "text",
+        "id": "footer_linklist_title3",
+        "label": "Menu 3 Title"
+      }, {
+        "type": "link_list",
+        "id": "footer_linklist3",
+        "label": "Menu 3",
+        "default": "footer"
+      }, {
+        "type": "link_list",
+        "id": "footer_terms_menu",
+        "label": "T&C Menu"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "footer_menu",
+        "name": "Footer Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "icon",
+            "label": "Icon SVG"
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Menu"
+          }
+        ]
+      },
+      {
+        "type": "content_block",
+        "name": "Content Block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "desc",
+            "label": "Description"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URL"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Image (desktop)"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Image (mobile)"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

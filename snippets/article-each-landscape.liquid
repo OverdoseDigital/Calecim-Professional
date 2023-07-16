@@ -1,0 +1,29 @@
+{%- assign blog_name = article.handle | split: '/' | first -%}
+{%- assign blog_url = routes.root_url | append: 'blogs/' | append: blog_name -%}
+
+<div class="article-each-landscape {{additional_class}}">
+    <div class="global-flex ai-center">
+        <div class="col-6 col-d-5 pl-0 pr-0 d-pl-0 d-pr-0">
+            <a href="{{ article.url }}" class="show-m">
+                {%- render 'global-image-wrapper',
+                    image: article.image,
+                    additional_class:"",
+                    acc: acc
+                %}
+            </a>
+        </div>
+        <div class="col-6 col-d-7 pl-15 d-pl-20 pr-0 d-pr-0">
+            <div class="relative width-100">
+                {%- if article.tags -%}
+                    <div class="tags-wrapper tl mb-10">
+                        {% for tag in article.tags %}
+                            <a href="{{ blog_url }}/tagged/{{ tag | handle }}" class="show-m-inline-block p5 bold-500 uppercase mr-10 image-tag c-black b-1 b-black">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                {%- endif -%}
+
+                <a href="{{ article.url }}" class="show-m h5 uppercase">{{ article.title }}</a>
+            </div>
+        </div>
+    </div>
+</div>

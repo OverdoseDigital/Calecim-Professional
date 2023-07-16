@@ -1,0 +1,403 @@
+{
+  "wrapper": ".global-content-top-margin",
+  "sections": {
+    "bc63510a-714f-4e47-994e-4f4f4601a964": {
+      "type": "page-title",
+      "settings": {
+        "background_color": "#f5f5f5",
+        "title": "CLINICAL CALECIM® TREATMENTS",
+        "title_size": "h2",
+        "title_dom_type": "h1",
+        "title_color": "#231d1d",
+        "text": "Our hair and skincare products are used in conjunction with other treatments and services at clinics to provide a tailored solution for your concerns. This is the process that the clinicians would bring you through.",
+        "small_text": "",
+        "body_copy_color": "#231d1d",
+        "max_width": 650,
+        "top_padding_m": "90",
+        "bottom_padding_m": "40",
+        "top_padding_t": "90",
+        "bottom_padding_t": "70",
+        "top_padding": "150",
+        "bottom_padding": "70"
+      }
+    },
+    "84018a7d-795f-4929-bbe6-72e39cfdcf67": {
+      "type": "section-navigation",
+      "blocks": {
+        "c0cbb306-f391-411e-9397-8b5b512c7711": {
+          "type": "entry",
+          "settings": {
+            "title": "Hair Treatments",
+            "url": "\/pages\/delivery-information?view=hair-treatment",
+            "section_ids": ""
+          }
+        },
+        "ef5cb0f3-e050-40eb-be89-622cae4ad786": {
+          "type": "entry",
+          "settings": {
+            "title": "Skin Treatments",
+            "url": "\/pages\/delivery-information?view=skin-treatment",
+            "section_ids": ""
+          }
+        }
+      },
+      "block_order": [
+        "c0cbb306-f391-411e-9397-8b5b512c7711",
+        "ef5cb0f3-e050-40eb-be89-622cae4ad786"
+      ],
+      "settings": {
+        "nav_type": "different-page"
+      }
+    },
+    "b3956043-7cd1-46ec-a8de-f16aa5622ed9": {
+      "type": "hair-treatment-treat",
+      "settings": {
+        "section_width": "",
+        "background_color": "",
+        "content_max_width": 500,
+        "number": "01",
+        "title": "IDENTIFY",
+        "text": "Although the answer may seem very obvious, many people do not identify hair loss until it has become fairly advanced. At the opposite end of the scale, there are many who are concerned about hair loss but are not experiencing it. \n\nIf hair loss runs in your family and you think you might be prone to it, a consultation with an expert would either ease your concern or help you on the path to healthy hair regrowth.",
+        "text_below_icon": "",
+        "header_class": "h1",
+        "text_align": "tl",
+        "link_label": "Find a clinic",
+        "link_url": "#",
+        "desktop_image": "shopify:\/\/shop_images\/Screenshot_2023-06-27_111032.png",
+        "mobile_image": "shopify:\/\/shop_images\/Screenshot_2023-06-27_111032.png",
+        "image_position": "row",
+        "image_position_mobile": "follow-desktop",
+        "tag": "",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "d296c4c1-9096-482a-9a41-863fd959b24f": {
+      "type": "hair-treatment-diagnose",
+      "blocks": {
+        "231beaf3-7a92-49ab-9100-8eaa55e306bb": {
+          "type": "carousel",
+          "settings": {
+            "title": "",
+            "text": "A scalp biopsy or light microscopy will allow the clinician to rule out scalp infections or disorders of the hair shaft",
+            "desktop_image": "shopify:\/\/shop_images\/Screenshot_2023-06-26_135616.png",
+            "mobile_image": "shopify:\/\/shop_images\/Screenshot_2023-06-26_135715.png"
+          }
+        },
+        "5f4b5d6a-872c-4235-abb5-c44ad3443d4e": {
+          "type": "carousel",
+          "settings": {
+            "title": "",
+            "text": "A scalp biopsy or light microscopy will allow the clinician to rule out scalp infections or disorders of the hair shaft",
+            "desktop_image": "shopify:\/\/shop_images\/Screenshot_2023-06-26_135616.png",
+            "mobile_image": "shopify:\/\/shop_images\/Screenshot_2023-06-26_135715.png"
+          }
+        },
+        "94229d2e-77fd-4e8a-8d7b-0d53b1f87e68": {
+          "type": "carousel",
+          "settings": {
+            "title": "",
+            "text": "A scalp biopsy or light microscopy will allow the clinician to rule out scalp infections or disorders of the hair shaft",
+            "desktop_image": "shopify:\/\/shop_images\/Screenshot_2023-06-26_135616.png",
+            "mobile_image": "shopify:\/\/shop_images\/Screenshot_2023-06-26_135715.png"
+          }
+        }
+      },
+      "block_order": [
+        "231beaf3-7a92-49ab-9100-8eaa55e306bb",
+        "5f4b5d6a-872c-4235-abb5-c44ad3443d4e",
+        "94229d2e-77fd-4e8a-8d7b-0d53b1f87e68"
+      ],
+      "settings": {
+        "section_width": "",
+        "background_color": "#f5f5f5",
+        "content_max_width": 500,
+        "number_text": "02",
+        "title": "DIAGNOSE",
+        "text": "A hair specialist will be able to provide a diagnosis and a detailed plan of treatment that may incorporate solutions in addition to a topical hair treatment. Some of the services that a hair clinic may provide are:",
+        "text_b_carousel": "These insights will allow the specialist to recommend a targeted program of diet and supplementation that will optimize and prolong any topical hair treatments.",
+        "text_align": "tl",
+        "desktop_image": "shopify:\/\/shop_images\/02Our_Story-Image_Text_Square_02-desktop-1200x1200.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/02Our_Story-Image_Text_Square_02-desktop-1200x1200.jpg",
+        "image_position": "row-reverse",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "cf71c916-7c62-4757-83fc-0802ba80a156": {
+      "type": "hair-treatment-treat",
+      "blocks": {
+        "c1f90647-ad48-4b27-a82f-eb336a8decc2": {
+          "type": "icon",
+          "settings": {
+            "bg_color": "#ffffff",
+            "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+            "text": "Variable needling depths that match the specifics of your scalp to allow maximum benefit from the Advanced Hair System"
+          }
+        },
+        "37619b37-4775-4dc4-8a68-fc8bbe832214": {
+          "type": "icon",
+          "settings": {
+            "bg_color": "#ffffff",
+            "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+            "text": "Radio frequency treatment on top of micro needling to invigorate hair follicles"
+          }
+        },
+        "a007afae-5300-47ac-86be-092ccdedf72f": {
+          "type": "list",
+          "disabled": true,
+          "settings": {
+            "text": "Variable needling depths that match the specifics of your scalp to allow maximum benefit from the Advanced Hair System"
+          }
+        },
+        "e30afec4-83b7-4feb-b42f-707c1c6e0395": {
+          "type": "list",
+          "disabled": true,
+          "settings": {
+            "text": "Radio frequency treatment on top of micro needling to invigorate hair follicles"
+          }
+        }
+      },
+      "block_order": [
+        "c1f90647-ad48-4b27-a82f-eb336a8decc2",
+        "37619b37-4775-4dc4-8a68-fc8bbe832214",
+        "a007afae-5300-47ac-86be-092ccdedf72f",
+        "e30afec4-83b7-4feb-b42f-707c1c6e0395"
+      ],
+      "settings": {
+        "section_width": "",
+        "background_color": "#f5f5f5",
+        "content_max_width": 500,
+        "number": "03",
+        "title": "TREAT",
+        "text": "Each clinic has its own range of devices to ensure effective delivery of CALECIM®’s powerful active ingredient, some of which include:",
+        "text_below_icon": "Having a clinician-administered treatment may also provide better coverage of your scalp as some hair loss areas may not be easily accessed by yourself.",
+        "header_class": "h2",
+        "text_align": "tl",
+        "link_label": "Find a clinic",
+        "link_url": "#",
+        "desktop_image": "shopify:\/\/shop_images\/Screenshot_2023-06-27_114211.png",
+        "mobile_image": "shopify:\/\/shop_images\/Screenshot_2023-06-27_114155.png",
+        "image_position": "row",
+        "image_position_mobile": "image-first",
+        "tag": "",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "c962f457-3318-4171-9a1d-d0921be7ff89": {
+      "type": "cta-image-text-before-after",
+      "blocks": {
+        "9b81f849-2cee-4a38-8843-ae3a1219d299": {
+          "type": "before_after",
+          "settings": {
+            "image_before": "shopify:\/\/shop_images\/04Sceince_Intro-Before-desktop-700x930.jpg",
+            "image_after": "shopify:\/\/shop_images\/04Sceince_Intro-After-desktop-700x930.jpg",
+            "title": "Clinical observation by scalp technician and aesthetic practitioner Kelly Morrell, 6 weeks usage"
+          }
+        },
+        "6b084354-b98c-489b-b7d4-8514ad64bde0": {
+          "type": "before_after",
+          "settings": {
+            "image_before": "shopify:\/\/shop_images\/04Sceince_Intro-Before-desktop-700x930.jpg",
+            "image_after": "shopify:\/\/shop_images\/04Sceince_Intro-After-desktop-700x930.jpg",
+            "title": "4 sessions of Nano-fractional radio frequency treatment with application of Professional Serum, over 12 weeks. Conducted by Dr R. Pamela, CELV Clinic"
+          }
+        }
+      },
+      "block_order": [
+        "9b81f849-2cee-4a38-8843-ae3a1219d299",
+        "6b084354-b98c-489b-b7d4-8514ad64bde0"
+      ],
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 500,
+        "number": "04",
+        "title": "RESULTS",
+        "text": "Clinicians would conduct a thorough analysis including before \/ after pictures and close-up analysis of your hair to monitor the trajectory of progress. Results differ dramatically among patients and a specialist would be able to advise the course of action (e.g. length of treatment, and frequency) and the type of maintenance plan you should have.",
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "",
+        "button_label": "See all reviews",
+        "button_url": "#",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "image_position": "row-reverse",
+        "image_position_mobile": "follow-desktop",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "2fcf1eaf-6a5a-4098-b0cf-be708ab60669": {
+      "type": "homepage-testimonial-carousel",
+      "blocks": {
+        "a603d48a-a4a8-4053-b897-4c4a01111fa4": {
+          "type": "entry",
+          "settings": {
+            "title": "“With the right candidates, I’ve found CALECIM® Advanced Hair System delivers excellent results even in patients who were unresponsive to Minoxidil.”",
+            "author": "Kelly Morrell",
+            "occupation": "Scalp Technician"
+          }
+        },
+        "18b25435-e7e0-47c5-8f18-31857395c678": {
+          "type": "entry",
+          "settings": {
+            "title": "“With the right candidates, I’ve found CALECIM® Advanced Hair System delivers excellent results even in patients who were unresponsive to Minoxidil.”",
+            "author": "Kelly Morrell",
+            "occupation": "Scalp Technician"
+          }
+        },
+        "201adc92-b2be-4cbb-a426-1b41d21ee498": {
+          "type": "entry",
+          "settings": {
+            "title": "“With the right candidates, I’ve found CALECIM® Advanced Hair System delivers excellent results even in patients who were unresponsive to Minoxidil.”",
+            "author": "Kelly Morrell",
+            "occupation": "Scalp Technician"
+          }
+        }
+      },
+      "block_order": [
+        "a603d48a-a4a8-4053-b897-4c4a01111fa4",
+        "18b25435-e7e0-47c5-8f18-31857395c678",
+        "201adc92-b2be-4cbb-a426-1b41d21ee498"
+      ],
+      "settings": {
+        "section_width": "",
+        "bg_color": "#f5f5f5",
+        "c_max_width": 1029,
+        "title_size": "h7",
+        "small_title": "TRUSTED BY SPECIALIST",
+        "text_align": "center",
+        "link_label": "",
+        "link_url": "",
+        "image_position": "left"
+      }
+    },
+    "31d0b697-c6bb-4a3b-b5d9-58ad023e9ae3": {
+      "type": "hair-treatment-questions",
+      "blocks": {
+        "5569963a-89ef-4652-adcd-094cd6290850": {
+          "type": "entry",
+          "settings": {
+            "title": "List key personal information, including any major stresses or recent life changes"
+          }
+        },
+        "14c4c008-ac13-444e-8fae-442c9da0394c": {
+          "type": "entry",
+          "settings": {
+            "title": "Make a list of medications, vitamins and supplements that you are taking"
+          }
+        },
+        "be72c5a3-99a6-4967-a488-2e4e3bfe7e67": {
+          "type": "entry",
+          "settings": {
+            "title": "Recall when you started noticing increased hair shedding\/reduction of hair quality"
+          }
+        },
+        "290b8f07-6cf1-42e8-8e7d-c67d9bff97f0": {
+          "type": "entry",
+          "settings": {
+            "title": "Ask yourself if anyone in your immediate family has experienced hair loss"
+          }
+        },
+        "ff1b2557-747a-44e8-bcfa-16594bf3eeb9": {
+          "type": "entry",
+          "settings": {
+            "title": "Prepare a list of questions you would like to ask the specialist"
+          }
+        }
+      },
+      "block_order": [
+        "5569963a-89ef-4652-adcd-094cd6290850",
+        "14c4c008-ac13-444e-8fae-442c9da0394c",
+        "be72c5a3-99a6-4967-a488-2e4e3bfe7e67",
+        "290b8f07-6cf1-42e8-8e7d-c67d9bff97f0",
+        "ff1b2557-747a-44e8-bcfa-16594bf3eeb9"
+      ],
+      "settings": {
+        "title": "PREPARING FOR YOUR SPECIALISED HAIR CONSULTATION",
+        "text": "",
+        "button_label": "Frequent questions",
+        "button_url": "",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "440bc4e3-2e73-444a-8873-e2f840bd96dd": {
+      "type": "rewards-image-text-overlay",
+      "settings": {
+        "bg_color": "#f2f2f2",
+        "width": "container",
+        "title": "READY TO HAVE A CLINICAL HAIR TREATMENT?",
+        "title_size": "h3",
+        "title_dom_type": "h2",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat!",
+        "text_size": "p2",
+        "hide_text_mobile": true,
+        "text_max_width": "400",
+        "link_label": "Locate a hair clinic",
+        "link_url": "",
+        "link_label_2": "",
+        "link_url_2": "",
+        "button_label_1": "",
+        "button_url_1": "",
+        "button_label_2": "",
+        "button_url_2": "",
+        "text_align": "right",
+        "image_desktop": "shopify:\/\/shop_images\/04Science_Hair-_Clinic_Banner-desktop-2490x1000.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/04Science_Hair-_Clinic_Banner-mobile-670x410.jpg",
+        "mobile_layout": "relative",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "7e47ccf9-e744-4abc-ba05-df6575b0fbc7": {
+      "type": "whitespace",
+      "settings": {
+        "height_m": 40,
+        "height_t": 60,
+        "height_d": 80
+      }
+    }
+  },
+  "order": [
+    "bc63510a-714f-4e47-994e-4f4f4601a964",
+    "84018a7d-795f-4929-bbe6-72e39cfdcf67",
+    "b3956043-7cd1-46ec-a8de-f16aa5622ed9",
+    "d296c4c1-9096-482a-9a41-863fd959b24f",
+    "cf71c916-7c62-4757-83fc-0802ba80a156",
+    "c962f457-3318-4171-9a1d-d0921be7ff89",
+    "2fcf1eaf-6a5a-4098-b0cf-be708ab60669",
+    "31d0b697-c6bb-4a3b-b5d9-58ad023e9ae3",
+    "440bc4e3-2e73-444a-8873-e2f840bd96dd",
+    "7e47ccf9-e744-4abc-ba05-df6575b0fbc7"
+  ]
+}

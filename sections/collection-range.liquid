@@ -1,0 +1,169 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+<style>
+#shopify-section-{{ section.id }} .c-darkgreen {
+  color: #5eb98d;
+}
+#shopify-section-{{ section.id }} {
+  {% if section.settings.enable_border_top != blank %}
+    border-top: 1px solid #DBDBDB;
+  {% endif %}
+  {% if section.settings.enable_border_bottom != blank %}
+    border-bottom: 1px solid #DBDBDB;
+  {% endif %}
+}
+#shopify-section-{{ section.id }} .col-12, #shopify-section-{{ section.id }} .col-d-6 {
+  background-color: {{ section.settings.background_color }};
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#shopify-section-{{ section.id }} .csr-right .col-6 {
+  width: calc(50% - 10px);
+}
+#shopify-section-{{ section.id }} .csr-right .btn2 {
+  padding-left: 5px;
+  padding-right: 5px
+}
+@media screen and (min-width: 1023px) and (max-width: 1180px) {
+  #shopify-section-{{ section.id }} .csr-right-padding {
+  padding-left: 30px;
+  padding-right: 30px
+  }
+  #shopify-section-{{ section.id }} .csr-right > div {
+    padding-left: 25px;
+    padding-right: 25px
+    }
+}
+@media screen and (min-width: 1024px) {
+  #shopify-section-{{ section.id }} .collection-range .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  #shopify-section-{{ section.id }} .csr-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+</style>
+
+<div class="collection-range">
+  <div class="container">
+    <div class="col-12 col-d-6">
+      {%- assign image_id = "collection-range-" | append: section.id -%}
+      {%- render 'global-image-wrapper-responsive',
+        image_id: image_id,
+        desktop_image: section.settings.desktop_image,
+        mobile_image: section.settings.mobile_image
+      %}
+    </div>
+    <div class="col-12 col-d-6 csr-right pt-40 pb-30 d-pt-0 d-pb-0">
+      <div class="max-430 ml-auto mr-auto pl-15 pr-15">
+        <h4 class="h6 c-black csr-right-padding tc">{{ section.settings.title }}</h4>
+        <p class="c-grey mt-5 d-mt-10 csr-right-padding tc">{{ section.settings.text }}</p>
+      </div>
+      
+      <div class="max-500 ml-auto mr-auto">
+        <div class="pl-10 pr-10 mt-25 d-mt-30">
+          {%- for block in section.blocks -%}
+            <a href="{{ block.settings.url }}" class="btn2 col-6 tc mr-5 ml-5 mb-10">{{ block.settings.button_label }}</a>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Collection Specific Range",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_border_top",
+        "label": "Enable border top"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_border_bottom",
+        "label": "Enable border bottom"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "image_picker",
+        "id": "desktop_image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Mobile Image"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      }, {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      }, {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      }, {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      }, {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Button",
+        "type": "button",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Label"
+          }, {
+            "type": "url",
+            "id": "url",
+            "label": "Url"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Specific Range"
+      }
+    ]
+  }
+{% endschema %}

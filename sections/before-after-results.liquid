@@ -1,0 +1,147 @@
+{% comment %} Calecim {% endcomment %}
+{%- if section.settings.image_desktop == blank -%}
+    {% assign el_id = "shopify-section-" | append: section.id %}
+    {% render 'section-padding', section:section , el_id : el_id %}
+{%- endif -%}
+
+<style>
+    #shopify-section-{{ section.id }} .main-row {
+        margin: 0;
+    }
+    #shopify-section-{{ section.id }} .inner-row {
+        margin: 0 -7.5px;
+    }
+    #shopify-section-{{ section.id }} .inner-row .col-6 {
+        padding: 0 7.5px;
+    }
+    #shopify-section-{{ section.id }} .before-after-each:first-child {
+        margin-top: 0;
+    }
+
+    @media screen and (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .main-row {
+            margin: 0 -20px;
+        }
+        #shopify-section-{{ section.id }} .inner-row {
+            margin: 0 -5px;
+        }
+        #shopify-section-{{ section.id }} .inner-row .col-6 {
+            padding: 0 5px;
+        }
+        #shopify-section-{{ section.id }} .before-after-each:nth-child(2) {
+            margin-top: 0;
+        }
+    }
+</style>
+
+<section class="before-after-results">
+    <div class="container">
+        <div class="main-row">
+            <div class="global-flex flex-wrap">
+                {%- for block in section.blocks -%}
+                    <div class="before-after-each col-12 pl-0 pr-0 col-d-6 d-pl-20 d-pr-20 mt-30 d-mt-40">
+                        <div class="inner-row">
+                            <div class="global-flex flex-wrap">
+                                <div class="col-6">
+                                    {%- render 'global-image-wrapper',
+                                        image: block.settings.before_image
+                                    -%}
+                                    <p class="c-white uppercase p5 p-15 d-p-20 ab-bottom width-100 tc">{{ 'general.before_after.before' | t }}</p>
+                                </div>
+                                <div class="col-6">
+                                    {%- render 'global-image-wrapper',
+                                        image: block.settings.after_image
+                                    -%}
+                                    <p class="c-white uppercase p5 p-15 d-p-20 ab-bottom width-100 tc">{{ 'general.before_after.after' | t }}</p>
+                                </div>
+                                
+                                {%- if block.settings.title != blank -%}
+                                    <div class="col-12 mt-15">
+                                        <div class="max-550">
+                                            <p class="p3">{{ block.settings.title }}</p>
+                                        </div>
+                                    </div>
+                                {%- endif -%}
+                            </div>
+                        </div>
+                    </div>
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Before After Results",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section Padding"
+            },
+            {
+                "type": "paragraph",
+                "content": "Paddings will be applied to the text if the section is using image background"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_m",
+                "label": "Top padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_m",
+                "label": "Bottom padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_t",
+                "label": "Top padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_t",
+                "label": "Bottom padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding",
+                "label": "Top padding (Desktop)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding",
+                "label": "Bottom padding (Desktop)"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "settings": [
+                    {
+                        "type": "textarea",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "before_image",
+                        "label": "Before Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "after_image",
+                        "label": "After Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Before After Results",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}

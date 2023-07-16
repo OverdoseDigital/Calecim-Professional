@@ -1,0 +1,344 @@
+{
+  "wrapper": ".global-content-top-margin",
+  "sections": {
+    "bc63510a-714f-4e47-994e-4f4f4601a964": {
+      "type": "page-title",
+      "settings": {
+        "background_color": "#f5f5f5",
+        "image_desktop": "shopify:\/\/shop_images\/01Sceince_Intro-Main_banner-desktop-2740x800.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/01Sceince_Intro-Main_banner-mobile-750x590.jpg",
+        "title": "SKIN SCIENCE",
+        "title_size": "h2",
+        "title_dom_type": "h1",
+        "title_color": "#231d1d",
+        "text": "CALECIM® Professional is developed from skin regeneration technology. Scientists have discovered how proteins derived from Cord Lining Stem Cells are able to treat symptoms of aging.",
+        "body_copy_color": "#231d1d",
+        "max_width": 610,
+        "top_padding_m": "60",
+        "bottom_padding_m": "",
+        "top_padding_t": "55",
+        "bottom_padding_t": "",
+        "top_padding": "50",
+        "bottom_padding": ""
+      }
+    },
+    "84018a7d-795f-4929-bbe6-72e39cfdcf67": {
+      "type": "section-navigation",
+      "blocks": {
+        "c0cbb306-f391-411e-9397-8b5b512c7711": {
+          "type": "entry",
+          "settings": {
+            "title": "PTT-6® Science",
+            "url": "\/pages\/delivery-information?view=ptt6-science"
+          }
+        },
+        "ef5cb0f3-e050-40eb-be89-622cae4ad786": {
+          "type": "entry",
+          "settings": {
+            "title": "Hair Science",
+            "url": "\/pages\/delivery-information?view=hair-science"
+          }
+        },
+        "4a537238-629e-4b9d-9666-a87de6dee94d": {
+          "type": "entry",
+          "settings": {
+            "title": "Skin Science",
+            "url": "\/pages\/delivery-information?view=skin-science"
+          }
+        },
+        "83c573da-5621-4d75-a4cd-0c80ecc7fa5e": {
+          "type": "entry",
+          "settings": {
+            "title": "Beyond Beauty",
+            "url": "\/pages\/delivery-information?view=beyond-beauty"
+          }
+        }
+      },
+      "block_order": [
+        "c0cbb306-f391-411e-9397-8b5b512c7711",
+        "ef5cb0f3-e050-40eb-be89-622cae4ad786",
+        "4a537238-629e-4b9d-9666-a87de6dee94d",
+        "83c573da-5621-4d75-a4cd-0c80ecc7fa5e"
+      ],
+      "settings": {}
+    },
+    "ffa88a41-059d-4704-8dbc-fa4307caf155": {
+      "type": "cta-image-text",
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 520,
+        "title": "HOW CALECIM<sup>®<\/sup> WORKS SO QUICKLY AND EFFECTIVELY ON YOUR SKIN",
+        "text": "The growth factors which are part of our patented active ingredient use a unique cellular technology to trigger your own cells to respond in all kinds of beneficial ways. \n\nCALECIM® does not just add ingredients to your skin, it induces your skin to produce more of these beneficial proteins on its own through cell-to-cell communication.",
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "#one",
+        "link_label_2": "",
+        "link_url_2": "#two",
+        "button_label": "",
+        "button_url": "",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "desktop_image": "shopify:\/\/shop_images\/02Sceince_Skin-Half-width_image01-desktop-1370x1370.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/02Sceince_Skin-Half-width_image01-desktop-1370x1370.jpg",
+        "image_position": "row",
+        "image_position_mobile": "follow-desktop",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "59f44a62-be0e-41c5-a665-074c07cf66d7": {
+      "type": "homepage-image-text-counter",
+      "blocks": {
+        "ff59fa4b-1457-4af2-af57-1c9ad23f9b6a": {
+          "type": "entry",
+          "settings": {
+            "counter": "56%",
+            "title": "increase in Elastin Expression",
+            "url": "#one"
+          }
+        },
+        "c7a3c04c-294a-4873-9ff8-b1357a06b48b": {
+          "type": "entry",
+          "settings": {
+            "counter": "83%",
+            "title": "increase in HA Expression",
+            "url": "#two"
+          }
+        },
+        "0f7a598d-c833-403e-b337-897273217b37": {
+          "type": "entry",
+          "settings": {
+            "counter": "42%",
+            "title": "more skin cell growth at 7 days",
+            "url": "#3"
+          }
+        },
+        "6267dddb-7545-44d6-9c30-05aa05458d4e": {
+          "type": "entry",
+          "settings": {
+            "counter": "600%",
+            "title": "average improvement in skin density",
+            "url": "#zero"
+          }
+        }
+      },
+      "block_order": [
+        "ff59fa4b-1457-4af2-af57-1c9ad23f9b6a",
+        "c7a3c04c-294a-4873-9ff8-b1357a06b48b",
+        "0f7a598d-c833-403e-b337-897273217b37",
+        "6267dddb-7545-44d6-9c30-05aa05458d4e"
+      ],
+      "settings": {
+        "section_width": "",
+        "bg_color": "#f5f5f5",
+        "c_max_width": 420,
+        "title": "IN-VITRO RESULTS OF PTT-6<sup>®<\/sup> ON SKIN REGENERATION",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+        "text_align": "center",
+        "link_label": "",
+        "link_url": "",
+        "desktop_image": "shopify:\/\/shop_images\/06Secience_Hair-Skin-Image_Text_Square_-desktop-1200x1200.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/06Secience_Hair-Skin-Image_Text_Square_-desktop-1200x1200.jpg",
+        "image_position": "right"
+      }
+    },
+    "57c8b6b4-847c-4299-9cad-62e6bb415c7f": {
+      "type": "whitespace",
+      "settings": {
+        "height_m": 40,
+        "height_t": 60,
+        "height_d": 80
+      }
+    },
+    "d80e3048-6625-4652-982a-be282b32b293": {
+      "type": "rewards-image-text-overlay",
+      "settings": {
+        "bg_color": "#dddfda",
+        "width": "container",
+        "title": "PREFER TO HAVE A CLINICAL SKIN TREATMENT?",
+        "title_size": "h3",
+        "title_dom_type": "h2",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat!",
+        "text_size": "p2",
+        "hide_text_mobile": true,
+        "text_max_width": "400",
+        "link_label": "Learn more",
+        "link_url": "#learn",
+        "link_label_2": "Locate a skin clinic",
+        "link_url_2": "#locate",
+        "button_label_1": "",
+        "button_url_1": "",
+        "button_label_2": "",
+        "button_url_2": "",
+        "text_align": "right",
+        "image_desktop": "shopify:\/\/shop_images\/04Secience_Skin-Clinic_Banner-desktop-2490x1000.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/04Science_Skin-_Clinic_Banner-mobile-670x410.jpg",
+        "mobile_layout": "relative",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "b63241a0-e7ce-4085-82b7-8ae43b761fac": {
+      "type": "cta-image-text-before-after",
+      "blocks": {
+        "795ac892-7027-463b-adf7-ec322f0fd774": {
+          "type": "before_after",
+          "settings": {
+            "image_before": "shopify:\/\/shop_images\/04Sceince_Intro-Before-desktop-700x930.jpg",
+            "image_after": "shopify:\/\/shop_images\/04Sceince_Intro-After-desktop-700x930.jpg",
+            "title": "4 sessions of Nano-fractional radio frequency treatment with application of Professional Serum, over 12 weeks. Conducted by Dr R. Pamela, CELV Clinic"
+          }
+        },
+        "b22146e9-9f05-4045-9288-060bfc0bfe2c": {
+          "type": "before_after",
+          "settings": {
+            "image_before": "shopify:\/\/shop_images\/04Sceince_Intro-Before-desktop-700x930.jpg",
+            "image_after": "shopify:\/\/shop_images\/04Sceince_Intro-After-desktop-700x930.jpg",
+            "title": "4 sessions of Nano-fractional radio frequency treatment with application of Professional Serum, over 12 weeks. Conducted by Dr R. Pamela, CELV Clinic #2"
+          }
+        },
+        "fa0be6d8-2661-4262-8ffb-ec4ba1e92166": {
+          "type": "cta",
+          "settings": {
+            "cta_product": "advanced-hair-system",
+            "cta_title": "Re-invigorate dormant and hair follicles, and restore healthy hair cycle",
+            "cta_link_label": "View Advanced Hair System"
+          }
+        },
+        "1445965a-9406-4ee1-8374-fdfac039d4a2": {
+          "type": "cta",
+          "settings": {
+            "cta_product": "multi-action-cream",
+            "cta_title": "Re-invigorate dormant and hair follicles, and restore healthy hair cycle",
+            "cta_link_label": "View Multi Action Cream"
+          }
+        }
+      },
+      "block_order": [
+        "795ac892-7027-463b-adf7-ec322f0fd774",
+        "b22146e9-9f05-4045-9288-060bfc0bfe2c",
+        "fa0be6d8-2661-4262-8ffb-ec4ba1e92166",
+        "1445965a-9406-4ee1-8374-fdfac039d4a2"
+      ],
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 460,
+        "title": "BEFORE & AFTER RESULTS",
+        "text": "All CALECIM® Professional products are clinically validated for safety and efficacy. The gallery displays the before and after pictures of patients that have had their results monitored in medical clinics by doctors.",
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "#url",
+        "button_label": "",
+        "button_url": "",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "image_position": "row-reverse",
+        "image_position_mobile": "follow-desktop",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "40",
+        "bottom_padding": "40"
+      }
+    },
+    "4452e344-944d-4321-b230-f0fdedc692ae": {
+      "type": "homepage-testimonial-carousel",
+      "blocks": {
+        "95b5e84b-683e-4822-98e6-be73688fed4c": {
+          "type": "entry",
+          "settings": {
+            "title": "“It is the perfect post-laser procedure serum with an elegant vehicle that offers comfort for the repair process.”",
+            "author": "Dr. Dan Kim",
+            "occupation": "Plastic Surgeon \nOrange County, USA"
+          }
+        },
+        "2049120f-1a67-4337-9520-616b93972b04": {
+          "type": "entry",
+          "settings": {
+            "title": "“With the right candidates, I’ve found CALECIM® Advanced Hair System delivers excellent results even in patients who were unresponsive to Minoxidil.”",
+            "author": "Kelly Morrell",
+            "occupation": "Scalp Technician"
+          }
+        }
+      },
+      "block_order": [
+        "95b5e84b-683e-4822-98e6-be73688fed4c",
+        "2049120f-1a67-4337-9520-616b93972b04"
+      ],
+      "settings": {
+        "section_width": "",
+        "bg_color": "#f5f5f5",
+        "c_max_width": 1029,
+        "title_size": "h7",
+        "small_title": "TRUSTED BY SPECIALIST",
+        "text_align": "center",
+        "link_label": "",
+        "link_url": "",
+        "image_position": "left"
+      }
+    },
+    "c263d499-2539-4439-b2a2-1557e4b6d406": {
+      "type": "homepage-banner",
+      "blocks": {
+        "df4fca61-c9cf-4f95-a192-8e8b9dac2480": {
+          "type": "entry",
+          "settings": {
+            "text_color": "",
+            "text_position": "top_left",
+            "text_position_mobile": "follow_desktop",
+            "tag": "",
+            "title": "GET STARTED WITH SCIENTIFICALLY PROVEN SOLUTIONS",
+            "title_size": "h2",
+            "title_dom_type": "h2",
+            "max_width": 620,
+            "text": "",
+            "button_label": "View product range",
+            "button_url": "#view",
+            "button_type": "btn1",
+            "desktop_image": "shopify:\/\/shop_images\/05Sceince_Intro-Feature_Banner-desktop-2740x1200.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/05Sceince_Intro-Feature_Banner-mobile-750x850.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "df4fca61-c9cf-4f95-a192-8e8b9dac2480"
+      ],
+      "settings": {
+        "enable_autoslide": false,
+        "enable_arrows": false,
+        "arrow_position": "left",
+        "enable_dots": false,
+        "delay_autoslide": 5000,
+        "mobile_overlay": true
+      }
+    }
+  },
+  "order": [
+    "bc63510a-714f-4e47-994e-4f4f4601a964",
+    "84018a7d-795f-4929-bbe6-72e39cfdcf67",
+    "ffa88a41-059d-4704-8dbc-fa4307caf155",
+    "59f44a62-be0e-41c5-a665-074c07cf66d7",
+    "57c8b6b4-847c-4299-9cad-62e6bb415c7f",
+    "d80e3048-6625-4652-982a-be282b32b293",
+    "b63241a0-e7ce-4085-82b7-8ae43b761fac",
+    "4452e344-944d-4321-b230-f0fdedc692ae",
+    "c263d499-2539-4439-b2a2-1557e4b6d406"
+  ]
+}

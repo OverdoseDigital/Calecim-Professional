@@ -1,0 +1,318 @@
+{% comment %} calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color:{{section.settings.background_color}};
+        background-color:{{section.settings.advanced_background_color}};
+    }
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        {% comment %} background-color:{{section.settings.background_color}}; {% endcomment %}
+        {%if section.settings.image_position == "row-reverse"%}
+        flex-direction:column-reverse;
+        {%endif%}
+    }
+    #shopify-section-{{ section.id }} .image-container{
+        width:100%;
+    }
+    #shopify-section-{{ section.id }} .text-container{
+        width:100%;
+        padding-left:20px;
+        padding-right:20px;
+        max-width:{{section.settings.content_max_width}}px;
+        margin:0 auto;
+
+        {%- if section.settings.section_width == 'container' -%}
+            padding-left: 0;
+            padding-right: 0;
+        {%- endif -%}
+
+        {%- if section.settings.image_position_mobile == 'image-first' -%}
+            padding-top: 30px;
+        {%- else -%}
+            {%- if section.settings.image_position == "row-reverse" -%}
+                padding-bottom: 30px;
+            {%- else -%}
+                padding-top: 30px;
+            {%- endif -%}
+        {%- endif -%}
+    }
+    {%- if section.settings.image_position_mobile == 'image-first' -%}
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            flex-direction: row;
+        }
+    {%- endif -%}
+
+	#shopify-section-{{ section.id }} .accordion-container {
+		margin-top: auto;
+	}
+	#shopify-section-{{ section.id }} .accordion-container .title {
+		opacity: 0.3;
+		transition: 0.3s ease all;
+	}
+	#shopify-section-{{ section.id }} .accordion-container .accordion-title.active .title {
+		opacity: 1;
+	}
+
+    @media(min-width: 768px) {
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left:30px;
+            padding-right:30px;
+
+            {%- if section.settings.section_width == 'container' -%}
+                padding-left: 0;
+                padding-right: 0;
+            {%- endif -%}
+
+            {%- if section.settings.image_position_mobile == 'image-first' -%}
+                padding-top: 40px;
+            {%- else -%}
+                {%- if section.settings.image_position == "row-reverse" -%}
+                    padding-bottom: 40px;
+                {%- else -%}
+                    padding-top: 40px;
+                {%- endif -%}
+            {%- endif -%}
+        }
+
+        {%- if section.settings.text_align == 'tc' -%}
+            #shopify-section-{{ section.id }} .text-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        {%- endif -%}
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .image-container{
+            width: 50%;
+        }
+        #shopify-section-{{ section.id }} .text-container{
+            width: 50%;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-bottom: 50px;
+            padding-top: 50px;
+
+			{%- if section.settings.image_position == "row-reverse" -%}
+				margin-left: 0;
+			{%- else -%}
+				margin-right: 0;
+			{%- endif -%}
+        }
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            flex-direction:{{section.settings.image_position}};
+        }
+
+        {%- if section.settings.section_width == 'container' -%}
+            {%- if section.settings.image_position == "row" -%}
+                #shopify-section-{{ section.id }} .text-container{
+                    transform: translateX(20px);
+                }
+            {%- else -%}
+                #shopify-section-{{ section.id }} .text-container{
+                    transform: translateX(-20px);
+                }
+            {%- endif -%}
+        {%- endif -%}
+    }
+    @media(min-width: 1200px) {
+        {%- if section.settings.section_width == 'container' -%}
+            {%- if section.settings.image_position == "row" -%}
+                #shopify-section-{{ section.id }} .text-container{
+                    transform: translateX(30px);
+                }
+            {%- else -%}
+                #shopify-section-{{ section.id }} .text-container{
+                    transform: translateX(-30px);
+                }
+            {%- endif -%}
+        {%- endif -%}
+
+		#shopify-section-{{ section.id }} .text-container {
+			padding-left: 60px;
+			padding-right: 60px;
+		}
+    }
+</style>
+
+<section id="{{ section.id }}" class="cta-image-text">
+    <div class="{{section.settings.section_width}}">
+        <div class="flex flex-wrap flex-wrapper">
+            <div class="image-container">
+                {%assign image_id = "cta-image-text_" | append: section.id%}
+                {%- render 'global-image-wrapper-responsive',
+                    image_id: image_id,
+                    desktop_image: section.settings.desktop_image,
+                    mobile_image: section.settings.mobile_image
+                %}    
+            </div>
+            <div class="text-container {{section.settings.text_align}}">
+				<div class="global-flex flex-wrap height-100">
+					<div class="p5 bold-500 c-black uppercase mb-50">{{ section.settings.title }}</div>
+
+					<div class="accordion-container bb-1 b-border width-100">
+						{%- for block in section.blocks -%}
+							{%- assign wrapper_class = 'bt-1 b-border pb-20' -%}
+							{%- if forloop.first -%}
+								{%- assign open_by_default = true -%}
+							{%else%}
+								{%- assign open_by_default = false -%}
+							{%- endif -%}
+
+							{%- render 'accordion',
+								wrapper_class: wrapper_class,
+								title: block.settings.title,
+								title_wrapper_class: 'image-text-accordion',
+								description: block.settings.text,
+								title_class: "h4 relative",
+								title_no_pb: true,
+								desc_class: "p2 pt-10",
+								default_active: open_by_default,
+								open_one_at_a_time: true,
+								hide_arrow: true,
+								desc_no_pb: true
+							-%}
+						{%- endfor -%}
+					</div>
+				</div>
+            </div>
+        </div>
+    <div>
+</section>
+
+{% schema %}
+    {
+        "name": "Image + Text Accordion",
+        "settings": [
+        {
+            "type": "radio",
+            "id": "section_width",
+            "label": "Section Width",
+            "options": [
+                {"value":"","label":"Full Width"},
+                {"value":"container","label":"Contained"}
+            ]
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "text",
+            "id": "advanced_background_color",
+            "label": "Advanced Background Color"
+        },
+        {
+            "type": "number",
+            "id": "content_max_width",
+            "label": "Content Max Width",
+            "default": 500,
+            "info": "on px"
+        },
+        {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "radio",
+            "id": "text_align",
+            "label": "Text Align",
+            "options": [
+                {"value":"tc","label":"Center"},
+                {"value":"tl","label":"Left"},
+                {"value":"tr","label":"Right"}
+            ]
+        },
+        {
+            "type": "image_picker",
+            "id": "desktop_image",
+            "label": "Desktop Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+        },
+        {
+            "type": "radio",
+            "id": "image_position",
+            "label": "Image Position (Desktop)",
+            "options": [
+                {"value":"row","label":"Left"},
+                {"value":"row-reverse","label":"Right"}
+            ]
+        },
+        {
+            "type": "radio",
+            "id": "image_position_mobile",
+            "label": "Image Position (Mobile)",
+            "options": [
+                {"value":"image-first","label":"Image First"},
+                {"value":"follow-desktop","label":"Follow Desktop Alignment"}
+            ],
+            "default": "follow-desktop"
+        },
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+		"blocks": [
+			{
+				"type": "entry",
+				"name": "Entry",
+				"settings": [
+					{
+						"type": "text",
+						"id": "title",
+						"label": "Title"
+					},
+					{
+						"type": "textarea",
+						"id": "text",
+						"label": "Text"
+					}
+				]
+			}
+		],
+        "presets": [
+        {
+            "name": "Image + Text Accordion",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

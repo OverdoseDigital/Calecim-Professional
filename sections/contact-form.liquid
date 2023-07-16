@@ -1,0 +1,212 @@
+{% comment %} calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+	#shopify-section-{{ section.id }} .contact-form .cf-container {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+	@media screen and (min-width: 1024px){
+		#shopify-section-{{ section.id }} .contact-form .cf-container {
+			flex-direction: row;
+			align-items: center;
+		}
+		#shopify-section-{{ section.id }} .contact-form .cf-container.right {
+			flex-direction: row-reverse;
+		}
+		#shopify-section-{{ section.id }} .contact-form .cf-container .cf-left,
+		#shopify-section-{{ section.id }} .contact-form .cf-container .cf-right {
+			width: 50%;
+		}
+		#shopify-section-{{ section.id }} .contact-form .cf-container .global-image-wrapper {
+			height: 100%;
+		}
+		#shopify-section-{{ section.id }} .contact-form .cf-container .global-image-wrapper img {
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+</style>
+<section class="contact-form width-100 global-flex flex-wrap relative">
+	<div class="cf-container {{ section.settings.image_position }} d-bt-1 b-border">
+		<div class="cf-left height-100">
+			{%- assign image_id = "cf-image-" | append: section.id -%}
+			{%- render 'global-image-wrapper-responsive',
+					image_id: image_id,
+					desktop_image: section.settings.desktop_image,
+					mobile_image: section.settings.mobile_image
+			%}
+		</div>
+		<div class="cf-right d-pr-0 pr-20 d-pl-0 pl-20 pt-40 pb-40">
+			<{{ section.settings.title_dom_type }} class="{{ section.settings.title_size }} tc d-tl max-400 ml-auto mr-auto">{{ section.settings.title }}</{{ section.settings.title_dom_type }}>
+			<div class="p2 tc d-tl max-400 ml-auto mr-auto mt-10">{{ section.settings.text }}</div>
+			<div class="form-wrapper max-400 ml-auto mr-auto mt-25">
+				{%- form 'contact' -%}
+					<div class="form-each relative width-100">
+						<input type="text" name="contact[name]" required placeholder="Name" class="p2 width-100 p-20 bg-lightgrey c-darkgrey">
+					</div>
+					<div class="form-each relative width-100 mt-10">
+						<input type="email" name="contact[email]" required placeholder="Email" class="p2 width-100 p-20 bg-lightgrey c-darkgrey">
+					</div>
+					<div class="form-each relative width-100 mt-10">
+						<textarea name="contact[message]" required placeholder="Message" class="p2 width-100 p-20 bg-lightgrey c-darkgrey" rows="8"></textarea>
+					</div>
+					<div class="form-each relative width-100 tc mt-25">
+						<button class="btn5 width-100" type="submit">{{ section.settings.button_label }}</button>
+					</div>
+	
+					{%- if form.posted_successfully? -%}
+						<p class="p2 tc mt-10 d-mt-15 max-300 ml-auto mr-auto c-grey">{{ section.settings.success_message }}</p>
+					{%- else -%}
+						{%- if form.errors -%}
+							{%- for error in form.errors -%}
+								<p class="p2 tc mt-10 d-mt-15 c-grey">
+									{% if error == 'form' %}
+										{{ form.errors.messages[error] }}
+									{% else %}
+										{{ form.errors.translated_fields[error] }} - {{ form.errors.messages[error] }}
+									{% endif %}
+								</p>
+							{%- endfor -%}
+						{%- endif -%}
+					{%- endif -%}
+				{%- endform -%}
+			</div>
+		</div>
+	</div>
+</section>
+
+{% schema %} 
+{
+	"name": "Contact Form",
+	"settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title"
+		},
+		{
+				"type": "select",
+				"id": "title_size",
+				"label": "Title Size",
+				"options": [
+						{
+								"value": "h1",
+								"label": "H1"
+						},
+						{
+								"value": "h2",
+								"label": "H2"
+						},
+						{
+								"value": "h3",
+								"label": "H3"
+						},
+						{
+								"value": "h4",
+								"label": "H4"
+						}
+				],
+				"default": "h3"
+		},
+		{
+				"type": "select",
+				"id": "title_dom_type",
+				"label": "Title Dom Type",
+				"options": [
+						{
+								"value": "h1",
+								"label": "H1"
+						},
+						{
+								"value": "h2",
+								"label": "H2"
+						},
+						{
+								"value": "h3",
+								"label": "H3"
+						}
+				],
+				"default": "h3"
+		},
+		{
+			"type": "textarea",
+			"id": "text",
+			"label": "Text"
+		},
+		{
+			"type": "text",
+			"id": "button_label",
+			"label": "Button label"
+		},
+		{
+			"type": "image_picker",
+			"id": "desktop_image",
+			"label": "Desktop Image"
+		},
+		{
+			"type": "image_picker",
+			"id": "mobile_image",
+			"label": "Mobile Image"
+		},
+		{
+				"type": "select",
+				"id": "image_position",
+				"label": "Image Position",
+				"options": [
+						{
+								"value": "left",
+								"label": "Left"
+						},
+						{
+								"value": "right",
+								"label": "Right"
+						}
+				],
+				"default": "left"
+		},
+		{
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+	],
+	"presets": [
+        {
+            "name": "Contact Form",
+            "blocks": []
+        }
+	]
+}
+{% endschema %}

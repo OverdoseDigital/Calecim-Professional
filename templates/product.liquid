@@ -1,0 +1,66 @@
+{% comment %} Calecim {% endcomment %}
+<script type="application/ld+json">
+    { "@context": "http://schema.org/","@type": "Product","name": "{{ product.title }}", "brand": { "@type": "Brand", "name": "{{ product.vendor }}" }, "description": "{{ page_description | escape }}", "image": "{{ product.featured_image | img_url: '1000x' }}", "sku": "{{ product.variants.first.sku }}", "gtin14": "{{ product.variants.first.barcode }}", "offers": { "@type": "Offer", "priceCurrency": "{{ shop.currency }}", "url":"{{ shop.url }}{{ product.url }}", "price": "{{ product.price | money_without_currency | strip_html | replace: ',', '' }}", "itemCondition" : "http://schema.org/NewCondition", "availability" : "{% if product.available == true %}http://schema.org/InStock{% else %}http://schema.org/OutOfStock{% endif %}" } }
+</script>
+
+{%- assign padding_class = 'pb-40 t-pb-60 d-pb-80' -%}
+{%- if product.metafields.about_1.enable_1 == blank and product.metafields.testimonials.enable == blank 
+    and product.metafields.reviews.enable == blank and product.metafields.faq.enable == blank 
+    and product.metafields.related_articles.enable == blank
+-%}
+    {%- assign padding_class = '' -%}
+{%- endif -%}
+
+
+<div class="product-page global-content-top-margin {{ padding_class }}">
+    {%- render 'product-sticky-add-to-cart', product: product -%}
+    
+    <div id="product-page-top" class="relative width-100 bb-1 b-border">
+        <div class="global-flex flex-wrap">
+            <div class="col-12 pl-0 pr-0 col-d-6 d-pr-0 d-pl-0 bg-lightgrey">
+                <div class="product-images-outer-wrapper">
+                    <div class="breadcrumbs-outer-wrapper width-100 z-2 pt-20 pb-20 d-pt-30 d-pb-35">
+                        <div class="container">
+                            {%- render 'breadcrumbs', class_color: 'c-black opacity-5' -%}
+                        </div>
+                    </div>
+
+                    {%- render 'product-images', product: product -%}
+                </div>
+            </div>
+            <div class="col-12 pl-20 pr-20 t-pl-30 t-pr-30 col-d-6 d-pl-40 max-pl-80 d-pr-60 mt-30 t-mt-50 d-mt-0 d-pt-60 pb-30 t-pb-60 d-pb-80 product-info-wrapper">
+                <div class="d-max-500 product-info-outer-wrapper">
+                    {%- render 'product-info', product: product -%}
+                    
+                    {%- if product.metafields.custom_info.enable -%}
+                        {%- render 'product-custom-info', product: product -%}
+                    {%- endif -%}
+
+                    {%- if product.metafields.custom_info_cta.enable -%}
+                        {%- render 'product-custom-info-cta', product: product -%}
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {%- if product.metafields.about_1.enable_1 != blank -%}
+        {%- render 'product-tabbed-details', product: product -%}
+    {%- endif -%}
+
+    {%- if product.metafields.testimonials.enable != blank -%}
+        {%- render 'product-testimonials', product: product -%}
+    {%- endif -%}
+
+    {%- if product.metafields.reviews.enable -%}
+        {%- render 'product-reviews', product: product -%}
+    {%- endif -%}
+
+    {%- if product.metafields.faq.enable != blank -%}
+        {%- render 'product-faq', product: product -%}
+    {%- endif -%}
+
+    {%- if product.metafields.related_articles.enable != blank -%}
+        {%- render 'product-related-articles', product: product -%}
+    {%- endif -%}
+</div>

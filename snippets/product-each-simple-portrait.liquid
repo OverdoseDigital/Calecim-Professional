@@ -1,0 +1,21 @@
+{% comment %} Calecim {% endcomment %}
+<div class="product-each simple-portrait">
+    <div class="image-container">
+        <a href="{{ product.url }}" class="show-m">
+            {%- render 'global-image-wrapper',
+                image: product.featured_image
+            -%}
+        </a>
+    </div>
+    <div class="text-container d-mt-15">
+        <a href="{{ product.url }}" class="show-m p4 bold-600 uppercase">{{ product.title }}</a>
+        {%- assign desc = product.description | strip_html | truncate: 150 -%}
+        {%- if product.metafields.info.short_desc != blank -%}
+            {%- assign desc = product.metafields.info.short_desc -%}
+        {%- endif -%}
+        
+        {%- if desc != blank -%}
+            <p class="p4 c-black opacity-5 mt-5">{{ desc }}</p>
+        {%- endif -%}
+    </div>
+</div>

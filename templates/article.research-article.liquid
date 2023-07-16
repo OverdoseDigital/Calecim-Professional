@@ -1,0 +1,357 @@
+<style>
+    .article-container .flex-wrapper{
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .article-container .main-container{
+        overflow-wrap: break-word;
+        width:100%;
+    }
+    .article-container .side-container{
+        flex: 0 0 calc(100% + 40px);
+        margin-left: -20px;
+        transition: 0.3s ease all;
+    }
+    .article-container .rte strong{
+        font-weight:600;
+    }
+    .article-container .rte h4{
+        margin-top:15px;
+        margin-bottom:20px;
+    }
+    .article-container .rte img{
+        height:100%;
+        margin-bottom:20px;
+    }
+
+    .article-container .article-share a {
+        display: inline-block;
+        font-size: 0;
+    }
+    .article-container .article-share a .icon,
+    .article-container .article-share a .icon svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .article-container .copy-notif{
+        background: var(--black);
+        color: #fff;
+        padding: 5px 10px;
+        text-align: center;
+        position: absolute;
+        top: -35px;
+        left: 50%;
+        width: 100px;
+        border-radius: 30px;
+        opacity: 0;
+        transition: 0.3s all ease;
+        margin-left: -70px;
+    }
+    .article-container .copy-notif.visible{
+        opacity:1;
+    }
+    .article-container .copy-to-clipboard,
+    .article-container .copy-to-clipboard svg {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        font-size: 0;
+    }
+
+    .article-container .banner-container {
+        width: calc(100% + 40px);
+        margin-left: -20px;
+    }
+    .article-container .article-author .image-wrapper {
+        flex: 0 0 54px;
+        height: 54px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    @media screen and (min-width: 768px) {
+        .article-container .side-container{
+            flex: 0 0 calc(100% + 60px);
+            margin-left: -30px;
+        }
+        .article-container .banner-container {
+            width: calc(100% + 60px);
+            margin-left: -30px;
+        }
+        .article-container .rte h4{
+            margin-top:20px;
+            margin-bottom:25px;
+        }
+        .article-container .rte img{
+            margin-bottom:25px;
+        }
+        .article-container .flex-wrapper-tablet{
+            display:flex;
+            margin:0 -10px;
+        }
+        .article-container .flex-wrapper-tablet .article-each-wrapper{
+            padding-left:10px;
+            padding-right:10px;
+        }
+        .more-article-container .swiper-slide{
+            width: 33.3333%;
+            flex: 0 0 33.3333%;
+        }
+    }
+    @media screen and (min-width: 1024px) {
+        .article-container .copy-notif{
+            margin-left: -50px;
+        }
+        .article-container .banner-container {
+            width: 100%;
+            margin-left: 0;
+        }
+        .article-container .main-container{
+            width:70%;
+            padding-right:125px;
+        }
+        .article-container .side-container{
+            flex:0 0 30%;
+            top:40px;
+            margin-left: 0;
+            position: sticky;
+            margin-bottom: auto;
+        }
+        .article-container .publish-date{
+            align-items:center;
+        }
+        .article-container .flex-wrapper-tablet{
+            display:block;
+            margin:0;
+        }
+        .article-container .flex-wrapper-tablet .article-each-wrapper{
+            padding-left:0;
+            padding-right:0;
+        }
+        .more-article-container .swiper {
+            overflow: hidden !important;
+        }
+        .more-article-container .swiper-pagination{
+            left:10px;
+            width:calc(100% - 20px);
+        }
+        .more-article-container a.show-d{
+            display:inline-block;
+        }
+        .more-article-container a.hide-d{
+            display:none;
+        }
+        .more-article-container .swiper-slide{
+            width: 25%;
+            flex: 0 0 25%;
+            padding: 0 10px;
+        }
+        .more-article-container .carousel-wrapper{
+            margin: 0 -10px;
+        }
+        .more-article-container .swiper-custom-arrow{
+            display: inline-flex;
+        }
+        .more-article-container .swiper-custom-arrow.left{
+            left:30px;
+        }
+        .more-article-container .swiper-custom-arrow.right{
+            right:30px;
+        }
+    }
+ </style>
+ 
+ <div class="global-content-top-margin">
+    <article class="article-container research-article shopify-section pb-40 d-pb-85">   
+        {%- comment -%} title container {%- endcomment -%}
+        <div class="title-container bg-lightgrey pb-40 pt-60 d-pb-70 d-pt-80">
+            <div class="container">
+                <div class="link-wrapper mt-20 d-mt-30">
+                    {%- assign link_id = "link-back" -%}
+                    {%- assign url = routes.root_url | append: 'blogs/research-library/' -%}
+                    {%- assign label = 'blogs.article.back_to_research' | t -%}
+                    {%- render 'link-icon',
+                        id: link_id,
+                        label: label,
+                        url: url,
+                        text_class: 'p4',
+                        icon_color: '#9c9699',
+                        icon_svg: settings.icon_btn_left,
+                        left_arrow: true,
+                        load_inside_vue: false
+                    -%}
+                </div>
+
+                <div class="max-930 mt-30 d-mt-50">
+                    <h1 class="h7">{{ article.title }}</h1>
+                    {%- if article.metafields.r_lib.journal_source != blank -%}
+                        <p class="p3 mt-10 max-330">{{ article.metafields.r_lib.journal_source | newline_to_br }}</p>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+        {%- comment -%} end title container {%- endcomment -%}
+
+        <div class="container">
+            <div class="flex-wrapper pt-30 t-pt-50 d-pt-60">
+                <div class="main-container">
+                    {%- if article.metafields.r_lib.author != blank -%}
+                        <div class="article-author b-1 b-border p-15 show-m hide-d mb-40">
+                            <div class="global-flex ai-center jc-between">
+                                <div>
+                                    <p class="p2 bold-500">{{ article.metafields.r_lib.author }}</p>
+                                    
+                                    {%- if article.metafields.r_lib.occupation != blank -%}
+                                        <p class="p4 opacity-5 mt-5">{{ article.metafields.r_lib.occupation }}</p>
+                                    {%- endif -%}
+                                    {%- if article.metafields.r_lib.address != blank -%}
+                                        <p class="p4 opacity-5">{{ article.metafields.r_lib.address }}</p>
+                                    {%- endif -%}
+                                </div>
+                                <div class="image-wrapper">
+                                    {%- if article.metafields.r_lib.image != blank -%}
+                                        {%- render 'global-image-wrapper',
+                                            image: article.metafields.r_lib.image[0],
+                                            acc: true
+                                        -%}
+                                    {%- endif -%}
+                                </div>
+                            </div>
+                        </div>
+                    {%- endif -%}
+
+                    <div class="rte">
+                        {{ article.content }} 
+                    </div>
+
+                    {%- if article.metafields.before_after.image_before_1 != blank -%}
+                        <div class="before-after-wrapper">
+                            {%- for i in (1..3) -%}
+                                {%- assign image_before = 'image_before_' | append: i -%}
+                                {%- assign image_after = 'image_after_' | append: i -%}
+                                {%- assign image_label = 'image_label_' | append: i -%}
+
+                                <div class="row">
+                                    {%- if article.metafields.before_after[image_before] != blank -%}
+                                        <div class="global-flex flex-wrap mt-20 d-mt-30">
+                                            <div class="col-6">
+                                                <p class="p2 bold-500 tc mb-10 d-mb-20">{{ 'general.before_after.before' | t }}</p>
+                                                {%- render 'global-image-wrapper',
+                                                    image: article.metafields.before_after[image_before][0],
+                                                    acc: true
+                                                -%}
+                                            </div>
+                                            <div class="col-6">
+                                                <p class="p2 bold-500 tc mb-10 d-mb-20">{{ 'general.before_after.after' | t }}</p>
+                                                {%- render 'global-image-wrapper',
+                                                    image: article.metafields.before_after[image_after][0],
+                                                    acc: true
+                                                -%}
+                                            </div>
+
+                                            {%- if article.metafields.before_after[image_label] != blank -%}
+                                                <div class="col-12 mt-20">
+                                                    <p class="p2">{{ article.metafields.before_after[image_label] | newline_to_br }}</p>
+                                                </div>
+                                            {%- endif -%}
+                                        </div>
+                                    {%- endif -%}
+                                </div>
+                            {%- endfor -%}
+                        </div>
+                    {%- endif -%}
+                </div>
+
+                <div class="side-container global-flex flex-wrap pl-20 pr-20 t-pl-30 t-pr-30 d-pl-0 d-pr-0 pt-40 mt-40 bt-1 b-border d-bt-0 d-pt-0 d-mt-0">   
+                    {%- if article.metafields.r_lib.author != blank -%}
+                        <div class="article-author b-1 b-border d-max-300 p-20 hide-m show-d width-100">
+                            <div class="global-flex ai-center jc-between">
+                                <div>
+                                    <p class="p2 bold-500">{{ article.metafields.r_lib.author }}</p>
+                                    
+                                    {%- if article.metafields.r_lib.occupation != blank -%}
+                                        <p class="p4 opacity-5 mt-5">{{ article.metafields.r_lib.occupation }}</p>
+                                    {%- endif -%}
+                                    {%- if article.metafields.r_lib.address != blank -%}
+                                        <p class="p4 opacity-5">{{ article.metafields.r_lib.address }}</p>
+                                    {%- endif -%}
+                                </div>
+                                <div class="image-wrapper">
+                                    {%- if article.metafields.r_lib.image != blank -%}
+                                        {%- render 'global-image-wrapper',
+                                            image: article.metafields.r_lib.image[0],
+                                            acc: true
+                                        -%}
+                                    {%- endif -%}
+                                </div>
+                            </div>
+                        </div>
+                    {%- endif -%}
+
+                    {%- if article.metafields.research_related.enable -%} 
+                        <div class="related-articles d-mt-40 width-100">
+                            <p class="p3 bold-500">{{ article.metafields.research_related.section_title }}</p>
+
+                            <div class="article-wrapper bt-1 bl-1 br-1 b-border">
+                                {%- assign related_articles = article.metafields.research_related.articles | split: '|' -%}
+                                {%-  for article_obj_temp in related_articles -%}
+                                    {%- assign article_obj = articles[article_obj_temp] -%}
+
+                                    <a href="{{ article_obj.url }}" class="show-m p-30 bb-1 b-border">
+                                        <p class="p1 max-330">{{ article_obj.title }}</p>
+
+                                        {%- if article_obj.metafields.r_lib.author != blank -%}
+                                            <p class="p3 mt-10 width-100">{{ article_obj.metafields.r_lib.author }}</p>
+                                        {%- endif -%}
+                                    </a>
+                                {%- endfor -%}
+                            </div>
+                        </div>
+                    {%- endif -%}
+
+                    <div class="flex flex-wrap mt-25 d-mt-30 align-flex jc-between article-share width-100">
+                        <div class="p3 bold-500 mr-5">{{ 'blogs.article.share' | t }}</div>
+                        <div class="flex flex-wrap">
+                            <a class="show-m-inline-block mr-10" href="https://www.facebook.com/sharer/sharer.php?u={{ shop.url | url_encode }}{{ article.url | url_encode }}" target="_blank">
+                                <div class="icon">{{settings.icon_facebook_circled}}</div>
+                            </a>
+                            <a class="show-m-inline-block mr-10" href="https://twitter.com/intent/tweet?text={{ article.title | url_encode }}&amp;url={{ shop.url | url_encode }}{{ article.url | url_encode }}" target="_blank">
+                                <div class="icon">{{settings.icon_twitter_circled}}</div>
+                            </a>
+                            <a onclick="copyToClipboard(event)" class="copy-to-clipboard cursor relative">
+                                <input type="text" class="clipboard-value absolute" style="opacity: 0; width:1px; height: 1px;" value="{{ shop.url }}{{ article.url }}">
+                                {{ settings.icon_share_circled }}
+
+                                <div class="copy-notif p4">{{ 'blogs.article.link_copied' | t }}</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        </div>
+        
+    </article>
+</div>
+
+<script>
+    function copyToClipboard(event){
+        const inputcopy = event.target.closest(".copy-to-clipboard").querySelector(".clipboard-value");
+        const copynotif = event.target.closest(".copy-to-clipboard").querySelector(".copy-notif");
+
+        inputcopy.setSelectionRange(0, inputcopy.value.length);
+        inputcopy.select();
+        
+        document.execCommand("copy");
+
+        copynotif.classList.add("visible");
+        setTimeout( function(){
+            copynotif.classList.remove("visible");
+            clearTimeout(this);
+        }, 2000);
+    }
+</script>
+

@@ -1,0 +1,194 @@
+{%- assign el_id = 'image-link-listing-3-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<style>
+{%- if section.settings.bg_color != blank -%}
+#{{ el_id }} {
+    background-color: {{ section.settings.bg_color }};
+}
+{%- endif -%}
+#shopify-section-{{ section.id }} svg{
+    fill:var(--comfort-orange);
+    width:12px;
+    height:12px;
+}
+#shopify-section-{{ section.id }} svg path {
+    fill:var(--comfort-orange);
+}
+#shopify-section-{{ section.id }} .title{
+    display:flex;
+    align-items: center;
+}
+</style>
+<div id="{{ el_id }}" class="collection-box">
+    <div class="flex jc-center ai-center pb-30 t-pb-40 d-pb-40">
+        <div class="max-750 tc">
+            {%- if section.settings.title != blank -%}
+                {%- if section.settings.title_size == 'big' -%}
+                    <h2 class="h2 c-greenb2 tc">{{ section.settings.title | newline_to_br }}</h2>
+                {%- elsif section.settings.title_size == 'normal' -%}
+                    <h3 class="h3 c-greenb2 tc">{{ section.settings.title | newline_to_br }}</h3>
+                {%- else -%}
+                    <h5 class="h5 c-greenb2 tc">{{ section.settings.title | newline_to_br }}</h5>
+                {%- endif -%}
+            {%- endif -%}
+            {%- if section.settings.subtitle != blank -%}
+            <h4 class="h5 c-comfort-black bold-500 tc pt-10 t-pt-10 d-pt-10">{{ section.settings.subtitle }}</h5>
+            {%- endif -%}
+            {%- if section.settings.text != blank -%}
+            <div class="w-full p1 c-comfort-black tc pt-10 t-pt-10 d-pt-10">{{ section.settings.text }}</div>
+            {%- endif -%}
+        </div>
+    </div>
+    <div class="container">
+        <div class="row inner flex jc-center ai-center flex-wrap">
+            {% for block in section.blocks %}
+                {%- assign m_pb = 'pb-30' -%}
+                {%- assign t_pb = 't-pb-0' -%}
+                {%- assign d_pb = 'd-pb-0' -%}
+                {%- if forloop.last -%}
+                    {%- assign m_pb = 'pb-0' -%}
+                {%- endif -%}
+                <div class="col-12 col-t-4 col-d-4 rte tc {{ m_pb }} {{ t_pb }} {{ d_pb }}">
+                    <a href="{{ block.settings.url }}">
+                        {%- if section.settings.mode == 'image' -%}
+                            {%- render 'global-image-wrapper',
+                                image: block.settings.image,
+                                additional_class: 'no-bg rounded-20 t-rounded-24'
+                            %}
+                        {%- else -%}
+                            {%- render 'global-image-wrapper',
+                                image: block.settings.image,
+                                additional_class: 'no-bg rounded-20 t-rounded-24'
+                            %}
+                        {%- endif -%}
+                        <div class="flex jc-start t-jc-start d-jc-center ai-center mt-15 t-mt-10 d-mt-10">
+                            <div class="tl t-tl d-tc bold-500">{{ block.settings.title }}</div>
+                            <div class="ml-10">{{ settings.icon_btn_right }}</div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+	"name": "Image Link Listing - 3",
+	"settings": [
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)",
+            "default": 0
+		},
+        {
+			"type": "header",
+			"content": "Content Settings"
+		},
+        {
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		},
+        {
+			"type" : "textarea",
+			"id" : "title",
+			"label" : "Title"
+		},
+		{
+            "type": "select",
+            "id": "title_size",
+            "label": "Title Size",
+            "options": [
+                {
+                    "value": "normal",
+                    "label": "Normal"
+                },
+                {
+                    "value": "smaller",
+                    "label": "Smaller"
+                },
+                {
+                    "value": "big",
+                    "label": "Big"
+                }
+            ],
+            "default": "normal"
+        },
+		{
+			"type" : "textarea",
+			"id" : "subtitle",
+			"label" : "Sub Title"
+		},
+		{
+			"type" : "textarea",
+			"id" : "text",
+			"label" : "Text"
+		}
+	],
+    "max_blocks": 3,
+	"blocks":[
+        {
+            "type": "entry",
+            "name": "Entry",
+            "settings": [
+                {
+                    "type" : "image_picker",
+                    "id" : "image",
+                    "label" : "Image"
+                },
+                {
+                    "type" : "textarea",
+                    "id" : "title",
+                    "label" : "Title"
+                },
+                {
+                    "type" : "url",
+                    "id" : "url",
+                    "label" : "URL"
+                }
+            ]
+        }
+    ],
+	"presets": [
+		{
+			"name": "Image Link Listing - 3",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

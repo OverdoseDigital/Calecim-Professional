@@ -1,0 +1,243 @@
+{% comment %} Calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color: {{ section.settings.bg_color }};
+    }
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: center;
+    }
+    #shopify-section-{{ section.id }} .flex-wrapper-each{
+        width:100%;
+    }
+    #shopify-section-{{ section.id }} .icon-container{
+        width:80px;
+        font-size: 0;
+    }
+    #shopify-section-{{ section.id }} .text-container{
+        width:calc(100% - 90px);
+    }
+    #shopify-section-{{ section.id }} .text-container > .p2 {
+        {% if section.settings.title_text_color != blank %}
+            color: {{ section.settings.title_text_color }};
+        {% endif %}
+    }
+    #shopify-section-{{ section.id }} .text-container > .p3 {
+        {% if section.settings.body_text_color != blank %}
+            color: {{ section.settings.body_text_color }};
+        {% endif %}
+    }
+    #shopify-section-{{ section.id }} .link-container > div {
+        display: inline-block;
+    }
+    @media(min-width: 768px) {
+
+    }
+
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .flex-wrapper-each{
+            max-width: 310px;
+            justify-content: center;
+            align-items: center;
+        }
+        #shopify-section-{{ section.id }} .flex-wrapper-each .flex-wrap {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #shopify-section-{{ section.id }} .icon-container svg{
+            width:45px;
+            height:45px;
+        }
+        #shopify-section-{{ section.id }} .icon-container{
+            width:117px;
+        }
+        #shopify-section-{{ section.id }} .text-container{
+            width: 100%;
+        }
+    }
+</style>
+
+<section id="{{ section.id }}" class="homepage-icons">
+    <div class="container overflow">
+        <div class="flex-wrapper">
+            {%for block in section.blocks%}
+                <div class="flex-wrapper-each d-pr-25 d-pl-25">
+                    <div class="flex flex-wrap align-flex cursor {%unless forloop.last%}mb-30 d-mb-0{%endunless%}">
+                        <div class="icon-container d-mr-0 mr-10">
+                            {% if block.settings.icon_svg != blank %}
+                                {{block.settings.icon_svg}}
+                            {% else %}
+                                {%- assign image_id = "homepage-icon-" | append: block.id -%}
+                                {%- render 'global-image-wrapper',
+                                    image_id: image_id,
+                                    image: block.settings.icon_image,
+                                    additional_class: 'no-bg'
+                                %}
+                            {% endif %}
+                        </div>
+                        <div class="text-container d-mt-20">
+                            {%- if block.settings.title != blank -%}
+                                <div class="p2 bold-500 c-black">{{block.settings.title}}</div>
+                            {%- endif -%}
+
+                            {%- if block.settings.text != blank -%}
+                                <div class="p3 c-black mt-5 opacity-5 d-max-220 d-ml-auto d-mr-auto">{{ block.settings.text }}</div>
+                            {%- endif -%}
+
+                            {% if block.settings.link_label_1 != blank %}
+                                <div class="link-container d-mt-10 mt-5">
+                                    {% if block.settings.link_label_1 != blank %}
+                                        <div class="d-mr-5 d-ml-5 mr-10 link2">
+                                            {%- assign link_id = "hi1-" | append: block.id -%}
+                                            {%- render 'link-icon',
+                                                id: link_id,
+                                                label: block.settings.link_label_1,
+                                                url: block.settings.link_url_1,
+                                                text_class: 'p3 mr-10',
+                                                icon_color: '#231D1D',
+                                                icon_svg: settings.icon_arrow_diagonal_up,
+                                                load_inside_vue: false
+                                            -%}
+                                        </div>
+                                    {% endif %}
+                                    {% if block.settings.link_label_2 != blank %}
+                                        <div class="d-mr-5 d-ml-5 link2">
+                                            {%- assign link_id = "hi2-" | append: block.id -%}
+                                            {%- render 'link-icon',
+                                                id: link_id,
+                                                label: block.settings.link_label_2,
+                                                url: block.settings.link_url_2,
+                                                text_class: 'p3 mr-10',
+                                                icon_color: '#231D1D',
+                                                icon_svg: settings.icon_arrow_diagonal_up,
+                                                load_inside_vue: false
+                                            -%}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+
+
+{% schema %}
+    {
+        "name": "Homepage Icons",
+        "settings": [
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "color",
+            "id": "title_text_color",
+            "label": "Title Text Color"
+        },
+        {
+            "type": "color",
+            "id": "body_text_color",
+            "label": "Body Text Color"
+        },
+        {
+			"type": "header",
+			"content": "Padding Settings"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "settings": [
+                    {
+                        "type": "textarea",
+                        "id": "icon_svg",
+                        "label": "Icon (SVG)"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "icon_image",
+                        "label": "Icon (Image)"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "text",
+                        "label": "Text"
+                    },
+                    {
+                        "type": "text",
+                        "id": "link_label_1",
+                        "label": "Link label #1"
+                    },
+                    {
+                        "type": "url",
+                        "id": "link_url_1",
+                        "label": "Link url #1"
+                    },
+                    {
+                        "type": "text",
+                        "id": "link_label_2",
+                        "label": "Link label #2"
+                    },
+                    {
+                        "type": "url",
+                        "id": "link_url_2",
+                        "label": "Link url #2"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+        {
+            "name": "Homepage Icons",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

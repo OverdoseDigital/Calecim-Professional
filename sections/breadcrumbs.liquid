@@ -1,0 +1,53 @@
+{%- render 'breadcrumbs',
+	first_text: section.settings.first_text,
+	first_url: section.settings.first_url,
+	bg_color: section.settings.bg_color,
+	blocks: section.blocks
+-%}
+{% schema %}
+{
+	"name": "Breadcrumbs",
+	"settings": [
+		{
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color",
+			"default": "#ffffff"
+		},
+        {
+			"type": "text",
+			"id": "first_text",
+			"label": "First Text"
+		},
+        {
+			"type": "url",
+			"id": "first_url",
+			"label": "First URL"
+		}
+	],
+	"blocks" : [
+		{
+			"type": "text",
+			"name": "Breadcrumb",
+			"settings": [
+				{
+					"type": "text",
+					"id": "text",
+					"label": "Text"
+				},
+				{
+					"type": "url",
+					"id": "url",
+					"label": "URL"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Breadcrumbs",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

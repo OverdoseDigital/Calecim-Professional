@@ -1,0 +1,164 @@
+{% comment %} Calecim {% endcomment %}
+
+<style>
+    .product-reviews .trustpilot-wrapper {
+        width: 100px;
+        flex-wrap: wrap;
+    }
+    .product-reviews .title-left {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .product-reviews .swiper {
+        margin: 0 -7.5px;
+    }
+    .product-reviews .swiper-slide {
+        width: 100%;
+        flex: 0 0 100%;
+    }
+    .product-reviews .reviews-each {
+        display: flex;
+        flex-direction: column;
+    }
+    .product-reviews .star-wrapper .star {
+        font-size: 0;
+        width: 15px;
+        height: 15px;
+        margin-right: 2px;
+    }
+    .product-reviews .star-wrapper .star svg {
+        display: block;
+        width: 15px;
+        height: 15px;
+    }
+    .product-reviews .author {
+        margin-top: auto;
+    }
+
+    @media screen and (min-width: 768px) {
+        .product-reviews .swiper-slide {
+            width: 50%;
+            flex: 0 0 50%;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .product-reviews .title-left {
+            width: auto;
+            justify-content: flex-start;
+        }
+        .product-reviews .trustpilot-wrapper {
+            width: 180px;
+            flex-wrap: unset;
+        }
+        .product-reviews .swiper {
+            margin: 0 -10px;
+        }
+        .product-reviews .swiper-slide {
+            width: 25%;
+            flex: 0 0 25%;
+        }
+    }
+</style>
+
+<div class="product-reviews relative width-100 bg-lightgrey pt-40 pb-40 t-pt-60 t-pb-60 d-pt-80 d-pb-80">
+    <div class="container">
+        <div class="title-container global-flex ai-center jc-between">
+            <div class="global-flex ai-center title-left">
+                <h2 class="h3 uppercase">{{ product.metafields.reviews.section_title }}</h2>
+
+                <div class="trustpilot-wrapper tr d-tl global-flex ai-center ml-30">
+                    <p class="p3 d-mr-5 width-100 tr d-tl">{{ 'products.product.reviews_from' | t }}</p>
+                    <div class="image-wrapper width-100 max-100">
+                        {%- render 'global-image-wrapper',
+                            image: settings.product_trustpilot_logo,
+                            additional_class: 'no-bg'
+                        -%}
+                    </div>
+                </div>
+            </div>
+
+            {%- if product.metafields.reviews.button_label -%}
+                <div class="hide-m show-d">
+                    <a href="{{ product.metafields.reviews.button_url }}" class="btn1">{{ product.metafields.reviews.button_label }}<span class="ml-30" style="display:inline-flex;">{{ settings.icon_btn_right }}</span></a>
+                </div>
+            {%- endif -%}
+        </div>
+
+        <div class="reviews-wrapper mt-20 d-mt-30">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {%- for i in (1..4) -%}
+                        {%- assign rating = 'rating_' | append: i -%}
+                        {%- assign rating_acc = product.metafields.reviews[rating] -%}
+                        {%- assign title = 'reviews_title_' | append: i -%}
+                        {%- assign title_acc = product.metafields.reviews[title] -%}
+                        {%- assign text = 'reviews_text_' | append: i -%}
+                        {%- assign text_acc = product.metafields.reviews[text] -%}
+                        {%- assign author = 'reviews_author_' | append: i -%}
+                        {%- assign author_acc = product.metafields.reviews[author] -%}
+
+                        {%- if title_acc != blank -%}
+                            <div class="swiper-slide col-12">
+                                <div class="reviews-each bg-white pl-30 pr-30 pt-40 pb-35 height-100">
+                                    <div class="top-part">
+                                        <div class="star-wrapper font-0">
+                                            {%- assign rating = rating_acc -%}
+
+                                            {%- for i in (1..rating) -%}
+                                                <span class="star show-m-inline-block">{{ settings.icon_star }}</span>
+                                            {%- endfor -%}
+                                        </div>
+                                        <p class="mt-15 d-mt-20 p2 bold-500">{{ title_acc }}</p>
+
+                                        {%- if text_acc != blank -%}
+                                            <p class="p2 mt-10 {% if author_acc != blank %} mb-20 {% endif %}">{{ text_acc }}</p>
+                                        {%- endif -%}
+                                    </div>
+
+                                    {%- if author_acc != blank -%}
+                                        <p class="p2 author opacity-5">{{ author_acc }}</p>
+                                    {%- endif -%}
+                                </div>
+                            </div>
+                        {%- endif -%}
+                    {%- endfor -%}
+                </div>
+            </div>
+
+            <div class="swiper-pagination swiper-pagination-progressbar swiper-pagination-horizontal mt-25 show-m hide-d"></div>
+
+            {%- if product.metafields.reviews.button_label -%}
+                <div class="show-m hide-d mt-25">
+                    <a href="{{ product.metafields.reviews.button_url }}" class="btn1">{{ product.metafields.reviews.button_label }}<span class="ml-30" style="display:inline-flex;">{{ settings.icon_btn_right }}</span></a>
+                </div>
+            {%- endif -%}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const productRelatedArticlesSwiper = new Swiper('.product-reviews .swiper', {
+            slidesPerView: 'auto',
+            spaceBetween: 0,
+            loop: false,
+            pagination: {
+                el: ".product-reviews .swiper-pagination",
+                clickable: true,
+                type: "progressbar"
+            },
+            on: {
+                init: function() {
+                    $360.lazyLoadInstance.update();
+                },
+                slideChange: function() {
+                    $360.lazyLoadInstance.update();
+                },
+                resize: function() {
+                    $360.lazyLoadInstance.update();
+                }
+            }
+        });
+    });
+</script>

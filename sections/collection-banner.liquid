@@ -1,0 +1,164 @@
+{% comment %} Calecim Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+<style>
+  #shopify-section-{{ section.id }} {
+    {% if section.settings.bg_color != blank %}
+    background-color: {{ section.settings.bg_color }};
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .cb-title {
+    display: block;
+    width: 100%;
+    text-align: left;
+    {% if section.settings.title_max_width != blank %}
+    margin: 0 auto;
+    max-width: {{ section.settings.title_max_width }}px;
+    display: block;
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .cb-links::-webkit-scrollbar {
+    display: none;
+  }  
+  #shopify-section-{{ section.id }} .cb-links {
+    display: block;
+    white-space: nowrap;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  #shopify-section-{{ section.id }} .cb-links a {
+    border: 1px solid #231D1D;
+    border-radius: 29px;
+    display: inline-block;
+  }
+  @media screen and (min-width: 768px) {
+
+  }
+  @media screen and (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .cb-title {
+      text-align: center;
+    }
+    #shopify-section-{{ section.id }} .cb-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+</style>
+<div class="collection-banner">
+  <div class="container">
+    <{{ section.settings.title_dom}} class="cb-title h2">{{ section.settings.title }}</{{ section.settings.title_dom}}>
+    
+    {% if section.settings.text != blank %}
+        <div class="pt-text cb-title p1 d-pt-10 pt-5"> 
+            {{ section.settings.text }}
+        </div>
+    {% endif %}
+  </div>
+  <div class="cb-links d-mt-20 mt-10 pl-20 pr-20 t-pl-30 t-pr-30">
+    {% for link in linklists[section.settings.links].links %}
+      <a href="{{ link.url }}" class="button-each btn1 {% unless forloop.last == true %} mr-10 d-mr-15 {% endunless %}">{{ link.title }}</a>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  let curr_url = window.location.pathname + window.location.search;
+  document.querySelector(`#shopify-section-{{ section.id }} a[href="${curr_url}"]`).classList.remove('btn1');
+  document.querySelector(`#shopify-section-{{ section.id }} a[href="${curr_url}"]`).classList.add('btn2');
+</script>
+
+{% schema %}
+  {
+    "name": "Collection Banner",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default": "#F5F5F5"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "select",
+        "id": "title_dom",
+        "label": "Title DOM Type",
+        "options": [
+          {
+            "value": "h1",
+            "label": "H1"
+          },
+          {
+            "value": "h2",
+            "label": "H2"
+          },
+          {
+            "value": "h3",
+            "label": "H3"
+          }
+        ],
+        "default": "h2",
+        "info": "This is for SEO purposes. Please choose H1 if this section is the first section of the page"
+      },
+      {
+        "type": "number",
+        "id": "title_max_width",
+        "label": "Title Max Width"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "link_list",
+        "id": "links",
+        "label": "Links"
+      },
+      {
+        "type": "header",
+        "content": "Section Padding"
+      },
+      {
+        "type": "text",
+        "id": "top_padding_m",
+        "label": "Top padding (Mobile)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_padding_m",
+        "label": "Bottom padding (Mobile)"
+      },
+      {
+        "type": "text",
+        "id": "top_padding_t",
+        "label": "Top padding (Tablet)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_padding_t",
+        "label": "Bottom padding (Tablet)"
+      },
+      {
+        "type": "text",
+        "id": "top_padding",
+        "label": "Top padding (Desktop)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_padding",
+        "label": "Bottom padding (Desktop)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Banner"
+      }
+    ]
+  }
+{% endschema %}

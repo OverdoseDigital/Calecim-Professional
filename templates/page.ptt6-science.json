@@ -1,0 +1,454 @@
+{
+  "wrapper": ".global-content-top-margin",
+  "sections": {
+    "bc63510a-714f-4e47-994e-4f4f4601a964": {
+      "type": "page-title",
+      "settings": {
+        "background_color": "#f5f5f5",
+        "image_desktop": "shopify:\/\/shop_images\/01Sceince_Intro-Main_banner-desktop-2740x800.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/01Sceince_Intro-Main_banner-mobile-750x590.jpg",
+        "title": "PTT-6<sup>®<\/sup> SCIENCE",
+        "title_size": "h2",
+        "title_dom_type": "h1",
+        "title_color": "#231d1d",
+        "text": "Founded in Singapore in 2002, with an aim to provide skin and scar cells to laboratories around the world for research as well as to perform contract research for skin research laboratories internationally.",
+        "small_text": "",
+        "body_copy_color": "#231d1d",
+        "max_width": 610,
+        "top_padding_m": "60",
+        "bottom_padding_m": "",
+        "top_padding_t": "55",
+        "bottom_padding_t": "",
+        "top_padding": "50",
+        "bottom_padding": ""
+      }
+    },
+    "84018a7d-795f-4929-bbe6-72e39cfdcf67": {
+      "type": "section-navigation",
+      "blocks": {
+        "c0cbb306-f391-411e-9397-8b5b512c7711": {
+          "type": "entry",
+          "settings": {
+            "title": "PTT-6® Science",
+            "url": "\/pages\/delivery-information?view=ptt6-science",
+            "section_ids": ""
+          }
+        },
+        "ef5cb0f3-e050-40eb-be89-622cae4ad786": {
+          "type": "entry",
+          "settings": {
+            "title": "Hair Science",
+            "url": "\/pages\/delivery-information?view=hair-science",
+            "section_ids": ""
+          }
+        },
+        "4a537238-629e-4b9d-9666-a87de6dee94d": {
+          "type": "entry",
+          "settings": {
+            "title": "Skin Science",
+            "url": "\/pages\/delivery-information?view=skin-science",
+            "section_ids": ""
+          }
+        },
+        "83c573da-5621-4d75-a4cd-0c80ecc7fa5e": {
+          "type": "entry",
+          "settings": {
+            "title": "Beyond Beauty",
+            "url": "\/pages\/delivery-information?view=beyond-beauty",
+            "section_ids": ""
+          }
+        }
+      },
+      "block_order": [
+        "c0cbb306-f391-411e-9397-8b5b512c7711",
+        "ef5cb0f3-e050-40eb-be89-622cae4ad786",
+        "4a537238-629e-4b9d-9666-a87de6dee94d",
+        "83c573da-5621-4d75-a4cd-0c80ecc7fa5e"
+      ],
+      "settings": {
+        "nav_type": "different-page"
+      }
+    },
+    "d80e3048-6625-4652-982a-be282b32b293": {
+      "type": "rewards-image-text-overlay",
+      "settings": {
+        "bg_color": "rgba(0,0,0,0)",
+        "width": "container",
+        "title": "With an unwavering commitment to credible science, we craft innovative and thoughtfully formulated solutions for you.",
+        "title_size": "h7",
+        "title_dom_type": "h2",
+        "text": "",
+        "text_size": "p2",
+        "hide_text_mobile": true,
+        "text_max_width": "900",
+        "link_label": "Hair Science",
+        "link_url": "#learn",
+        "link_label_2": "Skin Science",
+        "link_url_2": "#2",
+        "button_label_1": "",
+        "button_url_1": "",
+        "button_label_2": "",
+        "button_url_2": "",
+        "text_align": "center",
+        "mobile_layout": "relative",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "63b036d8-e8fc-40b3-9683-0cd593909d0c": {
+      "type": "horizontal-line",
+      "settings": {
+        "bg_color": "#e7e7e7",
+        "height": 1,
+        "show_on": "all_screen"
+      }
+    },
+    "95ddbd32-450e-4127-83da-1ad045c22bfa": {
+      "type": "cta-image-text",
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 450,
+        "title": "WHAT IS PTT-6<sup>®<\/sup>?",
+        "small_text": "",
+        "title_size": "h3",
+        "title_dom_type": "h2",
+        "text": "The cord lining is the outermost layer of the umbilical cord that forms the connection between a baby and its mother. After a child is born, the umbilical cord is typically discarded as medical waste. However, scientists have discovered that the umbilical cord is in fact very rich in stem cells. The cord blood contains hematopoietic stem cells as well as mesenchymal stem cells.",
+        "enable_read_more": false,
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "",
+        "link_label_2": "",
+        "link_url_2": "",
+        "button_label": "",
+        "button_url": "",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "desktop_image": "shopify:\/\/shop_images\/02Sceince_Intro-Image_Text_Landscape_-desktop-1220x900.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/02Sceince_Intro-Image_Text_Landscape_-desktop-1220x900.jpg",
+        "image_position": "row-reverse",
+        "image_position_mobile": "follow-desktop",
+        "top_padding_m": "40",
+        "bottom_padding_m": "15",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "eea27f55-b672-4206-8344-2d45a704f9b4": {
+      "type": "rewards-image-text-overlay",
+      "settings": {
+        "bg_color": "rgba(0,0,0,0)",
+        "width": "container",
+        "title": "PTT-6<sup>®<\/sup> is a proprietary active ingredient that contains over 3,000 proteins, including growth factors and cytokines, that signal cells to regenerate.",
+        "title_size": "h7",
+        "title_dom_type": "h2",
+        "text": "",
+        "text_size": "p2",
+        "hide_text_mobile": true,
+        "text_max_width": "930",
+        "link_label": "",
+        "link_url": "#learn",
+        "link_label_2": "",
+        "link_url_2": "#2",
+        "button_label_1": "",
+        "button_url_1": "",
+        "button_label_2": "",
+        "button_url_2": "",
+        "text_align": "center",
+        "mobile_layout": "relative",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "3ddcb2e4-1acb-4012-8214-6cb6398aa6ce": {
+      "type": "cta-image-text",
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 520,
+        "title": "WE DO WHAT OTHER SKINCARE CAN’T",
+        "small_text": "",
+        "title_size": "h3",
+        "title_dom_type": "h2",
+        "text": "The cord lining is the outermost layer of the umbilical cord that forms the connection between a baby and its mother. After a child is born, the umbilical cord is typically discarded as medical waste. However, scientists have discovered that the umbilical cord is in fact very rich in stem cells. The cord blood contains hematopoietic stem cells as well as mesenchymal stem cells.",
+        "enable_read_more": false,
+        "text_align": "tl",
+        "link_label": "Clinical evidence",
+        "link_url": "#1",
+        "link_label_2": "More about us",
+        "link_url_2": "#2",
+        "button_label": "",
+        "button_url": "",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "desktop_image": "shopify:\/\/shop_images\/03Sceince_Intro-Image_Text_Square_01-desktop-1220x1220.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/03Sceince_Intro-Image_Text_Square_01-desktop-1220x1220.jpg",
+        "image_position": "row",
+        "image_position_mobile": "follow-desktop",
+        "top_padding_m": "15",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "65924b56-ef8b-4d91-b67d-1503c285abbf": {
+      "type": "horizontal-line",
+      "settings": {
+        "bg_color": "#e7e7e7",
+        "height": 1,
+        "show_on": "mobile_only"
+      }
+    },
+    "b63241a0-e7ce-4085-82b7-8ae43b761fac": {
+      "type": "cta-image-text-before-after",
+      "blocks": {
+        "795ac892-7027-463b-adf7-ec322f0fd774": {
+          "type": "before_after",
+          "settings": {
+            "image_before": "shopify:\/\/shop_images\/04Sceince_Intro-Before-desktop-700x930.jpg",
+            "image_after": "shopify:\/\/shop_images\/04Sceince_Intro-After-desktop-700x930.jpg",
+            "title": "4 sessions of Nano-fractional radio frequency treatment with application of Professional Serum, over 12 weeks. Conducted by Dr R. Pamela, CELV Clinic"
+          }
+        },
+        "b22146e9-9f05-4045-9288-060bfc0bfe2c": {
+          "type": "before_after",
+          "settings": {
+            "image_before": "shopify:\/\/shop_images\/04Sceince_Intro-Before-desktop-700x930.jpg",
+            "image_after": "shopify:\/\/shop_images\/04Sceince_Intro-After-desktop-700x930.jpg",
+            "title": "4 sessions of Nano-fractional radio frequency treatment with application of Professional Serum, over 12 weeks. Conducted by Dr R. Pamela, CELV Clinic #2"
+          }
+        }
+      },
+      "block_order": [
+        "795ac892-7027-463b-adf7-ec322f0fd774",
+        "b22146e9-9f05-4045-9288-060bfc0bfe2c"
+      ],
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 520,
+        "number": "",
+        "title": "VALIDATED BY PATIENTS",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+        "text_align": "tl",
+        "link_label": "More before and after photos",
+        "link_url": "#url",
+        "button_label": "",
+        "button_url": "",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "image_position": "row-reverse",
+        "image_position_mobile": "follow-desktop",
+        "top_padding_m": "40",
+        "bottom_padding_m": "",
+        "top_padding_t": "60",
+        "bottom_padding_t": "",
+        "top_padding": "0",
+        "bottom_padding": ""
+      }
+    },
+    "9ea6cebb-f447-436e-944d-e403feb7700a": {
+      "type": "cta-image-text",
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 520,
+        "title": "ETHICALLY DERIVED INGREDIENTS",
+        "small_text": "",
+        "title_size": "h3",
+        "title_dom_type": "h2",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.",
+        "enable_read_more": false,
+        "text_align": "tl",
+        "link_label": "Learn more",
+        "link_url": "#1",
+        "link_label_2": "",
+        "link_url_2": "",
+        "button_label": "",
+        "button_url": "",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "desktop_image": "shopify:\/\/shop_images\/03Sceince_Intro-Image_Text_Square_02-desktop-1220x1220.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/03Sceince_Intro-Image_Text_Square_02-desktop-1220x1220.jpg",
+        "image_position": "row",
+        "image_position_mobile": "follow-desktop",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "1498f26e-23e4-466c-bb2c-42980f5e46ce": {
+      "type": "collection-magazine",
+      "blocks": {
+        "d7ae68ab-b30e-43bc-9c70-87c535ca3380": {
+          "type": "entry",
+          "settings": {
+            "article": "blog\/what-we-mean-by-clean-beauty"
+          }
+        },
+        "3420a4d3-e307-4734-ba8d-be7f79173850": {
+          "type": "entry",
+          "settings": {
+            "article": "blog\/why-does-my-skin-change-every-season"
+          }
+        },
+        "a9c49913-b620-40fc-b3fd-b4c5e68dc292": {
+          "type": "entry",
+          "settings": {
+            "article": "blog\/how-wound-healing-technology-can-fight-skin-aging-too-10-off"
+          }
+        },
+        "531746e4-047c-4c57-bdb1-6d1d867c5d92": {
+          "type": "entry",
+          "settings": {
+            "article": "blog\/reduce-inflammation-for-gorgeous-hair"
+          }
+        },
+        "a23599e5-5688-4bc8-a737-ed3b2ccd7412": {
+          "type": "entry",
+          "disabled": true,
+          "settings": {
+            "article": "blog\/an-evening-with-calecim-dermoi-at-brown-s-hotel-in-london"
+          }
+        },
+        "3ff4cdad-4d2f-4a67-8730-599b55ded8ba": {
+          "type": "entry",
+          "disabled": true,
+          "settings": {
+            "article": "blog\/putting-the-snap-back-in-your-skin"
+          }
+        },
+        "48157b59-d4e0-42af-8d8e-63c5ba455e60": {
+          "type": "entry",
+          "disabled": true,
+          "settings": {
+            "article": "blog\/how-seasonal-changes-affect-skin"
+          }
+        },
+        "bf07eb51-de8e-47e8-ac79-1c72bb09085e": {
+          "type": "entry",
+          "disabled": true,
+          "settings": {
+            "article": "blog\/i-tried-the-new-wonder-serum-for-thinning-hair"
+          }
+        },
+        "91a28c2e-9acd-4158-8cf8-f2fc564ceaab": {
+          "type": "entry",
+          "disabled": true,
+          "settings": {
+            "article": "blog\/how-wound-healing-technology-can-fight-skin-aging-too-get-more-stories"
+          }
+        },
+        "41f3b9cc-6777-47fc-80ff-da943a78e87a": {
+          "type": "entry",
+          "disabled": true,
+          "settings": {
+            "article": "blog\/5-essential-building-blocks-to-healthy-skin"
+          }
+        }
+      },
+      "block_order": [
+        "d7ae68ab-b30e-43bc-9c70-87c535ca3380",
+        "3420a4d3-e307-4734-ba8d-be7f79173850",
+        "a9c49913-b620-40fc-b3fd-b4c5e68dc292",
+        "531746e4-047c-4c57-bdb1-6d1d867c5d92",
+        "a23599e5-5688-4bc8-a737-ed3b2ccd7412",
+        "3ff4cdad-4d2f-4a67-8730-599b55ded8ba",
+        "48157b59-d4e0-42af-8d8e-63c5ba455e60",
+        "bf07eb51-de8e-47e8-ac79-1c72bb09085e",
+        "91a28c2e-9acd-4158-8cf8-f2fc564ceaab",
+        "41f3b9cc-6777-47fc-80ff-da943a78e87a"
+      ],
+      "settings": {
+        "bg_color": "#f5f5f5",
+        "title": "MORE TO READ",
+        "title_class": "h3",
+        "button_label": "Read more",
+        "button_url": "",
+        "button_class": "btn1",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "c263d499-2539-4439-b2a2-1557e4b6d406": {
+      "type": "homepage-banner",
+      "blocks": {
+        "df4fca61-c9cf-4f95-a192-8e8b9dac2480": {
+          "type": "entry",
+          "settings": {
+            "text_color": "",
+            "text_position": "top_left",
+            "text_position_mobile": "follow_desktop",
+            "tag": "",
+            "title": "GET STARTED WITH SCIENTIFICALLY PROVEN SOLUTIONS",
+            "title_size": "h2",
+            "title_dom_type": "h2",
+            "max_width": 620,
+            "text": "",
+            "button_label": "View product range",
+            "button_url": "#view",
+            "button_type": "btn1",
+            "desktop_image": "shopify:\/\/shop_images\/05Sceince_Intro-Feature_Banner-desktop-2740x1200.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/05Sceince_Intro-Feature_Banner-mobile-750x850.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "df4fca61-c9cf-4f95-a192-8e8b9dac2480"
+      ],
+      "settings": {
+        "enable_autoslide": false,
+        "enable_arrows": false,
+        "arrow_position": "left",
+        "enable_dots": false,
+        "delay_autoslide": 5000,
+        "mobile_overlay": true
+      }
+    }
+  },
+  "order": [
+    "bc63510a-714f-4e47-994e-4f4f4601a964",
+    "84018a7d-795f-4929-bbe6-72e39cfdcf67",
+    "d80e3048-6625-4652-982a-be282b32b293",
+    "63b036d8-e8fc-40b3-9683-0cd593909d0c",
+    "95ddbd32-450e-4127-83da-1ad045c22bfa",
+    "eea27f55-b672-4206-8344-2d45a704f9b4",
+    "3ddcb2e4-1acb-4012-8214-6cb6398aa6ce",
+    "65924b56-ef8b-4d91-b67d-1503c285abbf",
+    "b63241a0-e7ce-4085-82b7-8ae43b761fac",
+    "9ea6cebb-f447-436e-944d-e403feb7700a",
+    "1498f26e-23e4-466c-bb2c-42980f5e46ce",
+    "c263d499-2539-4439-b2a2-1557e4b6d406"
+  ]
+}

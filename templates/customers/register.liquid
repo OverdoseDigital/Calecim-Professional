@@ -1,0 +1,206 @@
+<style>
+    
+    #register-page input{
+        background:white;
+        border:1px solid #dbdbdb;
+    }
+    #register-page input[type="radio"]{
+        width:15px;
+        height:15px;
+        margin:0 5px;
+        border-radius:50%;
+        cursor:pointer;
+    }
+    #register-page input[type="checkbox"]{
+        appearance: auto;
+        margin-right: 5px;
+    }
+    #register-page input[type="radio"]:checked {
+        box-shadow: 0px 0px 0px 1px rgba(129,200,166,0.75);
+        border: 2px solid #FFFFFF;
+        background: #81C8A6;
+        position:relative;
+    }
+    #register-page .borderline::before{
+        content:"";
+        border-bottom:1px solid #dbdbdb;
+        position:absolute;
+        top:50%;
+        transform:translate(0,-50%);
+        width:100%;
+    }
+    #register-page .form-input{
+        width: 100%;
+        padding: 15px 15px;
+        border: 1px solid #dbdbdb;;
+    }
+    #register-page .flex-wrapper{
+        display:flex;
+        flex-wrap:wrap;
+        margin-left:-10px;
+        margin-right:-10px;
+    }
+    #register-page .flex-wrapper select{
+        width:calc(100% / 3 - 20px);
+        margin:0 10px;
+    }
+
+    #register-page select{
+        font-family:'Inter', sans-serif;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10.707' height='6.061' viewBox='0 0 10.707 6.061'%3E%3Cpath d='M0,0,5,5,0,10' transform='translate(10.354 0.354) rotate(90)' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position-x: calc(100% - 20px);
+        background-position-y: center;
+    }
+    @media(min-width: 1024px) {
+        #register-page .form-input{
+            padding: 18px 20px;
+        }
+    }
+
+    #register-page input{
+        background:#f5f5f5;;
+    }
+    
+    select {
+        color: #959595;
+    }
+
+    select.chosen {
+        color: #2c2c2c;
+    }
+</style>
+
+<div id="register-page" class="global-content-top-margin pt-50 pb-50 d-pt-80 d-pb-80">
+    <div class="container">
+        {% form 'create_customer' %}
+            {{ form.errors | default_errors }}
+            <div class="max-400 mx-auto tc">
+                <h1 class="h2 tc pb-10">{{ 'customer.register.title' | t }}</h1>
+                <div class="p2 pb-20">{{ 'customer.register.have_an_account' | t }}&nbsp;
+                    <div class="link-wrapper relative link2">
+                        {%- assign link_id = "link-cta-account-register" -%}                                    
+                        {% render 'link-icon',
+                            id: link_id,
+                            label: "Log in here",
+                            url: "/account/login",
+                            text_class: 'p2 mr-10',
+                            icon_color: '#231D1D',
+                            icon_svg: settings.icon_arrow_diagonal_up,
+                            load_inside_vue: false
+                        %}
+                    </div>
+                </div>
+                {% comment %} <div class="one-click-social-login"></div>
+                
+                <div class="flex mb-20 d-mb-40">
+                    <div class="borderline width-100 relative"></div>
+                    <div class="p2 bold-500 c-grey pl-15 pr-15">OR</div>
+                    <div class="borderline width-100 relative"></div>
+                </div> {% endcomment %}
+                <div class="">
+                    {% comment %} <p class="tc mb-30">{{ 'customer.register.sub_title' | t }}</p> {% endcomment %}
+
+                    {%- if form.errors -%}
+                    <div class="form-errors mb-30 c-sale-red rte p2">
+                        {{ form.errors | default_errors }}
+                    </div>
+                    {%- endif -%}
+
+                    {% comment %} <div class="mb-15 flex jc-center align-flex">
+                        <input type="radio" checked name="gender" value="Male" id="male">
+                        <label class="p2 bold-500 pr-20" for="male">Male</label><br>
+                        
+                        <input type="radio" name="gender" value="Female" id="female">
+                        <label class="p2 bold-500 pr-20" for="female">Female</label><br>
+                        
+                        <input type="radio" name="gender" value="Non-binary" id="prefer">
+                        <label class="p2 bold-500 pr-20" for="prefer_not_to_say">Prefer not to say</label><br>
+                    </div> {% endcomment %}
+                    <div class="mb-15">
+                        <input type="text" required name="customer[first_name]" class="global-input p2" placeholder="{{ 'customer.register.first_name' | t }}" />
+                    </div>
+                    <div class="mb-15">
+                        <input type="text" required name="customer[last_name]" class="global-input p2" placeholder="{{ 'customer.register.last_name' | t }}" />
+                    </div>
+                    {% comment %} <div class="flex-wrapper mb-15">
+                        <select id="year" required class="form-input mt-10" onclick="$(this).addClass('chosen');$('#month').attr('disabled', false)">
+                            <option value="" disabled selected hidden>Year</option>
+                            {%- for i in (1950..2023) -%}
+                                <option value="{{i}}">{{i}}</option>
+                            {%- endfor -%}
+                        </select>
+
+                        <select id="month" required disabled class="form-input mt-10" onclick="$(this).addClass('chosen');$('#day').attr('disabled', false);">
+                            <option value="" disabled selected hidden>Month</option>
+                            {%- for i in (1..12) -%}
+                                <option value="{{i}}">{{i}}</option>
+                            {%- endfor -%}
+                        </select>
+
+                        <select id="day" required disabled class="form-input mt-10" onclick="$(this).addClass('chosen')">
+                            <option value="" disabled selected hidden>Day</option>
+                            {%- for i in (1..31) -%}
+                                <option value="{{i}}">{{i}}</option>
+                            {%- endfor -%}
+                        </select>
+
+                    </div> {% endcomment %}
+                    {% comment %} <div class="mb-15">
+                        <input type="date" class="global-input p2" id="birthday" name="birthday" required>
+                    </div> {% endcomment %}
+                    
+                    {% comment %} <div class="mb-15">
+                        <select name="preferences" required class="form-input mt-10 d-mt-20" id="preferences">
+                            <option value="" disabled selected hidden>Preferences</option>
+                            <option value="gifting">Gifting</option>
+                            <option value="engagement">Engagement</option>
+                            <option value="wedding">Wedding</option>
+                        </select>
+                    </div> {% endcomment %}
+                    {% comment %} <div class="mb-15">
+                        <input type="text" required name="mobile_number" pattern="[+][0-9]{1,3}[0-9]{7,12}"  id="mobile_number" class="global-input p2" placeholder="{{ 'customer.register.mobile_number' | t }}" />
+                        <input type="text" required name="customer[phone]" pattern="[+][0-9]{1,3}[0-9]{7,12}"  id="mobile_number" class="global-input p2" placeholder="{{ 'customer.register.mobile_number' | t }}" />
+                    </div> {% endcomment %}
+                    <div class="mb-15">
+                        <input type="email" required name="customer[email]" class="global-input p2" placeholder="{{ 'customer.register.email' | t }}" />
+                    </div>
+                    <div class="mb-20">
+                        <input type="password" required name="customer[password]" class="global-input p2" placeholder="{{ 'customer.register.password' | t }}" />
+                    </div>
+                    {% comment %} <div class="mb-15">
+                        <div class="flex jc-between align flex">
+                            <div class="p2 c-grey">I'm interested in</div>
+                            <div class="flex">
+                                <input type="checkbox" value="Gifting" id="gifting">
+                                <label class="p2 bold-500 pr-20" for="gifting">Gifting</label>
+                                
+                                <input type="checkbox" value="Engagement" id="engagement">
+                                <label class="p2 bold-500 pr-20" for="engagement">Engagement</label><br>
+                                
+                                <input type="checkbox" value="Wedding" id="wedding">
+                                <label class="p2 bold-500 pr-20" for="wedding">Wedding</label><br>
+                            </div>
+                        </div>
+                    </div> {% endcomment %}
+                    <div class="mb-15 d-mb-25">
+                        {% comment %} <input type="hidden" name="id" value={{ customer.id }}>
+                        <input type="hidden" name="email" value={{ customer.email }}>
+                        <input type="hidden" name="address_id" value={{ customer.default_address.id }}> {% endcomment %}
+                        <button type="submit" class="btn btn2 uppercase no-icon w-full">{{ 'customer.register.submit' | t }}</button>
+                    </div>
+                    {% comment %} <div id="accepts_terms_conditions" class="pb-20 global-flex" style="align-items: baseline;">
+                        <input type="checkbox" required name="terms_conditions" id="terms_conditions" style="appearance:auto;margin-right: 5px;">
+                        <label class="p3 c-grey" for="terms_conditions" style="transform: translate(0,-2px)">I have read and accepted the <a href=""><span class="bb-1 b-silver">Terms & Conditions</span></a> and <a href=""><span class="bb-1 b-silver">Privacy Policy</span></a>.</label>
+                    </div> {% endcomment %}
+                    {% comment %} <p class="p3 c-grey tc">{{ 'customer.register.sign_in_text_html' | t }} <a href="/account/login" title="Sign in" class="ml-10 link1">LOGIN NOW<span class="ml-5" style="display:inline-flex;">{{settings.icon_btn_right}}</span></a></p> {% endcomment %}
+                </div>
+            </div>
+        {% endform %}
+    </div>
+</div>
+
+<script>
+
+</script>

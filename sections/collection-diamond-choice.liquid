@@ -1,0 +1,204 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+<style>
+#shopify-section-{{ section.id }} .c-darkgreen {
+  color: #5eb98d;
+}
+#shopify-section-{{ section.id }} .col-12, #shopify-section-{{ section.id }} .col-d-6 {
+  background-color: {{ section.settings.background_color }};
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#shopify-section-{{ section.id }} .cdc-tab {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+#shopify-section-{{ section.id }} .cdc-tab-title > div:nth-child(2) {
+  background-color: #E4F3EC;
+  border: 1px solid #E4F3EC;
+}
+#shopify-section-{{ section.id }} .cdc-tab:nth-child(2) > div:nth-child(2),
+#shopify-section-{{ section.id }} .cdc-tab:nth-child(2) > div:nth-child(3) {
+  border-top: 0;
+}
+
+#shopify-section-{{ section.id }} .cdc-tab-title > div:last-child {
+  background-color: #F9F9F9;
+  border: 1px solid #F9F9F9;
+}
+#shopify-section-{{ section.id }} .cdc-tab-title > div > p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#shopify-section-{{ section.id }} .cdc-tab-content > div  {
+  border-top: 1px solid #DBDBDB;
+  border-left: 1px solid #DBDBDB;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+#shopify-section-{{ section.id }} .cdc-tab-content > div:last-child {
+  border-right: 1px solid #DBDBDB;
+}
+#shopify-section-{{ section.id }} .cdc-tab-content:last-child > div {
+  border-bottom: 1px solid #DBDBDB;
+}
+
+@media screen and (max-width: 767px) {
+  #shopify-section-{{ section.id }} .collection-diamond-choice .btn1 {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .cdc-tab-title > div {
+    width: 36%;
+  }
+  #shopify-section-{{ section.id }} .cdc-tab-title > div:first-child  {
+    width: 28%;
+  }
+  #shopify-section-{{ section.id }} .cdc-tab-content > div {
+    width: 36%;
+  }
+  #shopify-section-{{ section.id }} .cdc-tab-content > div:first-child {
+    width: 28%;
+  }
+}
+</style>
+
+<div class="collection-diamond-choice">
+  <div class="container">
+    <p class="p3 bold-600 spacing-2 tc c-darkgreen d-pb-15 pb-10">{{ section.settings.small_title }}</p>
+    <h4 class="h6 c-black pl-15 pr-15 t-pl-100 t-pr-100 tc">{{ section.settings.title }}</h4>
+    
+  </div>
+  
+  <div class="container d-mt-40 mt-20">
+    <div class="cdc-tab cdc-tab-title">
+      <div class="col-12 col-d-2 t-max-150 tc">
+        <p class="p2 bold-600 uppercase pt-25 pb-25 pl-20 pr-20 d-pt-30 d-pb-30 d-pl-50 d-pr-50"></p>
+      </div>
+      <div class="col-12 col-d-5 t-max-400 tc">
+        <p class="uppercase pt-20 pb-20 pl-20 pr-20 d-pt-30 d-pb-30 d-pl-50 d-pr-50 h11">{{ section.settings.tab_1_label }}</p>
+      </div>
+      <div class="col-12 col-d-5 t-max-400 tc">
+        <p class="uppercase pt-20 pb-20 pl-20 pr-20 d-pt-30 d-pb-30 d-pl-50 d-pr-50 h11">{{ section.settings.tab_2_label }}</p>
+      </div>
+    </div>
+  {% for block in section.blocks %}
+    <div class="cdc-tab cdc-tab-content">
+      <div class="col-12 col-d-2 t-max-150 tc">
+        <p class="p2 bold-600 uppercase pt-25 pb-25 pl-20 pr-20 d-pt-30 d-pb-30 d-pl-50 d-pr-50">{{ block.settings.title }}</p>   
+      </div>
+      <div class="col-12 col-d-5 t-max-400 tc">
+        <p class="pt-25 pb-25 pl-20 pr-20 d-pt-30 d-pb-30 d-pl-50 d-pr-50">{{ block.settings.tab_1_content }}</p>
+      </div>
+      <div class="col-12 col-d-5 t-max-400 tc">
+        <p class="pt-25 pb-25 pl-20 pr-20 d-pt-30 d-pb-30 d-pl-50 d-pr-50">{{ block.settings.tab_2_content }}</p>   
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+  {% if section.settings.button_label != blank %}
+    <div class="container container global-flex jc-center mt-20 d-mt-25"><a href="{{ section.settings.url }}" class="btn1 align-flex tc">{{ section.settings.button_label }}</a></div>
+  {% endif %}
+</div>
+{% schema %}
+  {
+    "name": "Collection Diamond Choice",
+    "settings": [
+      {
+        "type": "text",
+        "id": "small_title",
+        "label": "Small Title"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "tab_1_label",
+        "label": "Tab 1 Label"
+      },
+      {
+        "type": "text",
+        "id": "tab_2_label",
+        "label": "Tab 2 Label"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "Button URL"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Tab",
+        "type": "text",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "tab_1_content",
+            "label": "Tab 1 content"
+          },
+          {
+            "type": "textarea",
+            "id": "tab_2_content",
+            "label": "Tab 2 content"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Diamond Choice"
+      }
+    ]
+  }
+{% endschema %}

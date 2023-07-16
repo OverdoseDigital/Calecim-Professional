@@ -1,0 +1,234 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color:{{section.settings.background_color}};
+        background-color:{{section.settings.advanced_background_color}};
+    }
+    
+    #shopify-section-{{ section.id }} .swiper-slide{
+        width: 100%;
+        flex: 0 0 100%;
+        padding: 0 7.5px;
+    }
+
+    #shopify-section-{{ section.id }} .carousel-wrapper{
+        margin: 0 -7.5px;
+    }
+
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        display:flex;
+        flex-wrap:wrap;
+        align-items:center;
+    }
+
+    #shopify-section-{{ section.id }} .image-container{
+        width:85px;
+    }
+    #shopify-section-{{ section.id }} .text-container{
+        width:calc(100% - 85px);
+        padding-left:15px;
+    }
+    #shopify-section-{{ section.id }} .swiper-custom-arrow{
+        position:relative;
+        transform:none;
+        margin:0 10px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .image-container{
+            width:135px;
+        }
+        #shopify-section-{{ section.id }} .text-container{
+            width:calc(100% - 135px);
+        }
+
+        #shopify-section-{{ section.id }} .swiper-slide{
+            width: 33.3333%;
+            flex: 0 0 33.3333%;
+        }
+    }
+
+</style>
+
+<section id="{{ section.id }}" class="blog-all-articles">
+    <div class="container">
+        <div class="flex-wrapper align-flex jc-between pb-20">
+            <div class="h3">{{section.settings.title}}</div>
+            <div class="flex flex-wrap" style="margin:0 -10px;">
+                <div class="swiper-custom-arrow previous">{{ settings.icon_slide_left }}</div>
+                <div class="swiper-custom-arrow next">{{ settings.icon_slide_right }}</div>
+            </div>
+        </div>
+        <div class="carousel-wrapper">
+            <div id="slider-{{ el_id }}" class="flex flex-wrap swiper swiper-container">
+                <div class="swiper-wrapper">
+                    
+                    {%- for block in section.blocks -%}
+                        <div class="swiper-slide">
+                            <div class="flex-wrapper">
+                                <div class="image-container">
+                                    {%- render 'global-image-wrapper',
+                                        image: block.settings.image,
+                                        additional_class:""
+                                    %}
+                                </div>
+                                <div class="text-container">
+                                    <div class="p2 bold-500 pb-10 d-pb-15">{{block.settings.title}}</div>
+                                    {%if block.settings.link_label != blank%}
+                                        <a href="{{block.settings.link_url}}" class="link3">{{block.settings.link_label}}<span class="icon ml-5" style="display:inline-flex;">{{settings.icon_btn_right}}</a>
+                                    {%endif%}
+                                </div>
+                            </div>
+                        </div>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{%- if section.blocks.size > 1 -%}
+    {%- assign function_name = el_id | replace: '-', '_' -%}
+    {%- assign prefix = 'blog_press' -%}
+    <script>
+    var {{ prefix }}Init= false;
+    var {{ prefix }}Slider = Swiper;
+    function sliderInit{{ function_name }}() {
+        const el_id = '#{{ el_id }}';
+        if(!{{ prefix }}Init) {
+            {{ prefix }}Init = true;
+            {{ prefix }}Slider = new Swiper('#slider-{{ el_id }}', {
+                {%if section.settings.enable_autoslide%}
+                autoplay: {
+                    delay: {{section.settings.delay_autoslide}}
+                },
+                {%endif%}
+                slidesPerView: 1,
+                speed: 2000,
+                spaceBetween: 0,
+                loopedSlides: {{ section.blocks.size }},
+                loop: true,
+                preloadImages: false,
+                lazy: true,
+                centeredSlides: true,
+                breakpoints: {
+                    1024: {
+                        slidesPerView: 3,
+                    }
+                },
+                pagination: {
+                    el: ".{{ el_id }}-pagination",
+                    clickable: true
+                },
+                navigation: {
+                    nextEl: '#{{ section.id }} .swiper-custom-arrow.next',
+                    prevEl: '#{{ section.id }} .swiper-custom-arrow.previous'
+                },
+                on: {
+                    init: function() {
+                        $360.lazyLoadInstance.update();
+                    },
+                    slideChange: function() {
+                        $360.lazyLoadInstance.update();
+                    },
+                    resize: function() {
+                        $360.lazyLoadInstance.update();
+                    }
+                }
+            });
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        sliderInit{{ function_name }}();
+        //window.addEventListener("resize", sliderInit{{ function_name }});
+    });
+    </script>
+{%- endif -%}
+
+{% schema %}
+    {
+        "name": "Blog - Press",
+        "settings": [
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "text",
+            "id": "advanced_background_color",
+            "label": "Advanced Background Color"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "header",
+            "content": "Padding Settings"
+        }, {
+            "type": "number",
+            "id": "top_padding_m",
+            "label": "Top Padding (Mobile)"
+        }, {
+            "type": "number",
+            "id": "bottom_padding_m",
+            "label": "Bottom Padding (Mobile)"
+        }, {
+            "type": "number",
+            "id": "top_padding_t",
+            "label": "Top Padding (Tablet)"
+        }, {
+            "type": "number",
+            "id": "bottom_padding_t",
+            "label": "Bottom Padding (Tablet)"
+        }, {
+            "type": "number",
+            "id": "top_padding",
+            "label": "Top Padding (Desktop)"
+        }, {
+            "type": "number",
+            "id": "bottom_padding",
+            "label": "Bottom Padding (Desktop)"
+        }
+        ],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "settings": [
+                    {
+                        "type": "textarea",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "link_label",
+                        "label": "Link Label"
+                    },
+                    {
+                        "type": "url",
+                        "id": "link_url",
+                        "label": "Link URL"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+        {
+            "name": "Blog - Press"
+        }
+        ]
+    }
+{% endschema %}

@@ -1,0 +1,198 @@
+{%  comment  %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+<style>
+  #shopify-section-{{ section.id }} .wrap {
+    display: flex;
+    flex-direction: column;
+  }
+  #shopify-section-{{ section.id }} .cctc-col {
+    width: 100%;
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .cctc-box {
+    position: relative;
+    background: transparent linear-gradient(180deg, #6C6C6C00 0%, #2C2C2CBF 100%) 0% 0% no-repeat padding-box;
+    mix-blend-mode: multiply;
+  }
+  #shopify-section-{{ section.id }} .cctc-box:after {
+    background: transparent linear-gradient(180deg, #6C6C6C00 0%, #2C2C2CBF 100%) 0% 0% no-repeat padding-box;
+    mix-blend-mode: multiply;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    content: " ";
+    z-index: 2;
+  }
+  #shopify-section-{{ section.id }} .cctcc-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    z-index: 3;
+  }
+  #shopify-section-{{ section.id }} .cctcc-caption a,
+  #shopify-section-{{ section.id }} .cctcc-caption .c-black {
+    color: white;
+  }
+  #shopify-section-{{ section.id }} .cctcc-caption svg path {
+    stroke: white;
+  }
+
+  #shopify-section-{{ section.id }} .desc-wrapper {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    white-space: pre-wrap;
+  }
+
+  @media screen and (min-width: 768px){
+    #shopify-section-{{ section.id }} .wrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-left: -7.5px;
+      margin-right: -7.5px;
+    }
+    #shopify-section-{{ section.id }} .cctc-col {
+      width: 50%;
+      padding: 0 7.5px;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .wrap {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+    #shopify-section-{{ section.id }} .cctc-col {
+      padding: 0 10px;
+    }
+    #shopify-section-{{ section.id }} .desc-wrapper {
+      display: block;
+      overflow: visible;
+      -webkit-line-clamp: unset;
+    }
+  }
+</style>
+<div class="collection-cta-2-col" id="collection-cta-2-col-{{ section.id }}">
+  <div class="container">
+    <div class="wrap">
+      {% for block in section.blocks %}
+      <div class="cctc-col mb-20 d-mb-0 d-mb-0">
+        <div class="cctc-box">
+          {%- assign image_id = "collection-main-banner-" | append: block.id -%}
+          {%- render 'global-image-wrapper-responsive',
+            image_id: image_id,
+            desktop_image: block.settings.desktop_image,
+            mobile_image: block.settings.mobile_image
+          %}
+          <div class="cctcc-caption pb-30 pl-30 pr-30 d-pb-40 d-pl-40 d-pr-40" id="cctcc-caption-{{ block.id }}">
+            <h1 class="h10">{{ block.settings.title }}</h1>
+            <div class="p2 d-mt-10 mt-5 hd-max-400 desc-wrapper">{{ block.settings.text }}</div>
+            <div class="mt-15 d-mt-25">
+              {% render 'link-icon',
+                id: link_id,
+                label: block.settings.link_label,
+                url: block.settings.link_url,
+                text_class: 'p3 uppercase c-black spacing-2 bold-600',
+                icon_color: '#fffff',
+                icon_svg: settings.icon_btn_right,
+                load_inside_vue: false
+              %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Collection Cta Two Column",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Entry",
+        "type": "entry",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link Url"
+          },
+          {
+            "type": "image_picker",
+            "id": "desktop_image",
+            "label": "Desktop Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Cta Two Column"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,224 @@
+{% comment %} Calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id %}
+{% render 'section-padding', section: section, el_id: el_id %}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    {% if section.settings.bg_color != blank %}
+    background-color: {{ section.settings.bg_color }}
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .text-wrapper {
+    {% if section.settings.text_color != blank %}
+    color: {{ section.settings.text_color }}
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .swiper {
+    overflow: visible!important;
+    clip-path: inset(-100vw -100vw -100vw -100vw);
+  }
+  #shopify-section-{{ section.id }} .swiper-custom-arrow {
+    position: relative;
+    left: unset;
+    right: unset;
+    top: unset;
+    transform: unset;
+  }
+  #shopify-section-{{ section.id }} .carousel-container {
+    margin: 0 -7.5px;
+  }
+  #shopify-section-{{ section.id }} .ruc-right .swiper-slide {
+    flex: 0 0 75%;
+    padding: 0 7.5px;
+  }
+  
+  @media screen and (min-width: 768px) {
+    #shopify-section-{{ section.id }} .ruc-right .swiper-slide {
+      flex: 0 0 40%;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .social-media-icons .global-social {
+      justify-content: flex-start;
+    }
+    #shopify-section-{{ section.id }} .ruc-left {
+      width: 30%;
+    }
+    #shopify-section-{{ section.id }} .ruc-left .container {
+      display: flex;
+      flex-direction: column;
+    }
+    #shopify-section-{{ section.id }} .ruc-left .container .swiper-arrow {
+      margin-top: auto;
+    }
+    #shopify-section-{{ section.id }} .ruc-right {
+      width: 70%;
+    } 
+    #shopify-section-{{ section.id }} .swiper {
+      overflow: hidden !important;
+    }
+    #shopify-section-{{ section.id }} .ruc-right .swiper-slide {
+      flex: 0 0 33.33%;
+      padding: 0 10px;
+    }
+  }
+</style>
+
+<div class="homepage-community overflow">
+  <div class="global-flex flex-wrap container">
+      <div class="ruc-left col-12 pl-0 pr-0 col-d-4 d-pl-0 d-pr-40">
+        <div class="d-pr-0 width-100 height-100 tc d-tl">
+          <div>
+            <h3 class="h3 c-black d-max-300">{{ section.settings.title | newline_to_br }}</h3>
+            {% if section.settings.text != blank %}
+              <p class="mt-10 mb-20 p2 c-black shwr-text">{{ section.settings.text }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="ruc-right col-12 pl-0 pr-0 col-d-8 d-pl-0 d-pr-0">
+        <div class="carousel-container">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              {%- for block in section.blocks -%}
+                <div class="swiper-slide pr-15 d-pr-20">
+                  {%- if block.settings.url != blank -%}
+                    <a href="{{ block.settings.url }}" class="show-m">
+                  {%- endif -%}
+
+                  <div class="global-flex flex-wrap width-100">
+                    <div class="col-12 pl-0 pr-0 col-d-12 d-pr-0 d-pl-0 pb-15">
+                      {%- render 'global-image-wrapper',
+                        image: block.settings.image
+                      -%}
+                    </div>
+                    <div class="col-12 pl-0 pr-0">
+                      <div class="text-wrapper tl">
+                        <p class="p2 bold-500">{{ block.settings.title }}</p>
+
+                        {%- if block.settings.text != blank -%}
+                          <p class="p3 mt-5">{{ block.settings.text }}</p>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </div>
+
+                  {%- if block.settings.url != blank -%}
+                    </a>
+                  {%- endif -%}
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let communitySwiper = new Swiper('#shopify-section-{{ section.id }} .swiper', {
+      navigation: {
+          nextEl: '#shopify-section-{{ section.id }} .swiper-custom-arrow.next',
+          prevEl: '#shopify-section-{{ section.id }} .swiper-custom-arrow.previous'
+      },
+      direction: 'horizontal',
+      spaceBetween: 0,
+      slidesPerView: 'auto',
+      loop: false
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Rewards-How to use coins",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color"
+      },
+      {
+        "type": "textarea",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "text",
+        "label": "Text"
+      },
+      
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      }, 
+      {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      }, 
+      {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      }, 
+      {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      }, 
+      {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      }, 
+      {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      }, 
+      {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Entry",
+        "type": "entry",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }, 
+          {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rewards - How to use coins"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,231 @@
+{% comment %} Calecim Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+<style>
+  #shopify-section-{{ section.id }} {
+    {% if section.settings.bg_color != blank %}
+    background-color: {{ section.settings.bg_color }};
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .hfa-right {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .hfa-right {
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .hfa-item {
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .hfar-box .hfa-item {
+    width: 75%;
+    flex: 0 0 75%;
+  }
+  #shopify-section-{{ section.id }} .swiper-slide{
+  }
+  #shopify-section-{{ section.id }} .swiper-pagination{
+    top:unset;
+    bottom:0;
+    left: 10px;
+    width:calc(100% - 20px);
+    height:2px;
+  }
+  #shopify-section-{{ section.id }} .swiper-pagination-progressbar{
+      background:#E7E7E7;
+  }
+  #shopify-section-{{ section.id }} .swiper-pagination-progressbar-fill{
+      background:#231D1D;
+  }
+  @media screen and (min-width: 768px) {
+
+  }
+  @media screen and (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .container {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      flex-direction: row;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    #shopify-section-{{ section.id }} .hfa-left {
+      width: 50%;
+    }
+    #shopify-section-{{ section.id }} .hfal-box {
+      position: sticky;
+      top: 0;
+    }
+    #shopify-section-{{ section.id }} .hfa-right {
+      width: 50%;
+    }
+    #shopify-section-{{ section.id }} .hfar-box {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      white-space: normal;
+    }
+    #shopify-section-{{ section.id }} .hfar-box .hfa-item {
+      width: 50%;
+      flex: unset;
+    }
+    #shopify-section-{{ section.id }} .swiper-pagination-progressbar{
+      display: none;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    #shopify-section-{{ section.id }} .container {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
+</style>
+<div class="container">
+  <div class="hfa-left d-pr-10">
+    <div class="hfal-box">
+      {% for block in section.blocks %}
+        {% if forloop.first == true %}
+          <div class="hfa-item">
+            {% render 'article-each-featured', article: block.settings.article %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="hfa-right d-pl-10 pb-40 d-pb-0">
+    <div id="slider-article-{{ el_id }}" class="swiper swiper-container pl-10 pr-10 t-pl-20 t-pr-20 t-pt-30 pt-20 pb-0 d-pl-0 d-pr-0 d-pt-0 d-pb-0">
+      <div class="swiper-wrapper hfar-box">
+        {% assign blockLength = section.blocks.size | minus: 1 %}
+        {% for block in section.blocks %}
+          {% unless forloop.first == true %}
+            {% assign even = forloop.index | modulo: 2  %}
+            <div class="{{ blockLength }} swiper-slide hfa-item {% if even == 0 %}d-pr-10 d-pl-0{% else %}d-pl-10 d-pr-0{% endif %} pb-20 pr-10 pl-10 {% if forloop.last == true or forloop.index == blockLength %}d-pb-0{% endif %}">
+              {% render 'article-each', article: block.settings.article %}
+            </div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination swiper-pagination-progressbar swiper-pagination-horizontal"></div>
+    </div>
+  </div>
+</div>
+
+{%- assign function_name = el_id | replace: '-', '_' -%}
+{%- assign prefix = el_id | replace: '-', '_' | append: '_prefix' -%}
+<script>
+var {{ prefix }}Init= false;
+var {{ prefix }}Slider = Swiper;
+function sliderInit{{ function_name }}() {
+  console.log('slider fired')
+  if(window.innerWidth < 769){
+    if(!{{ prefix }}Init) {
+        console.log("slider init")
+        {{ prefix }}Init = true;
+        {{ prefix }}Slider = new Swiper('#slider-article-{{ el_id }}', {
+            slidesPerView: 'auto',
+            spaceBetween: 0,
+            loopedSlides: 0,
+            loop: false,
+            preloadImages: false,
+            lazy: true,
+            centeredSlides: false,
+            pagination: {
+                el: "#slider-article-{{ el_id }} .swiper-pagination",
+                clickable: true,
+                type: "progressbar"
+            },
+            on: {
+                init: function() {
+                    $360.lazyLoadInstance.update();
+                },
+                slideChange: function() {
+                    $360.lazyLoadInstance.update();
+                },
+                resize: function() {
+                    $360.lazyLoadInstance.update();
+                }
+            }
+        });
+    }
+  } else {
+    if ( {{ prefix }}Init ) {
+      console.log("slider destroyed")
+      {{ prefix }}Slider.destroy( true, true );
+    } 
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    sliderInit{{ function_name }}();
+    window.addEventListener("resize", sliderInit{{ function_name }});
+});
+</script>
+{% schema %}
+  {
+    "name": "Homepage Articles",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      },
+      {
+        "type": "text",
+        "id": "top_padding_m",
+        "label": "Top padding (Mobile)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_padding_m",
+        "label": "Bottom padding (Mobile)"
+      },
+      {
+        "type": "text",
+        "id": "top_padding_t",
+        "label": "Top padding (Tablet)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_padding_t",
+        "label": "Bottom padding (Tablet)"
+      },
+      {
+        "type": "text",
+        "id": "top_padding",
+        "label": "Top padding (Desktop)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_padding",
+        "label": "Bottom padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+          "type": "entry",
+          "name": "Entry",
+          "settings": [
+            {
+                "type": "article",
+                "id": "article",
+                "label": "Article"
+            }
+          ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage Article",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

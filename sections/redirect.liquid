@@ -1,0 +1,112 @@
+{% if section.settings.enable %}
+
+<script> 
+    $(document).ready(function(){
+        if(window.location.hash == "#stop_redirect") {
+            $.cookie('stop_redirect', 'stop_redirect', { expires: 7 });
+        }
+
+        function redirectIP(code){
+            var stop_redirect_cookie = $.cookie('stop_redirect');
+
+            if(Shopify.designMode == undefined && window.location.hash != "#stop_redirect" && stop_redirect_cookie == undefined)
+            {
+                var redirected = false;
+                {% for block in section.blocks %}
+                var aa{{ forloop.index }} = ["{{ block.settings.title | downcase | replace: ',','","' | replace: " ","" }}"];
+                {% if block.settings.logic == "in" %}
+                if(aa{{ forloop.index }}.includes(code) && !redirected)
+                {
+                    redirected = true;
+                    location = "{{ block.settings.url }}" + "#stop_redirect";
+                }
+                {% else %}
+                if(! aa{{ forloop.index }}.includes(code) && !redirected)
+                {
+                    redirected = true;
+                    location = "{{ block.settings.url }}" + "#stop_redirect";
+                }
+                {% endif %} 
+                {% endfor %}
+                                            }
+        }
+
+            var check_country_cookie = $.cookie('check_country_cookie');
+
+            console.log(check_country_cookie);
+
+            if (typeof(check_country_cookie) == "undefined")
+            {
+                console.log("Checking country cookie");
+                $.ajax( {
+                    url: "https://pro.ip-api.com/json/?fields=country,countryCode&key={{ section.settings.api }}",
+                type: 'GET',
+                async: false,
+                success: function(res){
+                    console.log(res);
+                    var cc = res.countryCode;
+                    cc = cc.toLowerCase();
+                    $.cookie('check_country_cookie', cc, { expires: 7 });
+                    redirectIP(cc);
+                }
+                });
+            }
+            else
+            {
+                redirectIP(check_country_cookie);
+            }
+    });
+</script>
+{% endif %}
+
+{% schema %}
+{
+	"name": "IP Redirect",
+	"settings": [
+	{
+		"type": "checkbox",
+		"label": "Enable redirect",
+        "id":"enable"
+    },
+    {
+		"type": "textarea",
+		"label": "API Key",
+        "id":"api"
+	}
+	],
+	"blocks": [
+	{
+		"type": "rule",
+		"name": "Rule",
+		"settings": [
+		{
+			"type": "textarea",
+			"id": "title",
+            "label": "Countries",
+            "info":"Separated by comma. E.g. SG,MY"
+        },
+        {
+            "type": "radio",
+            "id": "logic",
+            "label": "Logic",
+            "options": [
+                {
+                    "value": "in",
+                    "label": "Within country list"
+                },
+                {
+                    "value": "no",
+                    "label": "Outside country list"
+                }
+            ]
+        },
+		{
+			"type": "textarea",
+			"id": "url",
+			"label": "URL to redirect to"
+		}
+		]
+	}
+	]
+}
+{% endschema %}

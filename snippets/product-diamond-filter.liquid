@@ -1,0 +1,96 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{%- assign diamond_coll = collections['diamonds'] -%}
+
+<section id="product-diamond-filter" class="pt-40 pb-40 t-pt-60 t-pb-60 d-pt-80 d-pb-80">
+    <div class="container">
+        {%- comment -%} Left side {%- endcomment -%}
+        <div class="left-side col-d-3 d-pl-0 d-pr-0">
+            {%- comment -%} selected ring size {%- endcomment -%}
+            <div class="selected-ring global-flex ai-center jc-between pt-30">
+                <p class="p3 c-grey uppercase spacing-2 bold-600">Selected ring size: 14</p>
+                <a href="javascript:void(0)" class="p3 uppercase spacing-2 bold-600">change</a>
+            </div>
+            {%- comment -%} end selected ring size {%- endcomment -%}
+            
+            <div class="p3 uppercase spacing-2 bold-600 d-mt-40 pb-15 bb-1 b-silver">Filter By</div>
+
+            {%- comment -%} filter colour {%- endcomment -%}
+            <div class="filter-each-wrapper d-mt-30">
+                <p class="p2 uppercase bold-600 mb-5">Colour</p>
+                <div class="filter-wrapper font-0">
+                    <a href="javascript:void(0)" class="p2 filter-each-box mt-10 mr-10">Colourless</a>
+                    <a href="javascript:void(0)" class="p2 filter-each-box mt-10 mr-10">Near Colourless</a>
+                    <a href="javascript:void(0)" class="p2 filter-each-box mt-10 mr-10">Slightly Coloured</a>
+                </div>
+            </div>
+            {%- comment -%} end filter colour {%- endcomment -%}
+
+            {%- comment -%} filter clarity {%- endcomment -%}
+            <div class="filter-each-wrapper d-mt-30">
+                <p class="p2 uppercase bold-600 mb-5">Clarity</p>
+                <div class="filter-wrapper font-0">
+                    <a href="javascript:void(0)" class="p2 filter-each-box mt-10 mr-10">Very Very Slightly Included</a>
+                    <a href="javascript:void(0)" class="p2 filter-each-box mt-10 mr-10">Very Slightly Included</a>
+                    <a href="javascript:void(0)" class="p2 filter-each-box mt-10 mr-10">Slightly Included</a>
+                </div>
+            </div>
+            {%- comment -%} end filter clarity {%- endcomment -%}
+
+            {%- comment -%} filter carat {%- endcomment -%}
+            <div class="filter-each-wrapper d-mt-30">
+                <p class="p2 uppercase bold-600 mb-5">Carat</p>
+                <div class="filter-wrapper font-0">
+                    <a href="javascript:void(0)" class="p2 filter-each-check mt-10 mr-30">
+                        <div class="checkbox"></div>
+                        <span class="text p2 bold-500">0.30 - 0.49</span>
+                    </a>
+                    <a href="javascript:void(0)" class="p2 filter-each-check mt-10 mr-30">
+                        <div class="checkbox"></div>
+                        <span class="text p2 bold-500">1.00 - 1.50</span>
+                    </a>
+                    <a href="javascript:void(0)" class="p2 filter-each-check mt-10 mr-30">
+                        <div class="checkbox"></div>
+                        <span class="text p2 bold-500">0.50 - 0.69</span>
+                    </a>
+                    <a href="javascript:void(0)" class="p2 filter-each-check mt-10 mr-30">
+                        <div class="checkbox"></div>
+                        <span class="text p2 bold-500">1.50 and above</span>
+                    </a>
+                    <a href="javascript:void(0)" class="p2 filter-each-check mt-10 mr-30 active">
+                        <div class="checkbox"></div>
+                        <span class="text p2 bold-500">0.70 - 0.99</span>
+                    </a>
+                </div>
+            </div>
+            {%- comment -%} end filter carat {%- endcomment -%}
+        </div>
+        {%- comment -%} end Left side {%- endcomment -%}
+
+        {%- comment -%} right side {%- endcomment -%}
+        <div class="right-side col-d-9 d-pl-120 d-pr-0">
+            <h3 class="h5">Select A Diamond</h3>
+            <p class="mt-5 p2 c-grey">Click on a diamond below to select and refine your search by adjusting the filters below.</p>
+
+            <div class="results-outer-wrapper relative width-100 d-mt-50">
+                <p class="p3 uppercase spacing-2 bold-600">Results</p>
+
+                <div class="results-wrapper mt-20">
+                    {%- for pro in diamond_coll.products limit: 3 -%}
+                        <div class="result-each p-20 b-1 b-silver {% unless forloop.first %} mt-15 {% endunless %}" data-product-id="{{ pro.id }}">
+                            <div class="image-wrapper global-flex ai-center pt-5 pb-5 pr-20 br-1 b-silver">
+                                <div class="image-container">
+                                    {%- render 'global-image-wrapper',
+                                        image: pro.featured_image
+                                    -%}
+                                </div>
+                                <span class="price p2 bold-500 ml-10">{{ pro.price | money }}</span>
+                            </div>
+                            
+                        </div>
+                    {%- endfor -%}
+                </div>
+            </div>
+        </div>
+        {%- comment -%} end right side {%- endcomment -%}
+    </div>
+</section>

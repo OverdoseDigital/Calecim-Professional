@@ -1,0 +1,215 @@
+{
+  "wrapper": ".global-content-top-margin",
+  "sections": {
+    "e008b215-d996-4889-bafc-095b9f1c6820": {
+      "type": "page-title",
+      "settings": {
+        "background_color": "#f5f5f5",
+        "title": "OUR STORY",
+        "title_size": "h2",
+        "title_dom_type": "h1",
+        "title_color": "",
+        "text": "Founded in Singapore in 2002, with an aim to provide skin and scar cells to laboratories around the world for research as well as to perform contract research for skin research laboratories internationally.",
+        "body_copy_color": "",
+        "max_width": 650,
+        "top_padding_m": "90",
+        "bottom_padding_m": "40",
+        "top_padding_t": "90",
+        "bottom_padding_t": "70",
+        "top_padding": "150",
+        "bottom_padding": "70"
+      }
+    },
+    "d7a2438a-d846-4f49-ba2e-8360f1b40182": {
+      "type": "section-navigation",
+      "blocks": {
+        "fdc0274e-aaf7-499c-bd22-fb73e81c5b27": {
+          "type": "entry",
+          "settings": {
+            "title": "Our Story",
+            "url": "\/pages\/delivery-information?view=our-story"
+          }
+        },
+        "a27088d2-b824-4f92-aa04-ab21b551b51f": {
+          "type": "entry",
+          "settings": {
+            "title": "Science Board",
+            "url": "\/pages\/delivery-information?view=science-board"
+          }
+        }
+      },
+      "block_order": [
+        "fdc0274e-aaf7-499c-bd22-fb73e81c5b27",
+        "a27088d2-b824-4f92-aa04-ab21b551b51f"
+      ],
+      "settings": {}
+    },
+    "d80e3048-6625-4652-982a-be282b32b293": {
+      "type": "rewards-image-text-overlay",
+      "settings": {
+        "bg_color": "rgba(0,0,0,0)",
+        "width": "container",
+        "title": "We are committed in turning Cord Lining Technology into accessible consumer and medical products.",
+        "title_size": "h7",
+        "title_dom_type": "h2",
+        "text": "",
+        "text_size": "p2",
+        "hide_text_mobile": true,
+        "text_max_width": "900",
+        "link_label": "",
+        "link_url": "#learn",
+        "link_label_2": "",
+        "link_url_2": "#2",
+        "button_label_1": "",
+        "button_url_1": "",
+        "button_label_2": "",
+        "button_url_2": "",
+        "text_align": "center",
+        "mobile_layout": "relative",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "100",
+        "bottom_padding": "100"
+      }
+    },
+    "08c251b6-7cb7-4dbd-ac39-2fa0704dff69": {
+      "type": "rewards-image-text-overlay",
+      "settings": {
+        "bg_color": "rgba(0,0,0,0)",
+        "width": "full-width",
+        "title": "",
+        "title_size": "h7",
+        "title_dom_type": "h2",
+        "text": "",
+        "text_size": "p2",
+        "hide_text_mobile": true,
+        "text_max_width": "900",
+        "link_label": "",
+        "link_url": "#learn",
+        "link_label_2": "",
+        "link_url_2": "#2",
+        "button_label_1": "",
+        "button_url_1": "",
+        "button_label_2": "",
+        "button_url_2": "",
+        "text_align": "center",
+        "image_desktop": "shopify:\/\/shop_images\/01Our_Story-Full_Width_Image-desktop-2740x1340.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/01Our_Story-Full_Width_Image-mobile-670x500.jpg",
+        "mobile_layout": "relative",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "95ddbd32-450e-4127-83da-1ad045c22bfa": {
+      "type": "cta-image-text",
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 480,
+        "title": "HOW WE STARTED",
+        "text": "In 2004, our scientists isolated Epithelial and Mesenchymal Stem Cells from the Umbilical Cord Lining Membrane. This novel and significant discovery was put up for intellectual property protection, and to date we have patents granted in multiple strategic key territories around the world. \n\nThe umbilical cord lining membrane is now known to be the richest source of stem cells in the body, and both epithelial and mesenchymal stem cells are being researched intensively with collaborators all around the world to exploit their potential for downstream medical therapy. Considerable headway has already been achieved, and we have started USFDA Clinical Trials with our collaborators in the USA, leading to a therapy to accelerate wound healing.",
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "",
+        "link_label_2": "",
+        "link_url_2": "",
+        "button_label": "",
+        "button_url": "",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "desktop_image": "shopify:\/\/shop_images\/02Our_Story-Image_Text_Square_01-desktop-1200x1200.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/02Our_Story-Image_Text_Square_01-desktop-1200x1200.jpg",
+        "image_position": "row-reverse",
+        "image_position_mobile": "image-first",
+        "top_padding_m": "0",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "d62624c2-7e45-400d-8777-82c8419fae50": {
+      "type": "cta-image-text",
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 480,
+        "title": "KNOWLEDGE",
+        "text": "Built on a belief that better information drives better decisions, knowledge is at the heart of everything we do. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+        "text_align": "tl",
+        "link_label": "Our Story",
+        "link_url": "#story",
+        "link_label_2": "",
+        "link_url_2": "",
+        "button_label": "",
+        "button_url": "",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "desktop_image": "shopify:\/\/shop_images\/02Our_Story-Image_Text_Square_02-desktop-1200x1200.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/02Our_Story-Image_Text_Square_02-desktop-1200x1200.jpg",
+        "image_position": "row",
+        "image_position_mobile": "image-first",
+        "top_padding_m": "",
+        "bottom_padding_m": "40",
+        "top_padding_t": "",
+        "bottom_padding_t": "60",
+        "top_padding": "",
+        "bottom_padding": "80"
+      }
+    },
+    "916a0863-01f4-4f7a-a71c-c693221365b3": {
+      "type": "cta-image-text",
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 480,
+        "title": "QUALITY AND EFFICACY",
+        "text": "We believe our products should be accessible to all, but we will never compromise on quality, ensuring only the best products reach you. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+        "text_align": "tl",
+        "link_label": "Clinical evidence",
+        "link_url": "#story",
+        "link_label_2": "",
+        "link_url_2": "",
+        "button_label": "",
+        "button_url": "",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "desktop_image": "shopify:\/\/shop_images\/02Our_Story-Image_Text_Square_03-desktop-1200x1200.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/02Our_Story-Image_Text_Square_03-desktop-1200x1200.jpg",
+        "image_position": "row-reverse",
+        "image_position_mobile": "image-first",
+        "top_padding_m": "",
+        "bottom_padding_m": "40",
+        "top_padding_t": "",
+        "bottom_padding_t": "60",
+        "top_padding": "",
+        "bottom_padding": "80"
+      }
+    }
+  },
+  "order": [
+    "e008b215-d996-4889-bafc-095b9f1c6820",
+    "d7a2438a-d846-4f49-ba2e-8360f1b40182",
+    "d80e3048-6625-4652-982a-be282b32b293",
+    "08c251b6-7cb7-4dbd-ac39-2fa0704dff69",
+    "95ddbd32-450e-4127-83da-1ad045c22bfa",
+    "d62624c2-7e45-400d-8777-82c8419fae50",
+    "916a0863-01f4-4f7a-a71c-c693221365b3"
+  ]
+}

@@ -1,0 +1,437 @@
+{
+  "wrapper": ".global-content-top-margin",
+  "sections": {
+    "bc63510a-714f-4e47-994e-4f4f4601a964": {
+      "type": "page-title",
+      "settings": {
+        "background_color": "#f5f5f5",
+        "title": "CLINICAL CALECIM® TREATMENTS",
+        "title_size": "h2",
+        "title_dom_type": "h1",
+        "title_color": "#231d1d",
+        "text": "Find out how clinicians are using CALECIM® to give their patients the best clinical outcomes. Some of these results are unprecedented when CALECIM® is used with conventional treatments.",
+        "small_text": "",
+        "body_copy_color": "#231d1d",
+        "max_width": 650,
+        "top_padding_m": "90",
+        "bottom_padding_m": "40",
+        "top_padding_t": "90",
+        "bottom_padding_t": "70",
+        "top_padding": "150",
+        "bottom_padding": "70"
+      }
+    },
+    "84018a7d-795f-4929-bbe6-72e39cfdcf67": {
+      "type": "section-navigation",
+      "blocks": {
+        "c0cbb306-f391-411e-9397-8b5b512c7711": {
+          "type": "entry",
+          "settings": {
+            "title": "Hair Treatments",
+            "url": "\/pages\/delivery-information?view=hair-treatment",
+            "section_ids": ""
+          }
+        },
+        "ef5cb0f3-e050-40eb-be89-622cae4ad786": {
+          "type": "entry",
+          "settings": {
+            "title": "Skin Treatments",
+            "url": "\/pages\/delivery-information?view=skin-treatment",
+            "section_ids": ""
+          }
+        }
+      },
+      "block_order": [
+        "c0cbb306-f391-411e-9397-8b5b512c7711",
+        "ef5cb0f3-e050-40eb-be89-622cae4ad786"
+      ],
+      "settings": {
+        "nav_type": "different-page"
+      }
+    },
+    "84f5e53d-7ff0-4ad2-9ce5-f8501ef872af": {
+      "type": "page-title",
+      "settings": {
+        "background_color": "",
+        "title": "HOW DOCTORS ARE USING CALECIM®",
+        "title_size": "h3",
+        "title_dom_type": "h3",
+        "title_color": "",
+        "text": "",
+        "small_text": "",
+        "body_copy_color": "",
+        "max_width": 500,
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "526770f7-86cd-414c-a4e9-f4ba20449db4": {
+      "type": "homepage-icons",
+      "blocks": {
+        "768aff74-831d-4bf5-8e87-bd4d7bc0129e": {
+          "type": "entry",
+          "settings": {
+            "icon_svg": "",
+            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons02-desktop-240x240.png",
+            "title": "Acne Scarring",
+            "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.",
+            "link_label_1": "Learn more",
+            "link_url_1": "",
+            "link_label_2": "",
+            "link_url_2": ""
+          }
+        },
+        "351685a0-b68d-45ea-a601-633b1b80678b": {
+          "type": "entry",
+          "settings": {
+            "icon_svg": "",
+            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons03-desktop-240x240.png",
+            "title": "Hair loss",
+            "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.",
+            "link_label_1": "Learn more",
+            "link_url_1": "",
+            "link_label_2": "",
+            "link_url_2": ""
+          }
+        },
+        "e36be08b-6c89-4ad4-888b-e730a65cf186": {
+          "type": "entry",
+          "settings": {
+            "icon_svg": "",
+            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons02-desktop-240x240.png",
+            "title": "Inflammation and downtime",
+            "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.",
+            "link_label_1": "Learn more",
+            "link_url_1": "",
+            "link_label_2": "",
+            "link_url_2": ""
+          }
+        },
+        "4431b745-7f90-45e4-a1c7-3c8dc2cf2a64": {
+          "type": "entry",
+          "settings": {
+            "icon_svg": "",
+            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons03-desktop-240x240.png",
+            "title": "Scar reduction",
+            "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.",
+            "link_label_1": "Learn more",
+            "link_url_1": "",
+            "link_label_2": "",
+            "link_url_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "768aff74-831d-4bf5-8e87-bd4d7bc0129e",
+        "351685a0-b68d-45ea-a601-633b1b80678b",
+        "e36be08b-6c89-4ad4-888b-e730a65cf186",
+        "4431b745-7f90-45e4-a1c7-3c8dc2cf2a64"
+      ],
+      "settings": {
+        "bg_color": "",
+        "title_text_color": "",
+        "body_text_color": "",
+        "top_padding_m": "",
+        "bottom_padding_m": "40",
+        "top_padding_t": "",
+        "bottom_padding_t": "60",
+        "top_padding": "",
+        "bottom_padding": "80"
+      }
+    },
+    "b3956043-7cd1-46ec-a8de-f16aa5622ed9": {
+      "type": "hair-treatment-treat",
+      "disabled": true,
+      "blocks": {
+        "26a7e34d-a0aa-45e8-a2cc-db92f44b119f": {
+          "type": "list",
+          "settings": {
+            "text": "Activate cells towards skin trauma to accelerate repair"
+          }
+        },
+        "ceef16e8-5797-48fa-8556-dddaecfd4fd9": {
+          "type": "list",
+          "settings": {
+            "text": "Encourage cell production"
+          }
+        },
+        "b4adfbbf-9157-46a5-8ef1-1d4e6a40de42": {
+          "type": "list",
+          "settings": {
+            "text": "Build up epidermal and dermal layers and increase collagen production"
+          }
+        },
+        "37653c8c-f4e0-4e46-9a36-688a32f38ae1": {
+          "type": "list",
+          "settings": {
+            "text": "Suppress inflammation"
+          }
+        }
+      },
+      "block_order": [
+        "26a7e34d-a0aa-45e8-a2cc-db92f44b119f",
+        "ceef16e8-5797-48fa-8556-dddaecfd4fd9",
+        "b4adfbbf-9157-46a5-8ef1-1d4e6a40de42",
+        "37653c8c-f4e0-4e46-9a36-688a32f38ae1"
+      ],
+      "settings": {
+        "section_width": "",
+        "background_color": "#f5f5f5",
+        "content_max_width": 500,
+        "number": "",
+        "title": "IDENTIFY",
+        "text": "",
+        "text_below_icon": "All these ‘signals’ initiate many different cellular events which ultimately lead to reduced downtime and improved aesthetic outcomes.",
+        "header_class": "h3",
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "",
+        "desktop_image": "shopify:\/\/shop_images\/Screenshot_2023-06-27_111032.png",
+        "mobile_image": "shopify:\/\/shop_images\/Screenshot_2023-06-27_111032.png",
+        "image_position": "row",
+        "image_position_mobile": "follow-desktop",
+        "tag": "",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "0e62908a-d470-4bd2-8708-f4e9f4f253c3": {
+      "type": "hair-treatment-treat",
+      "settings": {
+        "section_width": "",
+        "background_color": "#f5f5f5",
+        "content_max_width": 500,
+        "number": "",
+        "title": "MOST CLINICAL PROCEDURES CAUSE ‘CONTROLLED TRAUMA’",
+        "text": "The science of most clinical procedures is simple. Through ‘controlled injury’ to skin tissue with the use of light, electric currents, needling and other modalities, these treatments initiate a natural healing response from your skin. The intention is to ‘force’ your skin to regenerate as skin activity naturally declines with age.",
+        "text_below_icon": "",
+        "header_class": "h3",
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "",
+        "desktop_image": "shopify:\/\/shop_images\/01Clinical_treatment_Skin-Half_Width_image01-desktop-1370x1370.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/01Clinical_treatment_Skin-Half_Width_image01-desktop-1370x1370.jpg",
+        "image_position": "row",
+        "image_position_mobile": "image-first",
+        "tag": "",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "74fbea32-54ef-4fdc-8f14-f04c9d4cadd2": {
+      "type": "hair-treatment-treat",
+      "settings": {
+        "section_width": "",
+        "background_color": "#f5f5f5",
+        "content_max_width": 500,
+        "number": "",
+        "title": "YOUR PROCEDURE RESULTS DEPEND ON HOW WELL YOU HEAL",
+        "text": "We all know that younger skin heals more efficiently. Without the optimal environment of healthy, young skin, successful healing after clinic procedures may be restricted. Besides longer downtime, optimal aesthetic results may be limited if your skin is not able to ‘rise to the challenge’ of regenerating itself.",
+        "text_below_icon": "",
+        "header_class": "h3",
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "",
+        "desktop_image": "shopify:\/\/shop_images\/01Clinical_treatment_Skin-Half_Width_image03-desktop-1370x1370.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/01Clinical_treatment_Skin-Half_Width_image03-desktop-1370x1370.jpg",
+        "image_position": "row-reverse",
+        "image_position_mobile": "image-first",
+        "tag": "",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "f51c0f80-d9cc-4478-8c01-a084dde65fbe": {
+      "type": "hair-treatment-treat",
+      "settings": {
+        "section_width": "",
+        "background_color": "#f5f5f5",
+        "content_max_width": 500,
+        "number": "",
+        "title": "PTT-6® IS DEVELOPED THROUGH SKIN REGENERATION TECHNOLOGY",
+        "text": "PTT-6® contains high concentrations of growth factors and exosomes that are produced by stem cells. As PTT-6® is ‘naturally derived’ from stem cells, it is physiologically balanced as nature intended to activate tissue renewal.",
+        "text_below_icon": "",
+        "header_class": "h3",
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "",
+        "desktop_image": "shopify:\/\/shop_images\/01Clinical_treatment_Skin-Half_Width_image02-desktop-1370x1370.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/01Clinical_treatment_Skin-Half_Width_image02-desktop-1370x1370.jpg",
+        "image_position": "row",
+        "image_position_mobile": "image-first",
+        "tag": "",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "1dccb8d5-edef-4b54-b221-46b5fa5ae7cb": {
+      "type": "hair-treatment-treat",
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "content_max_width": 500,
+        "number": "",
+        "title": "THE BEST SERUM FOR MICRONEEDLING",
+        "text": "Micro-needling—where the skin is punctured with tiny needles to stimulate new collagen generation in microscopic wounds—is on the rise thanks to its immediate and long-term benefits. These days, special skin needling models let patients experience some of these benefits at home and offer a more effective means of delivering topical agents to the skin on a regular basis. \n\nMedical aestheticians believe that the needles create ‘controlled skin injury’, and the body repairs these microscopic wounds by producing new skin cells, collagen, and elastin. Through this process, it is believed that there is an improvement in skin texture and firmness. Reduction in scars, pore size, and stretch marks are among the visible benefits observed by patients.",
+        "text_below_icon": "",
+        "header_class": "h3",
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "",
+        "desktop_image": "shopify:\/\/shop_images\/Screenshot_2023-06-27_151057.png",
+        "mobile_image": "shopify:\/\/shop_images\/01Our_Story-Full_Width_Image-mobile-670x500.jpg",
+        "image_position": "row-reverse",
+        "image_position_mobile": "image-first",
+        "tag": "",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "4eaee552-ad92-4b4c-8062-b4f3cba11b44": {
+      "type": "hair-treatment-treat",
+      "blocks": {
+        "e21bdfc6-8192-4637-aeee-d7ec601848d9": {
+          "type": "list",
+          "settings": {
+            "text": "Activate cells towards skin trauma to accelerate repair"
+          }
+        },
+        "62f39103-a60a-4746-9f36-155a4280a144": {
+          "type": "list",
+          "settings": {
+            "text": "Encourage cell production"
+          }
+        },
+        "0a251cb2-cfa3-4883-a3eb-a345362d1ee7": {
+          "type": "list",
+          "settings": {
+            "text": "Build up epidermal and dermal layers and increase collagen production"
+          }
+        },
+        "eb6a47ac-ff78-4443-9c1b-538ed2d4772b": {
+          "type": "list",
+          "settings": {
+            "text": "Suppress inflammation"
+          }
+        }
+      },
+      "block_order": [
+        "e21bdfc6-8192-4637-aeee-d7ec601848d9",
+        "62f39103-a60a-4746-9f36-155a4280a144",
+        "0a251cb2-cfa3-4883-a3eb-a345362d1ee7",
+        "eb6a47ac-ff78-4443-9c1b-538ed2d4772b"
+      ],
+      "settings": {
+        "section_width": "",
+        "background_color": "#f5f5f5",
+        "content_max_width": 500,
+        "number": "",
+        "title": "PTT-6® IS ABLE TO CREATE CELLULAR MESSAGES THAT",
+        "text": "",
+        "text_below_icon": "All these ‘signals’ initiate many different cellular events which ultimately lead to reduced downtime and improved aesthetic outcomes.",
+        "header_class": "h3",
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "",
+        "desktop_image": "shopify:\/\/shop_images\/Screenshot_2023-06-28_101052.png",
+        "mobile_image": "shopify:\/\/shop_images\/Screenshot_2023-06-28_101052.png",
+        "image_position": "row",
+        "image_position_mobile": "image-first",
+        "tag": "",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "eb5e59c6-fa66-473b-84bf-47a54d3afd27": {
+      "type": "whitespace",
+      "settings": {
+        "height_m": 40,
+        "height_t": 60,
+        "height_d": 80
+      }
+    },
+    "530973d2-1374-421a-9e86-8453344bd020": {
+      "type": "rewards-image-text-overlay",
+      "settings": {
+        "bg_color": "",
+        "width": "container",
+        "title": "PREFER TO HAVE A CLINICAL SKIN TREATMENT?",
+        "title_size": "h3",
+        "title_dom_type": "h2",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat!",
+        "text_size": "p2",
+        "hide_text_mobile": true,
+        "text_max_width": "400",
+        "link_label": "Locate a skin clinic",
+        "link_url": "",
+        "link_label_2": "",
+        "link_url_2": "",
+        "button_label_1": "",
+        "button_url_1": "",
+        "button_label_2": "",
+        "button_url_2": "",
+        "text_align": "right",
+        "image_desktop": "shopify:\/\/shop_images\/04Clinical_Treatment_skin-Clinic_Banner-desktop-2490x1000.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/04Clinical_Treatment_Skin-_Clinic_Banner-mobile-670x410.jpg",
+        "mobile_layout": "relative",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "ee615628-582c-4001-a1a0-33f640838f8b": {
+      "type": "whitespace",
+      "settings": {
+        "height_m": 40,
+        "height_t": 60,
+        "height_d": 80
+      }
+    }
+  },
+  "order": [
+    "bc63510a-714f-4e47-994e-4f4f4601a964",
+    "84018a7d-795f-4929-bbe6-72e39cfdcf67",
+    "84f5e53d-7ff0-4ad2-9ce5-f8501ef872af",
+    "526770f7-86cd-414c-a4e9-f4ba20449db4",
+    "b3956043-7cd1-46ec-a8de-f16aa5622ed9",
+    "0e62908a-d470-4bd2-8708-f4e9f4f253c3",
+    "74fbea32-54ef-4fdc-8f14-f04c9d4cadd2",
+    "f51c0f80-d9cc-4478-8c01-a084dde65fbe",
+    "1dccb8d5-edef-4b54-b221-46b5fa5ae7cb",
+    "4eaee552-ad92-4b4c-8062-b4f3cba11b44",
+    "eb5e59c6-fa66-473b-84bf-47a54d3afd27",
+    "530973d2-1374-421a-9e86-8453344bd020",
+    "ee615628-582c-4001-a1a0-33f640838f8b"
+  ]
+}

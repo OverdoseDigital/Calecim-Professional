@@ -1,0 +1,340 @@
+{{ 'jquery-ajax-module.js' | asset_url | script_tag }}
+{{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+{{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+
+{% comment %} Love&Co Theme {% endcomment %}
+{%- if customer -%}
+<style>
+    #my-address-page .aa-heading div {
+        width: 210px;
+    }
+
+    .account-customer-form-close{
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16.465' height='16.465' viewBox='0 0 16.465 16.465'%3E%3Cg transform='translate(0.354 0.354)'%3E%3Cline x2='15.758' y2='15.758' fill='none' stroke='%232c2c2c' stroke-width='1'/%3E%3Cline x1='15.758' y2='15.758' fill='none' stroke='%232c2c2c' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E");
+        cursor: pointer;
+        display: none;
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    #my-address-page .account-form {
+        display:inline-block;
+    }
+
+    #my-address-page .account-address-list li{
+        position:relative;
+    }
+
+    #my-address-page .account-address-list .edit{
+        position:relative;
+    }
+
+    #my-address-page .global-input {
+        background: white;
+        border: 1px solid #dbdbdb;
+    }
+
+    #my-address-page .select-wrapper .arrow-icon {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        font-size: 0;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    #my-address-page .select-wrapper .arrow-icon svg{
+        width: 10px;
+        height: 10px;
+    }
+
+    #my-address-page .select-wrapper .global-input {
+        padding: 15px 20px;
+        appearance: none;
+        -webkit-appearance: none;
+        cursor: pointer;
+    }
+
+    #my-address-page .account-content{
+        width:100%;
+    }
+
+
+    @media screen and (min-width: 768px) {
+        #my-address-page .account-content{
+            width:75%;
+        }
+        #my-address-page .account-sidebar-desktop{
+            width:25%;
+        }
+        #my-address-page .aa-heading {
+            display:flex;
+        }
+        #my-address-page .aa-heading .customer-label {
+            width: 30%;
+        }
+        #my-address-page .account-customer-name {
+            float: left;
+            width: 30%;
+        }
+        #my-address-page .account-customer-address {
+            float: left;
+            width: 30%;
+        }
+        #my-address-page .account-customer-address-actions {
+            /*float: right;*/
+        }
+    }
+</style>
+
+<div id="my-address-page" class="global-content-top-margin">
+    <div class="flex flex-wrap">
+        <div class="hide-m show-t pl-40 hd-pl-60 t-pt-80 d-pt-80 t-pr-40 d-pr-100 br-1 b-border account-sidebar-desktop">
+            {%- render 'account-sidebar-desktop' -%}
+        </div>
+        <div class="account-content">
+            {%- render 'account-page-title' -%}
+            {% comment %} {%- render 'account-navigation', filter_active:"address" -%} {% endcomment %}
+            {%- render 'account-sidebar-mobile' -%}
+            <div class="container pt-40 pb-40 d-pt-80 d-pb-80">
+                <h1 class="h4 pb-20 d-pb-25 uppercase">Address Book</h1>
+                
+                <div class="hide-d">
+                    <div class="b-1 b-border mb-20">
+                        <div class="p-15 d-p-20 bb-1 b-border ">
+                            <div class="p3 bold-500">Customer</div>
+                        </div>
+                        <div class="p-15 d-p-20">
+                            <div class="p2">
+                                {{ customer.name }}<br/>
+                                {{ customer.email }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% paginate customer.addresses by 50 %}
+                <ul class="account-address-list b-1 b-border">
+                <li class="aa-heading p-15 d-p-20">
+                    <div class="p3 bold-500 customer-label hide-m show-t">Customer</div>
+                    <div class="p3 bold-500">Address</div>
+                </li>
+                {% for address in customer.addresses %}
+                <li class="bt-1 b-border aa-item p-15 d-p-20">
+                    <div class="account-customer-form-close" id="close_{{ address.id }}" onclick="$(this).toggle();Shopify.CustomerAddress.toggleForm({{ address.id}});return false;"></div>
+                    <div class="show-m-inline-block width-100" id="view_address_{{ address.id }}">
+                        <div class="p2 account-customer-name">{{ address.first_name }} {{address.last_name }}</div>
+                        <div class="account-customer-address p2 pb-15">
+                            {% if address.street != blank %}
+                            {{ address.street }}<br/>
+                            {% endif %}
+                            {% if address.city != blank or address.province != blank %}
+                            {{ address.city }}, {{ address.province }}<br/>
+                            {% endif %}
+                            {% if address.country != blank or address.zip != blank %}
+                            {{ address.country }} {{ address.zip }}<br/>
+                            {% endif %}
+                            {{ address.phone }}
+                            {% if address == customer.default_address %}<div class="default_address note p2">(Default Address)</div>{% endif %}
+
+                            <div class="account-customer-address-actions pt-10">
+                                <a href="#" class="link1 opacity-5 edit-link" onclick="Shopify.CustomerAddress.toggleForm({{ address.id}});return false;">
+                                Edit
+                                </a>
+                                <a href="#" class="link1 opacity-5 ml-10" onclick="Shopify.CustomerAddress.destroy({{ address.id }}, 'Are you sure you wish to delete this address?');return false;">
+                                Delete
+                                </a>
+                            </div>
+                        </div>
+                        {% comment %} <div class="account-customer-address-actions">
+                            <a href="#" class="link1 edit-link" onclick="Shopify.CustomerAddress.toggleForm({{ address.id}});return false;">
+                            Edit
+                            </a>
+                            <a href="#" class="link1 mr-0" onclick="Shopify.CustomerAddress.destroy({{ address.id }}, 'Are you sure you wish to delete this address?');return false;">
+                            Delete
+                            </a>
+                        </div> {% endcomment %}
+                    </div>
+                    <div class="edit " style="display:none;" id="edit_address_{{ address.id }}">
+                    {% form 'customer_address', address %}
+                    <div class="account-form">  
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_first_name_{{form.id}}">{{ 'customer.addresses.first_name' | t }}</label>
+                        <input type="text" id="address_first_name_{{form.id}}" class="global-input mt-10" name="address[first_name]" value="{{form.first_name}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_last_name_{{form.id}}">{{ 'customer.addresses.last_name' | t }}</label>
+                            <input type="text" id="address_last_name_{{form.id}}" class="global-input mt-10" name="address[last_name]" value="{{form.last_name}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6" style="display:none;">
+                        <label class="p3" for="address_company_{{form.id}}">{{ 'customer.addresses.company' | t }}</label>
+                        <input type="text" id="address_company_{{form.id}}" class="global-input mt-10" name="address[company]" value="{{form.company}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_address1_{{form.id}}">{{ 'customer.addresses.address1' | t }}</label>
+                        <input type="text" id="address_address1_{{form.id}}" class="global-input mt-10" name="address[address1]" value="{{form.address1}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_address2_{{form.id}}">{{ 'customer.addresses.address2' | t }}</label>
+                        <input type="text" id="address_address2_{{form.id}}" class="global-input mt-10" name="address[address2]" value="{{form.address2}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_city_{{form.id}}">{{ 'customer.addresses.city' | t }}</label>
+                        <input type="text" id="address_city_{{form.id}}" class="global-input mt-10" name="address[city]" value="{{form.city}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_country_{{form.id}}">{{ 'customer.addresses.country' | t }}</label>
+                        <div class="form-each-right mt-10">
+                            <div class="select-wrapper relative width-100">
+                            <div class="arrow-icon">{{ settings.icon_select }}</div>
+                            <select id="address_country_{{form.id}}" name="address[country]" data-default="{{form.country}}" class="country-dropdown global-input p2">{{ country_option_tags }}</select>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6" id="address_province_container_{{form.id}}" style="display:none">
+                        <label class="p3" for="address_province_{{form.id}}">{{ 'customer.addresses.province' | t }}</label>
+                        <div class="form-each-right mt-10">
+                            <div class="select-wrapper relative width-100">
+                            <div class="arrow-icon">{{ settings.icon_select }}</div>
+                            <select id="address_province_{{form.id}}" class="product-buy-options province-dropdown global-input p2" name="address[province]" data-default="{{form.province}}"></select>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_zip_{{form.id}}">{{ 'customer.addresses.zip' | t }}</label>
+                        <input type="text" id="address_zip_{{form.id}}" class="global-input mt-10" name="address[zip]" value="{{form.zip}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_phone_{{form.id}}">{{ 'customer.addresses.phone' | t }}</label>
+                        <input type="text" id="address_phone_{{form.id}}" class="global-input mt-10" name="address[phone]" value="{{form.phone}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 push hide-m col-12 col-t-6">
+                        {{ form.set_as_default_checkbox }} <span class='checkbox-text'>{{ 'customer.addresses.set_default' | t }}</span>
+                        </div>
+                        <div class="form-buttons push col-12 col-t-6 d-mt-15 mt-0">
+                        <button class="btn1 mr-20" type="submit">Submit</button>
+                        <a href="/" class="link1" onclick="Shopify.CustomerAddress.toggleForm({{form.id}}); return false;">
+                            Cancel 
+                        </a>
+                        </div> 
+                    </div>
+                    {% endform %}
+                    </div>
+                </li>
+                {% endfor %}
+                </ul>
+                {% endpaginate %}
+
+                <div class="relative width-100">
+                <button type="button" class="mt-30 btn1 address-new" onclick="newAddress()">Add Address<span class="ml-30" style="display:inline-flex;">{{ settings.icon_btn_right }}</span></button>
+                </div>
+
+                {% form 'customer_address', customer.new_address, class:"mt-30 hide-m" %}
+                    <div class="account-form">  
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_first_name_{{form.id}}">{{ 'customer.addresses.first_name' | t }}</label>
+                        <input type="text" id="address_first_name_{{form.id}}" class="global-input mt-10" name="address[first_name]" value="{{form.first_name}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_last_name_{{form.id}}">{{ 'customer.addresses.last_name' | t }}</label>
+                            <input type="text" id="address_last_name_{{form.id}}" class="global-input mt-10" name="address[last_name]" value="{{form.last_name}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6" style="display:none;">
+                        <label class="p3" for="address_company_{{form.id}}">{{ 'customer.addresses.company' | t }}</label>
+                        <input type="text" id="address_company_{{form.id}}" class="global-input mt-10" name="address[company]" value="{{form.company}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_address1_{{form.id}}">{{ 'customer.addresses.address1' | t }}</label>
+                        <input type="text" id="address_address1_{{form.id}}" class="global-input mt-10" name="address[address1]" value="{{form.address1}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_address2_{{form.id}}">{{ 'customer.addresses.address2' | t }}</label>
+                        <input type="text" id="address_address2_{{form.id}}" class="global-input mt-10" name="address[address2]" value="{{form.address2}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_city_{{form.id}}">{{ 'customer.addresses.city' | t }}</label>
+                        <input type="text" id="address_city_{{form.id}}" class="global-input mt-10" name="address[city]" value="{{form.city}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_country_{{form.id}}">{{ 'customer.addresses.country' | t }}</label>
+                        <div class="form-each-right mt-10">
+                            <div class="select-wrapper relative width-100">
+                            <div class="arrow-icon">{{ settings.icon_select }}</div>
+                            <select id="address_country_{{form.id}}" name="address[country]" data-default="{{ localization.country.name }}" class="country-dropdown global-input p2">{{ country_option_tags }}</select>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6" id="address_province_container_{{form.id}}" style="display:none">
+                        <label class="p3" for="address_province_{{form.id}}">{{ 'customer.addresses.province' | t }}</label>
+                        <div class="form-each-right mt-10">
+                            <div class="select-wrapper relative width-100">
+                            <div class="arrow-icon">{{ settings.icon_select }}</div>
+                            <select id="address_province_{{form.id}}" class="product-buy-options province-dropdown global-input p2" name="address[province]" data-default="{{form.province}}"></select>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_zip_{{form.id}}">{{ 'customer.addresses.zip' | t }}</label>
+                        <input type="text" id="address_zip_{{form.id}}" class="global-input mt-10" name="address[zip]" value="{{form.zip}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 col-12 col-t-6">
+                        <label class="p3" for="address_phone_{{form.id}}">{{ 'customer.addresses.phone' | t }}</label>
+                        <input type="text" id="address_phone_{{form.id}}" class="global-input mt-10" name="address[phone]" value="{{form.phone}}" size="40" />
+                        </div>
+                        <div class="account-form-each mb-20 push hide-m col-12 col-t-6">
+                        {{ form.set_as_default_checkbox }} <span class='checkbox-text'>{{ 'customer.addresses.set_default' | t }}</span>
+                        </div>
+                        <div class="form-buttons push col-12 col-t-6 d-mt-15 mt-0">
+                        <button class="btn1 mr-20" type="submit">Submit</button>
+                        </div> 
+                    </div>
+                {% endform %}
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+{%- else -%}
+<script>location.href = "/account";</script>
+{%- endif -%}
+
+
+
+<script>
+    function newAddress(){
+        const {slideUp, slideDown, slideToggle} = window.domSlider;
+        const el = document.querySelector('#address_form_new');
+        slideToggle({element: el});
+    }
+
+    const countrySelects = document.querySelectorAll('select[name="address[country]"]');
+    countrySelects.forEach(select => {
+        console.log(select);
+        console.log(select.getAttribute("data-default"));
+        console.log(select.value);
+        select.value = select.getAttribute("data-default");
+        console.log(select.value);
+    });
+
+
+    {% comment %} mySelect.addEventListener('change', function() {
+        // code to execute when the select value changes
+        console.log('Selected option value:', this.value);
+    }); {% endcomment %}
+    {% comment %} $(".country-dropdown").change(function(){
+        t = $(this);
+        nn = t.find("option:selected").text();
+        t.prev().find(".inner").text(nn);
+    }).each(function(){
+        $(this).val($(this).attr("data-default"));
+        $(this).trigger("change");
+    }); {% endcomment %}
+</script>

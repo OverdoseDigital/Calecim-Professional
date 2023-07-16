@@ -1,0 +1,184 @@
+{% comment %} Calecim {% endcomment %}
+<style>
+    .product-related-articles .arrow-mobile,
+    .product-related-articles .arrow-mobile svg {
+        font-size: 0;
+        width: 9px;
+        height: 9px;
+    }
+    .product-related-articles .arrow-mobile svg {
+        display: block;
+    }
+
+    .product-related-articles .swiper {
+        overflow: visible!important;
+        clip-path: inset(-100vw -100vw -100vw -100vw);
+    }
+    .product-related-articles .swiper-slide{
+        width: 75%;
+        flex: 0 0 75%;
+        padding: 0 7.5px;
+    }
+    .product-related-articles .carousel-wrapper{
+        margin: 0 -7.5px;
+    }
+    .product-related-articles .swiper-button,
+    .product-related-articles a.hide-m {
+        display:none;
+    }
+    .product-related-articles .swiper-pagination{
+        top:unset;
+        bottom:0;
+        left:7.5px;
+        width:calc(100% - 15px);
+        height:2px;
+    }
+    .product-related-articles .swiper-pagination-progressbar{
+        background:#E7E7E7;
+    }
+    .product-related-articles .swiper-pagination-progressbar-fill{
+        background:#231D1D;
+    }
+
+    .product-related-articles .arrow-mobile {
+        font-size: 0;
+        width: 8px;
+        height: 8px;
+    }
+    .product-related-articles .arrow-mobile svg {
+        width: 8px;
+        height: 8px;
+    }
+    .product-related-articles .article-each-wrapper {
+      position: relative;
+    }
+    .product-related-articles .article-each-wrapper .ae-caption {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    .product-related-articles .article-each-wrapper .ae-tags span {
+      padding: 5px 10px;
+      border-radius: 25px;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    @media screen and (min-width: 768px) {
+        .product-related-articles .swiper-slide{
+            width: 33.3333%;
+            flex: 0 0 33.3333%;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        .product-related-articles .swiper {
+            overflow: hidden !important;
+        }
+        .product-related-articles .swiper-pagination{
+            left:10px;
+            width:calc(100% - 20px);
+        }
+        .product-related-articles a.show-d{
+            display:inline-block;
+        }
+        .product-related-articles a.hide-d{
+            display:none;
+        }
+        .product-related-articles .title-container{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:space-between;
+            align-items: center;
+        }
+        .product-related-articles .swiper-slide{
+            width: 25%;
+            flex: 0 0 25%;
+            padding: 0 10px;
+        }
+        .product-related-articles .carousel-wrapper{
+            margin: 0 -10px;
+        }
+        .product-related-articles .swiper-custom-arrow{
+            display: inline-flex;
+        }
+        .product-related-articles .swiper-custom-arrow.left{
+            left:30px;
+        }
+        .product-related-articles .swiper-custom-arrow.right{
+            right:30px;
+        }
+    }
+</style>
+
+<div class="product-related-articles mt-40 t-mt-60 d-mt-80 overflow">
+    <div class="container">
+        <div class="title-container global-flex ai-center jc-between width-100"> 
+            <div class="h3 global-flex ai-start uppercase"> 
+                {{ product.metafields.related_articles.title }}
+
+                {%- if product.metafields.related_articles.button_url -%}
+                    <a href="{{ product.metafields.related_articles.button_url }}" class="hide-d show-m-inline-flex arrow-mobile ml-10 y3">
+                        {{ settings.icon_arrow_diagonal_up }}
+                    </a>
+                {%- endif -%}
+            </div>
+
+            {%- if product.metafields.related_articles.button_label -%}
+                <div class="hide-m show-d">
+                    <a href="{{ product.metafields.related_articles.button_url }}" class="btn1">{{ product.metafields.related_articles.button_label }}<span class="ml-30" style="display:inline-flex;">{{ settings.icon_btn_right }}</span></a>
+                </div>
+            {%- endif -%}
+        </div>
+        <div class="outer-wrapper mt-15 d-mt-30">
+            <div class="carousel-wrapper">
+                <div id="slider-more-article-container" class="swiper swiper-container">
+                    <div class="swiper-wrapper">
+                        {%- assign articles_acc = product.metafields.related_articles.articles | split: '|' -%}
+                        {%- for art in articles_acc -%}
+                            {%- assign article_obj = articles[art] -%}
+
+                            {%- if article_obj.title != blank -%}
+                                <div class="swiper-slide">
+                                    <div class="article-each-wrapper height-100">
+                                        {%- render 'article-each', article: article_obj -%}
+                                    </div>
+                                </div>
+                            {%- endif -%}
+                        {%- endfor -%}
+                    </div>
+
+                    <div class="swiper-pagination swiper-pagination-progressbar swiper-pagination-horizontal mt-25 show-m hide-d"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const productRelatedArticlesSwiper = new Swiper('.product-related-articles .swiper', {
+            slidesPerView: 'auto',
+            spaceBetween: 0,
+            loop: false,
+            pagination: {
+                el: ".product-related-articles .swiper .swiper-pagination",
+                clickable: true,
+                type: "progressbar"
+            },
+            on: {
+                init: function() {
+                    $360.lazyLoadInstance.update();
+                },
+                slideChange: function() {
+                    $360.lazyLoadInstance.update();
+                },
+                resize: function() {
+                    $360.lazyLoadInstance.update();
+                }
+            }
+        });
+    });
+</script>

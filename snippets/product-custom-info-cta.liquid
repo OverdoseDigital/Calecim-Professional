@@ -1,0 +1,66 @@
+{% comment %} Calecim {% endcomment %}
+<style>
+    .product-custom-info-cta {
+        background-color: {{ product.metafields.custom_info_cta.bg_color }};
+        color: {{ product.metafields.custom_info_cta.text_color }};
+        flex-wrap: wrap;
+    }
+    .product-custom-info-cta .icon-main {
+        display: inline-flex;
+        height: 33px;
+        width: auto;
+        font-size: 0;
+    }
+    .product-custom-info-cta .icon-main svg {
+        height: 33px;
+        width: auto;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .product-custom-info-cta {
+            flex-wrap: nowrap;
+        }
+    }
+</style>
+
+<section class="product-custom-info-cta global-flex ai-center jc-between mt-20 d-mt-30 p-20 d-p-25">
+    <div class="left-side max-270 global-flex ai-center">
+        <div class="icon-main">{{ product.metafields.custom_info_cta.icon[0].media_inline }}</div>
+        <p class="p1 ml-15">{{ product.metafields.custom_info_cta.title }}</p>
+    </div>
+    <div class="link-wrapper tl d-tr mt-10 d-mt-0">
+        {%- if product.metafields.custom_info_cta.link_label_1 != blank -%}
+            <div class="link-wrapper relative show-m-inline-block show-d mr-15 d-mr-0">
+                <div class="link2 relative">
+                    {%- assign link_id = "link-cta-1" -%}                                    
+                    {% render 'link-icon',
+                        id: link_id,
+                        label: product.metafields.custom_info_cta.link_label_1,
+                        url: product.metafields.custom_info_cta.link_url_1,
+                        text_class: 'p3 mr-10',
+                        icon_color: product.metafields.custom_info_cta.text_color,
+                        icon_svg: settings.icon_arrow_diagonal_up,
+                        load_inside_vue: false
+                    %}
+                </div>
+            </div>
+        {%- endif -%}
+
+        {%- if product.metafields.custom_info_cta.link_label_2 != blank -%}
+            <div class="link-wrapper relative show-m-inline-block show-d d-mt-5">
+                <div class="link2 relative">
+                    {%- assign link_id = "link-cta-2"  -%}                                    
+                    {% render 'link-icon',
+                        id: link_id,
+                        label: product.metafields.custom_info_cta.link_label_2,
+                        url: product.metafields.custom_info_cta.link_url_2,
+                        text_class: 'p3 mr-10',
+                        icon_color: product.metafields.custom_info_cta.text_color,
+                        icon_svg: settings.icon_arrow_diagonal_up,
+                        load_inside_vue: false
+                    %}
+                </div>
+            </div>
+        {%- endif -%}
+    </div>
+</section>

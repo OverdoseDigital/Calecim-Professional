@@ -1,0 +1,273 @@
+{%- if cart.item_count == 0 -%}
+	<div class="container">
+		<div class="max-340 t-max-550 ml-auto mr-auto pt-50 pb-50 d-pt-100 d-pb-100 tc">
+			{%- if settings.cart_empty_message != blank -%}
+				<h1 class="h7">{{ settings.cart_empty_message | newline_to_br }}</h1>
+			{%- endif -%}
+			{%- if settings.cart_empty_button_label != blank -%}
+				<a href="{{ settings.cart_empty_button_url }}" class="btn1 show-m-inline-block mt-20 t-mt-30">{{ settings.cart_empty_button_label }}</a>
+			{%- endif -%}
+		</div>
+	</div>
+{%- else -%}
+	<div class="cart-page-wrapper content-outer-wrapper pt-30 pb-40 d-pt-60 d-pb-80 step-1">
+		<form action="/cart" method="post" id="cartform" class="global-flex flex-wrap">
+			<div class="cart-left col-12 pl-0 pr-0 col-d-8 d-pl-0 d-pr-40">
+				<div class="d-flex d-jc-between d-ai-center">
+					<div class="flex ai-end pb-10 d-pb-0">
+						<h1 class="h3 pr-10 d-pr-20">YOUR CART</h1>
+						<div class="p5 bold-500 step-text-1 uppercase">step 1 of 2</div>
+						<div class="p5 bold-500 step-text-2 uppercase">step 2 of 2</div>
+					</div>
+					{%- if settings.cart_c_shopping_label != blank -%}
+						<div class="">
+							{%- render 'link-icon',
+								id: 'cart-continue-shopping-mobile',
+								additional_classes: 'link1',
+								text_class: 'mr-5',
+								label: settings.cart_c_shopping_label,
+								url: settings.cart_c_shopping_url,
+								text_class: 'p3',
+								icon_color: '#6C6C6C',
+								icon_svg: settings.icon_arrow_diagonal_up,
+								left_arrow: false
+							-%}
+						</div>
+					{%- endif -%}
+
+					
+				</div>
+				{%- assign has_fabric = false -%}
+				{%- assign has_regular_items = false -%}
+				<div class="items-wrapper mt-30 d-mt-25">
+					<ul class="items">
+						{%- for item in cart.items -%}
+							{%- assign pro = item.product -%}
+								<li class="each flex relative bg-white p-15 d-pt-20 d-pb-20 d-pl-30 d-pr-30 {% unless forloop.first %} mt-30 {% endunless %}">
+									<div class="image-con mr-15 d-mr-20">
+										{%- capture item_img -%}
+											{%- if item.image == blank -%}
+												<img src="{{ item.image | img_url:'200x' }}" alt="{{ item.image.alt }}" class="image">
+											{%- else -%}
+												{%- render 'global-image-wrapper', image: item.image, size: 200, preload: true -%}
+											{%- endif -%}
+										{%- endcapture -%}
+										{%- if item.product.tags contains "hidden" -%}
+											{{ item_img }}
+										{%- else -%}
+											<a href="{{ item.url }}" title="{{ item.title }}">{{ item_img }}</a>
+										{%- endif -%}
+									</div>
+									<div class="details-con">
+										<div class="global-flex jc-between width-100 cart-item-detail-wrapper">
+											<div class="left-side d-flex d-jc-between pr-10 d-pr-0">
+												<div class="text-con d-pr-30 max-380 d-flex d-flex-column">
+													{%- capture item_title -%}
+														<div class="p3 bold-500 uppercase">{{ item.product.title }}</div>
+														{% comment %} <h6 class="h11 bold-500 spacing-0 hide-d">{{ item.product.title }}</h6> {% endcomment %}
+													{%- endcapture -%}
+													{%- if item.product.tags contains "hidden" -%}
+														{{ item_title }}
+													{%- else -%}
+														<a href="{{ item.url }}" title="{{ item.title }}" class="">{{ item_title }}</a>
+													{%- endif -%}
+
+													{%- if item.options_with_values[0].value != 'Default Title' -%}
+														<div class="variant-options mt-5 p3 c-grey bold-500">
+															{%- for opt in item.options_with_values -%}
+																{%- if opt.name contains 'size' or opt.name contains 'Size' -%}Size {{ opt.value }}{%- else -%}{{ opt.value }}{%- endif -%}
+																{%- if forloop.first and item.options_with_values.size > 1 -%}
+																	,&nbsp;
+																{%- elsif forloop.index0 == 1 and item.options_with_values.size == 3 -%}
+																	<br>
+																{%- endif -%}
+															{%- endfor -%}
+														</div>
+													{%- endif -%}
+
+													{%- assign prop_num = 0 -%}
+													{%- assign group_id = false -%}
+													{%- assign group_parent = false -%}
+													{%- for prop in item.properties -%}
+														{%- assign ff = prop | first -%}
+														{% if ff == '_group_id' %}
+															{%- assign group_id = prop | last -%}
+														{% endif %}
+														{% if ff == '_group_parent' %}
+															{%- assign group_parent = prop | last -%}
+														{% endif %}
+														{%- unless ff contains "_" -%}
+															{%- assign prop_num = prop_num | plus: 1 -%}
+															<div class="p3 c-grey {% if prop_num == 1 %}mt-5{% endif %}">{{ ff }}: {{ prop | last }}</div>
+														{%- endunless -%}
+													{%- endfor -%}
+
+													{%- assign allow_edit = true -%}
+													{%- if group_id != false and group_parent == false -%}
+														{%- assign allow_edit = false -%}
+													{%- endif -%}
+													
+													{%- if allow_edit == true -%}
+														<div class="global-form-qty small hide-m show-d-flex" style="margin-top:auto;flex:unset;">
+															<button type="button" class="toggle global-minus normal-flex">{{ settings.icon_minus }}</button>
+															<input type="number" class="global-qty-text p2" name="quantity" value="{{ item.quantity }}" min="0" max="{{ item.variant.inventory_quantity }}" oninput="cartPageUpdateItemQty({{ forloop.index }}, this.value, {{ group_id }}, {{ group_parent }})" readonly>
+															<button 
+																type="button" 
+																class="toggle global-plus normal-flex"
+																data-max="{{ item.variant.inventory_quantity }}"
+																{% if item.quantity == item.variant.inventory_quantity %}disabled{% endif %}
+															>{{ settings.icon_plus }}</button>
+														</div>
+													{%- endif -%}
+												</div>
+											</div>
+											<div class="right-side d-flex d-flex-column d-jc-end ai-start relative">
+												<div class="item-price tr width-100">
+													{%- assign compare_at_price = item.variant.compare_at_price -%}
+													{%- assign price = item.line_price -%}
+													{%- if compare_at_price > item.variant.price -%}
+														{%- if item.line_price < item.original_line_price -%}
+															<strike class="p3 c-grey t-mr-10">{{ item.original_line_price | money }}</strike>
+														{%- else -%}
+															<strike class="p3 c-grey t-mr-10">{{ compare_at_price | times: item.quantity | money }}</strike>
+														{%- endif -%}
+														<span class="h11 bold-600 spacing-0 c-sale-red">{{ price | money }}</span>
+													{%- else -%}
+														{%- if item.line_price < item.original_line_price -%}
+															<strike class="p3 c-grey t-mr-10">{{ item.original_line_price | money }}</strike>
+														{%- endif -%}
+														<span class="p3 {% if item.line_price < item.original_line_price %}c-sale-red{% endif %}">{{ price | money }}</span>
+													{%- endif -%}
+												</div>
+												{%- if allow_edit == true -%}
+													<button type="button" class="close p3 uppercase bold-600 c-grey opacity-7 spacing-2 ml-auto hide-m show-d" style="margin-top:auto" onclick="cartPageUpdateItemQty({{ forloop.index }}, 0, {{ group_id }}, {{ group_parent }})">{{ settings.icon_trash }}</button>
+												{%- endif -%}
+											</div>
+										</div>
+										<div class="bottom-part relative width-100 show-m-flex ai-end jc-between hide-d">
+											{%- assign prop_num = 0 -%}
+											{%- assign group_id = false -%}
+											{%- assign group_parent = false -%}
+											{%- for prop in item.properties -%}
+												{%- assign ff = prop | first -%}
+												{% if ff == '_group_id' %}
+													{%- assign group_id = prop | last -%}
+												{% endif %}
+												{% if ff == '_group_parent' %}
+													{%- assign group_parent = prop | last -%}
+												{% endif %}
+												{%- unless ff contains "_" -%}
+													{%- assign prop_num = prop_num | plus: 1 -%}
+													<div class="p3 c-grey {% if prop_num == 1 %}mt-5{% endif %}">{{ ff }}: {{ prop | last }}</div>
+												{%- endunless -%}
+											{%- endfor -%}
+
+											{%- assign allow_edit = true -%}
+											{%- if group_id != false and group_parent == false -%}
+												{%- assign allow_edit = false -%}
+											{%- endif -%}
+													
+											{%- if allow_edit == true -%}
+												<div class="global-form-qty small mt-20">
+													<button type="button" class="toggle global-minus normal-flex">{{ settings.icon_minus }}</button>
+													<input type="number" class="global-qty-text p2" name="quantity" value="{{ item.quantity }}" min="0" max="{{ item.variant.inventory_quantity }}" oninput="cartPageUpdateItemQty({{ forloop.index }}, this.value, {{ group_id }}, {{ group_parent }})" readonly>
+													<button 
+														type="button" 
+														class="toggle global-plus normal-flex"
+														data-max="{{ item.variant.inventory_quantity }}"
+														{% if item.quantity == item.variant.inventory_quantity %}disabled{% endif %}
+													>{{ settings.icon_plus }}</button>
+												</div>
+
+												<button type="button" class="close p3 uppercase bold-600 c-grey opacity-7 spacing-2" onclick="cartPageUpdateItemQty({{ forloop.index }}, 0, {{ group_id }}, {{ group_parent }})">{{ settings.icon_trash }}</button>
+											{%- endif -%}
+										</div>
+									</div>
+								</li>
+						{%- endfor -%}
+					</ul>
+				</div>
+
+				{% comment %} {%- if settings.cart_c_shopping_label != blank -%}
+					<div class="mt-30 hide-m show-d tl">
+						{%- render 'link-icon',
+							id: 'cart-continue-shopping',
+							label: settings.cart_c_shopping_label,
+							url: settings.cart_c_shopping_url,
+							text_class: 'p3 uppercase c-black spacing-2 bold-600',
+							icon_color: '#2c2c2c',
+							icon_svg: settings.icon_btn_right
+						-%}
+					</div>
+				{%- endif -%} {% endcomment %}
+
+				<div class="starter-deal-collection pt-20 pb-20 bg-lightgrey">
+					<div class="d-flex d-ai-end d-pb-20">
+						<div class="p1 pb-10 d-pb-0 bb-1 d-bb-0 b-border d-pr-15">Ongoing starter size deals</div>
+						<div class="p4 pt-10 d-pt-0 pb-10 d-pb-0">Limited time only, max 2 per order</div>
+					</div>
+					{%- assign best_collection = collections['skincare-only'] -%}
+					<div class="d-flex d-jc-between">
+						{% for pro in best_collection.products limit:2%}
+							<div class="bg-white pt-25 pb-25 pl-20 pr-20 starter-deal-collection-page-item {%unless forloop.last%}mb-10 d-mb-0{%endunless%}">
+								<div class="flex ai-center jc-between">
+									<div class="flex ai-center">
+										<div class="image-container">
+											{%- render 'global-image-wrapper', 
+												image: pro.featured_image, 
+												preload: true,
+												additional_class: 'no-bg'
+											-%}
+										</div>
+										<div class="text-container">
+											<div class="p3 bold-600 uppercase">{{pro.title}}</div>
+											<div class="p3">{{pro.price | money}}</div>
+										</div>
+									</div>
+									<div class="button-container">
+										<a href="javascript:void(0)" onclick="$360.quickAddToCart(event)" data-variant-id="{{ pro.selected_or_first_available_variant.id }}" data-quantity="1" class="btn7 quick-add-to-cart relative show-m-inline-block">ADD</a>
+									</div>
+								</div>
+							</div>
+						{%endfor%}
+					</div>
+				</div>
+			</div>
+			<div class="cart-right col-12 pl-0 pr-0 col-d-4 d-pl-0 d-pr-0">
+				<div class="inner t-sticky">
+					{%- render 'free-shipping-info', 
+						wrapper_class: 'pt-20 pb-20 d-pt-25 d-pb-25 pl-20 pr-20 bg-pale30 mb-25', 
+						text_class: 'p2 bold-500 tl mb-15 tc d-tl' 
+					-%}
+					<div class="bg-white p-15 d-p-20">
+						<div class="p1 pb-10 bb-1 b-border">Order Summary</div>
+						<div class="global-flex flex-wrap">
+							<div class="flex ai-center jc-between width-100 pt-10 d-pt-20 opacity-4">
+								<div class="p3">Subtotal</div>
+								<div class="price p3">{{ cart.original_total_price | money }}</div>
+							</div>
+
+							{%- if cart.total_discount > 0 -%}
+								<div class="flex ai-center jc-between width-100 pt-5 opacity-4"> 
+									<div class="p3">Total Savings</div>
+									<div class="price p3">-{{ cart.total_discount | money }}</div>
+								</div>
+							{%- endif -%}
+
+							<div class="flex ai-center jc-between pt-5 width-100">
+								<div class="p3">Total</div>
+								<div class="price p3 bold-500">{{ cart.total_price | money }}</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tc mt-15">
+						<button type="submit" id="cart-page-checkout-btn" name="checkout" class="btn2 btn-checkout w-full" value="Checkout"><span class="icon">{{ settings.icon_lock }}</span>Secure Checkout</button>
+					</div>
+
+					{%- render 'cart-info', cart_msg_class: 'hide-m', payment_icons_class: 'jc-start mt-10 tl' -%}
+				</div>
+			</div>
+		</form>
+	</div>
+{%- endif -%}

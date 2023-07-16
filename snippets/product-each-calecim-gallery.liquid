@@ -1,0 +1,141 @@
+{%- comment -%}
+calecim theme
+
+Description:
+Snippet for displaying product card
+
+Variables:
+- product: Object. the product object 
+- disable_hover: boolean, disable the hover effect
+- title_size: font size class for the product title. Default: p2
+- hide_desc: boolean, hide product short description
+{%- endcomment -%}
+
+{%- assign title_class = 'p2' -%}
+{%- if title_size != blank -%}
+	{%- assign title_class = title_size -%}
+{%- endif -%}
+
+{%- assign variant = product.selected_or_first_available_variant -%}
+{%- assign s = product.images | size -%}
+<div class="product-each {% if s > 1 and settings.product_card_image_hover %}with-hover{% endif %} overflow relative">
+	{% comment %} page 1 {% endcomment %}
+	<div class="page-1 height-100 z-1 relative width-100">
+		<div class="mb-15 relative">
+			{% if product.url != blank %}<a href="{{ product.url | within:collection }}" class="image-link">{% endif %}
+				<div class="primary">
+                    {% if product.featured_image %}
+					    {%- render 'global-image-wrapper', image:product.featured_image -%}
+                    {% else %}
+                        {%- render 'global-image-wrapper', image:content_image -%}
+                    {% endif %}
+				</div>
+				{%- if s > 1  and settings.product_card_image_hover -%}
+					{%- assign l = product.images[1] -%}
+					<div class="secondary">
+						{%- render 'global-image-wrapper', image: l -%}
+					</div>
+				{%- endif -%}
+			{% if product.url != blank %}</a>{%- endif -%}
+            {%- unless product.tags contains 'subscription' or product.tags contains 'Subscription' or product.url == blank -%}
+				<div class="button-wrapper font-0 pr-15 pb-15 d-pr-20 d-pb-20">
+					<a href="javascript:void(0)" onclick="$360.quickAddToCart(event)" data-variant-id="{{ product.selected_or_first_available_variant.id }}" data-quantity="1" class="quick-add-to-cart width-100 tc relative no-animation"><div class="icon">{{ settings.icon_plus }}</div></a> 
+				</div>
+			{%- endunless -%}
+			{%- comment -%} product tags {%- endcomment -%}
+			{%- if settings.pg_enable_labels and settings.pg_tag_1 != blank -%}
+				<div class="pro-tags-container">
+					{%- for i in (1..10) -%}
+						{%- assign tag = "pg_tag_" | append: i -%}
+						{%- assign bg_color = "pg_tag_bg_" | append: i -%}
+						{%- assign text_color = "pg_tag_color_" | append: i -%}
+
+						{%- if product.tags contains settings[tag] -%}
+							{%- assign tag_text = settings[tag] | split: ':' | last -%}
+							{%- if tag_text == 'subscribe' -%}
+								{%- assign tag_text = 'subscribe & save' -%}
+							{%- endif -%}
+
+							<div class="tag-each p5 uppercase bold-500" style="color: {{ settings[text_color] }}; background-color: {{ settings[bg_color] }}">{{ tag_text }}</div>
+						{%- endif -%}
+					{%- endfor -%}
+				</div>
+			{%- endif -%}
+		</div>
+		<div class="details-con">
+			<div class="global-flex flex-wrap">
+				{% if product.url != blank and product.title != blank %}
+                <a href="{{ product.url | within:collection }}" class="{{ title_class }} bold-600 uppercase d-pr-20 width-100" title="{{ product.title }}">
+					{{ product.title }}
+				</a>
+                {% else %}
+                    <p class="{{ title_class }} bold-600 uppercase d-pr-20 width-100" title="{{ title }}">
+					{{ title }}
+                    </p>
+                {% endif %}
+                {% comment %}
+				<div class="price-container mt-5">
+					{%- if product.price_min < product.price_max -%}
+						<span class="p3">From {{ product.price_min | money }}</span>
+					{%- else -%}
+						<span class="p3">{{ product.price | money }}</span>
+						{%- if product.price < product.compare_at_price -%}
+							<span class="p3 ml-10"><strike>{{ product.compare_at_price | money }}</strike></span>
+						{%- endif -%}
+					{%- endif -%}
+				</div>
+                {% endcomment %}
+
+				{%- unless hide_desc -%}
+					{%- assign desc = product.description | strip_html | truncate: 150 -%}
+					{%- if product.metafields.info.short_desc != blank -%}
+						{%- assign desc = product.metafields.info.short_desc -%}
+					{%- endif -%}
+
+					{%- if desc != blank -%}
+						<p class="p3 c-black opacity-5 mt-5 width-100">{{ desc }}</p>
+                    {% else %}
+                        <p class="p3 c-black opacity-5 mt-5 width-100">{{ text }}</p>
+					{%- endif -%}
+				{%- endunless -%}
+			</div>
+		</div>
+	</div>
+	{% comment %} end page 1 {% endcomment %}
+
+	{% comment %} page 2 
+	{%- unless disable_hover -%}
+		<div class="page-2">
+			<div class="wrapper">
+				<a href="{{ product.url }}" class="title-wrapper global-flex jc-between ai-start">
+					<h4 class="h4 uppercase pr-50">{{ product.title }}</h4>
+					
+				</a>
+
+				{%- if product.metafields.info.targets != blank -%}
+					<p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.targets' | t }}</p>
+					<p class="p3 mt-5">{{ product.metafields.info.targets }}</p>
+				{%- else -%}
+					<p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.targets' | t }}</p>
+					<p class="p3 mt-5">Lorem ipsum</p>
+				{%- endif -%}
+
+				{%- if product.metafields.info.suited_for != blank -%}
+					<p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.suited_for' | t }}</p>
+					<p class="p3 mt-5">{{ product.metafields.info.suited_for }}</p>
+				{%- else -%}
+					<p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.suited_for' | t }}</p>
+					<p class="p3 mt-5">Lorem ipsum</p>
+				{%- endif -%}
+			</div>
+
+			
+		</div>
+	{%- endunless -%}
+	 page 2 {% endcomment %}
+</div>
+{%- if product_coins_label != blank -%}
+    <p class="p3 mt-15">{{ product_coins_label }}</p>
+{% else %}
+    <p class="p3 mt-15">{{ coins_label }}</p>
+{%- endif -%}

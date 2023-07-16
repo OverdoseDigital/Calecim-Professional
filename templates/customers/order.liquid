@@ -1,0 +1,216 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{%- if customer -%}
+<style>
+    #my-order-page .each-cell{
+        width:50%;
+        padding:15px;
+    }
+    #my-order-page .each-cell.large{
+        width:100%;
+    }
+    #my-order-page .icon svg{
+        width:20px;
+        margin-right:5px;
+    }
+    #my-order-page .image-container{
+        width:85px;
+    }
+    #my-order-page .info-container{
+        width:calc(100% - 85px);
+        padding-left:10px;
+    }
+
+    #my-order-page .account-content{
+        width:100%;
+    }
+
+    #my-order-page .address-box .each-cell{
+        width:100%;
+    }
+
+    @media screen and (min-width: 768px) {
+        #my-order-page .account-content{
+            width:75%;
+        }
+        #my-order-page .account-sidebar-desktop{
+            width:25%;
+        }
+        #my-order-page .address-box{
+            display:flex;
+            flex-wrap:wrap;
+        }
+        #my-order-page .address-box .each-cell{
+            width:50%;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        #my-order-page .image-container{
+            width:140px;
+        }
+        #my-order-page .info-container{
+            width:calc(100% - 140px);
+            padding-left:20px;
+        }
+        #my-order-page .each-cell{
+            padding:20px 30px;
+        }
+        #my-order-page .text-container{
+            width:25%;
+            padding-right:40px;
+        }
+        #my-order-page .box-container{
+            width:75%;
+        }
+    }
+</style>
+  
+{{ 'jquery-ajax-module.js' | asset_url | script_tag }}
+  
+<div id="my-order-page" class="global-content-top-margin">
+    <div class="flex flex-wrap">
+        <div class="hide-m show-t pl-40 hd-pl-60 t-pt-80 d-pt-80 t-pr-40 d-pr-100 br-1 b-border account-sidebar-desktop">
+            {%- render 'account-sidebar-desktop' -%}
+        </div>
+        <div class="account-content">
+            {%- render 'account-page-title' -%}
+            {% comment %} {%- render 'account-navigation', filter_active:"order" -%} {% endcomment %}
+            {%- render 'account-sidebar-mobile' -%}
+            <div class="container pt-40 pb-40 d-pt-80 d-pb-80">
+                    <a href="/account" class="p3 opacity-5"><span class="icon" style="display:inline-flex;align-items: center;">{{settings.icon_btn_left}}back to order summary</a>
+                    <div class="h5 pt-15 d-pt-10 pb-20 d-pb-25 uppercase">Order {{order.name}}</div>
+
+                    <div class="b-1 b-silver mb-20">
+                        <div class="flex flex-wrap">
+                            <div class="each-cell bb-1 b-silver">
+                                <div class="p3 bold-500">Date</div>
+                            </div>
+                            <div class="each-cell bb-1 b-silver">
+                                <div class="p3 bold-500">Status</div>
+                            </div>
+                            <div class="each-cell">
+                                <div class="p2 c-grey">{{ order.created_at | date: "%d %b %Y" }}</div>
+                            </div>
+                            <div class="each-cell">
+                                <div class="p2 c-grey">{{ order.financial_status | camelcase }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="b-1 b-silver mb-20">
+                        <div class="address-box">
+                            <div class="each-cell bb-1 b-silver">
+                                <div class="p3 bold-500">Shipping Address</div>
+                            </div>
+                            <div class="each-cell bb-1 b-silver hide-m show-t">
+                                <div class="p3 bold-500">Billing Address</div>
+                            </div>
+                            <div class="each-cell">
+                                <div class="p2 c-grey">
+                                    {{ order.shipping_address.name }}<br/>
+                                    {{ order.shipping_address.street }}<br/>
+                                    {{ order.shipping_address.city }}, {{ order.shipping_address.province }}<br/>
+                                    {{ order.shipping_address.country }} {{ order.shipping_address.zip }}<br/>
+                                    {{ order.shipping_address.phone }}
+                                </div>
+                            </div>
+                            <div class="each-cell hide-m show-t">
+                                <div class="p2 c-grey">
+                                    {{ order.billing_address.name }}<br/>
+                                    {{ order.billing_address.street }}<br/>
+                                    {{ order.billing_address.city }}, {{ order.billing_address.province }}<br/>
+                                    {{ order.billing_address.country }} {{ order.billing_address.zip }}<br/>
+                                    {{ order.billing_address.phone }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="b-1 b-silver mb-20 hide-t">
+                        <div class="address-box">
+                            <div class="each-cell bb-1 b-silver">
+                                <div class="p3 bold-500">Billing Address</div>
+                            </div>
+                            <div class="each-cell">
+                                <div class="p2 c-grey">
+                                    {{ order.billing_address.name }}<br/>
+                                    {{ order.billing_address.street }}<br/>
+                                    {{ order.billing_address.city }}, {{ order.billing_address.province }}<br/>
+                                    {{ order.billing_address.country }} {{ order.billing_address.zip }}<br/>
+                                    {{ order.billing_address.phone }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="b-1 b-silver mb-20">
+                        <div class="each-cell large bb-1 b-silver">
+                            <div class="p3 bold-500">Order item(s)</div>
+                        </div>
+                        <div class="each-cell large bb-1 b-silver">
+                            {% for line_item in order.line_items %}
+                                <div class="flex flex-wrap align-flex pb-20">
+                                    <div class="image-container">
+                                        {%- render 'global-image-wrapper',
+                                            image: line_item.product.featured_image,
+                                            additional_class:""
+                                        %}
+                                    </div>
+                                    <div class="info-container">
+                                        <div class="flex flex-wrap jc-between">
+                                            <div class="title-container">
+                                                <div class="p2 bold-500 pb-10">{{line_item.title}}</div>
+                                                <div class="p2 c-grey">
+                                                    {%-if line_item.variant.option1 != blank-%}
+                                                        {{line_item.variant.option1}}
+                                                    {%endif%}
+                                                    {%-if line_item.variant.option2 != blank-%}
+                                                        ,{{line_item.variant.option2}}
+                                                    {%-endif-%}
+                                                    {%-if line_item.variant.option3 != blank-%}
+                                                        ,{{line_item.variant.option3}}
+                                                    {%-endif-%}
+                                                </div>
+                                            </div>
+                                            <div class="price-container">
+                                                <div class="p2 c-grey">{{line_item.price | money}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="each-cell large">
+                            <div class="flex jc-between d-jc-end">
+                                <div class="d-pr-50">
+                                    <div class="pb-10">
+                                        <div class="p2">Subtotal</div>
+                                    </div>
+                                    <div class="pb-10">
+                                        <div class="p2">Shipping</div>
+                                    </div>
+                                    <div class="">
+                                        <div class="p2 bold-500">Shipping</div>
+                                    </div>
+                                </div>
+                                <div class="tr">
+                                    <div class="pb-10">
+                                        <div class="p2">{{order.subtotal_price | money}}</div>
+                                    </div>
+                                    <div class="pb-10">
+                                        <div class="p2">{{order.shipping_price | money}}</div>
+                                    </div>
+                                    <div class="">
+                                        <div class="p2 bold-500">{{order.total_price | money}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
+{%- else -%}
+<script>location.href = "/account";</script>
+{%- endif -%}
+  

@@ -1,0 +1,75 @@
+<style>
+  #shopify-section-{{ section.id }} .hp-logos {
+    border-bottom: 1px solid #E7E7E7;
+  }
+  #shopify-section-{{ section.id }} .hp-logos .container {
+    overflow: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  #shopify-section-{{ section.id }} .hp-logos .container .hpl-scroll {
+    white-space: nowrap;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  #shopify-section-{{ section.id }} .hp-logos .container  .hpl-scroll::-webkit-scrollbar,
+  #shopify-section-{{ section.id }} .hp-logos .container::-webkit-scrollbar {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .hpl-items {
+    height: 50px;
+    display: inline-block;
+    width: 125px;
+  }
+  @media screen and (min-width: 768px) {
+    
+  }
+  @media screen and (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .hpl-items {
+      height: 72px;
+      width: 180px;
+    }
+  }
+</style>
+<div class="hp-logos">
+  <div class="container d-pt-10 d-pb-10 pt-5 pb-5">
+    {% for block in section.blocks %}
+    <div class="hpl-items {% if forloop.last == true %}d-mr-60 t-mr-30 mr-20{% endif %}"> 
+        {%- assign image_id = "hpl-image-" | append: block.id -%}
+        {%- render 'global-image-wrapper',
+          image_id: image_id,
+          image: block.settings.image,
+          additional_class: 'no-bg'
+        %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+
+</script>
+{% schema %}
+  {
+    "name": "Homepage Logos",
+    "blocks": [
+      {
+        "type": "entry",
+        "name": "Entry",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Homepage Logos",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

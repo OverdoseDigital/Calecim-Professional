@@ -1,0 +1,138 @@
+<style>
+.partner-logo-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.partner-logo-box .items-list-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.partner-logo-box .items-list-box .item-each {
+    width: calc(50% - 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.partner-logo-box .items-list-box .item-each .inner {
+    width: 100%;
+}
+.partner-logo-box .items-list-box .item-each .inner svg {
+    width: 100%;
+    height: 100%;
+}
+@media screen and (min-width: 768px) {
+	.partner-logo-box .items-list-box .item-each {
+        width: calc(16.66% - 20px);
+    }
+}
+@media screen and (min-width: 1024px) {
+	.partner-logo-box .items-list-box .item-each {
+        width: calc(16.66% - 20px);
+    }
+}
+</style>
+{%- assign el_id = 'partner-logo-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<div id="{{ el_id }}" class="relative" {% if section.settings.bg_color != blank %}style="background-color: {{ section.settings.bg_color }}"{% endif %}>
+    <div class="container">
+        <div class="partner-logo-box">
+            {% if section.settings.title != blank %}
+            <h4 class="h4 tl c-white pb-30 t-pb-30 d-pb-30">{{ section.settings.title }}</h4>
+            {% endif %}
+            <ul class="items-list-box">
+                {% for block in section.blocks %}
+                <li class="item-each pb-10 t-pb-10 d-pb-10">
+                    <div class="inner">
+                        {{ block.settings.logo }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+	"name": "Partner Logo",
+	"settings": [
+		{
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "number",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		},
+		{
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		},
+		{
+			"type": "textarea",
+			"id": "title",
+			"label": "Title"
+		}
+	],
+	"blocks" : [
+		{
+			"type": "logo",
+			"name": "Logo",
+			"settings": [
+				{
+					"type": "textarea",
+					"id": "title",
+					"label": "Name"
+				},
+				{
+					"type": "textarea",
+					"id": "logo",
+					"label": "Logo SVG"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Partner Logo",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

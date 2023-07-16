@@ -1,0 +1,484 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        {%- if section.settings.bg_color != blank -%}
+            background: {{ section.settings.bg_color }};
+        {%- endif -%}
+    }
+
+	#shopify-section-{{ section.id }} .global-video-wrapper video{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		object-fit: cover;
+	}
+
+    #shopify-section-{{ section.id }} .text-content{
+        {%- unless section.settings.position == "relative" -%}
+            position: absolute;
+            
+            z-index: 4;
+            {%if section.settings.position == "top"%}
+            top: {{section.settings.top_mobile}};
+            transform: translate(-50%,0);
+            left: 50%;
+            {%elsif section.settings.position == "middle"%}
+            top: 50%;
+            transform: translate(-50%,-50%);
+            left: 50%;
+            {%elsif section.settings.position == "left"%}
+            top: 50%;
+            transform: translate(0,-50%);
+            left: 0;
+            {%elsif section.settings.position == "right"%}
+            top: 50%;
+            transform: translate(0,-50%);
+            right: 0;
+            {%endif%}
+        {%- else -%}
+            text-align: center;
+        {%- endunless -%}
+    }
+
+    #shopify-section-{{ section.id }} .text-content{
+        color : {{section.settings.text_color}};
+    }
+
+    #shopify-section-{{ section.id }} .black-overlay{
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        background: rgba(0,0,0,0.35);
+        mix-blend-mode: multiply;
+    }
+
+    {%- if section.settings.video_desktop != blank -%}
+        #shopify-section-{{ section.id }} .global-image-wrapper:not(.global-video-wrapper){
+            position:absolute;
+        }
+    {%-endif-%}
+
+    #shopify-section-{{ section.id }} .title .word,
+    #shopify-section-{{ section.id }} .small-title-below {
+        {% comment %} transform:translate(0,300%); {% endcomment %}
+        filter: blur(5px);
+    }
+
+    #shopify-section-{{ section.id }} .title .word.line-0,
+    #shopify-section-{{ section.id }} .small-title-below.line-0 {
+        {% comment %} transition:0.5s all ease; {% endcomment %}
+        transition:2.1s all ease;
+    }
+    #shopify-section-{{ section.id }} .title .word.line-1,
+    #shopify-section-{{ section.id }} .small-title-below.line-1 {
+        {% comment %} transition:0.8s all ease; {% endcomment %}
+        transition:2.1s all ease;
+    }
+    #shopify-section-{{ section.id }} .title .word.line-2,
+    #shopify-section-{{ section.id }} .small-title-below.line-2 {
+        {% comment %} transition:1.1s all ease; {% endcomment %}
+        transition:2.1s all ease;
+    }
+    #shopify-section-{{ section.id }} .title .word.line-3,
+    #shopify-section-{{ section.id }} .small-title-below.line-3 {
+        {% comment %} transition:1.4s all ease; {% endcomment %}
+        transition:2.1s all ease;
+    }
+    #shopify-section-{{ section.id }} .title .word.line-4,
+    #shopify-section-{{ section.id }} .small-title-below.line-4 {
+        {% comment %} transition:1.7s all ease; {% endcomment %}
+        transition:2.1s all ease;
+    }
+    #shopify-section-{{ section.id }} .title .word.line-5,
+    #shopify-section-{{ section.id }} .small-title-below.line-5 {
+        {% comment %} transition:2s all ease; {% endcomment %}
+        transition:2.1s all ease;
+    }
+    #shopify-section-{{ section.id }} .title .word.line-6,
+    #shopify-section-{{ section.id }} .small-title-below.line-6 {
+        {% comment %} transition:2.3s all ease; {% endcomment %}
+        transition:2.1s all ease;
+    }
+    #shopify-section-{{ section.id }} .title .word.line-7,
+    #shopify-section-{{ section.id }} .small-title-below.line-7 {
+        {% comment %} transition:2.6s all ease; {% endcomment %}
+        transition:2.1s all ease;
+    }
+    #shopify-section-{{ section.id }} .title .word.line-8,
+    #shopify-section-{{ section.id }} .small-title-below.line-8 {
+        {% comment %} transition:2.9s all ease; {% endcomment %}
+        transition:2.1s all ease;
+    }
+    #shopify-section-{{ section.id }} .title .word.line-9,
+    #shopify-section-{{ section.id }} .small-title-below.line-9 {
+        {% comment %} transition:3.2s all ease; {% endcomment %}
+        transition:2.1s all ease;
+    }
+    #shopify-section-{{ section.id }} .title .word.line-10,
+    #shopify-section-{{ section.id }} .small-title-below.line-10 {
+        {% comment %} transition:3.5s all ease; {% endcomment %}
+        transition:2.1s all ease;
+    }
+
+    #shopify-section-{{ section.id }} .title .word.shifted,
+    #shopify-section-{{ section.id }} .small-title-below.shifted {
+        {% comment %} transform:translate(0,0); {% endcomment %}
+        filter: none;
+    }
+    #shopify-section-{{ section.id }} .shifted-button{
+        opacity:0;
+        transition-property: opacity, color, background;
+        transition-duration: 2s, 0.3s, 0.3s;
+        transition-timing-function: ease, ease, ease;
+        filter: blur(5px);
+    }
+    #shopify-section-{{ section.id }} .shifted-button.shifted{
+        opacity:1;
+        filter: none;
+    }
+
+    @media (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .text-content{
+            {%if section.settings.position == "top"%}
+            top: {{section.settings.top_desktop}};
+            {%endif%}
+        }
+        
+    }
+</style>
+
+<section id="{{ section.id }}" class="fade">
+	<div class="outer-wrapper overflow">
+        <div class="relative">
+            <div class="text-content {%if section.settings.position == "top" or section.settings.position == "middle"%}width-100{%endif%}">
+                <div class="container {%if section.settings.position == "top" or section.settings.position == "middle"%}tc{%endif%}">
+                    <div class="max-780" style="margin:0 auto;">
+                        {%if section.settings.small_title != blank%}
+                            <h6 class="p3 uppercase spacing-2 bold-600 pb-15 small-title-above" style="color: {{ section.settings.small_title_color }}">{{section.settings.small_title}}</h6>
+                        {%endif%}
+
+                        <h1 class="title {{section.settings.header_class}}">{{section.settings.title}}</h1>
+
+                        {%- if section.settings.small_title_below != blank -%}
+                            <p class="h11 uppercase d-mt-20 mt-15 small-title-below" style="color: {{ section.settings.small_title_below_color }}">{{ section.settings.small_title_below }}</p>
+                        {%- endif -%}
+
+                        {%if section.settings.description != blank%}
+                            <p class="p1 pt-15 d-pt-20">{{section.settings.description}}</p>
+                        {%endif%}
+
+                        {%if section.settings.button_label != blank%}
+                            <a href="{{section.settings.button_url}}" class="mt-25 t-mt-30 btn{{section.settings.button_class}} shifted-button">{{section.settings.button_label}}</a>
+                        {%endif%}
+                    </div>
+                </div>
+            </div>
+
+            {%assign id = "image-banner-" | append: section.id%}
+
+            {%- if section.settings.image != blank -%}
+                {%- render
+                    'global-image-wrapper-responsive',
+                    desktop_image:section.settings.image,
+                    mobile_image:section.settings.image_mobile,
+                    image_id:id
+                -%}
+            {%- endif -%}
+
+            {%- if section.settings.video_desktop != blank -%}
+                {%- render
+                    'global-video-wrapper-responsive',
+                    desktop_image: section.settings.image,
+                    mobile_image: section.settings.image_mobile,
+                    desktop_video_url: section.settings.video_desktop,
+                    mobile_video_url: section.settings.video_mobile,
+                    video_id: id
+                -%}
+            {%- endif -%}
+            
+            {%if section.settings.enable_overlay%}
+                <div class="black-overlay"></div>
+            {%endif%}
+        </div>
+    </div>
+</section>
+
+<script>
+    window.addEventListener('load', function() {
+        let element{{ section.id | replace: '-', '_' }} = document.querySelector('#shopify-section-{{ section.id }}');
+        let element_y{{ section.id | replace: '-', '_' }} = element{{ section.id | replace: '-', '_' }}.getBoundingClientRect().top + window.pageYOffset;
+        let start_position{{ section.id | replace: '-', '_' }} = element_y{{ section.id | replace: '-', '_' }} - window.innerHeight;
+
+        const target{{ section.id | replace: '-', '_' }} = document.querySelector('#shopify-section-{{ section.id }} .title');
+        const results{{ section.id | replace: '-', '_' }} = Splitting({ target: target{{ section.id | replace: '-', '_' }}, by: 'lines' });
+        const result_lines{{ section.id | replace: '-', '_' }} = results{{ section.id | replace: '-', '_' }}[0].lines;
+        const small_title_above{{ section.id | replace: '-', '_' }} = document.querySelector(`#shopify-section-{{ section.id }} .small-title-above`);
+        
+        for(var i = 0; i < result_lines{{ section.id | replace: '-', '_' }}.length; i++){
+            for(var j = 0; j < result_lines{{ section.id | replace: '-', '_' }}[i].length; j++){
+                result_lines{{ section.id | replace: '-', '_' }}[i][j].classList.add(`line-${i}`);
+            }
+        }
+
+        {%- if section.settings.small_title_below != blank -%}
+            const small_title_below{{ section.id | replace: '-', '_' }} = document.querySelector(`#shopify-section-{{ section.id }} .small-title-below`);
+            small_title_below{{ section.id | replace: '-', '_' }}.classList.add(`line-${result_lines{{ section.id | replace: '-', '_' }}.length}`);
+        {%- endif -%}
+
+        let shifted{{ section.id | replace: '-', '_' }} = false;
+
+        //console.log("bannertext")
+        //console.log(start_position{{ section.id | replace: '-', '_' }})
+        window.addEventListener('scroll', function() {
+            let scrollPosition{{ section.id | replace: '-', '_' }} = window.scrollY;
+            let current_scroll{{ section.id | replace: '-', '_' }} = window.scrollY - start_position{{ section.id | replace: '-', '_' }};
+            if(current_scroll{{ section.id | replace: '-', '_' }} <= 0){ //not in viewport yet
+                return;
+            }
+            let scroll_progress{{ section.id | replace: '-', '_' }} = 0;
+            if(window.innerWidth < 1024) {
+                scroll_progress{{ section.id | replace: '-', '_' }} = current_scroll{{ section.id | replace: '-', '_' }} / (window.innerHeight * 0.8);
+            }else{
+                scroll_progress{{ section.id | replace: '-', '_' }} = current_scroll{{ section.id | replace: '-', '_' }} / (window.innerHeight);
+            }
+            
+            if(scroll_progress{{ section.id | replace: '-', '_' }} > 1){
+                return;
+            }
+            if(scroll_progress{{ section.id | replace: '-', '_' }} >= 0.2){
+                if(!shifted{{ section.id | replace: '-', '_' }}){
+                    shifted{{ section.id | replace: '-', '_' }} = true;
+                    addShifted();
+                }
+            }
+            if(scroll_progress{{ section.id | replace: '-', '_' }} < 0.2){
+                if(shifted{{ section.id | replace: '-', '_' }}){
+                    shifted{{ section.id | replace: '-', '_' }} = false;
+                    removeShifted();
+                }
+            }
+        });
+
+        function addShifted(){
+            for(var i = 0; i < result_lines{{ section.id | replace: '-', '_' }}.length; i++){
+                for(var j = 0; j < result_lines{{ section.id | replace: '-', '_' }}[i].length; j++){
+                    result_lines{{ section.id | replace: '-', '_' }}[i][j].classList.add(`line-${i}`);
+                    result_lines{{ section.id | replace: '-', '_' }}[i][j].classList.add("shifted");
+                }
+            }
+
+            if(document.querySelector(`#shopify-section-{{ section.id }} .small-title-below`) != null) {
+                document.querySelector(`#shopify-section-{{ section.id }} .small-title-below`).classList.add('shifted');
+            }
+            if(document.querySelector('#shopify-section-{{ section.id }} .shifted-button') != null) {
+                document.querySelector('#shopify-section-{{ section.id }} .shifted-button').classList.add("shifted");
+            }
+
+        }
+        function removeShifted(){
+            for(var i = 0; i < result_lines{{ section.id | replace: '-', '_' }}.length; i++){
+                for(var j = 0; j < result_lines{{ section.id | replace: '-', '_' }}[i].length; j++){
+                    result_lines{{ section.id | replace: '-', '_' }}[i][j].classList.remove("shifted");
+                }
+            }
+
+            if(document.querySelector(`#shopify-section-{{ section.id }} .small-title-below`) != null) {
+                document.querySelector(`#shopify-section-{{ section.id }} .small-title-below`).classList.remove('shifted');
+            }
+            if(document.querySelector('#shopify-section-{{ section.id }} .shifted-button') != null) {
+                document.querySelector('#shopify-section-{{ section.id }} .shifted-button').classList.remove("shifted");
+            }
+        }
+    });
+</script>
+
+{% schema %}
+{ 
+	"name": "Homepage Banner Text",
+	"settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Will be use as video placeholder too"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Image Mobile",
+            "info": "Will be use as video placeholder too"
+        },
+        {
+            "type": "textarea",
+            "id": "video_desktop",
+            "label": "Video URL (desktop)"
+        },
+        {
+            "type": "textarea",
+            "id": "video_mobile",
+            "label": "Video URL (mobile)"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_overlay",
+            "label": "Enable Overlay"
+        },
+        {
+            "type": "color_background",
+            "id": "bg_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_text_animation",
+            "label": "Enable Text Animation",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "small_title",
+            "label": "Small Text (Above Title)"
+        },
+        {
+            "type": "color",
+            "id": "small_title_color",
+            "label": "Small Text Color"
+        },
+        {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "small_title_below",
+            "label": "Small Text (Below Title)"
+        },
+        {
+            "type": "color",
+            "id": "small_title_below_color",
+            "label": "Small Text Color"
+        },
+        {
+            "type":"radio",
+            "id":"header_class",
+            "label":"Header Class",
+            "options":[
+                {"value":"h1","label":"H1"},
+                {"value":"h2","label":"H2"},
+                {"value":"h3","label":"H3"},
+				{"value":"h4","label":"H4"},
+                {"value":"h5","label":"H5"},
+				{"value":"h6","label":"H6"},
+                {"value":"h7","label":"H7"},
+                {"value":"h8","label":"H8"},
+                {"value":"h9","label":"H9"}
+            ]
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "color",
+            "id": "text_color",
+            "label": "Text color",
+            "info": "Leave empty for default"
+        },
+        {
+            "type": "textarea",
+            "id": "button_label",
+            "label": "Button Label"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+        },
+        {
+            "type":"radio",
+            "id":"button_class",
+            "label":"Button Style",
+            "options":[
+                {"value":"1","label":"1"},
+                {"value":"2","label":"2"},
+                {"value":"3","label":"3"},
+                {"value":"4","label":"4"},
+                {"value":"5","label":"5"},
+                {"value":"6","label":"6"}
+            ]
+        },
+        {
+            "type": "text",
+            "id": "top_desktop",
+            "label": "Top Position (Desktop)"
+        },
+        {
+            "type": "text",
+            "id": "top_mobile",
+            "label": "Top Position (Mobile)"
+        },
+        {
+            "type":"radio",
+            "id":"position",
+            "label":"Position",
+            "options":[
+                {"value":"top","label":"Top"},
+                {"value":"middle","label":"Middle"},
+                {"value":"left","label":"Left"},
+                {"value":"right","label":"Right"},
+                {"value":"relative","label":"Relative (center)"}
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Section Padding"
+        },
+        {
+            "type": "text",
+            "id": "top_padding_m",
+            "label": "Top padding (Mobile)"
+        },
+        {
+            "type": "text",
+            "id": "bottom_padding_m",
+            "label": "Bottom padding (Mobile)"
+        },
+        {
+            "type": "text",
+            "id": "top_padding_t",
+            "label": "Top padding (Tablet)"
+        },
+        {
+            "type": "text",
+            "id": "bottom_padding_t",
+            "label": "Bottom padding (Tablet)"
+        },
+        {
+            "type": "text",
+            "id": "top_padding",
+            "label": "Top padding (Desktop)"
+        },
+        {
+            "type": "text",
+            "id": "bottom_padding",
+            "label": "Bottom padding (Desktop)"
+        }
+	],
+	"presets": [
+	{
+		"name": "Homepage Banner Text",
+		"blocks": []
+	}
+	]
+}
+{% endschema %}

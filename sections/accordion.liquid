@@ -1,0 +1,85 @@
+{%- if section.blocks.size > 0 -%}
+    {%- assign el_id = 'accordion-' | append: section.id -%}
+    {%- render 'section-padding', el_id: el_id, section: section -%}
+    <div id="{{ el_id }}">
+        <div class="container">
+            {%- for block in section.blocks -%}
+                {%- assign wrapper_class = 'bt-1 bl-1 br-1 b-black' -%}
+                {%- if forloop.last -%}
+                    {%- assign wrapper_class = 'b-1 b-black' -%}
+                {%- endif -%}
+                {%- render 'accordion',
+                    wrapper_class: wrapper_class,
+                    title: block.settings.title,
+                    description: block.settings.description,
+                -%}
+            {%- endfor -%}
+        </div>
+    </div>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Accordion",
+    "settings": [
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+    ],
+    "blocks" : [
+        {
+            "type": "accordion",
+            "name": "Accordion",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "description",
+                    "label": "Description"
+                }
+            ]
+        }
+    ],
+    "presets": [
+		{
+			"name": "Accordion",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

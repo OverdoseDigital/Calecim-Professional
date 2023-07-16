@@ -1,0 +1,213 @@
+{%- assign el_id = 'needhelp-shipping-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<style>
+{% if section.settings.bg_color != blank %}
+#{{ el_id }} {
+  background-color: {{ section.settings.bg_color }};
+}
+{% endif %}
+#shopify-section-{{ section.id }} .icon{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    right:0;
+}
+#shopify-section-{{ section.id }} .title{
+    cursor:pointer;
+}
+#shopify-section-{{ section.id }} #expand{
+    display:inline-flex;
+    align-items:center;
+    justify-content: center;
+}
+#shopify-section-{{ section.id }} #expand .expand {
+  display: block;
+}
+#shopify-section-{{ section.id }} #expand .collapse {
+  display: none;
+}
+#shopify-section-{{ section.id }} #expand svg{
+  height:20px;
+  width:20px;
+  margin-left:5px;
+}
+#shopify-section-{{ section.id }} #expand.active svg{
+  transform: rotate(180deg);
+}
+#shopify-section-{{ section.id }} #expand.active .expand {
+  display: none;
+}
+#shopify-section-{{ section.id }} #expand.active .collapse {
+  display: block;
+}
+</style>
+<div id="{{ el_id }}" class="collection-box">
+  <div class="container">
+    <div class="max-750 mx-auto">
+      <h2 class="h3 c-greenb2 tc mb-10 t-mb-15 d-mb-15">{{ section.settings.title }}</h2>
+      <div class="tc mb-20 t-mb-25 d-mb-25">
+        <div id="expand" class="pointer" :class="{ active: expand}" @click="expandAll">
+          <div class="expand p1 bold-500">{{ section.settings.expand }}</div>
+          <div class="collapse">{{ section.settings.collapse }}</div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+            <g id="Group_15404" data-name="Group 15404" transform="translate(-724 -1057)">
+              <circle id="Ellipse_14" data-name="Ellipse 14" cx="10" cy="10" r="10" transform="translate(724 1057)" fill="#fc773c"/>
+              <g id="Group_15403" data-name="Group 15403">
+                <g id="btn-primary-arrow" transform="translate(739 1062.273) rotate(90)">
+                  <path id="btn-primary-arrow-2" data-name="btn-primary-arrow" d="M.218.231a.714.714,0,0,1,1.052,0L5.237,4.442a.824.824,0,0,1,0,1.116L1.27,9.769a.714.714,0,0,1-1.052,0,.824.824,0,0,1,0-1.116L3.659,5,.218,1.348A.824.824,0,0,1,.218.231Z" fill="#fffdf8" fill-rule="evenodd"/>
+                </g>
+                <g id="btn-primary-arrow-3" data-name="btn-primary-arrow" transform="translate(739 1066.273) rotate(90)">
+                  <path id="btn-primary-arrow-4" data-name="btn-primary-arrow" d="M.218.231a.714.714,0,0,1,1.052,0L5.237,4.442a.824.824,0,0,1,0,1.116L1.27,9.769a.714.714,0,0,1-1.052,0,.824.824,0,0,1,0-1.116L3.659,5,.218,1.348A.824.824,0,0,1,.218.231Z" fill="#fffdf8" fill-rule="evenodd"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      {% for block in section.blocks %}
+        {% assign wrapper_class = '' %}
+        {% assign desc_class = 'b-border-orange bt-1' %}
+        {%- if forloop.last -%}
+          {% assign wrapper_class = 'b-border-orange bt-1 bb-1' %}
+        {%- endif -%}
+        {%- render 'accordion',
+          wrapper_class: wrapper_class,
+          title_class: 'p1 bold-700 pt-5 pb-5',
+          desc_class: desc_class,
+          title: block.settings.title,
+          description: block.settings.text
+        -%}
+        {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+  if (document.querySelector('#{{el_id}}')) {
+    const vElement = Vue.createApp({
+        delimiters: ['${', '}'],
+        data() {
+            return {
+              expand: false
+            }
+        },
+        methods: {
+            expandAll() {
+              this.expand = !this.expand;
+              let t = document.querySelectorAll(".title-icon").length;
+              let s = document.querySelectorAll(".title-icon");
+              s.forEach((si) => {
+                const {slideToggle} = window.domSlider;
+                if(si.classList.contains('active')) {
+                  if(!this.expand) {
+                    si.classList.remove('active');
+                    slideToggle({
+                      element: si.nextElementSibling
+                    });
+                  }
+                } else {
+                  si.classList.add('active');
+                  slideToggle({
+                    element: si.nextElementSibling
+                  });
+                }
+              });
+            }
+        }
+    }).mount('#{{el_id}}');
+}
+</script>
+{% schema %}
+{
+	"name": "Need Help - Shipping",
+	"settings": [
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)",
+            "default": 0
+		},
+        {
+			"type": "header",
+			"content": "Section Content"
+		},
+        {
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		},
+        {
+            "type" : "text",
+            "id" : "title",
+            "label" : "Title"
+        },
+        {
+            "type" : "text",
+            "id" : "expand",
+            "label" : "Text for expand"
+        },
+        {
+            "type" : "text",
+            "id" : "collapse",
+            "label" : "Text for collapse"
+        }
+	],
+	"blocks":[
+    {
+      "type": "entry",
+      "name": "Entry",
+      "settings": [
+      {
+        "type" : "textarea",
+        "id" : "title",
+        "label" : "Title"
+      },
+        {
+          "type" : "textarea",
+          "id" : "text",
+          "label" : "Text"
+        }
+      ]
+    }
+  ],
+	"presets": [
+		{
+			"name": "Need Help - Shipping",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

@@ -1,0 +1,170 @@
+{% comment %} Calecim {% endcomment %}
+
+<section id="product-custom-info" class="product-custom-info {% if product.metafields.benefit.title_1 != blank %} mt-25 bt-1 d-bt-0 b-border {% endif %} pt-40 d-pt-0 d-mt-40 relative width-100">
+    <teleport to="body">
+        <div id="" class="video-popup-wrapper" @click="hidePopup($event)" v-if="showVideoPopup" :class="{ 'show': showVideoPopupFade }">
+        <div class="popup-outer-wrapper">
+            <div class="popup-inner-wrapper relative pl-25 pr-25 t-pl-0 t-pr-0">
+            <a href="javascript:void(0)" rel="nofollow" @click="togglePopup($event)" class="close-popup">{{ settings.icon_close }}</a>
+
+            <iframe class="hide-m" id="video-popup-iframe" src="" frameborder="0" allowfullscreen></iframe>
+            <video class="hide-m" id="video-popup-video" controls playsinline>
+                <source src="" type="video/mp4">
+            </video>
+            </div>
+        </div>
+        </div>
+    </teleport>
+
+    <div class="title-container pb-15">
+        {%- for i in (1..3) -%}
+            {%- assign title = 'title_' | append: i -%}
+            {%- assign title_acc = product.metafields.custom_info[title] -%}
+            {%- assign main_index = i | minus: 1 -%}
+
+            {%- if title_acc != blank -%}
+                <a @click="setCustomContentVisible($event,{{ main_index }})" href="javascript:void(0)" class="p2 custom-content-tab-link show-m-inline-block mr-25 d-mr-30 relative {% if i == 1 %} active {% endif %}">{{ title_acc }}</a>
+            {%- endif -%}
+        {%- endfor -%}
+    </div>
+
+    {%- for i in (1..3) -%}
+        {%- assign title = 'title_' | append: i -%}
+        {%- assign title_acc = product.metafields.custom_info[title] -%}
+        {%- assign text = 'text_' | append: i -%}
+        {%- assign text_acc = product.metafields.custom_info[text] -%}
+        {%- assign video_poster_desktop = 'video_poster_desktop_' | append: i -%}
+        {%- assign video_poster_desktop_acc = product.metafields.custom_info[video_poster_desktop] -%}
+        {%- assign video_poster_mobile = 'video_poster_mobile_' | append: i -%}
+        {%- assign video_poster_mobile_acc = product.metafields.custom_info[video_poster_mobile] -%}
+        {%- assign video_url = 'video_url_' | append: i -%}
+        {%- assign video_url_acc = product.metafields.custom_info[video_url] -%}
+        {%- assign main_index = i | minus: 1 -%}
+
+        {%- if text_acc != blank or video_poster_desktop_acc != blank -%}
+            <div v-if="customContentEachVisible[{{ main_index }}]" data-index="{{ i }}" class="custom-content-each pt-20 d-pt-25 relative width-100">
+                {%- if text_acc != blank -%}
+                    <div class="p2 rte">
+                        {{ text_acc | newline_to_br }}
+                    </div>
+                {%- endif -%}
+
+                {%- if video_poster_desktop_acc != blank -%}
+                    <div class="video-wrapper relative width-100 video-toggle {% if text_acc != blank %} mt-15 d-mt-20 {% endif %}" {% if video_url_acc != blank %} @click="togglePopup($event)" data-video-url="{{ video_url_acc }}" {% endif %}>
+                        {%- assign image_id = 'custom-info-image-' | append: i -%}
+                        {%- render 'global-image-wrapper-responsive',
+                            image_id: image_id,
+                            desktop_image: video_poster_desktop_acc[0],
+                            desktop_acc: true,
+                            mobile_image: video_poster_mobile_acc[0],
+                            mobile_acc: true,
+                            load_inside_vue: true
+                        -%}
+
+                        {%- if video_url_acc != blank -%}
+                            <a href="javascript:void(0)" class="play-button">{{ settings.icon_play }}</a>
+                        {%- endif -%}
+                    </div>
+                {%- endif -%}
+            </div>
+        {%- endif -%}
+    {%- endfor -%}
+</section>
+
+<script>
+    const productCustomInfoVue = Vue.createApp({
+        delimiters: [
+            '${', '}'
+        ],
+        data() {
+            return {
+              showVideoPopup: false,
+              showVideoPopupFade: false,
+              videoURL: null,
+              iframeObj: null,
+              videoObj: null,
+              customContentEachVisible: [true,false,false]
+            }
+        },
+        mounted() {
+          
+        },
+        methods: {    
+            setCustomContentVisible(e,index) {
+                const this_button = e.target.closest('.custom-content-tab-link');
+                this.customContentEachVisible.fill(false);
+                this.customContentEachVisible[index] = true;
+
+                const links = document.querySelectorAll('.product-custom-info .custom-content-tab-link');
+                links.forEach(function(link){
+                    link.classList.remove('active');
+                });
+
+                this_button.classList.add('active');
+
+                const delay = setTimeout(function(){
+                    $360.lazyLoadInstance.update();
+
+                    clearTimeout(delay);
+                }, 50);
+            },
+          hidePopup(e) {
+            if(e.target.classList.contains('popup-outer-wrapper')) {
+              this.togglePopup();
+            }
+          },
+          setVideo() {
+            if(this.videoURL.indexOf('.mp4') >= 0) {
+              this.videoObj.querySelector('source').setAttribute('src', this.videoURL);
+              this.iframeObj.classList.add('hide-m');
+              this.videoObj.classList.remove('hide-m');
+
+              this.videoObj.load();
+            }
+          },
+          togglePopup(e) {
+            const this_obj = this;
+            let button_obj = null;
+
+            if(e != null) {
+              button_obj = e.target.closest('.video-toggle')
+            }
+            console.log(button_obj)
+
+            if(!this_obj.showVideoPopup) {
+              this_obj.showVideoPopup = true;
+
+              setTimeout(() => {
+                this.iframeObj = document.querySelector('#video-popup-iframe');
+                this.videoObj = document.querySelector('#video-popup-video');
+                this_obj.showVideoPopupFade = true;
+                this_obj.videoURL = button_obj.getAttribute('data-video-url');
+
+                this_obj.setVideo();
+              }, 100);
+            } else {
+              this_obj.showVideoPopupFade = false;
+
+              setTimeout(() => {
+                this_obj.showVideoPopup = false;
+              }, 500);
+            }
+          },
+          playVideo(id, state){
+            console.log(id, state)
+            let image = document.querySelector(`#community-love-stories-{{ section.id }} #clsirb-image-${id}`)
+            let video = document.querySelector(`#community-love-stories-{{ section.id }} #clsirb-video-${id}`)
+            let videoPlayer = document.querySelector(`#community-love-stories-{{ section.id }} #clsirb-video-${id} video`)
+            if(state){
+              video.style.display = 'flex'
+              image.style.display = 'none'
+              videoPlayer.play()
+            } else {
+              video.style.display = 'none'
+              image.style.display = 'flex'
+              videoPlayer.pause()
+            }
+          }
+        }
+    }).mount('#product-custom-info');
+</script>

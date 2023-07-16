@@ -1,0 +1,106 @@
+{%- assign el_id = 'collection-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<div id="{{ el_id }}" class="collection-box" {% if section.settings.bg_color != blank %}style="background-color: {{ section.settings.bg_color }}"{% endif %}>
+    <div class="container flex jc-center ai-start">
+        <div class="row flex jc-between ai-start flex-wrap max-1025">
+			{% for block in section.blocks %}
+				<div class="col-12 col-t-4 col-d-4 tl">
+					<div class="mb-20">
+						{%- render 'global-image-wrapper', image:block.settings.image -%}
+					</div>
+					<h5 class="p1 bold-700">
+						{{ block.settings.title}}
+					</h5>
+					<div class="p2 mt-5 t-mt-5 d-mt-5">
+						{{ block.settings.text }}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+    </div>
+</div>
+{% schema %}
+{
+	"name": "Partnerships - Icons",
+	"settings": [
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)",
+            "default": 0
+		},
+        {
+			"type": "header",
+			"content": "Section Content"
+		},
+        {
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		}
+	],
+	"blocks":[
+    {
+      "type": "entry",
+      "name": "Entry",
+      "settings": [
+      {
+        "type" : "image_picker",
+        "id" : "image",
+        "label" : "Image"
+      },
+        {
+          "type" : "textarea",
+          "id" : "title",
+          "label" : "Title"
+        },
+        {
+            "type" : "textarea",
+            "id" : "text",
+            "label" : "Text"
+          }
+      ]
+    }
+  ],
+	"presets": [
+		{
+			"name": "Partnerships - Icons",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

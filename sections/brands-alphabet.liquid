@@ -1,0 +1,236 @@
+<style>
+.alphabet-nav {
+    top: 0;
+    /*z-index: 9999999;*/
+    z-index: 3;
+    /*height: 85px;
+    padding-top: 22.5px;*/
+}
+.alphabet-box {
+    white-space: nowrap;
+    overflow: auto;
+}
+.alphabet-box .each-item {
+    min-width: 40px;
+    color: var(--comfort-black);
+}
+.alphabet-box .each-item .link {
+    opacity: 1;
+}
+.alphabet-box .each-item .link.active {
+    color: var(--comfort-orange);
+}
+.alphabet-box .each-item .nolink {
+    opacity: 0.2;
+}
+@media screen and (min-width: 768px) {
+    .alphabet-nav {
+        top: 0;
+    }
+    .alphabet-box {
+        overflow: hidden;
+    }
+    .alphabet-box .each-item {
+        width: auto;
+        min-width: unset;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .alphabet-nav {
+        top: 0;
+    }
+    .alphabet-box {
+        overflow: hidden;
+    }
+    .alphabet-box .each-item {
+        width: auto;
+        min-width: unset;
+    }
+}
+</style>
+{%- assign el_id = 'brands-alphabet-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<div id="{{ el_id }}" class="collection-box" {% if section.settings.bg_color != blank %}style="background-color: {{ section.settings.bg_color }}"{% endif %}>
+    <div class="w-full sticky bt-1 bb-1 b-border-orange sticky bg-white alphabet-nav mb-0 t-mb-30 d-mb-50">
+        <div class="container">
+            <div class="flex jc-between ai-start flex-nowrap alphabet-box">
+                <div class="each-item pt-10 pb-10 t-pt-10 t-pb-10 d-pt-10 d-pb-10" v-for="a in alphabet">
+                    {% comment %} <a :href="'#char'+a" @click="scrollTo(a)" class="h6 bold-700 link pointer charlink" :class="'--char'+a" :class="{'active': isActive}" v-if="checkLink(a)">${ a }</a> {% endcomment %}
+                    <span @click="scrollTo(a)" class="h6 bold-700 link pointer charlink" :class="'--char'+a" :class="{'active': isActive}" v-if="checkLink(a)">${ a }</span>
+                    <span class="h6 bold-700 nolink" v-else>${ a }</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full prev-sticky-hide-header overflow">
+        <div class="container overflow">
+            <div class="row flex flex-wrap jc-between ai-start bb-0 t-bb-1 d-bb-1 b-border-orange pt-50 pb-0 t-pt-50 t-pb-50 d-pt-50 d-pb-50" v-for="(a, idx) in onlyLink()">
+                <div :id="'char'+a" class="col-12 col-t-3 col-d-3 pb-20 t-pb-0 d-pb-0 scrollctn"><h3 class="h3 c-greenb2">${ a }</h3></div>
+                <div class="col-12 col-t-9 col-d-9">
+                    <div class="row">
+                        <div class="col-12 col-t-4 col-d-4" v-for="xa in onlyListing(a)">
+                            <div class="max-container pt-20 pb-20 t-pt-0 t-pb-35 d-pt-0 d-pb-35 bb-1 t-bb-0 d-bb-0 b-border-orange">
+                                <a :href="''+xa.url" class="p1 bold-500">${ xa.title }</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+if (document.querySelector('#{{el_id}}')) {
+    const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+    var alphabet = alpha.map((x) => String.fromCharCode(x));
+    alphabet.splice(0, 0, '#');
+    const vElement = Vue.createApp({
+        delimiters: ['${', '}'],
+        data() {
+            return {
+                desktop: window.innerWidth >= 1024,
+                mobile: window.innerWidth <= 1023,
+                alphabet: alphabet,
+                listings: [
+                    {% for block in section.blocks %}
+                        {"char": {{ block.settings.title | slice: 0 | upcase | json }}, "title": {{ block.settings.title | json }}, "url": {{ block.settings.url | json }}}
+                        {%- unless forloop.last -%},{%- endunless -%}
+                    {% endfor %}
+                ]
+            }
+        },
+        mounted(){
+            addEventListener('resize', () => {
+                this.desktop = window.innerWidth >= 1024;
+                this.mobile = window.innerWidth <= 1023;
+            })
+        },
+        methods: {
+            checkLink(c){
+                //console.log('c', c);
+                let f = _.findIndex(this.listings, { 'char': ''+c+'' });
+                if(f == -1) {
+                    return false;
+                } else {
+                    return true;
+                }
+            },
+            onlyListing(c) {
+                let f = _.filter(this.listings, { 'char': ''+c+'' });
+                return f;
+            },
+            removeFirst() {
+                return _.drop(this.alphabet)
+            },
+            onlyLink() {
+                return _.uniq(_.map(_.sortBy(this.listings, ['char']), 'char'));
+            },
+            scrollTo(c) {
+                this.removeAllActive();
+                let el = document.getElementById('char'+c+'');
+                document.querySelector('.--char'+c+'').classList.add('active');
+                let elPos = el.getBoundingClientRect().top;
+                let bodyPos = document.body.getBoundingClientRect().top;
+                let tPos = elPos - bodyPos;
+                if(this.desktop) {
+                    tPos = tPos - 85;
+                    //console.log('desktop', tPos)
+                }
+                //console.log('elPos', elPos);
+                //console.log('bodyPos', bodyPos);
+                //console.log('tPos', tPos);
+                window.scrollTo({
+                    top: tPos,
+                    behavior: 'smooth'
+                });
+            },
+            removeAllActive() {
+                let s = document.querySelectorAll(".charlink");
+                s.forEach((si) => {
+                    si.classList.remove('active');
+                });
+            }
+        }
+    }).mount('#{{el_id}}');
+}
+</script>
+{% schema %}
+{
+	"name": "Brands Alphabet",
+	"settings": [
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)",
+            "default": 0
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)",
+            "default": 0
+		},
+        {
+            "type": "header",
+            "content": "Content Settings"
+        },
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background Color"
+        }
+	],
+    "blocks": [
+        {
+            "name": "Brand",
+            "type": "brand",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Brand name"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Brand URL"
+                }
+            ]
+        }
+    ],
+	"presets": [
+		{
+			"name": "Brands Alphabet",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

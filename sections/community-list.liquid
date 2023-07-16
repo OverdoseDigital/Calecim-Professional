@@ -1,0 +1,230 @@
+{% comment %} Calecim {% endcomment %}
+{%- if section.settings.image_desktop == blank -%}
+    {% assign el_id = "shopify-section-" | append: section.id %}
+    {% render 'section-padding', section:section , el_id : el_id %}
+{%- endif -%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color: {{ section.settings.background_color }}
+    }
+</style>
+
+{%- assign quote_title = '' -%}
+<section class="community-listing">
+    <div class="container">
+        <div class="row">
+            <div class="global-flex flex-wrap">
+                {%- assign main_index = 0 -%}
+                {%- for block in section.blocks -%}
+                    {%- if block.type == "specialist_small" -%}
+                        {%- if block.settings.specialist.tags == current_tags or current_tags == blank -%}
+                            {%- assign main_index = main_index | plus: 1 -%}
+
+                            <div data-index="{{ main_index }}" class="specialist-small content-each col-12 col-t-6 col-d-4 ai-center tc mb-20">
+                                {%- render 'article-each-community-specialist',
+                                    article: block.settings.specialist,
+                                    type: 'specialist'
+                                -%}
+                            </div>
+                        {%- endif -%}
+                    {%- elsif block.type == "ambassador_small" -%}
+                        {%- if block.settings.ambassador.tags == current_tags or current_tags == blank -%}
+                            {%- assign main_index = main_index | plus: 1 -%}
+
+                            <div data-index="{{ main_index }}" class="specialist-small content-each col-12 col-t-6 col-d-4 ai-center tc mb-20">
+                                {%- render 'article-each-community-specialist',
+                                    article: block.settings.ambassador,
+                                    type: 'ambassador'
+                                -%}
+                            </div>
+                        {%- endif -%} 
+                    {%- endif -%}
+
+                    {%- assign mod = forloop.index0 | modulo: 2 -%}
+                    {%- if mod != 0 -%}
+                        {%- for block in section.blocks -%}
+                            {%- if block.type == "quote" -%}
+                                {%- unless quote_title contains block.settings.title -%}
+                                    {%- assign quote_title = quote_title | append: block.settings.title -%}
+                                    {%- assign main_index = main_index | plus: 1 -%}
+
+                                    <div data-index="{{ main_index }}" class="quote-wrapper content-each col-12 col-t-6 col-d-4 tc mb-20">
+                                        <div class="quote-inner pl-40 pr-40 pt-50 pb-50 d-p-50 height-100 global-flex flex-wrap ai-center" style="background-color: {{ block.settings.background_color }};">
+                                            <div>
+                                                <h5 class="{{ block.settings.title_size }}">{{ block.settings.title }}</h5>
+                                                {%- if block.settings.author != blank -%}
+                                                    <p class="p3 mt-15 d-mt-20">{{ block.settings.author }}</p>
+                                                {%- endif -%}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {%- break -%}
+                                {%- endunless -%}
+                            {%- endif -%}
+                        {%- endfor -%}
+                    {%- endif -%}
+                {%- endfor -%}
+
+                <div class="global-flex flex-wrap width-100">
+                    {%- for block in section.blocks -%}
+                        {%- if block.type == "ambassador_big" -%}
+                            {%- if block.settings.ambassador.tags == current_tags or current_tags == blank -%}
+                                <div class="ambassador-big col-12 col-t-6 col-d-6 ai-center tc mb-20">
+                                    {%- render 'article-each-community-ambassador-big',
+                                        article: block.settings.ambassador
+                                    -%}
+                                </div>
+                            {%- endif -%}
+                        {%- endif -%}
+                    {%- endfor -%}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    if(screen.width > 767 && screen.width < 1024) {
+        const contents = document.querySelectorAll(`#shopify-section-{{ section.id }} .content-each`);
+        contents.forEach(function(content){
+            const this_index = Number(content.getAttribute('data-index'));
+            if(this_index%4 == 0) {
+                content.classList.add('pull-t-6');
+
+                const prev_elem = content.previousElementSibling;
+                prev_elem.classList.add('push-t-6');
+            }
+        });
+    }
+</script>
+
+{% schema %}
+    {
+        "name": "Community List",
+        "settings": [
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background Color"
+            },
+            {
+                "type": "header",
+                "content": "Section Padding"
+            },
+            {
+                "type": "paragraph",
+                "content": "Paddings will be applied to the text if the section is using image background"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_m",
+                "label": "Top padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_m",
+                "label": "Bottom padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_t",
+                "label": "Top padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_t",
+                "label": "Bottom padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding",
+                "label": "Top padding (Desktop)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding",
+                "label": "Bottom padding (Desktop)"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "quote",
+                "name": "Quote",
+                "settings": [
+                    {
+                        "type": "color",
+                        "id": "background_color",
+                        "label": "Background Color"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "select",
+                        "id": "title_size",
+                        "label": "Title Size",
+                        "options": [
+                            {
+                                "value": "h8",
+                                "label": "H8"
+                            },
+                            {
+                                "value": "p1",
+                                "label": "P1"
+                            }
+                        ],
+                        "default": "h8"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "author",
+                        "label": "Author"
+                    }
+                ]
+            },
+            {
+                "type": "specialist_small",
+                "name": "Specialist",
+                "settings": [
+                    {
+                        "type": "article",
+                        "label": "Specialist",
+                        "id": "specialist"
+                    }
+                ]
+            },
+            {
+                "type": "ambassador_small",
+                "name": "Ambassador (small)",
+                "settings": [
+                    {
+                        "type": "article",
+                        "label": "Ambassador",
+                        "id": "ambassador"
+                    }
+                ]
+            },
+            {
+                "type": "ambassador_big",
+                "name": "Ambassador (big)",
+                "settings": [
+                    {
+                        "type": "article",
+                        "label": "Ambassador",
+                        "id": "ambassador"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Community List",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}

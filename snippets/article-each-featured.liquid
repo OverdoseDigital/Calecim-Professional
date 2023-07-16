@@ -1,0 +1,44 @@
+{%- comment -%}
+	Calecim
+
+	- additional_class: string. 
+	- article: object
+	- mobile_image_mode: portrait, landscape. Default: portrait
+	- hide_all_article_button: true, false.
+{%- endcomment -%}
+
+<div class="article-each-featured {{ additional_class }} {% if mobile_image_mode != blank %} mobile-{{ mobile_image_mode }} {% endif %}">
+		{% if article.metafields.featured_image.grid_image != blank %}
+			{% assign article_image = article.metafields.featured_image.grid_image %}
+			{% assign acc = true %}
+		{% else %}
+			{% assign article_image = article.image %}
+			{% assign acc = false %}
+		{% endif %}
+		{%- render 'global-image-wrapper',
+			image: article_image,
+			additional_class:"",
+			acc: acc
+		%}
+		<div class="aef-caption d-pt-40 d-pb-40 d-pl-40 d-pr-40 pt-30 pb-30 pl-20 pr-20 t-pl-30 t-pr-30">
+			<a href="{{article.url}}">
+				<div class="aef-tags">
+					{% for tag in article.tags %}
+					<span class="p5 bg-white mr-5 mb-5">
+						{{ tag }}
+					</span>	
+					{% endfor %}
+				</div>
+				<div class="h2 c-white aef-title mt-5">{{ article.title }}</div>
+			</a>
+			<div class="aef-btn d-pt-40 d-pb-40 d-pl-40 d-pr-40 pt-30 pb-30 pl-20 pr-20 t-pl-30 t-pr-30 {% if hide_all_article_button %} hide-m {% endif %}">
+				{%- assign blog_name = article.handle | split: '/' | first -%}
+				{%- assign blog_url = routes.root_url | append: 'blogs/' | append: blog_name -%}
+
+				<a href="{{ blog_url }}" class="btn3 with-icon mt-20 d-mt-25">
+					{{ 'blogs.article.all_articles' | t }}
+					<span class="icon">{{ settings.icon_btn_right }}</span>
+				</a>
+			</div>
+		</div>
+</div>

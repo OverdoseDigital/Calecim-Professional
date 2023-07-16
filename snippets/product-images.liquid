@@ -1,0 +1,67 @@
+<div id="product-images" class="product-images">
+    <div class="product-images-main">
+        <div data-image-count="{{ image_count }}" class="global-flex flex-wrap product-images-wrapper">
+            <div class="swiper width-100">
+                <div class="swiper-wrapper"> 
+                    {%- for image in product.images -%}
+                        <div data-index="{{ forloop.index0 }}" class="swiper-slide">
+                            <div class="image-wrapper">
+                                {%- assign preload = false -%}
+                                {%- if forloop.first -%}
+                                    {%- assign preload = true -%}
+                                {%- endif -%}
+
+                                {%- render 'global-image-wrapper', 
+                                    additional_class: 'no-bg', 
+                                    image: image, 
+                                    size: '2000x',
+                                    preload: preload
+                                -%}
+                            </div>
+                        </div>
+                    {%- endfor -%}
+                </div>
+
+                <div class="swiper-custom-arrow left">{{ settings.icon_btn_left }}</div>
+                <div class="swiper-custom-arrow right">{{ settings.icon_btn_right }}</div>
+            </div>
+
+            <div class="swiper-pagination d-mb-30 d-mt-50"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const ProducImagesVue = Vue.createApp({
+        delimiters: [
+            '${', '}'
+        ],
+        data() {
+            return {
+                productImagesCarousel: null,
+                first_img_url: null, 
+                showGalleryPopup: false
+            }
+        },
+        mounted() {
+            this.initCarousel();
+        },
+        methods: {
+            initCarousel() {
+                this.productImagesCarousel = new Swiper("#product-images .swiper", {
+                    direction: 'horizontal',
+                    slidesPerView: 'auto',
+                    loop: false,
+                    pagination: {
+                        el: "#product-images .swiper-pagination",
+                        clickable: true
+                    },
+                    navigation: {
+                        nextEl: "#product-images .swiper .swiper-custom-arrow.right",
+                        prevEl: "#product-images .swiper .swiper-custom-arrow.left"
+                    }
+                });
+            }
+        }
+    }).mount('#product-images');
+</script>

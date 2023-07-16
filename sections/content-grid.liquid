@@ -1,0 +1,136 @@
+{%- assign el_id = 'content-grid-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<div id="{{ el_id }}" class="container">
+    {%- if section.settings.title != blank -%}
+        <h2 class="h5 mb-20 d-mb-35">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    {%- if section.settings.image != blank -%}
+        <a href="{{ section.settings.url }}" title="{{ section.settings.title }}" class="block mb-20 t-mb-40">
+            {%- render 'global-image-wrapper', image: section.settings.image, additional_class: 'rounded-20 t-rounded-24' -%}
+        </a>
+    {%- endif -%}
+    <div class="row flex flex-wrap">
+		{%- assign last2 = section.blocks.size | minus: 1 -%}
+        {%- for block in section.blocks -%}
+			{%- assign item_class = 'mb-40 t-mb-40 d-mb-45' -%}
+			{%- if forloop.index == last2 -%}
+				{%- assign item_class = 'mb-40 t-mb-0 d-mb-0' -%}
+			{%- endif -%}
+			{%- if forloop.last -%}
+				{%- assign item_class = 'mb-0 t-mb-0 d-mb-0' -%}
+			{%- endif -%}
+            <div class="col-12 col-t-6 {{ item_class }}">
+                <a href="{{ block.settings.url }}" title="{{ block.settings.title }}" class="flex flex-column jc-between h-full">
+                    <div class="top-con mb-15 t-mb-15 d-mb-20">
+                        {%- render 'global-image-wrapper', image: block.settings.image, additional_class: 'rounded-20 t-rounded-24 mb-15 d-mb-20' -%}
+                        <h6 class="h6 c-greenb2 mb-10 t-mb-10 d-mb-10">{{ block.settings.title }}</h6>
+                        <p class="p-1">{{ block.settings.description }}</p>
+                    </div>
+                    <div class="bottom-con">
+                        <button type="button" class="btn1">{{ block.settings.button_label }}</button>
+                    </div>
+                </a>
+            </div>
+        {%- endfor -%}
+    </div>
+</div>
+
+{% schema %}
+{
+	"name": "Content Grid",
+	"settings": [
+		{
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		},
+		{
+			"type": "header",
+			"content": "General Settings"
+		},
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title"
+		},
+        {
+			"type": "image_picker",
+			"id": "image",
+			"label": "Main Image"
+		},
+		{
+			"type": "url",
+			"id": "url",
+			"label": "URL"
+		}
+	],
+	"blocks" : [
+		{
+			"type": "image",
+			"name": "Content",
+			"settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+				{
+                    "type": "url",
+                    "id": "url",
+                    "label": "URL"
+                },
+				{
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+				{
+                    "type": "textarea",
+                    "id": "description",
+                    "label": "Description"
+                },
+				{
+                    "type": "text",
+                    "id": "button_label",
+                    "label": "Button Label"
+                }
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Content Grid",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

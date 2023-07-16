@@ -1,0 +1,382 @@
+{%  comment  %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+<style>
+  #shopify-section-{{ section.id }} {
+    {% if section.settings.bg_color != blank %}
+    background-color: {{ section.settings.bg_color }};
+    {% else %}
+    background-color: #C8E7D9;
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .crp-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .crp-left {
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .crp-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .crp-tab a {
+    color: #2c2c2c;
+    border-bottom: 1px solid transparent;
+    opacity: .45;
+  }
+  #shopify-section-{{ section.id }} .crp-tab a.active,
+  #shopify-section-{{ section.id }} .crp-tab a:hover {
+    border-bottom: 1px solid #6C6C6C80;
+    opacity: 1;
+  }
+  #shopify-section-{{ section.id }} .crp-tab-content {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .crp-tab-content.active {
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .crp-items {
+    width: 240px;
+  }
+  #shopify-section-{{ section.id }} .swiper-custom-arrow.left {
+    left: 10px;
+  }
+  #shopify-section-{{ section.id }} .swiper-custom-arrow.right {
+    right: 10px;
+  }
+  #shopify-section-{{ section.id }} .crp-caption {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  @media screen and (min-width: 768px){
+    
+  }
+  @media screen and (min-width: 1024px){
+    #shopify-section-{{ section.id }} .crp-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    #shopify-section-{{ section.id }} .crp-left {
+      width: 40%;
+      text-align: left;
+    }
+    #shopify-section-{{ section.id }} .crp-right {
+      width: 60%;
+    }
+    #shopify-section-{{ section.id }} .crp-left > h6 {
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .crp-items {
+      width: 390px;
+    }
+    #shopify-section-{{ section.id }} .crp-tab {
+      justify-content: flex-start;
+    }
+    #shopify-section-{{ section.id }} .swiper {
+      position: static;
+    }
+    #shopify-section-{{ section.id }} .swiper-control {
+      position: absolute;
+      left: 60px;
+      bottom: 0;
+    }
+    #shopify-section-{{ section.id }} .swiper-control .swiper-custom-arrow {
+      position: relative;
+      top: unset !important;
+      right: unset;
+      left: unset;
+      bottom: unset;
+    }
+    #shopify-section-{{ section.id }} .swiper-custom-arrow.swiper-button-disabled {
+      opacity: .5;
+    }
+  }
+  @media screen and (min-width: 1366px){
+    #shopify-section-{{ section.id }} .crp-left {
+      width: 30%;
+    }
+    #shopify-section-{{ section.id }} .crp-right {
+      width: 70%;
+    }
+  }
+</style>
+<div class="collection-ring-possibilities" id="collection-ring-possibilities-{{ section.id }}">
+  <div class="crp-container">
+    <div class="crp-left pr-25 pl-25 d-pl-60 d-pr-55">
+      <h6 class="p3 spacing-2 bold-600">WHY CHOOSE LOVE & CO.</h6>
+      <h1 class="h5 mt-10 d-mt-30">{{ section.settings.title }}</h1>
+      <div class="crp-tab mt-20 d-mt-30">
+        <a class="p3 d-ml-0 d-mr-25 ml-10 mr-15 bold-600 spacing-2" @click="setTab(1)" :class="(tab == 1) ? 'active': null">{{ section.settings.tab_1_title }}</a>
+        <a class="p3 d-ml-0 d-mr-0 ml-10 mr-15 bold-600 spacing-2" @click="setTab(2)" :class="(tab == 2) ? 'active': null">{{ section.settings.tab_2_title }}</a>
+      </div>
+    </div>
+    <div class="crp-right mt-40 d-mt-0">
+      {% assign countTab1 = 0 %}
+      {% assign countTab2 = 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'tab_1' %}
+        {%  assign countTab1 = countTab1 | plus: 1  %}
+        {% endif %}
+        {% if block.type == 'tab_2' %}
+        {%  assign countTab2 = countTab2 | plus: 1  %}
+        {% endif %}
+      {% endfor %}
+      <div class="crp-tab-1 crp-tab-content active">
+        <div class="swiper pl-25 pr-25 t-pl-30 t-pr-30 d-pl-0 d-pr-60">
+          <div class="swiper-wrapper">
+            {% assign loopTab1 = 0 %}
+            {% for block in section.blocks %}
+              {% if block.type == 'tab_1' %}
+              {%  assign loopTab1 = loopTab1 | plus: 1  %}
+              <div class="crp-items swiper-slide {% unless countTab1 == loopTab1 %}mr-15 d-mr-20{% endunless %}" data-count="{{ countTab1 }}" data-loop="{{ loopTab1 }}">
+                <div class="crp-box">
+                  {%- assign image_id = "collection-ring-possibilities-" | append: block.id -%}
+                  {%- render 'global-image-wrapper',
+                    image_id: image_id,
+                    image: block.settings.image
+                  %}
+                  <div class="crp-caption d-pb-30 pl-20 pr-20 pb-20">
+                    <h6 class="h11 spacing-1 bold-600">{{ block.settings.title }}</h6>
+                    <div class="mt-5 d-mt-10">
+                      {% render 'link-icon',
+                        id: link_id,
+                        label: block.settings.link_label,
+                        url: block.settings.link_url,
+                        text_class: 'p3 uppercase c-black spacing-2 bold-600',
+                        icon_color: '#fffff',
+                        icon_svg: settings.icon_btn_right,
+                        load_inside_vue: true
+                      %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="swiper-control">
+            <div class="swiper-custom-arrow left mr-0 d-mr-10">{{ settings.icon_slide_left }}</div>
+            <div class="swiper-custom-arrow right">{{ settings.icon_slide_right }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="crp-tab-2 crp-tab-content">
+        <div class="swiper pl-25 pr-25 t-pl-30 t-pr-30 d-pl-0 d-pr-60">
+          <div class="swiper-wrapper ">
+            {% assign loopTab2 = 0 %}
+            {% for block in section.blocks %}
+              {% if block.type == 'tab_2' %}
+              {%  assign loopTab2 = loopTab2 | plus: 1  %}
+              <div class="crp-items swiper-slide {% unless countTab2 == loopTab2 %}mr-15 d-mr-20{% endunless %}">
+                <div class="crp-box">
+                  {%- assign image_id = "collection-ring-possibilities-" | append: block.id -%}
+                  {%- render 'global-image-wrapper',
+                    image_id: image_id,
+                    image: block.settings.image
+                  %}
+                  <div class="crp-caption d-pb-30 pl-20 pr-20 pb-20">
+                    <h6 class="h11 spacing-1 bold-600">{{ block.settings.title }}</h6>
+                    <div class="mt-5 d-mt-10">
+                      {% render 'link-icon',
+                        id: link_id,
+                        label: block.settings.link_label,
+                        url: block.settings.link_url,
+                        text_class: 'p3 uppercase c-black spacing-2 bold-600',
+                        icon_color: '#fffff',
+                        icon_svg: settings.icon_btn_right,
+                        load_inside_vue: true
+                      %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="swiper-control">
+            <div class="swiper-custom-arrow left mr-0 d-mr-10">{{ settings.icon_slide_left }}</div>
+            <div class="swiper-custom-arrow right">{{ settings.icon_slide_right }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    const collectionring = Vue.createApp({
+        delimiters: [
+            '${', '}'
+        ],
+        data() {
+            return {
+              tab: 1
+            }
+        },
+        mounted() {
+          this.initSwiper()
+        },
+        created() {
+          window.addEventListener("resize", this.initSwiper);
+        },
+        methods: {
+          setTab(idx){
+            this.tab = idx
+            let tabs = document.querySelectorAll(`#collection-ring-possibilities-{{ section.id }} .crp-tab-content`)
+            let tab = document.querySelector(`#collection-ring-possibilities-{{ section.id }} .crp-tab-${idx}`)
+            tabs.forEach(function(item) {
+              item.classList.remove("active")
+            });
+            tab.classList.add("active")
+          },
+          initSwiper() {
+            this.product_rec_carousel = new Swiper(".crp-tab-content .swiper", {
+              direction: 'horizontal',
+              slidesPerView: 'auto',
+              watchSlidesProgress: true,
+              loop: false,
+              navigation: {
+                nextEl: '.collection-ring-possibilities .swiper-custom-arrow.right',
+                prevEl: '.collection-ring-possibilities .swiper-custom-arrow.left'
+              }
+            });
+
+            //-- set arrow position
+            const image_height = document.querySelector('.crp-tab-content .swiper .global-image-wrapper').clientHeight;
+            const arrow_height = document.querySelector('.crp-tab-content .swiper .swiper-custom-arrow').clientHeight;
+            const arrows = document.querySelectorAll('.crp-tab-content .swiper .swiper-custom-arrow');
+            const top = (image_height-arrow_height)/2;
+            arrows.forEach(elem => {
+              elem.style.transform = 'unset';
+              elem.style.top = top + 'px';
+            });
+          },
+        }
+    }).mount('#collection-ring-possibilities-{{ section.id }}');
+</script>
+{% schema %}
+  {
+    "name": "Collection Ring",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "tab_1_title",
+        "label": "Tab 1 Title"
+      },
+      {
+        "type": "text",
+        "id": "tab_2_title",
+        "label": "Tab 2 Title"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Tab 1",
+        "type": "tab_1",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link Url"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      },
+      {
+        "name": "Tab 2",
+        "type": "tab_2",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link Url"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Ring"
+      }
+    ]
+  }
+{% endschema %}

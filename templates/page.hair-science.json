@@ -1,0 +1,504 @@
+{
+  "wrapper": ".global-content-top-margin",
+  "sections": {
+    "bc63510a-714f-4e47-994e-4f4f4601a964": {
+      "type": "page-title",
+      "settings": {
+        "background_color": "#f5f5f5",
+        "image_desktop": "shopify:\/\/shop_images\/01Sceince_Intro-Main_banner-desktop-2740x800.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/01Sceince_Intro-Main_banner-mobile-750x590.jpg",
+        "title": "HAIR SCIENCE",
+        "title_size": "h2",
+        "title_dom_type": "h1",
+        "title_color": "#231d1d",
+        "text": "CALECIM® Professional has developed a hair regrowth system that is natural, effective and safe, with proven results within 6 weeks. Find out how stem cell science can help you regain your hair confidence.",
+        "body_copy_color": "#231d1d",
+        "max_width": 610,
+        "top_padding_m": "60",
+        "bottom_padding_m": "",
+        "top_padding_t": "55",
+        "bottom_padding_t": "",
+        "top_padding": "50",
+        "bottom_padding": ""
+      }
+    },
+    "84018a7d-795f-4929-bbe6-72e39cfdcf67": {
+      "type": "section-navigation",
+      "blocks": {
+        "c0cbb306-f391-411e-9397-8b5b512c7711": {
+          "type": "entry",
+          "settings": {
+            "title": "PTT-6® Science",
+            "url": "\/pages\/delivery-information?view=ptt6-science"
+          }
+        },
+        "ef5cb0f3-e050-40eb-be89-622cae4ad786": {
+          "type": "entry",
+          "settings": {
+            "title": "Hair Science",
+            "url": "\/pages\/delivery-information?view=hair-science"
+          }
+        },
+        "4a537238-629e-4b9d-9666-a87de6dee94d": {
+          "type": "entry",
+          "settings": {
+            "title": "Skin Science",
+            "url": "\/pages\/delivery-information?view=skin-science"
+          }
+        },
+        "83c573da-5621-4d75-a4cd-0c80ecc7fa5e": {
+          "type": "entry",
+          "settings": {
+            "title": "Beyond Beauty",
+            "url": "\/pages\/delivery-information?view=beyond-beauty"
+          }
+        }
+      },
+      "block_order": [
+        "c0cbb306-f391-411e-9397-8b5b512c7711",
+        "ef5cb0f3-e050-40eb-be89-622cae4ad786",
+        "4a537238-629e-4b9d-9666-a87de6dee94d",
+        "83c573da-5621-4d75-a4cd-0c80ecc7fa5e"
+      ],
+      "settings": {}
+    },
+    "5c6d69fd-d282-4dba-bb85-7b4b79ae1712": {
+      "type": "image-text-accordion",
+      "blocks": {
+        "0c770060-6b53-44bc-811c-97550476e40a": {
+          "type": "entry",
+          "settings": {
+            "title": "ANAGEN (GROWTH)",
+            "text": "Anagen is the period of active cell division and noticeable hair growth. Throughout the hair cycle, about 90% of all your hair follicles are in the anagen phase and can remain in this phase anywhere from 2 to 8 years."
+          }
+        },
+        "35f99470-4a2b-4775-a997-cacf6a29bdde": {
+          "type": "entry",
+          "settings": {
+            "title": "CATAGEN (REGRESSION)",
+            "text": "Anagen is the period of active cell division and noticeable hair growth. Throughout the hair cycle, about 90% of all your hair follicles are in the anagen phase and can remain in this phase anywhere from 2 to 8 years."
+          }
+        },
+        "977e616f-d11b-402f-85fe-844a6ab7a69d": {
+          "type": "entry",
+          "settings": {
+            "title": "TELOGEN (RESTING)",
+            "text": "Anagen is the period of active cell division and noticeable hair growth. Throughout the hair cycle, about 90% of all your hair follicles are in the anagen phase and can remain in this phase anywhere from 2 to 8 years."
+          }
+        },
+        "9ffba62c-13b3-4404-8497-8ba423493609": {
+          "type": "entry",
+          "settings": {
+            "title": "EXOGEN (SHEDDING)",
+            "text": "Anagen is the period of active cell division and noticeable hair growth. Throughout the hair cycle, about 90% of all your hair follicles are in the anagen phase and can remain in this phase anywhere from 2 to 8 years."
+          }
+        }
+      },
+      "block_order": [
+        "0c770060-6b53-44bc-811c-97550476e40a",
+        "35f99470-4a2b-4775-a997-cacf6a29bdde",
+        "977e616f-d11b-402f-85fe-844a6ab7a69d",
+        "9ffba62c-13b3-4404-8497-8ba423493609"
+      ],
+      "settings": {
+        "section_width": "",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 520,
+        "title": "THE HAIR GROWTH CYCLE",
+        "text_align": "tl",
+        "desktop_image": "shopify:\/\/shop_images\/02Sceince_Hair-Half-width_image01-desktop-1370x1370.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/02Sceince_Hair-Half-width_image01-desktop-1370x1370.jpg",
+        "image_position": "row-reverse",
+        "image_position_mobile": "image-first",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "02531ec2-872b-40ff-9e99-35fb7c9b0c3a": {
+      "type": "science-stages-hair-loss",
+      "blocks": {
+        "004b5418-8ee9-463e-a4d0-f09e6892621e": {
+          "type": "icon",
+          "settings": {
+            "bg_color": "#ffffff",
+            "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+            "title": "Cell Death"
+          }
+        },
+        "630aecd2-6cb9-4bf6-9f38-5c035c5a864b": {
+          "type": "icon",
+          "settings": {
+            "bg_color": "#ffffff",
+            "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+            "title": "Inflammation around hair follicle"
+          }
+        },
+        "f7461d47-1d77-44f2-a6b9-26e3f24accf1": {
+          "type": "icon",
+          "settings": {
+            "bg_color": "#ffffff",
+            "icon": "<svg fill=\"#231d1d\" height=\"800px\" width=\"800px\" version=\"1.1\" id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewbox=\"0 0 512 512\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\" xml:space=\"preserve\">\n<g>\n\t<g>\n\t\t<path d=\"M378.858,170.919c-11.57-28.202-27.675-57.218-47.867-86.246c-34.292-49.295-68.085-81.173-69.507-82.506\n\t\t\tc-3.084-2.89-7.882-2.89-10.966,0c-1.422,1.333-35.215,33.211-69.507,82.506c-20.193,29.027-36.297,58.044-47.867,86.246\n\t\t\tc-14.584,35.547-21.979,69.926-21.979,102.183c0,77.172,60.67,140.434,136.818,144.61v86.271c0,4.427,3.589,8.017,8.017,8.017\n\t\t\ts8.017-3.589,8.017-8.017v-86.271c76.148-4.175,136.818-67.438,136.818-144.61C400.835,240.845,393.44,206.466,378.858,170.919z\n\t\t\t M264.017,401.647v-22.61l83.163-83.163c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-71.826,71.824\n\t\t\tv-37.184l66.061-66.061c3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-54.724,54.723V259.32l48.958-48.959\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-37.622,37.621v-37.184l31.856-31.856\n\t\t\tc3.131-3.131,3.131-8.206,0-11.337c-3.131-3.131-8.207-3.131-11.337,0l-20.52,20.518v-57.606c0-4.427-3.589-8.017-8.017-8.017\n\t\t\ts-8.017,3.589-8.017,8.017v57.607l-20.52-20.52c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337\n\t\t\tl31.856,31.856v37.184l-37.622-37.622c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l48.958,48.96v37.184\n\t\t\tl-54.724-54.724c-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l66.061,66.062v37.184l-71.826-71.826\n\t\t\tc-3.131-3.131-8.207-3.131-11.337,0c-3.131,3.131-3.131,8.206,0,11.337l83.163,83.164v22.61\n\t\t\tc-67.301-4.154-120.785-60.216-120.785-128.545c0-68.493,36.316-135.143,66.781-178.995c25.395-36.554,51.077-63.798,62.02-74.844\n\t\t\tc10.944,11.046,36.626,38.289,62.02,74.844c55.195,79.449,66.781,141.191,66.781,178.996\n\t\t\tC384.802,341.43,331.317,397.493,264.017,401.647z\"><\/path>\n\t<\/g>\n<\/g>\n<\/svg>",
+            "title": "Release of damaging free radicals"
+          }
+        },
+        "5e0e5963-d31b-4d88-9bfe-f82fb002bcf9": {
+          "type": "carousel",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/07Homepage-USPIcons02-desktop-300x300.png",
+            "title": "01. Hair growth stops",
+            "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat"
+          }
+        },
+        "b19f5f3c-3369-4e28-ad21-0d32db371bae": {
+          "type": "carousel",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/07Homepage-USPIcons01-desktop-300x300.png",
+            "title": "02. Hair growth stops",
+            "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat"
+          }
+        },
+        "f7bea0cf-e700-4016-9c4b-d0133e0ff80e": {
+          "type": "carousel",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/07Homepage-USPIcons03-desktop-300x300.png",
+            "title": "03. Hair growth stops",
+            "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat"
+          }
+        }
+      },
+      "block_order": [
+        "004b5418-8ee9-463e-a4d0-f09e6892621e",
+        "630aecd2-6cb9-4bf6-9f38-5c035c5a864b",
+        "f7461d47-1d77-44f2-a6b9-26e3f24accf1",
+        "5e0e5963-d31b-4d88-9bfe-f82fb002bcf9",
+        "b19f5f3c-3369-4e28-ad21-0d32db371bae",
+        "f7bea0cf-e700-4016-9c4b-d0133e0ff80e"
+      ],
+      "settings": {
+        "section_width": "",
+        "background_color": "#f5f5f5",
+        "content_max_width": 500,
+        "title": "EXTERNAL AND INTERNAL STIMULI",
+        "text": "These may include genetic tendencies, aging, hormonal changes, diet, UV radiation and pollution exposure. These stimuli affect regular hair cycle and hair follicle recovery by exerting these effects on the follicle:",
+        "stages_title": "Stages of hair loss",
+        "text_align": "tl",
+        "desktop_image": "shopify:\/\/shop_images\/02Sceince_Hair-Half-width_image02-desktop-1370x1370.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/02Sceince_Hair-Half-width_image02-desktop-1370x1370.jpg",
+        "image_position": "row",
+        "image_position_mobile": "follow-desktop",
+        "tag": "",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "0d9ea767-214a-482c-8a7c-1a933666c487": {
+      "type": "image-text-carousel",
+      "blocks": {
+        "e01936e7-6bde-4278-a13a-3042278364dc": {
+          "type": "entry",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/03Science_Hair-_Grid_Hair_loss_program_01-desktop-590x420.jpg",
+            "title": "Hair loss prevention",
+            "text": "If hair loss runs in the family, get a head start by improving hair follicular health."
+          }
+        },
+        "8a3a3537-3d99-43ef-8850-48f55f99cfd0": {
+          "type": "entry",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/03Science_Hair-_Grid_Hair_loss_program_02-desktop-590x420.jpg",
+            "title": "Receding hair line",
+            "text": "Feel you are seeing too much forehead? Could be a sign that your hair follicles’ growth phase is shortening."
+          }
+        },
+        "8615a948-f38e-4f3d-8ae4-7452857578d4": {
+          "type": "entry",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/03Science_Hair-_Grid_Hair_loss_program_03-desktop-590x420.jpg",
+            "title": "Increased separation at parting",
+            "text": "When the growth phase of your hair follicles shorten, you may notice a decrease in hair production in stressed areas like your parting."
+          }
+        },
+        "b0efa8e2-8ac5-4484-a971-ec5c01b3622b": {
+          "type": "entry",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/03Science_Hair-_Grid_Hair_loss_program_04-desktop-590x420.jpg",
+            "title": "Thinning all over",
+            "text": "It is common for hair to decrease in quality and quantity as you age. This could be related to inflammatory and hormunal cues coupled with decreased follicular activity."
+          }
+        }
+      },
+      "block_order": [
+        "e01936e7-6bde-4278-a13a-3042278364dc",
+        "8a3a3537-3d99-43ef-8850-48f55f99cfd0",
+        "8615a948-f38e-4f3d-8ae4-7452857578d4",
+        "b0efa8e2-8ac5-4484-a971-ec5c01b3622b"
+      ],
+      "settings": {
+        "bg_color": "",
+        "title": "IS THE HAIR LOSS PROGRAM FOR YOU?",
+        "title_class": "h3",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "d80e3048-6625-4652-982a-be282b32b293": {
+      "type": "rewards-image-text-overlay",
+      "settings": {
+        "bg_color": "#f2f2f2",
+        "width": "container",
+        "title": "PREFER TO HAVE A CLINICAL HAIR TREATMENT?",
+        "title_size": "h3",
+        "title_dom_type": "h2",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat!",
+        "text_size": "p2",
+        "hide_text_mobile": true,
+        "text_max_width": "400",
+        "link_label": "Learn more",
+        "link_url": "#learn",
+        "link_label_2": "Locate a hair clinic",
+        "link_url_2": "#locate",
+        "button_label_1": "",
+        "button_url_1": "",
+        "button_label_2": "",
+        "button_url_2": "",
+        "text_align": "right",
+        "image_desktop": "shopify:\/\/shop_images\/04Science_Hair-_Clinic_Banner-desktop-2490x1000.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/04Science_Hair-_Clinic_Banner-mobile-670x410.jpg",
+        "mobile_layout": "relative",
+        "top_padding_m": "",
+        "bottom_padding_m": "",
+        "top_padding_t": "",
+        "bottom_padding_t": "",
+        "top_padding": "",
+        "bottom_padding": ""
+      }
+    },
+    "ffa88a41-059d-4704-8dbc-fa4307caf155": {
+      "type": "cta-image-text",
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 500,
+        "title": "REGROW YOUR HAIR, NATURALLY",
+        "text": "Scientists have found that stem cell-derived growth factors are able to re-invigorate dormant and sluggish hair follicles, restoring healthy hair cycle and accelerating follicle cell production. Inflammatory factors found on the scalp that cause follicle cell death are significantly reduced.",
+        "text_align": "tl",
+        "link_label": "Read clinical abstracts",
+        "link_url": "#one",
+        "link_label_2": "Read articles",
+        "link_url_2": "#two",
+        "button_label": "",
+        "button_url": "",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "desktop_image": "shopify:\/\/shop_images\/05Secience_Hair-Image_Text_Landscape_-desktop-1220x900.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/05Secience_Hair-Image_Text_Landscape_-desktop-1220x900.jpg",
+        "image_position": "row",
+        "image_position_mobile": "follow-desktop",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "80",
+        "bottom_padding": "80"
+      }
+    },
+    "59f44a62-be0e-41c5-a665-074c07cf66d7": {
+      "type": "homepage-image-text-counter",
+      "blocks": {
+        "ff59fa4b-1457-4af2-af57-1c9ad23f9b6a": {
+          "type": "entry",
+          "settings": {
+            "counter": "24%",
+            "title": "increase in growth of hair follicle cells",
+            "url": "#one"
+          }
+        },
+        "c7a3c04c-294a-4873-9ff8-b1357a06b48b": {
+          "type": "entry",
+          "settings": {
+            "counter": "30x",
+            "title": "decrease in follicle inflammation",
+            "url": "#two"
+          }
+        },
+        "0f7a598d-c833-403e-b337-897273217b37": {
+          "type": "entry",
+          "settings": {
+            "counter": "6",
+            "title": "weeks validated efficacy",
+            "url": "#3"
+          }
+        },
+        "6267dddb-7545-44d6-9c30-05aa05458d4e": {
+          "type": "entry",
+          "settings": {
+            "counter": "0",
+            "title": "toxic ingredients and known side-effects",
+            "url": "#zero"
+          }
+        }
+      },
+      "block_order": [
+        "ff59fa4b-1457-4af2-af57-1c9ad23f9b6a",
+        "c7a3c04c-294a-4873-9ff8-b1357a06b48b",
+        "0f7a598d-c833-403e-b337-897273217b37",
+        "6267dddb-7545-44d6-9c30-05aa05458d4e"
+      ],
+      "settings": {
+        "section_width": "",
+        "bg_color": "#f5f5f5",
+        "c_max_width": 420,
+        "title": "IN-VITRO RESULTS OF PTT-6<sup>®<\/sup> ON HAIR FOLLICLE CELL",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+        "text_align": "center",
+        "link_label": "",
+        "link_url": "",
+        "desktop_image": "shopify:\/\/shop_images\/06Secience_Hair-Skin-Image_Text_Square_-desktop-1200x1200.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/06Secience_Hair-Skin-Image_Text_Square_-desktop-1200x1200.jpg",
+        "image_position": "right"
+      }
+    },
+    "4452e344-944d-4321-b230-f0fdedc692ae": {
+      "type": "homepage-testimonial-carousel",
+      "blocks": {
+        "95b5e84b-683e-4822-98e6-be73688fed4c": {
+          "type": "entry",
+          "settings": {
+            "title": "“With the right candidates, I’ve found CALECIM® Advanced Hair System delivers excellent results even in patients who were unresponsive to Minoxidil.”",
+            "author": "Kelly Morrell",
+            "occupation": "Scalp Technician"
+          }
+        },
+        "2049120f-1a67-4337-9520-616b93972b04": {
+          "type": "entry",
+          "settings": {
+            "title": "“With the right candidates, I’ve found CALECIM® Advanced Hair System delivers excellent results even in patients who were unresponsive to Minoxidil.”",
+            "author": "Kelly Morrell",
+            "occupation": "Scalp Technician"
+          }
+        }
+      },
+      "block_order": [
+        "95b5e84b-683e-4822-98e6-be73688fed4c",
+        "2049120f-1a67-4337-9520-616b93972b04"
+      ],
+      "settings": {
+        "section_width": "",
+        "bg_color": "",
+        "c_max_width": 1029,
+        "title_size": "h7",
+        "small_title": "TRUSTED BY SPECIALIST",
+        "text_align": "center",
+        "link_label": "",
+        "link_url": "",
+        "image_position": "left"
+      }
+    },
+    "ea6f8051-b469-4f82-a3c3-8a5dea1839bf": {
+      "type": "horizontal-line",
+      "settings": {
+        "bg_color": "#e7e7e7",
+        "height": 1,
+        "show_on": "all_screen"
+      }
+    },
+    "b63241a0-e7ce-4085-82b7-8ae43b761fac": {
+      "type": "cta-image-text-before-after",
+      "blocks": {
+        "795ac892-7027-463b-adf7-ec322f0fd774": {
+          "type": "before_after",
+          "settings": {
+            "image_before": "shopify:\/\/shop_images\/04Sceince_Intro-Before-desktop-700x930.jpg",
+            "image_after": "shopify:\/\/shop_images\/04Sceince_Intro-After-desktop-700x930.jpg",
+            "title": "4 sessions of Nano-fractional radio frequency treatment with application of Professional Serum, over 12 weeks. Conducted by Dr R. Pamela, CELV Clinic"
+          }
+        },
+        "b22146e9-9f05-4045-9288-060bfc0bfe2c": {
+          "type": "before_after",
+          "settings": {
+            "image_before": "shopify:\/\/shop_images\/04Sceince_Intro-Before-desktop-700x930.jpg",
+            "image_after": "shopify:\/\/shop_images\/04Sceince_Intro-After-desktop-700x930.jpg",
+            "title": "4 sessions of Nano-fractional radio frequency treatment with application of Professional Serum, over 12 weeks. Conducted by Dr R. Pamela, CELV Clinic #2"
+          }
+        },
+        "fa0be6d8-2661-4262-8ffb-ec4ba1e92166": {
+          "type": "cta",
+          "settings": {
+            "cta_product": "advanced-hair-system",
+            "cta_title": "Re-invigorate dormant and hair follicles, and restore healthy hair cycle",
+            "cta_link_label": "View Advanced Hair System"
+          }
+        },
+        "1445965a-9406-4ee1-8374-fdfac039d4a2": {
+          "type": "cta",
+          "disabled": true,
+          "settings": {
+            "cta_product": "multi-action-cream",
+            "cta_title": "Re-invigorate dormant and hair follicles, and restore healthy hair cycle",
+            "cta_link_label": "View Multi Action Cream"
+          }
+        }
+      },
+      "block_order": [
+        "795ac892-7027-463b-adf7-ec322f0fd774",
+        "b22146e9-9f05-4045-9288-060bfc0bfe2c",
+        "fa0be6d8-2661-4262-8ffb-ec4ba1e92166",
+        "1445965a-9406-4ee1-8374-fdfac039d4a2"
+      ],
+      "settings": {
+        "section_width": "container",
+        "background_color": "",
+        "advanced_background_color": "",
+        "content_max_width": 460,
+        "title": "BEFORE & AFTER RESULTS",
+        "text": "Our active ingredient, Rejuvenating Conditioned Media, is not just studied and vigorously tested in the lab. Its results on real patients speak for themselves. \n\nScientists have found that stem cell-derived growth factors are able to re-invigorate dormant and sluggish hair follicles, restoring healthy hair cycle and accelerating follicle cell production. Inflammatory factors found on the scalp that cause follicle cell death are significantly reduced.",
+        "text_align": "tl",
+        "link_label": "",
+        "link_url": "#url",
+        "button_label": "",
+        "button_url": "",
+        "button_color": "",
+        "button_background": "",
+        "button_color_hover": "",
+        "button_background_hover": "",
+        "image_position": "row-reverse",
+        "image_position_mobile": "follow-desktop",
+        "top_padding_m": "40",
+        "bottom_padding_m": "40",
+        "top_padding_t": "60",
+        "bottom_padding_t": "60",
+        "top_padding": "40",
+        "bottom_padding": "40"
+      }
+    }
+  },
+  "order": [
+    "bc63510a-714f-4e47-994e-4f4f4601a964",
+    "84018a7d-795f-4929-bbe6-72e39cfdcf67",
+    "5c6d69fd-d282-4dba-bb85-7b4b79ae1712",
+    "02531ec2-872b-40ff-9e99-35fb7c9b0c3a",
+    "0d9ea767-214a-482c-8a7c-1a933666c487",
+    "d80e3048-6625-4652-982a-be282b32b293",
+    "ffa88a41-059d-4704-8dbc-fa4307caf155",
+    "59f44a62-be0e-41c5-a665-074c07cf66d7",
+    "4452e344-944d-4321-b230-f0fdedc692ae",
+    "ea6f8051-b469-4f82-a3c3-8a5dea1839bf",
+    "b63241a0-e7ce-4085-82b7-8ae43b761fac"
+  ]
+}

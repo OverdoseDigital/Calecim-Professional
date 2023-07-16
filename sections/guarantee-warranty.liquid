@@ -1,0 +1,103 @@
+{%- if section.blocks.size > 0 -%}
+    {%- assign el_id = 'guarantee-' | append: section.id -%}
+    <style>
+    {% if section.settings.bg_color != blank %}
+        #{{ el_id }}  {
+            background-color: {{ section.settings.bg_color }};
+        }
+    {% endif %}
+    #{{ el_id }} .icon {
+        width: 50px;
+    }
+    </style>
+    {%- render 'section-padding', el_id: el_id, section: section -%}
+    <div id="{{ el_id }}" class="fade">
+        <div class="container">
+            <div class="row">
+                {%- for block in section.blocks -%}
+                    <div class="col-12 col-t-3 {% unless forloop.first %}t-bl-1 b-border-orange{% endunless %}">
+                        <div class="flex ai-center pt-20 pb-20 {% unless forloop.last %}bb-1 t-bb-0 b-border-orange{% endunless %}">
+                            <div class="icon flex ai-center jc-center mr-20 t-mr-10">{{ block.settings.icon_svg }}</div>
+                            <p class="p2">{{ block.settings.title }}</p>
+                        </div>
+                    </div>
+                {%- endfor -%}
+            </div>
+        </div>
+    </div>
+{%- endif -%}
+
+{% schema %}
+{
+	"name": "Guarantee & Warranty",
+	"settings": [
+		{
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		},
+		{
+			"type": "header",
+			"content": "General Settings"
+		},
+        {
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		}
+	],
+	"blocks" : [
+		{
+			"type": "icon",
+			"name": "Item",
+			"settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Text"
+                },
+				{
+                    "type": "textarea",
+                    "id": "icon_svg",
+                    "label": "Icon SVG"
+                }
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Guarantee & Warranty",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

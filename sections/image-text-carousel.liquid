@@ -1,0 +1,186 @@
+{% comment %} Calecim Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color: {{ section.settings.bg_color }};
+    }
+
+    #shopify-section-{{ section.id }} .swiper-slide {
+        flex: 0 0 75%;
+        padding: 0 7.5px;
+    }
+    #shopify-section-{{ section.id }} .swiper {
+        margin: 0 -7.5px;
+        overflow: visible!important;
+        clip-path: inset(-100vw -100vw -100vw -100vw);
+    }
+
+    @media screen and (min-width: 768px) {
+        #shopify-section-{{ section.id }} .swiper-slide {
+            flex: 0 0 40%;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        #shopify-section-{{ section.id }} .swiper {
+            margin: 0 -10px;
+        }
+        #shopify-section-{{ section.id }} .swiper-slide {
+            flex: 0 0 25%;
+            padding: 0 10px;
+        }
+    }
+</style>
+
+<section class="image-text-carousel overflow">
+    <div class="container">
+        {%- if section.settings.title != blank -%}
+            <div class="title-container tc">
+                <div class="max-610 mr-auto ml-auto">
+                    <h2 class="{{ section.settings.title_class }}">{{ section.settings.title | newline_to_br }}</h2>
+                </div>
+            </div>
+        {%- endif -%}
+
+        <div class="carousel-wrapper mt-15 d-mt-30"> 
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {%- for block in section.blocks -%}
+                        <div class="swiper-slide">
+                            <div class="inner-wrapper">
+                                {%- render 'global-image-wrapper',
+                                    image: block.settings.image
+                                -%}
+                                <p class="p3 bold-500 mt-15">{{ block.settings.title }}</p>
+
+                                {%- if block.settings.text != blank -%}
+                                    <p class="p3 mt-5 opacity-5">{{ block.settings.text }}</p>
+                                {%- endif -%}
+                            </div>
+                        </div>
+                    {%- endfor -%}
+                </div>
+            </div>
+
+            <div class="swiper-pagination mt-25 show-m hide-d"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    let image_text_swiper = new Swiper('#shopify-section-{{ section.id }} .swiper', {
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        loop: false,
+        pagination: {
+            el: "#shopify-section-{{ section.id }} .swiper-pagination",
+            clickable: true,
+            type: "progressbar"
+        },
+        on: {
+            init: function() {
+                $360.lazyLoadInstance.update();
+            },
+            slideChange: function() {
+                $360.lazyLoadInstance.update();
+            },
+            resize: function() {
+                $360.lazyLoadInstance.update();
+            }
+        }
+    });
+</script>
+
+{% schema %}
+    {
+        "name": "Image + Text Carousel",
+        "settings": [
+            {
+                "type": "color",
+                "id": "bg_color",
+                "label": "Background Color"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "radio",
+                "id": "title_class",
+                "label": "Title Class",
+                "options": [
+                    {"value":"h3","label":"H3"},
+                    {"value":"h4","label":"H4"},
+                    {"value":"h5","label":"H5"}
+                ]
+            },
+            {
+                "type": "header",
+                "content": "Section Padding"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_m",
+                "label": "Top padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_m",
+                "label": "Bottom padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_t",
+                "label": "Top padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_t",
+                "label": "Bottom padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding",
+                "label": "Top padding (Desktop)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding",
+                "label": "Bottom padding (Desktop)"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "limit": 4,
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "text",
+                        "label": "Text"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Image + Text Carousel",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}

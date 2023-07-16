@@ -1,0 +1,49 @@
+<div class="article-each community-ambassador-big relative {{additional_class}}">
+	<a href="{{article.url}}" class="show-m relative">
+		{% if article.metafields.featured_image.grid_image != blank %}
+			{% assign article_image = article.metafields.featured_image.grid_image %}
+			{% assign mobile_acc = true %}
+            {% assign desktop_acc = true %}
+		{% else %}
+			{% assign article_image = article.image %}
+			{% assign mobile_acc = false %}
+            {% assign desktop_acc = false %}
+		{% endif %}
+
+        {%- assign id = "main-video-" | append: article.handle | replace: '-', '' | replace: '/', '' | truncate: 20, '' -%}
+        {%- render 'global-video-wrapper-responsive',
+            desktop_image: article_image,
+            mobile_image: article_image,
+            mobile_acc: mobile_acc,
+            desktop_acc: desktop_acc,
+            desktop_video_url: article.metafields.community_sa.video_url,
+            mobile_video_url: article.metafields.community_sa.video_url,
+            video_id: id,
+            load_inside_vue: false
+        -%}
+
+        <div class="text-wrapper width-100 tl ab-bottom-left z-2 pl-30 pr-30 pb-30 pt-100">
+            <div class="title-wrapper global-flex jc-between ai-center">
+                <div>
+                    <p class="p2 bold-500 c-white">{{ article.title }}</p>
+
+                    {%- if article.metafields.community_sa.social_media != blank -%}
+                        <p class="p3 c-white">{{ article.metafields.community_sa.social_media }}</p>
+                    {%- else -%}
+                        <p class="p3 c-white">@socialmedia</p>
+                    {%- endif -%}
+                </div>
+                <div class="icon-wrapper">
+                    <a href="javascript:void(0)" onclick="$360.playPauseVideo(event,'.community-ambassador-big')" rel="nofollow" class="play-pause">
+                        <span class="play">
+                            {{ settings.icon_play }}
+                        </span>
+                        <span class="pause">
+                            {{ settings.icon_pause }}
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+	</a>
+</div>

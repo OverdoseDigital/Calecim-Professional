@@ -1,0 +1,203 @@
+{%  comment  %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+<style>
+  #shopify-section-{{ section.id }} {
+    {% if section.settings.e_border_top %}
+    border-top: 1px solid #dbdbdb;
+    {% endif %}
+    {% if section.settings.e_border_bottom %}
+    border-bottom: 1px solid #dbdbdb;
+    {% endif %}
+  }
+  #shopify-section-{{ section.id }} .cpc-carousel-items {
+    max-width: 240px;
+  }
+  #shopify-section-{{ section.id }} .cpcci-box {
+    width: 240px;
+  }
+  #shopify-section-{{ section.id }} .community-past-campaigns > h1 {
+    text-align: center;
+  }
+  .cpcci-caption .link-icon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .cpcci-caption .link-icon span.text {
+    max-width: 84%;
+  }
+  .cpcci-caption .link-icon span.icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 1000px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #DBDBDB;
+  }
+  @media screen and (min-width: 768px){
+    
+  }
+  @media screen and (min-width: 1024px){
+    #shopify-section-{{ section.id }} .cpc-carousel-items {
+      max-width: calc(25% - 40px);
+    }
+    #shopify-section-{{ section.id }} .cpcci-box {
+      width: 100%;
+    }
+  }
+  @media screen and (min-width: 1366px){
+  }
+</style>
+<div class="community-past-campaigns" id="community-past-campaigns-{{ section.id }}">
+  <h1 class="h5">{{ section.settings.title }}</h1>
+  <div class="cpc-carousel swiper d-mt-40 mt-30 pb-30 d-pl-35 d-pr-35 t-pl-30 t-pr-30 pl-25 pr-25">
+    <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      {% capture thecycle %}{% cycle 'odd', 'even' %}{% endcapture %}
+      <div class="cpc-carousel-items swiper-slide d-ml-20 d-mr-20 {% unless forloop.last == true %}mr-15 ml-0{% endunless %} {% if thecycle == 'even' %}d-pt-40 pt-0{% endif %}">
+        <div class="cpcci-box">
+          {%- assign image_id = "community-past-campaigns-" | append: block.id -%}
+          {%- render 'global-image-wrapper',
+            image_id: image_id,
+            image: block.settings.image
+          %}
+          <div class="cpcci-caption mt-10">
+            {% render 'link-icon',
+              id: link_id,
+              label: block.settings.title,
+              url: block.settings.url,
+              text_class: 'p2 uppercase c-black spacing-1 bold-600',
+              icon_color: '#fffff',
+              icon_svg: settings.icon_slide_right,
+              load_inside_vue: true
+            %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+<script>
+    const communitypastcampaigns = Vue.createApp({
+        delimiters: [
+            '${', '}'
+        ],
+        data() {
+            return {
+              tab: 1
+            }
+        },
+        mounted() {
+          this.initSwiper()
+        },
+        created() {
+          window.addEventListener("resize", this.initSwiper);
+        },
+        methods: {
+          initSwiper() {
+            this.product_rec_carousel = new Swiper(".community-past-campaigns .swiper", {
+              direction: 'horizontal',
+              slidesPerView: 'auto',
+              watchSlidesProgress: true,
+              loop: false,
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                  renderBullet: function (index, className) {
+                    return '<span class="' + className + '"></span>';
+                  },
+              },
+            });
+          },
+        }
+    }).mount('#community-past-campaigns-{{ section.id }}');
+</script>
+{% schema %}
+  {
+    "name": "Community Past Campaigns",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "e_border_top",
+        "label": "Enable Border Top"
+      },
+      {
+        "type": "checkbox",
+        "id": "e_border_bottom",
+        "label": "Enable Border Bottom"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "header",
+        "content": "Padding Settings"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_m",
+        "label": "Top Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_m",
+        "label": "Bottom Padding (Mobile)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding_t",
+        "label": "Top Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding_t",
+        "label": "Bottom Padding (Tablet)"
+      },
+      {
+        "type": "number",
+        "id": "top_padding",
+        "label": "Top Padding (Desktop)"
+      },
+      {
+        "type": "number",
+        "id": "bottom_padding",
+        "label": "Bottom Padding (Desktop)"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Entry",
+        "type": "entry",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Url"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Community Past Campaigns"
+      }
+    ]
+  }
+{% endschema %}

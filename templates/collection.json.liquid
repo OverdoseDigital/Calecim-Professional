@@ -1,0 +1,8 @@
+{%- layout none -%}
+{%- paginate collection.products by settings.collection_limit -%}
+    {%- for product in collection.products -%}
+        <div class="col-12 col-t-6 col-d-3 mt-30 product-each-wrapper">  
+            {%- render 'product-each', product: product -%}
+        </div>
+    {%- endfor -%}
+{%- endpaginate -%}

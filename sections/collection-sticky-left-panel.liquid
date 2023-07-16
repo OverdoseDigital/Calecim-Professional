@@ -1,0 +1,89 @@
+{% comment %} Love&Co Theme {% endcomment %}
+
+<style>
+    @media screen and (min-width: 1024px) {
+        {{ section.settings.push_ids }} {
+            padding-left: 75px;
+        }
+
+        #shopify-section-{{ section.id }} .sticky-container {
+            position: absolute;
+            background: #fff;
+        }
+
+        #shopify-section-{{ section.id }} .sticky-inner {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            height: 100vh;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            border-left: 1px solid var(--silver);
+            background: #fff;
+        }
+    }
+</style>
+
+<section id="coll-sticky-left-panel">
+    <div class="sticky-container tc">
+        <h3 class="sticky-inner p3 uppercase spacing-2 bold-600 pt-40 pb-15 d-p-30">{{ section.settings.title }}</h3>
+    </div>
+</section>
+
+<script>
+    const collStickyVue = Vue.createApp({
+        delimiters: ['${','}'], 
+        data() {
+			return {
+				stickyHeight: 0
+			}
+		},
+		mounted() {
+            if(screen.width > 1023) {
+                window.onload = () => {
+                    let total_height = 0;
+                    let section_obj;
+
+                    {%- assign section_objs = section.settings.push_ids | split: ',' -%}
+                    {%- for section_obj in section_objs -%}
+                        section_obj = document.querySelector(`{{ section_obj }}`);
+                        total_height += section_obj.offsetHeight;
+                    {%- endfor -%}
+
+                    this.stickyHeight = total_height + 79;
+
+                    const sticky_parent = document.querySelector('#coll-sticky-left-panel .sticky-container');
+                    sticky_parent.style.height = this.stickyHeight + 'px'
+                }
+            }
+        },
+        methods: {
+        }
+    }).mount('#coll-sticky-left-panel');
+</script>
+
+{% schema %}
+    {
+        "name": "Coll - Sticky Left Panel",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title"
+            },
+            {
+                "type": "textarea",
+                "id": "push_ids",
+                "label": "Sections ID to push",
+                "info": "Each entries separated by comma. Add # on each entries."
+            }
+        ],
+        "presets": [
+            {
+                "name": "Coll - Sticky Left Panel",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}

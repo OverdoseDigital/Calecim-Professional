@@ -1,0 +1,170 @@
+{% comment %} Love&Co Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+    }
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        display:flex;
+        flex-wrap:wrap;
+        margin:0 -7.5px;
+    }
+    #shopify-section-{{ section.id }} .image-container{
+        width:50%;
+        padding-left:7.5px;
+        padding-right:7.5px;
+    }
+    #shopify-section-{{ section.id }} .text-content{
+        position:absolute;
+        width:100%;
+        bottom:15px;
+        padding:0 15px;
+    }
+    
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .text-content{
+            padding:0 20px;
+        }
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            margin:0 -10px;
+        }
+        #shopify-section-{{ section.id }} .image-container{
+            width:25%;
+            padding-left:10px;
+            padding-right:10px;
+        }
+        #shopify-section-{{ section.id }} .top-container{
+            display:flex;
+            align-items: baseline;
+            justify-content:space-between;
+        }
+        #shopify-section-{{ section.id }} .text-content{
+            bottom:20px;
+            padding:0 25px;
+        }
+    }
+
+</style>
+
+<section id="{{ section.id }}" class="homepage-category">
+    <div class="container">
+        <div class="top-container pb-25 d-pb-30">
+            <div class="h5 pb-5 d-pb-0">{{section.settings.title}}</div>
+            {%if section.settings.link_label != blank%}
+            <a href="{{section.settings.link_url}}" class="link1">{{section.settings.link_label}}<span class="ml-5" style="display:inline-flex;">{{settings.icon_btn_right}}</span></a>
+            {%endif%}
+        </div>
+        <div class="flex-wrapper">
+            {%for block in section.blocks%}
+            <div class="image-container relative {%if forloop.index == 1 or forloop.index == 2%}mb-15 d-mb-0{%endif%}">
+                <a href="{{block.settings.url}}">
+                    {%assign image_id = "homepage-category" | append: forloop.index%}
+                    {%- render 'global-image-wrapper-responsive',
+                        image_id: image_id,
+                        desktop_image: block.settings.desktop_image,
+                        mobile_image: block.settings.mobile_image
+                    %}
+                    <div class="text-content">
+                        <div class="h11">{{block.settings.title}}</div>
+                    </div>
+                </a>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Homepage Category",
+        "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "link_label",
+            "label": "Link Label"
+        },
+        {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL"
+        },
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "blocks": [
+            {
+                "type": "entry",
+                "name": "Entry",
+                "limit": 4,
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title"
+                    },
+                    {
+                        "type": "url",
+                        "id": "url",
+                        "label": "URL"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "desktop_image",
+                        "label": "Desktop Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "mobile_image",
+                        "label": "Mobile Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+        {
+            "name": "Homepage Category",
+            "blocks": []
+        }
+        ]
+    }
+{% endschema %}

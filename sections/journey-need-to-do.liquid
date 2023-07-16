@@ -1,0 +1,390 @@
+{% comment %} calecim {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #shopify-section-{{ section.id }} {
+        background-color:{{section.settings.background_color}};
+    }
+    #shopify-section-{{ section.id }} .flex-wrapper{
+        {% comment %} background-color:{{section.settings.background_color}}; {% endcomment %}
+        flex-direction:column-reverse;
+    }
+    #shopify-section-{{ section.id }} .htt-left-container{
+        width:100%;
+    }
+    #shopify-section-{{ section.id }} .htt-left-container .text-tag {
+        background-color: #fff;
+        border-radius: 13px;
+        display: inline-block;
+        position: absolute;
+        top:0;
+        right: 0;
+    }
+    #shopify-section-{{ section.id }} .htt-right-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    #shopify-section-{{ section.id }} .text-container{
+        width:100%;
+        max-width:{{section.settings.content_max_width}}px;
+        margin:0 auto;
+    }
+    #shopify-section-{{ section.id }} .citi-it-con {
+        column-gap: 6px;
+        row-gap: 15px;
+    }
+    #shopify-section-{{ section.id }} .citi-it-item {
+        width: 100%;
+        align-items: center;
+    }
+    #shopify-section-{{ section.id }} .citi-icon{
+        min-width: 35px;
+        width: 35px;
+        height: 35px;
+        padding: 7px;
+        border-radius: 35px;
+        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #shopify-section-{{ section.id }} .list-bullet{
+        min-width: 30px;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #shopify-section-{{ section.id }} .list-text b,
+    #shopify-section-{{ section.id }} .list-text strong {
+        font-weight: 500;
+    }
+    #shopify-section-{{ section.id }} .list-text a {
+        text-decoration: underline;
+    }
+    #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .image-wrapper {
+        flex: 0 0 60px;
+    }
+    #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .text-wrapper {
+        flex: 0 0 calc(100% - 60px);
+    }
+    {%- if section.settings.section_width == blank -%}
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    {%- endif -%}
+    #shopify-section-{{ section.id }} .shwr-bot {
+        border-top: 1px solid rgba(35, 29, 29,.1);
+        text-align: center;
+    }
+    #shopify-section-{{ section.id }} .shwr-bot > div {
+        width: 100%;
+        display: block;
+    }
+
+    @media(min-width: 768px) {
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left:30px;
+            padding-right:30px;
+        }
+        {%- if section.settings.text_align == 'tc' -%}
+            #shopify-section-{{ section.id }} .text-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        {%- endif -%}
+
+        {%- if section.settings.section_width == blank -%}
+            #shopify-section-{{ section.id }} .text-container{
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+        {%- endif -%}
+    }
+    @media(min-width: 1024px) {
+        #shopify-section-{{ section.id }} .htt-left-container{
+            width:50%;
+        }
+        #shopify-section-{{ section.id }} .htt-left-container .global-image-wrapper {
+            height: 100%;
+        }
+        #shopify-section-{{ section.id }} .htt-left-container .global-image-wrapper .image {
+            object-fit: cover;
+            height: 100%;
+        }
+        #shopify-section-{{ section.id }} .htt-right-container {
+            width: 50%;
+        }
+        #shopify-section-{{ section.id }} .text-container{
+            padding-left:40px;
+            padding-right:40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #shopify-section-{{ section.id }} .flex-wrapper{
+            flex-direction:{{section.settings.image_position}};
+        }
+        #shopify-section-{{ section.id }} .citi-icon{
+            min-width: 40px;
+            width: 40px;
+            height: 40px;
+            padding: 9px;
+            border-radius: 40px;
+        }
+        #shopify-section-{{ section.id }} .citi-it-item {
+            width: 100%;
+        }
+        #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .image-wrapper {
+            flex: 0 0 80px;
+        }
+        #shopify-section-{{ section.id }} .carousel-wrapper .inner-wrapper .text-wrapper {
+            flex: 0 0 calc(100% - 80px);
+        }
+
+        {%- if section.settings.section_width == blank -%}
+            #shopify-section-{{ section.id }} .text-container{
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+        {%- endif -%}
+        #shopify-section-{{ section.id }} .shwr-bot {
+            border-top: 1px solid rgba(35, 29, 29,.1);
+            text-align: center;
+          }
+          #shopify-section-{{ section.id }} .shwr-bot > div {
+            width: 100%;
+            display: block;
+          }
+    }
+    
+    @media(min-width: 1024px) and (max-width:1200px) {
+        #shopify-section-{{ section.id }} .htt-left-container .global-image-wrapper {
+            padding-bottom: 0;
+        }
+    }
+    @media(min-width: 1200px) {
+        #shopify-section-{{ section.id }} .htt-left-container .global-image-wrapper .image {
+            object-fit: unset;
+            height: auto;
+        }
+    }
+</style>
+
+<section id="{{ section.id }}" class="cta-image-text">
+    <div class="{{section.settings.section_width}}">
+        <div class="flex flex-wrap flex-wrapper">
+            <div class="htt-left-container relative">
+                {%assign image_id = "cta-image-text_" | append: section.id%}
+                {%- render 'global-image-wrapper-responsive',
+                    image_id: image_id,
+                    desktop_image: section.settings.desktop_image,
+                    mobile_image: section.settings.mobile_image
+                %} 
+            </div>
+            <div class="htt-right-container">
+                {% assign has_list = false %}
+                {% for block in section.blocks %}
+                    {%- if block.type == 'list' -%}
+                    {% assign has_list = true %}
+                    {%- endif-%}
+                {% endfor %}
+                <div class="text-container pb-30 t-pb-50 d-pb-0 {{section.settings.text_align}}">
+                    {%- if section.settings.number != blank -%}
+                    <div class="h8 c-black">{{section.settings.number}}</div>
+                    {%- endif -%}
+                    {%- if section.settings.title != blank -%}
+                    <div class="h3 c-black mb-10 d-mb-15">{{section.settings.title}}</div>
+                    {%- endif -%}
+                    {%- if section.settings.text != blank -%}
+                    <div class="p2 {% if has_list == true %}pb-20 d-pb-25{% endif %} c-grey text-desc">{{section.settings.text | newline_to_br}}</div>
+                    {%- endif -%}
+                    {%- if has_list == true-%}
+                    <ul class="citi-it-con {%- if section.settings.text_below_icon != blank -%}d-pb-25 pb-20{% endif %}">
+                        {% for block in section.blocks %}
+                            {%- if block.type == 'list' -%}
+                                {%- if block.settings.title != blank -%}
+                                <li class="global-flex tl {%- unless forloop.last == true -%}d-mb-25 mb-20{% endunless %}">
+                                    <span class="list-bullet b-1 b-black mt-5 p3 bold-500">
+                                        {{ forloop.index }}
+                                    </span>
+                                    <span class="list-text p2 pl-15">{{ block.settings.title }}</span>
+                                </li>
+                                {%- endif -%}
+                            {%- endif -%}
+                        {% endfor %}
+                    </ul>
+                    {%- endif -%}
+                    {%- if section.settings.text_below_icon != blank -%}
+                    <div class="p2 c-grey text-desc">{{section.settings.text_below_icon | newline_to_br}}</div>
+                    {%- endif -%}
+                </div>
+                {%- if section.settings.link_url != blank -%}
+                <div class="shwr-bot">
+                    <div class="link3">
+                      {%- assign link_id = "shwrb-link-" | append: section.id -%}
+                      {%- render 'link-icon',
+                          id: link_id,
+                          label: section.settings.link_label,
+                          url: section.settings.link_url,
+                          text_class: 'p3 mr-10 pt-20 pb-20',
+                          icon_color: '#231D1D',
+                          icon_svg: settings.icon_arrow_diagonal_up,
+                          load_inside_vue: false
+                      -%}
+                  </div>
+                </div>
+                {%- endif -%}
+            </div>
+        </div>
+    <div>
+</section>
+
+{% schema %}
+    {
+        "name": "Journey - Need To Do",
+        "settings": [
+        {
+            "type": "radio",
+            "id": "section_width",
+            "label": "Section Width",
+            "options": [
+                {"value":"","label":"Full Width"},
+                {"value":"container","label":"Contained"}
+            ]
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "number",
+            "id": "content_max_width",
+            "label": "Content Max Width",
+            "default": 500
+        },
+        {
+            "type": "text",
+            "id": "number",
+            "label": "Number text"
+        },
+        {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "textarea",
+            "id": "text",
+            "label": "Text"
+        },
+        {
+            "type": "textarea",
+            "id": "text_below_icon",
+            "label": "Text Below Icons/List"
+        },
+        {
+            "type": "radio",
+            "id": "text_align",
+            "label": "Text Align",
+            "options": [
+                {"value":"tc","label":"Center"},
+                {"value":"tl","label":"Left"},
+                {"value":"tr","label":"Right"}
+            ]
+        },
+        {
+        "type": "text",
+        "id": "link_label",
+        "label": "Link Label"
+        },
+        {
+            "type": "url",
+            "id": "link_url",
+            "label": "Link URL"
+        },
+        {
+            "type": "image_picker",
+            "id": "desktop_image",
+            "label": "Desktop Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "mobile_image",
+            "label": "Mobile Image"
+        },
+        {
+            "type": "radio",
+            "id": "image_position",
+            "label": "Image Position (Desktop)",
+            "options": [
+                {"value":"row","label":"Left"},
+                {"value":"row-reverse","label":"Right"}
+            ]
+        },
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "blocks": [
+                {
+                    "type": "list",
+                    "name": "List Item",
+                    "settings": [
+                        {
+                            "type": "textarea",
+                            "id": "title",
+                            "label": "Text"
+                        }
+                    ]
+                }
+            ],
+        "presets": [
+        {
+            "name": "Journey - Need To Do",
+            "blocks": [] 
+        }
+        ]
+    }
+{% endschema %}

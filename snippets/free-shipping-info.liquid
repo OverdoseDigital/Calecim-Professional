@@ -1,0 +1,25 @@
+{% comment %}
+Love&Co Theme
+Description:
+Snippet for displaying free shipping information
+
+Variables:
+wrapper_class: String, class for the wrapper
+text_class: String, class for the text
+{% endcomment %}
+{%- if settings.cart_enable_fs_info -%}
+    <div class="free-shipping-info {{ wrapper_class }}">
+        {%- assign cf = settings.cart_fs_free | times: 100 -%}
+        {%- if cart.total_price >= cf -%}
+            {%- assign text = settings.cart_fs_after -%}
+        {%- else -%}
+            {%- assign current = cf | minus: cart.total_price | money -%}
+            {%- assign text = settings.cart_fs_before | replace: "[amount]", current -%}
+        {%- endif -%}
+        <p class="{{ text_class }}">{{ text }}</p>
+        <div class="overflow" style="background: #d8e2de;height:4px;position:relative;">
+            <div style="position:absolute;background:#93D0B3;top:0;left:0;height:4px;width:{{ cart.total_price | divided_by:settings.cart_fs_free | round:2 }}%;"></div>
+        </div>
+    </div>
+{%- endif -%}
+<!-- end free shipping info -->

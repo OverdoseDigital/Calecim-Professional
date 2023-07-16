@@ -1,0 +1,166 @@
+{%  comment  %} Love&Co Theme {% endcomment %}
+<style>
+  #shopify-section-{{ section.id }} .collection-shop-styles {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  #shopify-section-{{ section.id }} .css-left {
+    background-color: {{ section.settings.background_color_text }};
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .css-right { 
+    background-color: {{ section.settings.background_color_image }};       
+  } 
+  #shopify-section-{{ section.id }} .css-left > h6 { 
+    color: #5EB98D;
+  }
+  #shopify-section-{{ section.id }} .css-left a > h5 {
+    color: #2C2C2C45;
+    transition: .5s;
+    cursor: pointer;
+  }
+  #shopify-section-{{ section.id }} .css-left a > h5:hover,
+  #shopify-section-{{ section.id }} .css-left a > h5.active {
+    color: #2C2C2C;
+  } 
+  #shopify-section-{{ section.id }} .css-right > a {
+    display: none;
+  }
+  #shopify-section-{{ section.id }} .css-right > a.active { 
+    display: block;
+  }
+  @media screen and (min-width: 1024px){
+    #shopify-section-{{ section.id }} .collection-shop-styles {
+      display: flex;
+      flex-direction: row;
+    }
+    #shopify-section-{{ section.id }} .css-left {
+      min-width: 40%;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    } 
+    #shopify-section-{{ section.id }} .css-right {
+      min-width: 60%;
+    }
+    #shopify-section-{{ section.id }} .css-right > a {
+      max-width: 70%;  
+      margin: 0 auto;
+    }
+  }
+</style>
+<div class="collection-shop-styles" id="collection-shop-styles-{{ section.id }}">
+  <div class="css-left pt-40 pb-40 pl-25 pr-25 t-pl-30 t-pr-30 t-pt-60 t-pb-60" id="css-left-{{ section.id }}">
+    <h6 class="p3 bold-600 spacing-2">{{ section.settings.small_title }}</h6>
+    {%- for block in section.blocks -%} 
+      <a href="{{ block.settings.url }}">
+      <h5 class="h5 {% if forloop.index == 1 %}active mt-30 d-mt-50{% else %}mt-15 hd-mt-20{% endif %}"  @mouseover="setImage({{ forloop.index }})" data-index="{{ forloop.index }}">{{ block.settings.title }}</h5>
+      </a>
+    {%- endfor -%}
+  </div>
+  <div class="css-right pt-40 pb-40 pl-25 pr-25 t-pl-30 t-pr-30 t-pt-60 t-pb-60 d-pt-80 d-pb-80">
+    {%- for block in section.blocks -%}
+    <a href="{{ block.settings.url }}" class="{% if forloop.index == 1 %}active{% endif %}" data-index="{{ forloop.index }}">
+        {%- assign image_id = "collection-main-banner-" | append: block.id -%}
+        {%- render 'global-image-wrapper-responsive',
+          image_id: image_id,
+          desktop_image: block.settings.image_desktop,
+          mobile_image: block.settings.image_mobile,
+          image_change_breakpoint: 'desktop'
+        %}
+      </a> 
+    {%- endfor-%}
+  </div>
+</div>
+<script>
+    const ProducImagesVue = Vue.createApp({
+        delimiters: [
+            '${', '}'
+        ],
+        data() {
+            return {}
+        },
+        mounted() {
+        },
+        methods: {
+          setImage(idx){
+            let texts = document.querySelectorAll(".css-left > a h5");
+            let actTexts = document.querySelector(`.css-left > a h5[data-index="${idx}"]`)
+            let images = document.querySelectorAll(".css-right > a");
+            let actImages = document.querySelector(`.css-right > a[data-index="${idx}"]`)
+            images.forEach(function(image) {
+              image.classList.remove('active');
+            });
+            actImages.classList.add("active")
+
+            texts.forEach(function(text) {
+              text.classList.remove('active');
+            });
+            actTexts.classList.add("active")
+          }
+        }
+    }).mount('#css-left-{{ section.id }}');
+</script>
+{% schema %}
+  {
+    "name": "Collection Shop Styles",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color_text",
+        "label": "Background Color (Text Container)",
+        "default": "#C8E7D9"
+      },
+      {
+        "type": "color",
+        "id": "background_color_image",
+        "label": "Background Color (Image Container)",
+        "default": "#C8E7D9"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color"
+      },
+      {
+        "type": "text",
+        "id": "small_title",
+        "label": "Small Title"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Entry",
+        "type": "entry",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Url"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_desktop",
+            "label": "Desktop Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_mobile",
+            "label": "Mobile Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Shop Styles"
+      }
+    ]
+  }
+{% endschema %}

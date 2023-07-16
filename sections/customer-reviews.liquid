@@ -1,0 +1,188 @@
+<style>
+.customer-reviews-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.customer-reviews-box .items-list-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.customer-reviews-box .items-list-box .item-each {
+    width: calc(50% - 10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.customer-reviews-box .items-list-box .item-each .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.customer-reviews-box .items-list-box .item-each .stars {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.customer-reviews-box .items-list-box .item-each .reviews {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.customer-reviews-box .items-list-box .item-each .info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (min-width: 768px) {
+	.customer-reviews-box .items-list-box .item-each {
+        width: calc(25% - 15px);
+    }
+}
+@media screen and (min-width: 1024px) {
+	.customer-reviews-box .items-list-box .item-each {
+        width: calc(25% - 15px);
+    }
+}
+</style>
+{%- assign el_id = 'customer-reviews-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<div id="{{ el_id }}" class="relative" {% if section.settings.bg_color != blank %}style="background-color: {{ section.settings.bg_color }}"{% endif %}>
+    <div class="container">
+        <div class="customer-reviews-box">
+            {% if section.settings.title != blank %}
+            <h3 class="h3 tc mb-10 c-greenb2">{{ section.settings.title }}</h3>
+            {% endif %}
+            <ul class="items-list-box">
+                {% for block in section.blocks %}
+                <li class="item-each mt-10 mb-10">
+					{%- if block.settings.url != blank -%}
+					<a href="{{ block.settings.url }}">
+					{%- endif -%}
+                    <div class="logo mb-10">
+                        {{ block.settings.logo }}
+                    </div>
+                    <div class="stars mb-10">
+                        {% render 'stars', num: block.settings.no_star %}
+                    </div>
+                    <div class="reviews mb-10 h4 bold-700 c-border-dark">
+                        {{ block.settings.no_review }}
+                    </div>
+                    <div class="info p1 bold-500 c-border-dark">
+                        reviews
+                    </div>
+					{%- if block.settings.url != blank -%}
+					</a>
+					{%- endif -%}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+	"name": "Customer Reviews",
+	"settings": [
+		{
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "number",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		},
+		{
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		},
+		{
+			"type": "textarea",
+			"id": "title",
+			"label": "Title"
+		},
+        {
+			"type": "color",
+			"id": "title_color",
+			"label": "Title Color",
+            "default": "#FFFFFF"
+		}
+	],
+	"blocks" : [
+		{
+			"type": "review",
+			"name": "Review",
+			"settings": [
+				{
+					"type": "textarea",
+					"id": "logo",
+					"label": "Logo SVG"
+				},
+                {
+					"type": "number",
+					"id": "no_star",
+					"label": "Number of Stars",
+                    "default": 5
+				},
+                {
+					"type": "number",
+					"id": "no_review",
+					"label": "Number of Reviews",
+                    "default": 5
+				},
+                {
+					"type": "url",
+					"id": "url",
+					"label": "URL"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Customer Reviews",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

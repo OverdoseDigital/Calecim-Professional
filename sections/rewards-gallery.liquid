@@ -1,0 +1,228 @@
+{% comment %} Calecim Theme {% endcomment %}
+{% assign el_id = "shopify-section-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+
+<style>
+  #shopify-section-{{ section.id }} .product-each-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  #shopify-section-{{ section.id }} .product-each-wrapper .button-wrapper{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+#shopify-section-{{ section.id }} .product-each-wrapper .button-wrapper .icon {
+  border-radius: 32px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #000;
+}
+    @media screen and (min-width: 1024px) {
+        
+    }
+</style>
+
+<section id="{{ section.id }}" class="overflow">
+<div id="rewards-gallery" class="">
+    <div class="container">
+        <div class="row">
+          <{{ section.settings.title_dom_type }} class="{{ section.settings.title_size }} c-black max-300 d-max-500 mr-auto ml-auto tc">{{ section.settings.title | newline_to_br }}</{{ section.settings.title_dom_type }}>
+          {% if section.settings.text != blank %}
+            <p class="mt-10  p2 c-black max-300 d-max-500 mr-auto ml-auto tc">{{ section.settings.text }}</p>
+          {% endif %}
+            <div class="global-flex flex-wrap product-wrapper mt-20 d-mt-40">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'product' -%}
+                  
+                    {%- assign product = block.settings.product -%}
+                    {%- assign product_coins_label = block.settings.coins_label -%}
+                      <div class="col-6 col-d-3 mb-20 d-mb-50">
+                        <div class="product-each-wrapper">
+                          {%- render 'product-each-calecim-gallery',product: product,product_coins_label: product_coins_label -%}
+                        </div>
+                      </div>
+                      
+                {%- endif -%}
+                {%- if block.type == 'content' -%}
+                  
+                  {%- assign content_title = block.settings.title -%}
+                  {%- assign content_text = block.settings.text -%} 
+                  {%- assign content_image = block.settings.image -%} 
+                  {%- assign content_coins_label = block.settings.coins_label -%}
+                    <div class="col-6 col-d-3 mb-20 d-mb-50">
+                      <div class="product-each-wrapper">
+                        {%- render 'product-each-calecim-gallery',
+                          title: content_title,
+                          text: content_text,
+                          content_image: content_image,
+                          coins_label: content_coins_label
+                           -%}
+                      </div>
+                    </div>
+                    
+              {%- endif -%}
+              {%- endfor -%}
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+</section>
+
+{% schema %}
+    {
+        "name": "Rewards - Gallery",
+        "settings": [
+            {
+              "type": "textarea",
+               "id": "title",
+              "label": "Title"
+            },
+            {
+              "type": "textarea",
+              "id": "text",
+              "label": "Text"
+            },
+            {
+              "type": "select",
+              "id": "title_size",
+              "label": "Title size",
+              "options": [
+                  {
+                      "value": "h1",
+                      "label": "H1"
+                  },
+                  {
+                      "value": "h2",
+                      "label": "H2"
+                  },
+                  {
+                      "value": "h3",
+                      "label": "H3"
+                  },
+                  {
+                      "value": "h4",
+                      "label": "H4"
+                  }
+              ],
+              "default": "h3"
+            },
+            {
+              "type": "select",
+              "id": "title_dom_type",
+              "label": "Title DOM type",
+              "options": [
+                  {
+                      "value": "h1",
+                      "label": "H1"
+                  },
+                  {
+                      "value": "h2",
+                      "label": "H2"
+                  },
+                  {
+                      "value": "h3",
+                      "label": "H3"
+                  },
+                  {
+                      "value": "h4",
+                      "label": "H4"
+                  }
+              ],
+              "default": "h3"
+            },
+            {
+                "type": "header",
+                "content": "Section Padding"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_m",
+                "label": "Top padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_m",
+                "label": "Bottom padding (Mobile)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding_t",
+                "label": "Top padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding_t",
+                "label": "Bottom padding (Tablet)"
+            },
+            {
+                "type": "text",
+                "id": "top_padding",
+                "label": "Top padding (Desktop)"
+            },
+            {
+                "type": "text",
+                "id": "bottom_padding",
+                "label": "Bottom padding (Desktop)"
+            }
+      ],
+      "blocks":[
+        {
+            "type": "content",
+            "name": "Content",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "textarea",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                  "type": "textarea",
+                  "id": "text",
+                  "label": "Text"
+              },
+                {
+                    "type": "text",
+                    "id": "coins_label",
+                    "label": "Coins Label"
+                }
+            ]
+        },
+        {
+            "type": "product",
+            "name": "Product",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
+                },
+                {
+                    "type": "text",
+                    "id": "coins_label",
+                    "label": "Coins Label"
+                }
+            ]
+        }
+      ],
+      "presets": [
+        {
+            "name": "Rewards - Gallery",
+            "blocks": []
+        }
+      ]
+    }
+    {% endschema %}

@@ -1,0 +1,355 @@
+<style>
+.brand-listing-box {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+	flex-direction: row;
+    flex-wrap: wrap;
+}
+.brand-listing-box .nav-box {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+}
+.brand-listing-box .nav-box .nav-list {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow: auto;
+}
+.brand-listing-box .nav-box .nav-list .item,
+.brand-listing-box .nav-box .nav-list .item.more-m a {
+    width: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    color: var(--grey);
+    transition: all .5s cubic-bezier(.16,.68,.43,.99);
+    -webkit-transition: all .5s cubic-bezier(.16,.68,.43,.99)
+}
+.brand-listing-box .nav-box .nav-list .item:hover,
+.brand-listing-box .nav-box .nav-list .item.active {
+    color: var(--comfort-orange);
+    padding-left: 0;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 8px;
+}
+.brand-listing-box .nav-box .nav-list .item.more-d {
+    cursor: none;
+    display: none;
+}
+.brand-listing-box .nav-box .nav-list .item.more-m {
+    cursor: none;
+    display: flex;
+}
+.brand-listing-box .ctn-box {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.brand-listing-box .ctn-box .img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*.brand-listing-box .ctn-box .img .global-image-wrapper {
+    padding-bottom: 100% !important;
+}*/
+.brand-listing-box .ctn-box .img img {
+    border-radius: 24px 24px 24px 24px;
+    /*object-fit: cover;*/
+}
+@media screen and (min-width: 768px) {
+    .brand-listing-box .nav-box {
+        width: 35%;
+    }
+    .brand-listing-box .nav-box .nav-list {
+        flex-wrap: wrap;
+    }
+    .brand-listing-box .nav-box .nav-list .item {
+        width: 100%;
+    }
+    .brand-listing-box .nav-box .nav-list .item:hover,
+    .brand-listing-box .nav-box .nav-list .item.active {
+        padding-left: 20px;
+    }
+    .brand-listing-box .nav-box .nav-list .item.more-d {
+        display: flex;
+    }
+    .brand-listing-box .nav-box .nav-list .item.more-m {
+        display: none;
+    }
+    .brand-listing-box .nav-box .nav-list .item.more-d:hover,
+    .brand-listing-box .nav-box .nav-list .item.more-d.active {
+        padding-left: 0;
+        text-decoration: none;
+    }
+    .brand-listing-box .ctn-box {
+        width: calc(100% - 35%);
+        margin-right: -32px;
+    }
+    .brand-listing-box .ctn-box .img {
+        /*height: 100%;*/
+    }
+    .brand-listing-box .ctn-box .img .global-image-wrapper {
+        /*height: 100%;*/
+    }
+    .brand-listing-box .ctn-box .img img {
+        /*width: 100%;
+        height: 100%;
+        object-fit: cover;*/
+        border-radius: 24px 0 0 24px;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .brand-listing-box .nav-box {
+        width: 50%;
+    }
+    .brand-listing-box .nav-box .nav-list {
+        flex-wrap: wrap;
+    }
+    .brand-listing-box .nav-box .nav-list .item {
+        width: 100%;
+    }
+    .brand-listing-box .nav-box .nav-list .item:hover,
+    .brand-listing-box .nav-box .nav-list .item.active {
+        padding-left: 20px;
+    }
+    .brand-listing-box .ctn-box {
+        width: calc(100% - 50%);
+        margin-right: -32px;
+    }
+    .brand-listing-box .ctn-box .img {
+        /*height: 100%;*/
+    }
+    .brand-listing-box .ctn-box .img .global-image-wrapper {
+        /*height: 100%;*/
+    }
+    .brand-listing-box .ctn-box .img img {
+        /*width: 100%;
+        height: 100%;
+        object-fit: cover;*/
+        border-radius: 24px 0 0 24px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .brand-listing-box .nav-box {
+        width: 50%;
+    }
+    .brand-listing-box .ctn-box {
+        width: calc(100% - 50%);
+        margin-right: calc(50% - 50vw);
+    }
+}
+</style>
+{%- assign el_id = 'brand-listing-' | append: section.id -%}
+{%- render 'section-padding', el_id: el_id, section: section -%}
+<div id="{{ el_id }}" class="relative overflow" {% if section.settings.bg_color != blank %}style="background-color: {{ section.settings.bg_color }}"{% endif %}>
+    <div id="box-{{ el_id }}" class="container">
+        <div class="brand-listing-box">
+            <div class="nav-box overflow">
+                {% if section.settings.title != blank %}
+                    <h4 class="h4 c-greenb2">{{ section.settings.title }}</h4>
+                {% endif %}
+                {% if section.settings.text != blank %}
+                    <p class="p1 pt-10 t-pt-10 d-pt-10">{{ section.settings.text }}</p>
+                {% endif %}
+                <ul class="nav-list pt-30 t-pt-20 d-pt-20">
+                    {% for block in section.blocks %}
+                        <li @mouseover="showImage('{{ forloop.index0 }}')" class="item h5 bold-700 pt-10 pb-10 t-pt-10 t-pb-10 d-pt-10 d-pb-10 pr-30" :class="{ active: brands[{{ forloop.index0 }}].view }">{{ block.settings.title }}</li>
+                    {% endfor %}
+                    {% if section.settings.btn_url != blank and section.settings.btn_label != blank %}
+                        <li class="item more-d pt-20 t-pt-20 d-pt-20">
+                            <a href="{{ section.settings.btn_url }}" class="btn1">{{ section.settings.btn_label }}</a>
+                        </li>
+                    {% endif %}
+                    {% if section.settings.btn_url != blank and section.settings.btn_label_mobile != blank %}
+                        <li class="item more-m pt-10 pb-10 t-pt-10 t-pb-10 d-pt-10 d-pb-10 pr-30">
+                            <a href="{{ section.settings.btn_url }}" class="h5">{{ section.settings.btn_label_mobile }}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="ctn-box">
+                {% for block in section.blocks %}
+                    <div class="img pt-20 t-pt-20 d-pt-20" v-show="brands[{{ forloop.index0 }}].view">
+						{%- assign image_id = "brand-listing" | append: forloop.index0  -%}
+						{%- render 'global-image-wrapper',
+							image: block.settings.image
+                            additional_class: 'no-bg'
+						%}
+					</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+if (document.querySelector('#{{el_id}}')) {
+    const cWidth = document.querySelector('#box-{{ el_id }}').clientWidth;
+    const brandListing = Vue.createApp({
+        delimiters: ['${', '}'],
+        data() {
+            return {
+                brands: [
+                    {% for block in section.blocks %}
+                        {%- unless forloop.first -%}
+                            { view: false }
+                        {%- else -%}
+                            { view: true }
+                        {%- endunless -%}
+
+                        {%- unless forloop.last -%},{%- endunless -%}
+                    {% endfor %}
+                ],
+                desktop: window.innerWidth >= 1024,
+                mobile: window.innerWidth <= 1023,
+                sWidth: window.innerWidth,
+                cWidth: cWidth
+            }
+        },
+        mounted(){
+            addEventListener('resize', () => {
+                this.desktop = window.innerWidth >= 1024;
+                this.mobile = window.innerWidth <= 1023;
+                this.sWidth = window.innerWidth;
+                this.cWidth = document.querySelector('#box-{{ el_id }}').clientWidth;
+                console.log('sWidth', this.sWidth);
+                console.log('cWidth', this.cWidth);
+                //this.updateGap();
+            }),
+            console.log('sWidth', this.sWidth),
+            console.log('cWidth', this.cWidth)
+            //this.updateGap()
+        },
+        methods: {
+            showImage(el) {
+                // console.log('el', el);
+                for (let i = 0; i < this.brands.length; i++) {
+                    if(i == el) {
+                        this.brands[i].view = true;
+                    } else {
+                        this.brands[i].view = false;
+                    }
+                }
+            },
+            updateGap() {
+                console.log('update css...');
+                let nav = document.querySelector('.nav-box');
+                let ctn = document.querySelector('.ctn-box');
+                let wdif = (this.sWidth - this.cWidth) / 2;
+                nav.style.cssText += 'width:'+wdif+'px';
+                ctn.style.cssText += 'width:calc(100% - '+wdif+'px)';
+            }
+        }
+    }).mount('#{{el_id}}');
+}
+</script>
+
+{% schema %}
+{
+	"name": "Brand Listing",
+	"settings": [
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "number",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "number",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "number",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		},
+		{
+			"type": "color",
+			"id": "bg_color",
+			"label": "Background Color"
+		},
+		{
+			"type": "textarea",
+			"id": "title",
+			"label": "Title"
+		},
+        {
+			"type": "textarea",
+			"id": "text",
+			"label": "Text"
+		},
+        {
+            "type" : "text",
+            "id" : "btn_label",
+            "label" : "Button label (Desktop)"
+        },
+        {
+            "type" : "text",
+            "id" : "btn_label_mobile",
+            "label" : "Button label (Mobile)"
+        },
+        {
+            "type" : "url",
+            "id" : "btn_url",
+            "label" : "Button URL"
+        }
+	],
+	"blocks" : [
+		{
+			"type": "brand",
+			"name": "Brand",
+			"settings": [
+				{
+					"type": "text",
+					"id": "title",
+					"label": "Title"
+				},
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "Image"
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Brand Listing",
+			"blocks": []
+		}
+	]
+}
+{% endschema %}

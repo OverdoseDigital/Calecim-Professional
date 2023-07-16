@@ -1,0 +1,234 @@
+{% comment %} Calecim {% endcomment %}
+{% assign el_id = "main-wrapper-" | append: section.id%}
+{% render 'section-padding', section:section , el_id : el_id%}
+
+<style>
+    #{{ el_id }} {
+        {%- if section.settings.enable_border_top -%}
+            border-top: 1px solid var(--border);
+        {%- endif -%}
+        {%- if section.settings.enable_border_bottom -%}
+            border-bottom: 1px solid var(--border);
+        {%- endif -%}
+    }
+    #{{ el_id }} .read-more {
+        padding-bottom: 1px;
+    }
+</style>
+
+<section id="heading-left-image-right-{{ section.id }}" class="heading-left-image-right">
+    <div class="container">
+        <div id="main-wrapper-{{ section.id }}" class="global-flex flex-wrap">
+            <div class="col-12 pl-0 pr-0 col-d-6 d-pl-0 d-pr-120">
+                <div class="relative" style="max-width: {{ section.settings.title_max_width }}px;">
+                    <{{ section.settings.title_dom }} class="{{ section.settings.size }}">{{ section.settings.title }}</{{ section.settings.title_dom }}>
+                </div>
+            </div>
+            <div class="col-12 pl-0 pr-0 col-d-6 d-pl-0 d-pr-0 mt-10 d-mt-0">
+                <div class="p2 show-m hide-t mobile-content">
+                    {{ section.settings.text | truncate: 200 }}
+                    <a href="javascript:void(0)" onclick="showMore{{ section.id | replace: '-', '' }}(event)" rel="nofollow" class="read-more p2 show-m-inline relative bb-1 b-border">{{ 'blogs.article.read_more' | t }}</a>
+                </div>
+                
+                <div class="p2 hide-m show-t full-content">{{ section.settings.text | newline_to_br }}</div>
+                {%if section.settings.link_label != blank%}
+                    <div class="link-wrapper relative mt-20 d-mt-25 hide-m show-t full-content">
+                        <div class="link2">
+                            {%- assign link_id = "link-cta" | append: section.id  -%}                                    
+                            {% render 'link-icon',
+                                id: link_id,
+                                label: section.settings.link_label,
+                                url: section.settings.link_url,
+                                text_class: 'p2 mr-10',
+                                icon_color: '#231D1D',
+                                icon_svg: settings.icon_arrow_diagonal_up,
+                                load_inside_vue: false
+                            %}
+                        </div>
+                    </div>
+                {%endif%}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function showMore{{ section.id | replace: '-', '' }}(e) {
+        const parent = e.target.closest('.mobile-content');
+        parent.classList.remove('show-m');
+        parent.classList.add('hide-m');
+
+        const full_contents = document.querySelectorAll('#shopify-section-{{ section.id }} .full-content');
+        full_contents.forEach(function(full_content){
+            full_content.classList.remove('hide-m');
+            full_content.classList.add('show-m')
+        });
+    }
+</script>
+
+{% schema %}
+    {
+        "name": "Heading Left Text Right",
+        "settings": [
+        {
+            "type": "checkbox",
+            "id": "enable_border_top",
+            "label": "Enable border top"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_border_bottom",
+            "label": "Enable border bottom"
+        },
+        {
+            "type": "textarea",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "select",
+            "id": "size",
+            "label": "Size",
+            "options": [
+                {
+                    "value": "h1",
+                    "label": "H1"
+                },
+                {
+                    "value": "h2",
+                    "label": "H2"
+                },
+                {
+                    "value": "h3",
+                    "label": "H3"
+                },
+                {
+                    "value": "h4",
+                    "label": "H4"
+                },    
+                {
+                    "value": "h5",
+                    "label": "H5"
+                },
+                {
+                    "value": "h6",
+                    "label": "H6"
+                },    
+                {
+                    "value": "h7",
+                    "label": "H7"
+                },
+                {
+                    "value": "h8",
+                    "label": "H8"
+                },    
+                {
+                    "value": "h9",
+                    "label": "H9"
+                },
+                {
+                    "value": "h10",
+                    "label": "H10"
+                },
+                {
+                    "value": "h11",
+                    "label": "H11"
+                },
+                {
+                    "value": "p1",
+                    "label": "P1"
+                },
+                {
+                    "value": "p2",
+                    "label": "P2"
+                },
+                {
+                    "value": "p3",
+                    "label": "P3"
+                }
+            ],
+            "default": "h1"
+        },
+        {
+            "type": "select",
+            "id": "title_dom",
+            "label": "Title DOM Type",
+            "options": [
+            {
+                "value": "h1",
+                "label": "H1"
+            },
+            {
+                "value": "h2",
+                "label": "H2"
+            }
+            ],
+            "default": "h2",
+            "info": "This is for SEO purposes. Please choose H1 if this section is the first section of the page"
+        },
+        {
+            "type": "number",
+			"id": "title_max_width",
+			"label": "Title Max Width",
+            "info": "on pixel"
+        },
+        {
+            "type": "richtext",
+			"id": "text",
+			"label": "Text"
+        },
+        {
+            "type": "text",
+			"id": "link_label",
+			"label": "Link Label"
+        },
+        {
+            "type": "url",
+			"id": "link_url",
+			"label": "Link URL"
+        },
+        {
+			"type": "header",
+			"content": "Section Padding"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_m",
+			"label": "Top padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_m",
+			"label": "Bottom padding (Mobile)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding_t",
+			"label": "Top padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding_t",
+			"label": "Bottom padding (Tablet)"
+		},
+		{
+			"type": "text",
+			"id": "top_padding",
+			"label": "Top padding (Desktop)"
+		},
+		{
+			"type": "text",
+			"id": "bottom_padding",
+			"label": "Bottom padding (Desktop)"
+		}
+        ],
+        "blocks": [],
+        "presets": [
+            {
+                "name": "Heading Left Text Right",
+                "blocks": []
+            }
+        ]
+    }
+{% endschema %}
+

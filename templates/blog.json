@@ -1,0 +1,86 @@
+{
+  "wrapper": "div.global-content-top-margin",
+  "sections": {
+    "e008b215-d996-4889-bafc-095b9f1c6820": {
+      "type": "page-title",
+      "settings": {
+        "background_color": "",
+        "title": "CALECIM<sup>®<\/sup> \nMAGAZINE",
+        "title_size": "h2",
+        "title_dom_type": "h1",
+        "title_color": "",
+        "text": "Enjoy your best skin and hair yet with these tips, and stay up to date with the latest innovations.",
+        "small_text": "",
+        "body_copy_color": "",
+        "max_width": 430,
+        "top_padding_m": "90",
+        "bottom_padding_m": "40",
+        "top_padding_t": "90",
+        "bottom_padding_t": "70",
+        "top_padding": "150",
+        "bottom_padding": "70"
+      }
+    },
+    "98f59d97-17b2-4b18-ac28-4d301d711bcf": {
+      "type": "blog-featured-articles",
+      "blocks": {
+        "ce1ace31-8261-4aa4-a0c0-af45a4f45b29": {
+          "type": "entry",
+          "settings": {
+            "article": "blog\/what-we-mean-by-clean-beauty"
+          }
+        },
+        "c1954787-bff2-40b2-8e45-c3392e1713ef": {
+          "type": "entry",
+          "settings": {
+            "article": "blog\/how-seasonal-changes-affect-skin"
+          }
+        },
+        "1c74583c-4719-4171-b959-38b9fb623e93": {
+          "type": "entry",
+          "settings": {
+            "article": "blog\/how-to-erase-acne-scars"
+          }
+        },
+        "5d456cea-70d5-4954-85b6-f5736b1cb6c1": {
+          "type": "entry",
+          "settings": {
+            "article": "blog\/2023-forecast-stem-cell-growth-factors"
+          }
+        }
+      },
+      "block_order": [
+        "ce1ace31-8261-4aa4-a0c0-af45a4f45b29",
+        "c1954787-bff2-40b2-8e45-c3392e1713ef",
+        "1c74583c-4719-4171-b959-38b9fb623e93",
+        "5d456cea-70d5-4954-85b6-f5736b1cb6c1"
+      ],
+      "settings": {
+        "bg_color": "#f5f5f5",
+        "top_padding_m": 40,
+        "bottom_padding_m": 40,
+        "top_padding_t": 80,
+        "bottom_padding_t": 80,
+        "top_padding": 80,
+        "bottom_padding": 80
+      }
+    },
+    "069e0904-c56a-4a65-9795-801ccc1e033f": {
+      "type": "blog-all-articles",
+      "settings": {
+        "article_per_page": 12,
+        "top_padding_m": 40,
+        "bottom_padding_m": 40,
+        "top_padding_t": 60,
+        "bottom_padding_t": 60,
+        "top_padding": 75,
+        "bottom_padding": 80
+      }
+    }
+  },
+  "order": [
+    "e008b215-d996-4889-bafc-095b9f1c6820",
+    "98f59d97-17b2-4b18-ac28-4d301d711bcf",
+    "069e0904-c56a-4a65-9795-801ccc1e033f"
+  ]
+}
