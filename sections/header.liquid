@@ -103,7 +103,7 @@
               </div>
 
               {%- if section.settings.message_button_label != blank -%}
-                <a href="{{ section.settings.message_button_label }}" class="ann-button p4 c-black pl-15 pr-15 pt-10 pb-10" style="background-color: {{ section.settings.message_button_bg }};">
+                <a href="{{ section.settings.message_button_url }}" class="ann-button p4 c-black pl-15 pr-15 pt-10 pb-10" style="background-color: {{ section.settings.message_button_bg }};">
                   {{ section.settings.message_button_label }}
                 </a>
               {%- endif -%}
@@ -141,6 +141,7 @@
                 preload: true,
                 additional_class: 'no-bg'
               -%}
+              
             </div>
             <div class="logo-desktop width-100 hide-m show-d">
               {%- render 'global-image-wrapper', 
