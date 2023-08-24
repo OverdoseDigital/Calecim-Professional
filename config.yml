@@ -2,3 +2,16 @@ development:
   password: shptka_cbbad06b0d61cfba02f62baf49155730
   theme_id: 131197534375
   store: calecim-professional-australia.myshopify.com
+
+
+  
+
+development-ag:
+  password: shptka_cbbad06b0d61cfba02f62baf49155730
+  theme_id: 131268411559
+  store: calecim-professional-australia.myshopify.com
+
+themefix-ag:
+  password: shptka_cbbad06b0d61cfba02f62baf49155730
+  theme_id: 131278110887
+  store: calecim-professional-australia.myshopify.com
