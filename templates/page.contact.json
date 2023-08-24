@@ -26,9 +26,9 @@
       "blocks": {
         "9faffb0a-e8bd-4fea-abad-1f606e856f5d": {
           "type": "entry",
+          "disabled": true,
           "settings": {
             "icon_svg": "",
-            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons01-desktop-240x240.png",
             "title": "Live chat",
             "text": "Speak with one of our experts directly here",
             "link_label_1": "",
@@ -39,9 +39,9 @@
         },
         "f68da142-bb12-4ede-9829-5cc1dad143b3": {
           "type": "entry",
+          "disabled": true,
           "settings": {
             "icon_svg": "",
-            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons02-desktop-240x240.png",
             "title": "Call us",
             "text": "Chat with us at 6444 9968 with your questions",
             "link_label_1": "",
@@ -54,9 +54,8 @@
           "type": "entry",
           "settings": {
             "icon_svg": "",
-            "icon_image": "shopify:\/\/shop_images\/02Rewards-Icons03-desktop-240x240.png",
             "title": "Drop us an Email",
-            "text": "Email us at customerservice@calecim.com",
+            "text": "Email us at contact@acskingroup.com",
             "link_label_1": "",
             "link_url_1": "",
             "link_label_2": "",
@@ -69,6 +68,7 @@
         "f68da142-bb12-4ede-9829-5cc1dad143b3",
         "15e7f077-cdcc-4d11-8f2e-08d87252c7f9"
       ],
+      "disabled": true,
       "settings": {
         "bg_color": "",
         "title_text_color": "",
@@ -87,10 +87,9 @@
         "title": "GOT A QUESTION?",
         "title_size": "h3",
         "title_dom_type": "h3",
-        "text": "Drop us a message and we’ll get back to you in 1-2 business days!",
+        "text": "Drop us a message below or you can\n<p> Email us: contact@acskingroup.com\n<\/p><p> Phone Us: 08 9409 5433<\/p>",
         "button_label": "SEND MESSAGE",
-        "desktop_image": "shopify:\/\/shop_images\/01Contact-featured_image-desktop-1370x1540.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/01Contact-featured_image-mobile-750x500.jpg",
+        "desktop_image": "shopify:\/\/shop_images\/0E7A8800.jpg",
         "image_position": "left",
         "top_padding_m": "",
         "bottom_padding_m": "",

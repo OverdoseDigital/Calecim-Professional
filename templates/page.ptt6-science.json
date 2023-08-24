@@ -5,8 +5,8 @@
       "type": "page-title",
       "settings": {
         "background_color": "#f5f5f5",
-        "image_desktop": "shopify:\/\/shop_images\/01Sceince_Intro-Main_banner-desktop-2740x800.jpg",
-        "image_mobile": "shopify:\/\/shop_images\/01Sceince_Intro-Main_banner-mobile-750x590.jpg",
+        "image_desktop": "shopify:\/\/shop_images\/Feb_22.png",
+        "image_mobile": "shopify:\/\/shop_images\/Feb_22.png",
         "title": "PTT-6<sup>®<\/sup> SCIENCE",
         "title_size": "h2",
         "title_dom_type": "h1",
@@ -28,6 +28,7 @@
       "blocks": {
         "c0cbb306-f391-411e-9397-8b5b512c7711": {
           "type": "entry",
+          "disabled": true,
           "settings": {
             "title": "PTT-6® Science",
             "url": "\/pages\/delivery-information?view=ptt6-science",
@@ -36,6 +37,7 @@
         },
         "ef5cb0f3-e050-40eb-be89-622cae4ad786": {
           "type": "entry",
+          "disabled": true,
           "settings": {
             "title": "Hair Science",
             "url": "\/pages\/delivery-information?view=hair-science",
@@ -44,6 +46,7 @@
         },
         "4a537238-629e-4b9d-9666-a87de6dee94d": {
           "type": "entry",
+          "disabled": true,
           "settings": {
             "title": "Skin Science",
             "url": "\/pages\/delivery-information?view=skin-science",
@@ -52,6 +55,7 @@
         },
         "83c573da-5621-4d75-a4cd-0c80ecc7fa5e": {
           "type": "entry",
+          "disabled": true,
           "settings": {
             "title": "Beyond Beauty",
             "url": "\/pages\/delivery-information?view=beyond-beauty",
@@ -65,6 +69,7 @@
         "4a537238-629e-4b9d-9666-a87de6dee94d",
         "83c573da-5621-4d75-a4cd-0c80ecc7fa5e"
       ],
+      "disabled": true,
       "settings": {
         "nav_type": "different-page"
       }
@@ -82,9 +87,9 @@
         "hide_text_mobile": true,
         "text_max_width": "900",
         "link_label": "Hair Science",
-        "link_url": "#learn",
+        "link_url": "shopify:\/\/products\/advanced-hair-system",
         "link_label_2": "Skin Science",
-        "link_url_2": "#2",
+        "link_url_2": "shopify:\/\/products\/professional-serum",
         "button_label_1": "",
         "button_url_1": "",
         "button_label_2": "",
@@ -131,8 +136,8 @@
         "button_background": "",
         "button_color_hover": "",
         "button_background_hover": "",
-        "desktop_image": "shopify:\/\/shop_images\/02Sceince_Intro-Image_Text_Landscape_-desktop-1220x900.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/02Sceince_Intro-Image_Text_Landscape_-desktop-1220x900.jpg",
+        "desktop_image": "shopify:\/\/shop_images\/MAR_14_A.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/MAR_14_A.jpg",
         "image_position": "row-reverse",
         "image_position_mobile": "follow-desktop",
         "top_padding_m": "40",
@@ -175,6 +180,7 @@
     },
     "3ddcb2e4-1acb-4012-8214-6cb6398aa6ce": {
       "type": "cta-image-text",
+      "disabled": true,
       "settings": {
         "section_width": "container",
         "background_color": "",
@@ -197,8 +203,6 @@
         "button_background": "",
         "button_color_hover": "",
         "button_background_hover": "",
-        "desktop_image": "shopify:\/\/shop_images\/03Sceince_Intro-Image_Text_Square_01-desktop-1220x1220.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/03Sceince_Intro-Image_Text_Square_01-desktop-1220x1220.jpg",
         "image_position": "row",
         "image_position_mobile": "follow-desktop",
         "top_padding_m": "15",
@@ -211,6 +215,7 @@
     },
     "65924b56-ef8b-4d91-b67d-1503c285abbf": {
       "type": "horizontal-line",
+      "disabled": true,
       "settings": {
         "bg_color": "#e7e7e7",
         "height": 1,
@@ -222,17 +227,15 @@
       "blocks": {
         "795ac892-7027-463b-adf7-ec322f0fd774": {
           "type": "before_after",
+          "disabled": true,
           "settings": {
-            "image_before": "shopify:\/\/shop_images\/04Sceince_Intro-Before-desktop-700x930.jpg",
-            "image_after": "shopify:\/\/shop_images\/04Sceince_Intro-After-desktop-700x930.jpg",
             "title": "4 sessions of Nano-fractional radio frequency treatment with application of Professional Serum, over 12 weeks. Conducted by Dr R. Pamela, CELV Clinic"
           }
         },
         "b22146e9-9f05-4045-9288-060bfc0bfe2c": {
           "type": "before_after",
+          "disabled": true,
           "settings": {
-            "image_before": "shopify:\/\/shop_images\/04Sceince_Intro-Before-desktop-700x930.jpg",
-            "image_after": "shopify:\/\/shop_images\/04Sceince_Intro-After-desktop-700x930.jpg",
             "title": "4 sessions of Nano-fractional radio frequency treatment with application of Professional Serum, over 12 weeks. Conducted by Dr R. Pamela, CELV Clinic #2"
           }
         }
@@ -241,6 +244,7 @@
         "795ac892-7027-463b-adf7-ec322f0fd774",
         "b22146e9-9f05-4045-9288-060bfc0bfe2c"
       ],
+      "disabled": true,
       "settings": {
         "section_width": "container",
         "background_color": "",
@@ -270,6 +274,7 @@
     },
     "9ea6cebb-f447-436e-944d-e403feb7700a": {
       "type": "cta-image-text",
+      "disabled": true,
       "settings": {
         "section_width": "container",
         "background_color": "",
@@ -292,8 +297,6 @@
         "button_background": "",
         "button_color_hover": "",
         "button_background_hover": "",
-        "desktop_image": "shopify:\/\/shop_images\/03Sceince_Intro-Image_Text_Square_02-desktop-1220x1220.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/03Sceince_Intro-Image_Text_Square_02-desktop-1220x1220.jpg",
         "image_position": "row",
         "image_position_mobile": "follow-desktop",
         "top_padding_m": "40",
@@ -386,6 +389,7 @@
         "91a28c2e-9acd-4158-8cf8-f2fc564ceaab",
         "41f3b9cc-6777-47fc-80ff-da943a78e87a"
       ],
+      "disabled": true,
       "settings": {
         "bg_color": "#f5f5f5",
         "title": "MORE TO READ",
@@ -417,16 +421,17 @@
             "max_width": 620,
             "text": "",
             "button_label": "View product range",
-            "button_url": "#view",
-            "button_type": "btn1",
-            "desktop_image": "shopify:\/\/shop_images\/05Sceince_Intro-Feature_Banner-desktop-2740x1200.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/05Sceince_Intro-Feature_Banner-mobile-750x850.jpg"
+            "button_url": "shopify:\/\/collections\/all",
+            "button_type": "btn2",
+            "desktop_image": "shopify:\/\/shop_images\/CALECIM-Stamp-apply.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/CALECIM-Stamp-apply.jpg"
           }
         }
       },
       "block_order": [
         "df4fca61-c9cf-4f95-a192-8e8b9dac2480"
       ],
+      "disabled": true,
       "settings": {
         "enable_autoslide": false,
         "enable_arrows": false,

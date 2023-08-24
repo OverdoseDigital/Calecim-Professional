@@ -1,4 +1,4 @@
-{%- comment -%}
+ {%- comment -%}
 Love&Co Theme
 
 Description:
@@ -14,6 +14,9 @@ Variables:
 {%- assign title_class = 'p2' -%}
 {%- if title_size != blank -%}
 	{%- assign title_class = title_size -%}
+{%- endif -%}
+{%- if section.settings.show_recommendations -%}
+  {%- assign recommendations = product.recommendations -%}
 {%- endif -%}
 
 {%- assign variant = product.selected_or_first_available_variant -%}
@@ -95,22 +98,29 @@ Variables:
 					<span class="icon">{{ settings.icon_arrow_diagonal_up }}</span>
 				</a>
 
-				{%- if product.metafields.info.targets != blank -%}
-					<p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.targets' | t }}</p>
-					<p class="p3 mt-5">{{ product.metafields.info.targets }}</p>
-				{%- else -%}
-					<p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.targets' | t }}</p>
-					<p class="p3 mt-5">Lorem ipsum</p>
-				{%- endif -%}
-
-				{%- if product.metafields.info.suited_for != blank -%}
-					<p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.suited_for' | t }}</p>
-					<p class="p3 mt-5">{{ product.metafields.info.suited_for }}</p>
-				{%- else -%}
-					<p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.suited_for' | t }}</p>
-					<p class="p3 mt-5">Lorem ipsum</p>
-				{%- endif -%}
+				{%- if product.metafields.custom.targets != blank -%}
+    <p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.targets' | t }}</p>
+    <p class="p3 mt-5">{{ product.metafields.custom.targets }}</p>
+{%- else -%}
+    <p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.targets' | t }}</p>
+    <p class="p3 mt-5">Lorem ipsum</p>
+{%- endif -%}
+      {%- if product.metafields.custom.suited_for != blank -%}
+    <p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.suited_for' | t }}</p>
+    <p class="p3 mt-5">{{ product.metafields.custom.suited_for }}</p>
+{%- else -%}
+    <p class="p4 uppercase bold-400 mt-20">{{ 'general.product_each.suited_for' | t }}</p>
+    <p class="p3 mt-5">Lorem ipsum</p>
+{%- endif -%}
 			</div>
+{%- if recommendations.products_count > 0 -%}
+  <div class="recommendations">
+    <h2>Recommended Products</h2>
+    {%- for recommended_product in recommendations.products -%}
+      {%- include 'product-card', product: recommended_product -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
 
 			{%- unless product.tags contains 'subscription' or product.tags contains 'Subscription' -%}
 				<div class="button-wrapper font-0">

@@ -1,19 +1,5 @@
 {
   "current": {
-    "checkout_header_image": "",
-    "checkout_logo_image": "",
-    "checkout_logo_position": "left",
-    "checkout_logo_size": "medium",
-    "checkout_body_background_image": "",
-    "checkout_body_background_color": "#fff",
-    "checkout_input_background_color_mode": "white",
-    "checkout_sidebar_background_image": "",
-    "checkout_sidebar_background_color": "#fafafa",
-    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
-    "checkout_accent_color": "#197bbd",
-    "checkout_button_color": "#197bbd",
-    "checkout_error_color": "#e32c2b",
     "mobile_placeholder": "shopify:\/\/shop_images\/800x600_998586a9-a74e-484d-8dfd-1c211d2fa45a.png",
     "desktop_placeholder": "shopify:\/\/shop_images\/800x600_998586a9-a74e-484d-8dfd-1c211d2fa45a.png",
     "favicon": "",
@@ -78,11 +64,11 @@
     "popup_image_mobile": "shopify:\/\/shop_images\/02Collection-subscription-desktop-1370x1370.jpg",
     "search_lc_title": "BESTSELLERS",
     "search_lc_product_list": [
-      "advanced-hair-system-sg",
-      "advanced-hair-system-6-x-5ml-sg",
-      "advanced-hair-system-reward"
+      "advanced-hair-system",
+      "professional-serum",
+      "professional-pigment-solution"
     ],
-    "search_rc_title": "POPULAR READS",
+    "search_rc_title": "",
     "search_blog": "blog",
     "gwp_enable": true,
     "gwp_value_1": 100,
@@ -129,6 +115,20 @@
     "collection_limit": 12,
     "blog-tags": true,
     "blog-date": true,
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "small",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#e8f3f6",
+    "checkout_heading_font": "Roboto",
+    "checkout_body_font": "Source Sans Pro",
+    "checkout_accent_color": "#1990c6",
+    "checkout_button_color": "#23314e",
+    "checkout_error_color": "#ff6d6d",
     "search_rc_article_1": "blog\/how-wound-healing-technology-can-fight-skin-aging-too-10-off",
     "search_rc_article_2": "blog\/an-evening-with-calecim-dermoi-at-brown-s-hotel-in-london",
     "icon_ec_menu": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"22.774\" height=\"22.774\" viewbox=\"0 0 22.774 22.774\"><rect width=\"9.635\" height=\"9.635\" fill=\"#93d0b3\"><\/rect><path d=\"M0,0H9.635V9.635H0Z\" transform=\"translate(13.139)\" fill=\"#93d0b3\"><\/path><g transform=\"translate(0 13.139)\"><rect width=\"9.635\" height=\"9.635\" transform=\"translate(0 0)\" fill=\"#93d0b3\"><\/rect><rect width=\"9.635\" height=\"9.635\" transform=\"translate(13.139 0)\" fill=\"#93d0b3\"><\/rect><\/g><\/svg>",
@@ -273,43 +273,38 @@
       "header": {
         "type": "header",
         "blocks": {
-          "44e79f10-cda8-4716-9c49-844738486dbb": {
+          "4d980f1c-75f8-4522-baec-43e5f878f2c7": {
             "type": "dropdown_1",
             "settings": {
               "enable": true,
               "col_1_title": "Products",
               "col_1_link_label": "All Products",
-              "col_1_link_url": "#all",
+              "col_1_link_url": "shopify:\/\/collections\/all",
               "col_1_products": [
-                "professional-serum-sg",
-                "multi-action-cream",
+                "advanced-hair-system",
+                "professional-pigment-solution",
+                "professional-serum",
                 "restorative-hydration-cream",
-                "professional-serum-6-x-5ml",
-                "professional-serum-2-x-5ml"
+                "recovery-night-complex",
+                "multi-action-cream"
               ],
-              "col_2_title": "Exclusive kits",
-              "col_2_link_label": "All Kits",
+              "col_2_title": "",
+              "col_2_link_label": "",
               "col_2_link_url": "#kits",
-              "col_2_products": [
-                "prime-power-kit",
-                "total-repair-kit"
-              ]
+              "col_2_products": []
             }
           },
           "f09af52a-6b5c-409f-83f4-e6480b1dbdcd": {
             "type": "dropdown_2",
+            "disabled": true,
             "settings": {
-              "enable": true,
-              "col_1_title": "Product",
-              "col_1_product": "advanced-hair-system",
+              "enable": false,
+              "col_1_title": "",
+              "col_1_product": "",
               "col_2_title": "Real-life results",
               "col_2_link_label": "View all",
               "col_2_link_url": "#alll",
-              "col_2_image_1_before": "shopify:\/\/shop_images\/01Navigation-Before-desktop-410x500.jpg",
-              "col_2_image_1_after": "shopify:\/\/shop_images\/01Navigation-after-desktop-410x500.jpg",
               "col_2_image_1_caption": "Clinical observation by scalp technician and aesthetic practitioner Kelly Morrell, 6 weeks usage #1",
-              "col_2_image_2_before": "shopify:\/\/shop_images\/01Navigation-Before-desktop-410x500.jpg",
-              "col_2_image_2_after": "shopify:\/\/shop_images\/01Navigation-after-desktop-410x500.jpg",
               "col_2_image_2_caption": "Clinical observation by scalp technician and aesthetic practitioner Kelly Morrell, 6 weeks usage #2",
               "col_2_image_3_caption": "",
               "col_2_image_4_caption": "",
@@ -322,84 +317,82 @@
           },
           "38d8bcb5-6a24-4cda-8fde-074ba397eb3e": {
             "type": "dropdown_4",
+            "disabled": true,
             "settings": {
               "enable": false,
               "col_1_title": "Science",
-              "col_1_menu": "360-5-test-menu-left",
+              "col_1_menu": "",
               "col_2_title": "Research",
-              "col_2_menu": "360-5-test-menu-left",
+              "col_2_menu": "",
               "col_3_title": "Blog",
-              "col_3_menu": "footer-customer-service",
+              "col_3_menu": "",
               "col_4_link_label": "Read all",
               "col_4_link_url": "#read",
               "col_4_blog": ""
+            }
+          },
+          "88c47984-a9f4-4db2-8735-bda8bc4a0756": {
+            "type": "dropdown_4",
+            "settings": {
+              "enable": false,
+              "col_1_title": "Science",
+              "col_1_menu": "",
+              "col_2_title": "Research",
+              "col_2_menu": "",
+              "col_3_title": "Blog",
+              "col_3_menu": "",
+              "col_4_link_label": "Read All",
+              "col_4_link_url": "#all",
+              "col_4_blog": "blog"
             }
           },
           "e8ecc75f-f2e2-4876-8415-d91dd902111a": {
             "type": "dropdown_3",
             "settings": {
               "enable": true,
-              "col_1_title": "Calecim",
-              "col_1_menu": "360-5-test-menu-left",
-              "col_2_title": "Love from others",
-              "col_2_menu": "footer-my-account",
-              "col_3_title": "Professional",
-              "col_3_menu": "360-5-test-menu-left",
-              "col_4_image_desktop": "shopify:\/\/shop_images\/03Navigation-Rewards_club-desktop-1080x540.jpg",
-              "col_4_image_mobile": "shopify:\/\/shop_images\/03Navigation-Rewards_club-mobile-670x360.jpg",
-              "col_4_title": "MYCALECIM® REWARDS CLUB",
-              "col_4_text": "Sign in to see how close you are to redeeming your free full sized products. Or register now to start.",
-              "col_4_link_label": "Join now",
+              "col_1_title": "Contact Our Team",
+              "col_1_menu": "contact-us",
+              "col_2_title": "",
+              "col_2_menu": "",
+              "col_3_title": "",
+              "col_3_menu": "",
+              "col_4_title": "",
+              "col_4_text": "",
+              "col_4_link_label": "",
               "col_4_link_url": "#join"
-            }
-          },
-          "88c47984-a9f4-4db2-8735-bda8bc4a0756": {
-            "type": "dropdown_4",
-            "settings": {
-              "enable": true,
-              "col_1_title": "Science",
-              "col_1_menu": "360-5-test-menu-left",
-              "col_2_title": "Research",
-              "col_2_menu": "360-5-test-menu-left",
-              "col_3_title": "Blog",
-              "col_3_menu": "360-5-test-menu-left",
-              "col_4_link_label": "Read All",
-              "col_4_link_url": "#all",
-              "col_4_blog": "blog"
             }
           }
         },
         "block_order": [
-          "44e79f10-cda8-4716-9c49-844738486dbb",
+          "4d980f1c-75f8-4522-baec-43e5f878f2c7",
           "f09af52a-6b5c-409f-83f4-e6480b1dbdcd",
           "38d8bcb5-6a24-4cda-8fde-074ba397eb3e",
-          "e8ecc75f-f2e2-4876-8415-d91dd902111a",
-          "88c47984-a9f4-4db2-8735-bda8bc4a0756"
+          "88c47984-a9f4-4db2-8735-bda8bc4a0756",
+          "e8ecc75f-f2e2-4876-8415-d91dd902111a"
         ],
         "settings": {
           "logo_type": "image",
-          "logo_image": "shopify:\/\/shop_images\/new-logo-black.png",
+          "logo_image": "shopify:\/\/shop_images\/Calecim_Pro_Logo_Pantone.png",
           "logo_svg": "",
-          "logo_image_mobile": "shopify:\/\/shop_images\/new-logo-black.png",
+          "logo_image_mobile": "shopify:\/\/shop_images\/Calecim_Pro_Logo_Pantone.png",
           "logo_svg_mobile": "",
-          "main_linklist": "360-5-test-menu-left",
-          "bottom_menu": "360-5-test-mobile-bottom-menu",
-          "mob_cta_image": "shopify:\/\/shop_images\/02Navigation-Clinical_treatment-mobile-670x300.jpg",
+          "main_linklist": "main-menu",
+          "bottom_menu": "main-menu",
           "mob_cta_title": "READY TO EXPERIENCE CLINICAL TREATMENT?",
-          "mob_cta_link_label": "Find a clinic",
-          "mob_cta_link_url": "#find",
+          "mob_cta_link_label": "Find a Clinic",
+          "mob_cta_link_url": "https:\/\/www.advancedcosmeceuticals.com.au\/pages\/store-locator-1",
           "message": true,
           "color_bg": "#231d1d",
           "color_text": "#ffffff",
-          "message_text_1": "Enjoy 5% off min spend $100 your first purchase when you subscribe to our newsletter.",
+          "message_text_1": "Enjoy 10% off when you sign up to our email database.",
           "message_link_1": "#a",
-          "message_text_2": "Enjoy 5% off min spend $100 your first purchase when you subscribe to our newsletter. #2",
+          "message_text_2": "",
           "message_link_2": "#b",
-          "message_text_3": "Enjoy 5% off min spend $100 your first purchase when you subscribe to our newsletter. #3",
+          "message_text_3": "",
           "message_link_3": "#c",
-          "message_button_label": "Find a clinic",
-          "message_button_url": "#clinic",
-          "message_button_bg": "#efeae7"
+          "message_button_label": "",
+          "message_button_url": "",
+          "message_button_bg": "#ffffff"
         }
       },
       "footer": {
@@ -410,7 +403,7 @@
             "settings": {
               "title": "Shop",
               "icon": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><svg id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"60\" height=\"60\" viewbox=\"0 0 60 60\"><polyline points=\"37 27.5 37 7.5 55 7.5 55 52.5 42.5 52.5\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/polyline><line x1=\"37\" y1=\"16.5\" x2=\"55\" y2=\"16.5\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/line><polyline points=\"23.75 27.5 25 12.5 5 12.5 8.33 52.5 17.5 52.5\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/polyline><line x1=\"8.25\" y1=\"43.45\" x2=\"17.5\" y2=\"43.45\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/line><rect x=\"17.5\" y=\"27.5\" width=\"25\" height=\"25\" rx=\"1.03\" ry=\"1.03\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/rect><path d=\"m17.5,34.5h25-25Z\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"3\"><\/path><\/svg>",
-              "menu": "footer-customer-service"
+              "menu": "shop-now"
             }
           },
           "b9cc265a-d0c5-4bd2-9ede-8c518f8f52e2": {
@@ -418,11 +411,12 @@
             "settings": {
               "title": "Support",
               "icon": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><svg id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"60\" height=\"60\" viewbox=\"0 0 60 60\"><path d=\"m53.04,24.38c-.67-12.22-10.7-21.75-22.97-21.75S7.79,12.14,7.09,24.34c-1.95.57-3.38,2.37-3.38,4.51v7.32c0,2.6,2.11,4.71,4.71,4.71s4.71-2.11,4.71-4.71v-7.32c0-2.33-1.71-4.26-3.93-4.64.75-10.98,9.8-19.49,20.87-19.49s20.12,8.51,20.87,19.47c-2.29.31-4.06,2.28-4.06,4.66v7.32c0,2.2,1.5,4.03,3.54,4.56-1.11,8.34-6.11,12.18-15.24,11.71-.33-2.03-2.08-3.58-4.19-3.58-2.34,0-4.25,1.91-4.25,4.25s1.91,4.25,4.25,4.25c1.84,0,3.41-1.18,4-2.83.57.03,1.13.05,1.67.05,9.4,0,14.71-4.64,15.86-13.79,2.15-.44,3.77-2.34,3.77-4.62v-7.32c0-2.09-1.37-3.86-3.25-4.47Zm-42,4.47v7.32c0,1.45-1.17,2.62-2.62,2.62s-2.62-1.17-2.62-2.62v-7.32c0-1.45,1.17-2.62,2.62-2.62s2.62,1.17,2.62,2.62Zm19.95,26.42c-1.19,0-2.16-.97-2.16-2.16s.97-2.16,2.16-2.16,2.16.97,2.16,2.16-.97,2.16-2.16,2.16Zm23.21-19.09c0,1.45-1.17,2.62-2.62,2.62s-2.62-1.17-2.62-2.62v-7.32c0-1.45,1.17-2.62,2.62-2.62s2.62,1.17,2.62,2.62v7.32Z\" fill=\"#231d1d\" stroke=\"#231d1d\" stroke-miterlimit=\"10\"><\/path><path d=\"m40.33,24.92c-.52,0-.94-.42-.94-.94,0-4.38-3.72-6.96-5.6-7.99-.15.37-.36.72-.65,1.03-1.72,1.87-5.72,2.27-8.77,2.27-3.71,0-3.76,4.5-3.76,4.69,0,.52-.42.94-.94.94s-.94-.42-.94-.94c0-2.27,1.18-6.57,5.63-6.57,3.73,0,6.42-.6,7.38-1.66.29-.31.41-.66.37-1.08-.03-.32.11-.64.37-.83.26-.19.6-.24.9-.12.32.12,7.87,3.13,7.87,10.26,0,.52-.42.94-.94.94h0Z\" fill=\"#231d1d\" stroke=\"#231d1d\" stroke-miterlimit=\"10\"><\/path><rect x=\"16.86\" y=\"30.57\" width=\"26.29\" height=\"13.67\" rx=\"1.37\" ry=\"1.37\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.5\"><\/rect><path d=\"m40,30.31h-19.79c-.63,0-1.15-.26-1.15-.58v-4.63c0-.32.51-.58,1.15-.58h19.79c.63,0,1.15.26,1.15.58v4.63c0,.32-.51.58-1.15.58Z\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.5\"><\/path><\/svg>",
-              "menu": "footer-customer-service"
+              "menu": "contact-us"
             }
           },
           "a6525dd3-402d-4b95-b38d-11fbbc8ad5a6": {
             "type": "footer_menu",
+            "disabled": true,
             "settings": {
               "title": "About",
               "icon": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><svg id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"60\" height=\"60\" viewbox=\"0 0 60 60\"><circle cx=\"30\" cy=\"30\" r=\"24\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"30\" cy=\"17.5\" r=\"2.5\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"2.5\"><\/circle><rect x=\"27.5\" y=\"25\" width=\"5\" height=\"20\" rx=\".88\" ry=\".88\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.5\"><\/rect><\/svg>",
@@ -431,6 +425,7 @@
           },
           "718b84d0-236f-4b37-afa2-d6711207078b": {
             "type": "footer_menu",
+            "disabled": true,
             "settings": {
               "title": "Learn",
               "icon": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><svg id=\"Layer_1\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"60\" height=\"60\" viewbox=\"0 0 60 60\"><circle cx=\"29.07\" cy=\"29.01\" r=\"8.9\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"48.32\" cy=\"48.45\" r=\"6.43\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"49.34\" cy=\"10.44\" r=\"5.44\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"9.67\" cy=\"42.07\" r=\"4.45\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"17.74\" cy=\"11.79\" r=\"3.12\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><circle cx=\"25.69\" cy=\"51.54\" r=\"3.46\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/circle><line x1=\"21.82\" y1=\"33.89\" x2=\"13.08\" y2=\"39.77\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"19.12\" y1=\"13.96\" x2=\"24.17\" y2=\"21.9\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"27.76\" y1=\"37.76\" x2=\"26.15\" y2=\"48.49\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"43.97\" y1=\"44.07\" x2=\"35.22\" y2=\"35.23\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><line x1=\"35.52\" y1=\"23.11\" x2=\"45.55\" y2=\"13.91\" fill=\"none\" stroke=\"#231d1d\" stroke-miterlimit=\"10\" stroke-width=\"3\"><\/line><\/svg>",
@@ -439,32 +434,29 @@
           },
           "5353e685-970f-4571-8518-8525f11b0b9c": {
             "type": "content_block",
+            "disabled": true,
             "settings": {
               "title": "MyCALECIM® Rewards Club",
               "desc": "Enjoy generous discount vouchers",
-              "url": "#one",
-              "image_desktop": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg",
-              "image_mobile": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg"
+              "url": "#one"
             }
           },
           "c1f4141c-4bac-4877-8960-1ae9aef73864": {
             "type": "content_block",
+            "disabled": true,
             "settings": {
               "title": "MyCALECIM® Rewards Club",
               "desc": "Enjoy generous discount vouchers",
-              "url": "#two",
-              "image_desktop": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg",
-              "image_mobile": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg"
+              "url": "#two"
             }
           },
           "20c80c13-57bb-45b2-9fc8-9ac085a4f146": {
             "type": "content_block",
+            "disabled": true,
             "settings": {
               "title": "MyCALECIM® Rewards Club",
               "desc": "Enjoy generous discount vouchers",
-              "url": "#three",
-              "image_desktop": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg",
-              "image_mobile": "shopify:\/\/shop_images\/01Footer-Rewards_Club-Desktop-260x240.jpg"
+              "url": "#three"
             }
           }
         },
@@ -480,14 +472,14 @@
         "settings": {
           "footer_bg": "#f5f5f5",
           "git_title": "Get in touch",
-          "git_desc": "Drop us an email at info@calecim.com, alternatively, here are some useful links:",
-          "git_link_label_1": "FREQUENT QUESTIONS",
-          "git_link_url_1": "#one",
+          "git_desc": "Drop us an email at contact@acskingroup.com, alternatively, here are some useful links:",
+          "git_link_label_1": "Contact Us",
+          "git_link_url_1": "shopify:\/\/pages\/contact-us",
           "git_link_icon_1": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"13.301\" height=\"13.3\" viewbox=\"0 0 13.301 13.3\"><path d=\"M13.8,3H4.2A1.2,1.2,0,0,0,3,4.2V15l2.4-2.4h8.4A1.2,1.2,0,0,0,15,11.4V4.2A1.2,1.2,0,0,0,13.8,3Z\" transform=\"translate(-2.35 -2.35)\" fill=\"none\" stroke=\"#000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.3\"><\/path><\/svg>",
-          "git_link_label_2": "CONTACT US",
-          "git_link_url_2": "#two",
+          "git_link_label_2": "Newsletter Signup",
+          "git_link_url_2": "shopify:\/\/pages\/contact-us",
           "git_link_icon_2": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"14.297\" height=\"14.297\" viewbox=\"0 0 14.297 14.297\"><g transform=\"translate(0.65 0.65)\"><path d=\"M4.5,15.331V11a6.5,6.5,0,1,1,13,0v4.332\" transform=\"translate(-4.5 -4.5)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.3\"><\/path><path d=\"M17.5,24.61a1.444,1.444,0,0,1-1.444,1.444h-.722a1.444,1.444,0,0,1-1.444-1.444V22.444A1.444,1.444,0,0,1,15.331,21H17.5Zm-13,0a1.444,1.444,0,0,0,1.444,1.444h.722A1.444,1.444,0,0,0,8.11,24.61V22.444A1.444,1.444,0,0,0,6.666,21H4.5Z\" transform=\"translate(-4.5 -13.057)\" fill=\"none\" stroke=\"#231d1d\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.3\"><\/path><\/g><\/svg>",
-          "git_link_label_3": "NEWSLETTER SIGN UP",
+          "git_link_label_3": "",
           "git_link_url_3": "#mailing-popup",
           "git_link_icon_3": "<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"17.809\" height=\"14.1\" viewbox=\"0 0 17.809 14.1\"><g transform=\"translate(-2.096 -5.35)\"><path d=\"M4.6,6H17.4A1.6,1.6,0,0,1,19,7.6v9.6a1.6,1.6,0,0,1-1.6,1.6H4.6A1.6,1.6,0,0,1,3,17.2V7.6A1.6,1.6,0,0,1,4.6,6Z\" fill=\"none\" stroke=\"#000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.3\"><\/path><path d=\"M19,9l-8,5.6L3,9\" transform=\"translate(0 -1.4)\" fill=\"none\" stroke=\"#000\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.3\"><\/path><\/g><\/svg>",
           "git_link_label_4": "",
@@ -502,7 +494,7 @@
           "footer_linklist2": "",
           "footer_linklist_title3": "Support",
           "footer_linklist3": "",
-          "footer_terms_menu": "mobile"
+          "footer_terms_menu": ""
         }
       },
       "typography-header": {
@@ -1610,10 +1602,12 @@
       },
       "password-content": {
         "type": "password-content",
+        "custom_css": [],
         "settings": {
-          "title": "",
-          "text": "",
-          "password": true
+          "image": "shopify:\/\/shop_images\/Feb_22.png",
+          "title": "Something is Coming.....",
+          "text": "Our site is getting a makeover! check back soon to see the new CALECIM Professional.",
+          "password": false
         }
       },
       "breadcrumbs": {
@@ -1658,12 +1652,12 @@
               "title_size": "h1",
               "title_dom_type": "h1",
               "max_width": 500,
-              "text": "Activate cellular regeneration with our science-backed innovations.",
-              "button_label": "Discover CALECIM®️ Skincare and Hair Range",
-              "button_url": "",
+              "text": "Activate restoration with our science-backed innovations.",
+              "button_label": "Discover CALECIM Skincare and Hair Range",
+              "button_url": "shopify:\/\/collections",
               "button_type": "btn2",
-              "desktop_image": "shopify:\/\/shop_images\/01Homepage-Main_Banner-desktop-2740x1540_8ba5d8bd-0fc8-4f27-a57f-50909fa235bc.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/01Homepage-Banner-mobile-750x1340_121aabe0-cee3-466a-b6ba-128332c49b10.jpg"
+              "desktop_image": "shopify:\/\/shop_images\/CALECIM-Stamp-apply.jpg",
+              "mobile_image": "shopify:\/\/shop_images\/CALECIM-Stamp-apply.jpg"
             }
           }
         },
@@ -1811,87 +1805,59 @@
         "blocks": {
           "2e820e50-1748-4294-b59c-e7c0c8181ff7": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_The_Straits_Times_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "85b66ffe-161b-41ce-9640-c2f594d0ecdd": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Vogue_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "7ca98454-14e1-403a-8ec6-12cd85eaba8f": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Tatler_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "2a4ff6c4-ecad-4cd7-aa7f-370df4ed0a25": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Bazaar_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "26b8493a-180c-4779-8f2d-ffa5760254fb": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_The_Telegraph_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "8a270714-d94e-4a7d-a89f-0a88df2b537c": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_DAILYMAIL_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "b4e326c9-1928-47d2-b233-259809d0eb7b": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Financial_Times_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "e8e30a2e-2482-4c2d-803d-c53f3a1aa9f4": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_The_Straits_Times_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "545dab15-d750-4163-aa63-432d97226b49": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Vogue_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "2c1758ea-c6c9-44aa-b233-12cd12c57963": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Tatler_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "99c00f62-23ac-4009-8718-271a759934f8": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Bazaar_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "2c057bc5-dbea-457e-b680-07730b753447": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_The_Telegraph_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "e561dd60-9c31-443a-a22f-225d581e492b": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_DAILYMAIL_-desktop-360x140.png"
-            }
+            "settings": {}
           },
           "7ed802d4-81df-47f5-a1f1-0e55530011d4": {
             "type": "entry",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/02Homepage-Logos_Financial_Times_-desktop-360x140.png"
-            }
+            "settings": {}
           }
         },
         "block_order": [
@@ -1910,6 +1876,7 @@
           "e561dd60-9c31-443a-a22f-225d581e492b",
           "7ed802d4-81df-47f5-a1f1-0e55530011d4"
         ],
+        "disabled": true,
         "settings": {}
       },
       "dd9e77a4-ba9a-4503-92ae-d59d29c8b280": {
@@ -1930,8 +1897,7 @@
               "button_label": "Shop now",
               "button_url": "",
               "button_type": "btn2",
-              "desktop_image": "shopify:\/\/shop_images\/05Homepage-Featured_Banner-desktop-2740x1200.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/05Homepage-Featured_Banner-mobile-750x850.jpg"
+              "desktop_image": "shopify:\/\/shop_images\/RNC-Lifestyle-image-1000x1000px3.jpg"
             }
           },
           "c330e128-83ac-4acd-bc51-9d2e8a9d28e1": {
@@ -1949,9 +1915,7 @@
               "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.",
               "button_label": "Shop Now",
               "button_url": "",
-              "button_type": "btn2",
-              "desktop_image": "shopify:\/\/shop_images\/05Homepage-Featured_Banner-desktop-2740x1200.jpg",
-              "mobile_image": "shopify:\/\/shop_images\/05Homepage-Featured_Banner-mobile-750x850.jpg"
+              "button_type": "btn2"
             }
           }
         },
@@ -1959,6 +1923,7 @@
           "911fbf9e-a5c2-4643-b5eb-ec1031f3c842",
           "c330e128-83ac-4acd-bc51-9d2e8a9d28e1"
         ],
+        "disabled": true,
         "settings": {
           "enable_autoslide": false,
           "enable_arrows": true,
@@ -1970,20 +1935,19 @@
       },
       "b1ee52f8-7c2a-4d10-901b-15450c039147": {
         "type": "homepage-most-wanted",
+        "custom_css": [],
         "settings": {
           "title": "BESTSELLERS",
           "title_class": "h3",
           "action_label": "Shop all",
-          "action_url": "",
+          "action_url": "shopify:\/\/collections\/best-sellers",
           "action_class": "btn1",
           "number_of_product": 20,
           "product_list": [
-            "professional-serum-sg",
-            "advanced-hair-system",
+            "professional-serum",
+            "professional-pigment-solution",
             "multi-action-cream",
-            "restorative-hydration-cream",
-            "professional-pigment-solution-pre-order-kit",
-            "recovery-night-complex"
+            "advanced-hair-system"
           ],
           "top_padding_m": "40",
           "bottom_padding_m": "40",
@@ -2000,7 +1964,6 @@
             "type": "entry",
             "settings": {
               "icon_svg": "",
-              "icon_image": "shopify:\/\/shop_images\/07Homepage-USPIcons01-desktop-300x300.png",
               "title": "Created by Scientists",
               "text": "Formulated in our laboratories and driven by 20 years of stem cell research, now available for at-home treatments",
               "link_label_1": "Our Science",
@@ -2013,7 +1976,6 @@
             "type": "entry",
             "settings": {
               "icon_svg": "",
-              "icon_image": "shopify:\/\/shop_images\/07Homepage-USPIcons02-desktop-300x300.png",
               "title": "Trusted by Doctors",
               "text": "Used in hundreds of clinics around the world to support patient results and recovery",
               "link_label_1": "Hear from doctors",
@@ -2026,7 +1988,6 @@
             "type": "entry",
             "settings": {
               "icon_svg": "",
-              "icon_image": "shopify:\/\/shop_images\/07Homepage-USPIcons03-desktop-300x300.png",
               "title": "Validated by Results",
               "text": "Robust clinical data by medical professionals make up the core of our brand. This is why we know CALECIM® works",
               "link_label_1": "Hair results",
@@ -2041,6 +2002,7 @@
           "a34dbb80-887a-4e39-a075-34843cc08ce3",
           "8a2e942a-4451-4ae6-9204-1820af03dd5c"
         ],
+        "disabled": true,
         "settings": {
           "bg_color": "#f5f5f5",
           "title_text_color": "#231d1d",
@@ -2095,6 +2057,7 @@
           "2619e01f-ef11-4f9e-ac81-5b49ce022d2d",
           "b6edc841-2c6a-4af2-a1c8-9347b3c7d8e2"
         ],
+        "disabled": true,
         "settings": {
           "section_width": "container",
           "background_color": "",
@@ -2113,8 +2076,6 @@
           "button_color_hover": "",
           "button_background_hover": "",
           "button_border_hover": "",
-          "desktop_image": "shopify:\/\/shop_images\/08Homepage-Subscription01-desktop-1200x1200.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/08Homepage-Subscription01-desktop-1200x1200.jpg",
           "image_position": "row-reverse",
           "image_position_mobile": "image-first",
           "tag": "SUBSCRIBE & SAVE UP TO 20%!",
@@ -2133,7 +2094,7 @@
             "type": "entry",
             "settings": {
               "counter": "56%",
-              "title": "increase in elastin production",
+              "title": "increase in supple appearance",
               "url": ""
             }
           },
@@ -2141,7 +2102,7 @@
             "type": "entry",
             "settings": {
               "counter": "83%",
-              "title": "increase in hyaluronic acid production",
+              "title": "visibly more hydrated",
               "url": ""
             }
           },
@@ -2149,7 +2110,7 @@
             "type": "entry",
             "settings": {
               "counter": "24%",
-              "title": "increase in hair follicle cell production",
+              "title": "increase in visible hair volume",
               "url": ""
             }
           },
@@ -2157,7 +2118,7 @@
             "type": "entry",
             "settings": {
               "counter": "30x",
-              "title": "decrease in scalp inflammation",
+              "title": "decrease in scalp discomfort",
               "url": ""
             }
           }
@@ -2173,12 +2134,12 @@
           "bg_color": "#f5f5f5",
           "c_max_width": 400,
           "title": "What is PTT-6<sup>®<\/sup>",
-          "text": "PTT-6<sup>®<\/sup> harnesses the body’s natural mechanisms of regeneration. It contains over 3,000 proteins, including growth factors, cytokines, and exosomes that signal cells to regenerate.",
+          "text": "PTT-6<sup>®<\/sup> harnesses the body’s natural mechanisms of restoration. It contains over 3,000 proteins, including growth factors, cytokines, and exosomes that to help boost the skin's regenerative response.",
           "text_align": "center",
           "link_label": "Learn more",
-          "link_url": "#",
-          "desktop_image": "shopify:\/\/shop_images\/03Homepage-_What_Ptt-6_is_01-desktop-1370x1540.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/03Homepage-_What_Ptt-6_is_01-mobile-750x500.jpg",
+          "link_url": "shopify:\/\/pages\/our-technology",
+          "desktop_image": "shopify:\/\/shop_images\/MAR_14_A.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/MAR_14_A.jpg",
           "image_position": "left"
         }
       },
@@ -2206,8 +2167,6 @@
           "text_align": "center",
           "link_label": "Research paper",
           "link_url": "#",
-          "desktop_image": "shopify:\/\/shop_images\/04Homepage-_Doctors_Quote-desktop-1370x1540.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/04Homepage-_Doctors_Quote-mobile-750x500.jpg",
           "image_position": "right"
         }
       },
@@ -2216,68 +2175,86 @@
         "blocks": {
           "80169aaa-9d03-4195-8304-9605332ec87d": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "article": "blog\/an-evening-with-calecim-dermoi-at-brown-s-hotel-in-london"
             }
           },
           "2ba9bdde-c469-4984-b945-93b3759b15a9": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "article": "blog\/reduce-inflammation-for-gorgeous-hair"
             }
           },
           "415aad1f-debf-4385-af07-8144974f9074": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "article": "blog\/what-we-mean-by-clean-beauty"
             }
           },
           "758e11a8-0550-4050-98d1-aa595ccfffcf": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "article": "blog\/putting-the-snap-back-in-your-skin"
             }
           },
           "2029be98-6ddd-4554-8a18-5ac2e82f0f8e": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "article": "blog\/how-seasonal-changes-affect-skin"
             }
           },
           "84c67d01-647f-4837-8e17-a4f253946b34": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "article": "blog\/i-tried-the-new-wonder-serum-for-thinning-hair"
             }
           },
           "bc579009-04f5-49f9-b7b8-1a073d90459d": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "article": "blog\/how-wound-healing-technology-can-fight-skin-aging-too-get-more-stories"
             }
           },
           "1b7f5a9a-479a-4db4-9d16-08c860be91de": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "article": "blog\/5-essential-building-blocks-to-healthy-skin"
             }
           },
           "9867e5dd-97ad-4cbd-97c3-9fd45e08b08a": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "article": "blog\/2023-forecast-stem-cell-growth-factors"
             }
           },
           "8ed8e094-0a9d-4091-a0ad-d455e9967326": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "article": "blog\/covid-19-induced-scalp-alopecia"
             }
           },
           "58db7c66-944a-4b33-8adf-c1f5f8a0bc7d": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "article": "blog\/2023-forecast-stem-cell-growth-factors"
+            }
+          },
+          "4e8fe88c-9e87-4d0f-af7f-30245b4d2c86": {
+            "type": "entry",
+            "disabled": true,
+            "settings": {
+              "article": ""
             }
           }
         },
@@ -2292,8 +2269,10 @@
           "1b7f5a9a-479a-4db4-9d16-08c860be91de",
           "9867e5dd-97ad-4cbd-97c3-9fd45e08b08a",
           "8ed8e094-0a9d-4091-a0ad-d455e9967326",
-          "58db7c66-944a-4b33-8adf-c1f5f8a0bc7d"
+          "58db7c66-944a-4b33-8adf-c1f5f8a0bc7d",
+          "4e8fe88c-9e87-4d0f-af7f-30245b4d2c86"
         ],
+        "disabled": true,
         "settings": {
           "bg_color": "#f5f5f5",
           "top_padding_m": "",
@@ -2309,20 +2288,20 @@
         "blocks": {
           "339590a5-88f2-45c5-9be0-db94001dbc83": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "title": "“Immediately after a few days of using my skin seemed much firmer and clearer.”",
               "author": "@tales.ofskincare",
-              "url": "#a",
-              "image": "shopify:\/\/shop_images\/11Homepage-Social_Media_Posts01-desktop-800x800.jpg"
+              "url": "#a"
             }
           },
           "df5be96e-fcf9-4355-8434-d5f24cc286bb": {
             "type": "entry",
+            "disabled": true,
             "settings": {
               "title": "“Immediately after a few days of using my skin seemed much firmer and clearer. #2”",
               "author": "@tales.ofskincare#2",
-              "url": "#b",
-              "image": "shopify:\/\/shop_images\/11Homepage-Social_Media_Posts02-desktop-800x800.jpg"
+              "url": "#b"
             }
           }
         },
@@ -2330,6 +2309,7 @@
           "339590a5-88f2-45c5-9be0-db94001dbc83",
           "df5be96e-fcf9-4355-8434-d5f24cc286bb"
         ],
+        "disabled": true,
         "settings": {
           "title": "CALECIM \nCOMMUNITY",
           "top_padding_m": 40,
@@ -2344,15 +2324,15 @@
           "background_color": "",
           "advanced_background_color": "",
           "content_max_width": 530,
-          "title": "We do what other brands can't",
+          "title": "What Makes Us Different",
           "small_text": "",
           "title_size": "h3",
           "title_dom_type": "h2",
-          "text": "Rejuvenate from within: PTT-6® activates cellular regeneration by signaling cells to increase turnover and stimulate the natural production of collagen, elastin and hyaluronic acid.\n\nScientific research has shown that PTT-6® penetrates to the deepest layers of the skin to help reduce fine lines and wrinkles and improves skin elasticity and healing. It also helps re-invigorate hair follicles, encouraging healthy regrowth.\n\nYour body knows how to be youthful. CALECIM® gives it the nudge it needs. Skip the miracles. Embrace the future of beauty.",
-          "enable_read_more": false,
+          "text": "Revitalize from within: PTT-6® activate restoration by creating celluar messages to help visibly define and correct facial definition, improve look of skin density and encourage radiance and glow. \n\nScientific research has shown that PTT-6® penetrates to the deepest layers of the skin to help reduce fine lines and wrinkles and improves the look of skin elasticity and healing. It also helps re-invigorate hair and condition scalp skin to promote denser, thicker and fuller looking hair. \n\nYour body knows how to be youthful. CALECIM® gives it the nudge it needs. Skip the miracles. Embrace the future of beauty.",
+          "enable_read_more": true,
           "text_align": "tl",
           "link_label": "Learn More",
-          "link_url": "#learn",
+          "link_url": "shopify:\/\/pages\/our-technology",
           "link_label_2": "",
           "link_url_2": "",
           "button_label": "",
@@ -2361,8 +2341,8 @@
           "button_background": "#231d1d",
           "button_color_hover": "#231d1d",
           "button_background_hover": "#ffffff",
-          "desktop_image": "shopify:\/\/shop_images\/06Homepage-What_makes_us_different-desktop-1200x1200.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/06Homepage-What_makes_us_different-desktop-1200x1200.jpg",
+          "desktop_image": "shopify:\/\/shop_images\/AHS-Lifestyle-image-1000x1000px2.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/AHS-Lifestyle-image-1000x1000px2.jpg",
           "image_position": "row",
           "image_position_mobile": "follow-desktop",
           "top_padding_m": "40",
@@ -2433,6 +2413,7 @@
           "791b53b1-b0bb-4f7f-aecf-812ea24e8811",
           "c1caf570-5acc-40f2-b6d2-0143a91aa49f"
         ],
+        "disabled": true,
         "settings": {
           "section_width": "container",
           "background_color": "",
@@ -2451,8 +2432,6 @@
           "button_color_hover": "",
           "button_background_hover": "",
           "button_border_hover": "",
-          "desktop_image": "shopify:\/\/shop_images\/06Homepage-What_makes_us_different-desktop-1200x1200_4d8c25b1-1c5b-4744-8999-7393c78b20c2.jpg",
-          "mobile_image": "shopify:\/\/shop_images\/06Homepage-What_makes_us_different-desktop-1200x1200_4d8c25b1-1c5b-4744-8999-7393c78b20c2.jpg",
           "image_position": "row",
           "image_position_mobile": "image-first",
           "tag": "",
@@ -2958,7 +2937,24 @@
       "f474dc74-997b-4786-b954-ac4bce4bd851",
       "c88d6782-d939-42c2-a96e-4db0794a3bd2",
       "4629242c-0d8a-4a79-ac15-893b197e7322"
-    ]
+    ],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "7570552984445421165": {
+        "type": "shopify:\/\/apps\/yotpo-product-photo-reviews\/blocks\/settings\/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
+        "disabled": false,
+        "settings": {}
+      },
+      "6065014864672580889": {
+        "type": "shopify:\/\/apps\/slide-cart-upsell-by-amp\/blocks\/app-embed\/0a410b8d-7dc4-4f2d-b4e8-c12d34fd2255",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Default": {
