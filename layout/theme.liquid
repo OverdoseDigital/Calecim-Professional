@@ -3,6 +3,15 @@
 <!--[if (gt IE 9)|!(IE)]><!-->
   <html class="no-js" lang="{{ shop.locale }}"> <!--<![endif]-->
   <head>
+  <!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NCL2ZGFX');</script>
+
+<!-- End Google Tag Manager -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
       rel="preconnect"
@@ -57,7 +66,32 @@
           font-display: swap;
       }
     </style>
-
+<!-- APPHQ edits -->
+   <script>!function(){window.SLIDECART=!0;window.SLIDECART_FORMAT='{{shop.money_format}}';var e="https://cdn.jsdelivr.net/gh/apphq/slidecart-dist@master/slidecarthq.js?"+(new Date).getTime(),t=document.createElement("script");t.type="text/javascript",t.src=e,document.querySelector("body").appendChild(t)}();</script>
+    <script>
+      document.addEventListener(
+        "mouseup",
+        function (event) {
+          if (event.target.matches(".wayfx-product__grid-add .btn--full, .wayfx-product__grid-add .btn--full *")){
+            try {
+              if (window.SLIDECART_STATE().settings.enabled) {
+                setTimeout(function () {
+                  window.SLIDECART_UPDATE();
+                  window.SLIDECART_OPEN();
+                }, 600);
+    
+                setTimeout(function () {
+                  window.SLIDECART_UPDATE();
+                }, 1200);
+              }
+            } catch (err) {
+            }
+          }
+        },
+        false
+      );
+    </script>
+  <!-- APPHQ edits -->
     <link
         rel="preload"
         href="{{ 'style.css' | asset_url }}"
@@ -145,12 +179,15 @@
       }
     </script>
 
-    <!-- TrustBox script -->
-    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
-    <!-- End TrustBox script -->
+ <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/7KrXMKnmBSCBwqeqTnv3kkeHRbcSHXzNJ8UOGmuT?languageCode={{ localization.language.iso_code | escape }}" async></script>
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCL2ZGFX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) -->
     {% section 'redirect' %}
     {% section 'typography-header' %}
     {% section 'typography-body' %}
@@ -197,7 +234,7 @@
 {% render 'back-in-stock-helper' %}
 <!-- End Back in Stock helper snippet -->
 
-
+{{ product.title | escape | replace: "®", "<sup>®</sup>"}}
 {% comment %}
 {% render 'boost-pfs' %}
 {% endcomment %}

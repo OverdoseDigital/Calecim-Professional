@@ -1,3 +1,4 @@
+
 <style>
 	.header-cart .header-cart-items .carousel-wrapper .title-wrapper {
 		display: -webkit-box;
@@ -77,7 +78,6 @@
 	{%- if cart.item_count == 0 -%}
 		<div class="header-cart-top relative pt-20 pb-20 pl-20 pr-20 t-pl-30 t-pr-30 bg-lightgrey global-flex ai-center jc-between bb-1 b-border">
 			<h5 class="h5 uppercase">Your Cart</h6>
-			<button type="button" class="header-cart-close flex ai-center jc-center zi-1" onclick="$360.hideHeaderCart()">{{ settings.icon_close }}</button>
 		</div>
 		{% comment %} {%- render 'free-shipping-info', 
 			wrapper_class: 'pt-20 pb-20 pl-25 pr-25 t-pt-25 t-pb-25 t-pl-30 t-pr-30 bg-pale30', 
@@ -125,9 +125,7 @@
 		<div class="header-cart-top relative pt-20 pb-20 pl-20 pr-20 t-pl-30 t-pr-30 bg-lightgrey global-flex ai-center jc-between bb-1 b-border">
 			<div class="flex ai-end">
 				<div onclick="document.querySelector('.header-cart-wrapper').classList.remove('step-2');document.querySelector('.header-cart-wrapper').classList.add('step-1');" class="prev-step-button mr-5 y1 cursor">{{settings.icon_btn_left}}</div>
-				<h5 class="h5 uppercase pr-5">Your Cart</h6>
-				<div class="p5 bold-500 step-text-1 uppercase">step 1 of 2</div>
-				<div class="p5 bold-500 step-text-2 uppercase">step 2 of 2</div>
+				<h5 class="h5 uppercase pr-5">Your Cart 1</h6>
 			</div>
 			<button type="button" class="header-cart-close flex ai-center jc-center zi-1" onclick="$360.hideHeaderCart()">{{ settings.icon_close }}</button>
 		</div>
@@ -263,8 +261,8 @@
 					{%- comment -%} deals {%- endcomment -%}
 
 					<div class="starter-deal-collection pt-20 pb-20 bg-lightgrey">
-						<div class="p1 pb-10 d-pb-15 bb-1 b-border">Ongoing starter size deals</div>
-						<div class="p4 pt-10 d-pt-15 pb-10 d-pb-15">Limited time only, max 2 per order</div>
+						<div class="p1 pb-10 d-pb-15 bb-1 b-border"></div>
+						<div class="p4 pt-10 d-pt-15 pb-10 d-pb-15"></div>
 						{%- assign best_collection = collections['skincare-only'] -%}
 						{% for pro in best_collection.products limit:2%}
 							<div class="bg-white pt-25 pb-25 pl-20 pr-20 {%unless forloop.last%}mb-10{%endunless%}">
@@ -319,7 +317,6 @@
 								</div>
 							{%endfor%}
 							<div class="tc p-15">
-								<div onclick="" class="btn1 header-cart-add-sample cursore uppercase w-full">add samples</div>
 							</div>
 						</div>
 					</div>
@@ -343,9 +340,7 @@
 					<div class="price p3 bold-500">{{ cart.total_price | money }}</div>
 				</div>
 
-				<div class="tc mt-15 header-cart-next-button cursor">
-					<div onclick="document.querySelector('.header-cart-wrapper').classList.remove('step-1');document.querySelector('.header-cart-wrapper').classList.add('step-2');" class="btn2 uppercase w-full">Next</div>
-				</div>
+					<button type="submit" class="btn2 uppercase btn-checkout w-full" value="Checkout"><span class="icon">{{ settings.icon_lock }}</span>Checkout</button>
 				<div class="tc mt-15 header-cart-submit-button">
 					<button type="submit" class="btn2 uppercase btn-checkout w-full" value="Checkout"><span class="icon">{{ settings.icon_lock }}</span>Checkout</button>
 				</div>

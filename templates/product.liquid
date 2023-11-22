@@ -11,6 +11,9 @@
     {%- assign padding_class = '' -%}
 {%- endif -%}
 
+{%- if section.settings.show_recommendations -%}
+  {%- assign recommendations = product.recommendations -%}
+{%- endif -%}
 
 <div class="product-page global-content-top-margin {{ padding_class }}">
     {%- render 'product-sticky-add-to-cart', product: product -%}
@@ -43,10 +46,18 @@
             </div>
         </div>
     </div>
-
+<div class="yotpo-widget-instance" data-yotpo-instance-id="465742" data-yotpo-product-id="{{product.id}}" data-yotpo-name="{{ product.title | escape }}" data-yotpo-url="{{ shop.url }}{{ product.url }}" data-yotpo-image-url="{{ product.featured_image | product_img_url: "large" | prepend: "https:" | replace: '?', '%3F' | replace: '&','%26'}}" data-yotpo-price="{{ product.price | money_without_currency }}" data-yotpo-currency="{{ shop.currency }}" data-yotpo-description="{{ product.description | escape }}"></div>
     {%- if product.metafields.about_1.enable_1 != blank -%}
         {%- render 'product-tabbed-details', product: product -%}
     {%- endif -%}
+{%- if recommendations.products_count > 0 -%}
+  <div class="recommendations">
+    <h2>Recommended Products</h2>
+    {%- for recommended_product in recommendations.products -%}
+      {%- include 'product-card', product: recommended_product -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
 
     {%- if product.metafields.testimonials.enable != blank -%}
         {%- render 'product-testimonials', product: product -%}

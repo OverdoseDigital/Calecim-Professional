@@ -27,27 +27,46 @@ text_class: String, class for the text
     }
 </style>
 
+{% comment %}
+Calecim Theme
+Description:
+Snippet for displaying promo on cart drawer
+
+Variables:
+wrapper_class: String, class for the wrapper
+text_class: String, class for the text
+{% endcomment %}
+
+<style>
+    .cart-promo-info-drawer .line-indicator {
+        width: 100%;
+        background-color: #231D1D;
+        border-radius: 8px;
+        height: 4px;
+        opacity: 50%;
+    }
+    
+    .cart-promo-info-drawer .progress-fill {
+        background-color: #93D0B3;
+        border-radius: 8px;
+        height: 4px;
+    }
+</style>
+
 {%- if true -%}
     <div class="cart-promo-info-drawer {{ wrapper_class }}">
-        {%- assign cf = settings.cart_fs_free | times: 100 -%}
+        {%- assign cf = 20000 -%}
         {%- if cart.total_price >= cf -%}
-            {%- assign text = settings.cart_fs_after -%}
+            <div class="{{ text_class }}">Congratulations! You qualify for free shipping.</div>
         {%- else -%}
             {%- assign current = cf | minus: cart.total_price | money -%}
-            {%- assign text = settings.cart_fs_before | replace: "[amount]", current -%}
-        {%- endif -%}
-        <div class="{{ text_class }}">You’ve received 10% off this order! Spend $130 more to receive a free gift from us!</div>
+            <div class="{{ text_class }}">Spend {{ current }} more to qualify for free shipping.</div>
         
-        <div class="flex flex-wrap jc-between pt-10 pb-10">
-            <div class="line-indicator active"></div>
-            <div class="line-indicator"></div>
+        <div class="overflow" style="background: #d8e2de;height:4px;position:relative;">
+            <div class="progress-fill" style="position:absolute;top:0;left:0;height:4px;width:{{ cart.total_price | divided_by:cf | times:100 | round:2 }}%;"></div>
         </div>
-
-        <div class="flex flex-wrap">
-            <div class="text-indicator p5 tc active">10% OFF ORDER</div>
-            <div class="text-indicator p5 tc "><span class="mr-5" style="display:inline-block">{{settings.icon_gift}}</span>FREE GIFT</div>
-        </div>
-
+{%- endif -%}
+<!-- end free shipping info -->
         {% comment %} <div class="overflow" style="background: #d8e2de;height:4px;position:relative;">
             <div style="position:absolute;background:#93D0B3;top:0;left:0;height:4px;width:{{ cart.total_price | divided_by:settings.cart_fs_free | round:2 }}%;"></div>
         </div> {% endcomment %}
