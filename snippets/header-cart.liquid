@@ -77,7 +77,7 @@
 <div class="header-cart-wrapper h-full bg-beige-5 relative step-1">
 	{%- if cart.item_count == 0 -%}
 		<div class="header-cart-top relative pt-20 pb-20 pl-20 pr-20 t-pl-30 t-pr-30 bg-lightgrey global-flex ai-center jc-between bb-1 b-border">
-			<h5 class="h5 uppercase">Your Cart</h6>
+			<h5 class="h5 uppercase">Your Cart 1</h6>
 		</div>
 		{% comment %} {%- render 'free-shipping-info', 
 			wrapper_class: 'pt-20 pb-20 pl-25 pr-25 t-pt-25 t-pb-25 t-pl-30 t-pr-30 bg-pale30', 
@@ -322,6 +322,9 @@
 					</div>
 				</div>
 			</div>
+
+			<div id="header-cart--GWP" class="header-cart--GWP"></div>
+
 			<div class="header-cart-bottom pt-20 pb-20 pl-25 pr-25 t-pl-30 t-pr-30 bg-lightgrey">
 				<div class="flex ai-center jc-between opacity-4">
 					<div class="p3">Subtotal</div>
@@ -350,3 +353,12 @@
 		</form>
 	{%- endif -%}
 </div>
+
+<style>
+	.header-cart-wrapper {
+		overflow: scroll;
+	}
+	.header-cart.no-cross-sell .header-cart-wrapper .header-cart-bottom  {
+		position: relative;
+	}
+</style>

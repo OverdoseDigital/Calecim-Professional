@@ -1,0 +1,206 @@
+{%- if section.blocks.size > 0 -%}
+    <div class="ajaxCart-GWP bg-lightgrey hidden" id="{{section.id}}">
+        <div class="container bg-lightgrey">
+            <h6 class="section--title p3 uppercase bold-600" > Free gifts with purchases </h6>
+            {%- for block in section.blocks -%}
+                {% assign item = block.settings.product %}
+                <div class="gwp--line-item flex relative pt-15 pb-15 pr-15 pl-15 d-pr-20 d-pl-20 bg-white mb-25 d-mb-30">
+                    <div class="image-con">
+                        {%- capture item_img -%}
+                            {%- if item.featured_image == blank -%}
+                                <img src="{{ item.image | img_url: '200x' }}" alt="{{ item.image.alt }}" class="image">
+                            {%- else -%}
+                                {%- render 'global-image-wrapper', image: item.featured_image, size: 200, preload: true -%}
+                            {%- endif -%}
+                        {%- endcapture -%}
+                        {%- if item.product.tags contains "hidden" -%}
+                            {{ item_img }}
+                        {%- else -%}
+                            <a href="{{ item.url }}" title="{{ item.title }}">{{ item_img }}</a>
+                        {%- endif -%}
+                    </div>
+                    <div class="details-con pl-15">
+                        <div class="top-part flex jc-between">
+                            <div class="left-side pr-20">
+                                <h6 class="p3 uppercase bold-600">
+                                    <a href="/products/professional-pigment-solution?variant=43549632135335" class="">{{ item.title }}</a>
+                                </h6>
+                                <div class="variant-options mt-5 p3 bold-500 c-grey">
+                                {%- for opt in item.options_with_values -%}
+                                    {%- if opt.name contains 'size' or opt.name contains 'Size' -%}Size {{ opt.values[0] }}{%- else -%}{%- endif -%}
+                                    {%- unless forloop.last -%}
+                                        ,&nbsp;
+                                    {%- endunless -%}
+                                {%- endfor -%}
+                                </div>
+                            </div>
+                            <div class="right-side relative">
+                                <div class="item-price tr">
+                                    free
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottom-part width-100 flex jc-end ai-end mt-10">
+                            <button add-to-cart data-variant-id="{{item.variants[0].id}}" class="gwp-btn btn5 quick-add-to-cart tc relative bold-500">ADD</button>
+                        </div>
+                    </div>
+                </div>
+            {%- endfor -%}
+        </div>
+    </div>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Ajax Cart GWP",
+    "settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Section title"
+		}
+    ],
+    "blocks" : [
+        {
+            "type": "choice",
+            "name": "GWP Choice",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
+
+<script>
+
+    class GWPManager {
+        constructor() {
+            this.selectors = {
+                sourceContainer: "#ajaxCart-GWP",
+                destContainer: "#header-cart--GWP",
+                addToCart: "[add-to-cart]"
+            }
+            this.threshold = 20000;
+            this.property = "_gwp";
+        }
+
+        async init() {
+            const {
+                total_price,
+                items
+            } = await this._fetchCart();
+
+            const isCartEligible = this._isCartEligible(total_price, items);
+
+            if (isCartEligible) {
+                this._waitForElm(this.selectors.destContainer)
+                .then((elem) => {
+                    this._copyGwpToAjaxCart()
+                })
+            }
+        }
+
+        _addEventListener() {
+            const btns = document.querySelectorAll(this.selectors.addToCart);
+            btns.forEach((btn) => {
+                btn.addEventListener("click", async (e) => {
+                    e.preventDefault();
+                    const element = e.currentTarget;
+                    const variantId = element.dataset.variantId;
+                    console.log(variantId);
+
+                    await this._addProductToCart(variantId);
+                })
+            })
+        }
+
+        async _fetchCart() {
+            const resp = await fetch("/cart.js");
+            const data = await resp.json();
+
+            console.log(data);
+
+            return data;
+        }
+
+        _isCartEligible(totalPrice, items) {
+            if (totalPrice < this.threshold) return false;
+
+            for (const item of items) {
+                const _gwp = item.properties['_gwp'];
+                if (_gwp == true) return false;
+            }
+
+            return true;
+        }
+
+        _copyGwpToAjaxCart() {
+            const source = document.querySelector(this.selectors.sourceContainer);
+            const destination = document.querySelector(this.selectors.destContainer);
+
+            destination.innerHTML = source.innerHTML;
+
+            this._addEventListener();
+        }
+
+        async _addProductToCart(id) {
+            $360.addToCart({
+                qty: 1,
+                variantId: id,
+                properties: {
+                    '_gwp': true
+                }
+            });
+
+
+        }
+
+        _waitForElm(selector) {
+            return new Promise(resolve => {
+                if (document.querySelector(selector)) {
+                    return resolve(document.querySelector(selector));
+                }
+
+                const observer = new MutationObserver(mutations => {
+                    if (document.querySelector(selector)) {
+                        observer.disconnect();
+                        resolve(document.querySelector(selector));
+                    }
+                });
+
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                });
+            });
+        }
+    }
+
+    const gwpManager = new GWPManager()
+    gwpManager.init();
+
+</script>
+
+
+<style>
+    .gwp--line-item .image-con {
+        width: 100px;
+    }
+    .gwp--line-item .details-con {
+        width: 100%;
+    }
+    .gwp-btn {
+        padding: 10px 20px;
+    }
+    .ajaxCart-GWP .section--title {
+        margin-top: 20px;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
