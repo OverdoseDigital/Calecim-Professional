@@ -90,6 +90,7 @@
         }
 
         async init() {
+            console.log('init');
             const {
                 total_price,
                 items
@@ -184,6 +185,25 @@
     const gwpManager = new GWPManager()
     gwpManager.init();
 
+    var originalRefreshCartPage = $360.refreshCartPage;
+    var originalAddToCart = $360.addToCart;
+
+    $360.addToCart = function() {
+        originalAddToCart.apply($360, arguments);
+
+        setTimeout(() => {
+            const gwpManager = new GWPManager()
+            gwpManager.init();
+        }, 500)
+    }
+    $360.refreshCartPage = function() {
+        originalRefreshCartPage.apply($360, arguments);
+        
+        setTimeout(() => {
+            const gwpManager = new GWPManager()
+            gwpManager.init();
+        }, 500)
+    };
 </script>
 
 
